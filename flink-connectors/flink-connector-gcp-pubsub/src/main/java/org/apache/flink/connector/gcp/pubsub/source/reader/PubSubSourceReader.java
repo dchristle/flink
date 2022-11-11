@@ -51,7 +51,7 @@ public class PubSubSourceReader<T>
             SourceReaderContext context) {
         super(
                 elementsQueue,
-                new PubSubSourceFetcherManager<>(elementsQueue, splitReaderSupplier::get),
+                new PubSubSourceFetcherManager<>(elementsQueue, splitReaderSupplier::get, config),
                 recordEmitter,
                 config,
                 context);

@@ -168,7 +168,7 @@ public class EmulatedPubSubSourceTest extends GCloudUnitTestBase {
     // 1) The ordering of the messages is maintained.
     // 2) Exactly once: We assume that every message we put in comes out exactly once.
     //    In the real PubSub there are a lot of situations (mostly failure/retry) where this is not
-    // true.
+    // true test.
     @Test
     public void testFlinkSourceOk() throws Exception {
         testFlinkSource(false);
