@@ -31,7 +31,7 @@ public class CosineDistanceTest {
     public void testCosineDistance() {
 
         // Reference calculated using wolfram alpha
-        double[][][] testdata = {
+        double[][][] testData = {
             {{0, 0, 0}, {0, 0, 0}},
             {{0, 0, 0}, {1, 2, 3}},
             {{1, 2, 3}, {0, 0, 0}},
@@ -46,14 +46,14 @@ public class CosineDistanceTest {
             0, 0, 0, 0.025368, 1.974631, 0.269026, 0.031136, 0.016130, 0
         };
 
-        for (int i = 0; i < testdata.length; i++) {
+        for (int i = 0; i < testData.length; i++) {
             assertEquals(
                     "Wrong result for inputs "
-                            + arrayToString(testdata[i][0])
+                            + arrayToString(testData[i][0])
                             + " and "
-                            + arrayToString(testdata[i][0]),
+                            + arrayToString(testData[i][0]),
                     referenceSolutions[i],
-                    new CosineDistance().getDelta(testdata[i][0], testdata[i][1]),
+                    new CosineDistance().getDelta(testData[i][0], testData[i][1]),
                     0.000001);
         }
     }

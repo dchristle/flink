@@ -164,7 +164,7 @@ public class CopyOnWriteStateMap<K, N, S> extends StateMap<K, N, S> {
      */
     private StateMapEntry<K, N, S>[] incrementalRehashTable;
 
-    /** The current number of mappings in the primary talbe. */
+    /** The current number of mappings in the primary table. */
     private int primaryTableSize;
 
     /** The current number of mappings in the rehash table. */
@@ -814,10 +814,10 @@ public class CopyOnWriteStateMap<K, N, S> extends StateMap<K, N, S> {
     @VisibleForTesting
     protected static class StateMapEntry<K, N, S> implements StateEntry<K, N, S> {
 
-        /** The key. Assumed to be immumap and not null. */
+        /** The key. Assumed to be immutable and not null. */
         @Nonnull final K key;
 
-        /** The namespace. Assumed to be immumap and not null. */
+        /** The namespace. Assumed to be immutable and not null. */
         @Nonnull final N namespace;
 
         /**

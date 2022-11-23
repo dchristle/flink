@@ -216,26 +216,26 @@ class CSVReaderTest {
     }
 
     @Test
-    void testSubClassWithPartialsInHierarchie() {
+    void testSubClassWithPartialsInHierarchy() {
         CsvReader reader = getCsvReader();
-        DataSource<FinalItem> sitems = reader.tupleType(FinalItem.class);
-        TypeInformation<?> info = sitems.getType();
+        DataSource<FinalItem> subItems = reader.tupleType(FinalItem.class);
+        TypeInformation<?> info = subItems.getType();
 
         assertThat(info.isTupleType()).isTrue();
         assertThat(info.getTypeClass()).isEqualTo(FinalItem.class);
 
         @SuppressWarnings("unchecked")
-        TupleTypeInfo<SubItem> tinfo = (TupleTypeInfo<SubItem>) info;
+        TupleTypeInfo<SubItem> typeInfo = (TupleTypeInfo<SubItem>) info;
 
-        assertThat(tinfo.getTypeAt(0)).isEqualTo(BasicTypeInfo.INT_TYPE_INFO);
-        assertThat(tinfo.getTypeAt(1)).isEqualTo(BasicTypeInfo.STRING_TYPE_INFO);
-        assertThat(tinfo.getTypeAt(2)).isEqualTo(BasicTypeInfo.DOUBLE_TYPE_INFO);
-        assertThat(tinfo.getTypeAt(3).getClass()).isEqualTo(ValueTypeInfo.class);
-        assertThat(tinfo.getTypeAt(4).getClass()).isEqualTo(ValueTypeInfo.class);
-        assertThat((tinfo.getTypeAt(3)).getTypeClass()).isEqualTo(StringValue.class);
-        assertThat((tinfo.getTypeAt(4)).getTypeClass()).isEqualTo(LongValue.class);
+        assertThat(typeInfo.getTypeAt(0)).isEqualTo(BasicTypeInfo.INT_TYPE_INFO);
+        assertThat(typeInfo.getTypeAt(1)).isEqualTo(BasicTypeInfo.STRING_TYPE_INFO);
+        assertThat(typeInfo.getTypeAt(2)).isEqualTo(BasicTypeInfo.DOUBLE_TYPE_INFO);
+        assertThat(typeInfo.getTypeAt(3).getClass()).isEqualTo(ValueTypeInfo.class);
+        assertThat(typeInfo.getTypeAt(4).getClass()).isEqualTo(ValueTypeInfo.class);
+        assertThat((typeInfo.getTypeAt(3)).getTypeClass()).isEqualTo(StringValue.class);
+        assertThat((typeInfo.getTypeAt(4)).getTypeClass()).isEqualTo(LongValue.class);
 
-        CsvInputFormat<?> inputFormat = (CsvInputFormat<?>) sitems.getInputFormat();
+        CsvInputFormat<?> inputFormat = (CsvInputFormat<?>) subItems.getInputFormat();
         assertThat(inputFormat.getFieldTypes())
                 .containsExactly(
                         Integer.class,
@@ -246,7 +246,7 @@ class CSVReaderTest {
     }
 
     @Test
-    void testUnsupportedPartialitem() {
+    void testUnsupportedPartialItem() {
         CsvReader reader = getCsvReader();
 
         assertThatThrownBy(() -> reader.tupleType(PartialItem.class))

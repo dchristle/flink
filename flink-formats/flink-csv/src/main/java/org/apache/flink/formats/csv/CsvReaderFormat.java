@@ -137,7 +137,7 @@ public class CsvReaderFormat<T> extends SimpleStreamFormat<T> {
      *
      * @param mapperFactory The factory creating the {@code CsvMapper}.
      * @param schemaGenerator A generator that creates and configures the Jackson CSV schema for
-     *     parsins specific CSV files, from a mapper created by the mapper factory.
+     *     parsing specific CSV files, from a mapper created by the mapper factory.
      * @param typeInformation The Flink type descriptor of the returned elements.
      * @param <T> The type of the returned elements.
      */
@@ -170,8 +170,8 @@ public class CsvReaderFormat<T> extends SimpleStreamFormat<T> {
     }
 
     /**
-     * Returns a new {@code CsvReaderFormat} configured to ignore all parsing errors. All thye other
-     * options directly carried over from the subject of the method call.
+     * Returns a new {@code CsvReaderFormat} configured to ignore all parsing errors. All other
+     * options are directly carried over from the subject of the method call.
      */
     public CsvReaderFormat<T> withIgnoreParseErrors() {
         return new CsvReaderFormat<T>(

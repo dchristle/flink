@@ -1130,7 +1130,7 @@ public class DataFormatConverters {
         private final DataFormatConverter<Object, T> elementConverter;
         private final int elementSize;
         private final TypeSerializer<T> eleSer;
-        private final boolean isEleIndentity;
+        private final boolean isElementIdentity;
 
         private transient BinaryArrayData reuseArray;
         private transient BinaryArrayWriter reuseWriter;
@@ -1142,12 +1142,12 @@ public class DataFormatConverters {
             this.elementConverter = DataFormatConverters.getConverterForDataType(elementType);
             this.elementSize = BinaryArrayData.calculateFixLengthPartSize(this.elementType);
             this.eleSer = InternalSerializers.create(this.elementType);
-            this.isEleIndentity = elementConverter instanceof IdentityConverter;
+            this.isElementIdentity = elementConverter instanceof IdentityConverter;
         }
 
         @Override
         ArrayData toInternalImpl(T[] value) {
-            return isEleIndentity ? new GenericArrayData(value) : toBinaryArray(value);
+            return isElementIdentity ? new GenericArrayData(value) : toBinaryArray(value);
         }
 
         private ArrayData toBinaryArray(T[] value) {
@@ -1178,7 +1178,7 @@ public class DataFormatConverters {
 
         @Override
         T[] toExternalImpl(ArrayData value) {
-            return (isEleIndentity && value instanceof GenericArrayData)
+            return (isElementIdentity && value instanceof GenericArrayData)
                     ? genericArrayToJavaArray((GenericArrayData) value, elementType)
                     : arrayDataToJavaArray(value, elementGetter, componentClass, elementConverter);
         }

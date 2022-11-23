@@ -797,10 +797,10 @@ class DataStream(object):
             .STREAM_PARTITION_CUSTOM_MAP_OPERATOR_NAME)
 
         JPartitionCustomKeySelector = gateway.jvm.PartitionCustomKeySelector
-        JIdParitioner = gateway.jvm.org.apache.flink.api.java.functions.IdPartitioner
+        JIdPartitioner = gateway.jvm.org.apache.flink.api.java.functions.IdPartitioner
         partitioned_stream_with_partition_info = DataStream(
             stream_with_partition_info._j_data_stream.partitionCustom(
-                JIdParitioner(), JPartitionCustomKeySelector()))
+                JIdPartitioner(), JPartitionCustomKeySelector()))
 
         partitioned_stream = partitioned_stream_with_partition_info.map(
             lambda x: x[1], original_type_info)

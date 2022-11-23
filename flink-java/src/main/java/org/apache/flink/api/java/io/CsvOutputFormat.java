@@ -106,7 +106,7 @@ public class CsvOutputFormat<T extends Tuple> extends FileOutputFormat<T>
     public CsvOutputFormat(Path outputPath, String recordDelimiter, String fieldDelimiter) {
         super(outputPath);
         if (recordDelimiter == null) {
-            throw new IllegalArgumentException("RecordDelmiter shall not be null.");
+            throw new IllegalArgumentException("RecordDelimiter shall not be null.");
         }
 
         if (fieldDelimiter == null) {

@@ -45,7 +45,7 @@ public class CosineDistance<DATA> extends ExtractionAwareDeltaFunction<DATA, dou
 
     @Override
     public double getNestedDelta(double[] oldDataPoint, double[] newDataPoint) {
-        if (isNullvector(oldDataPoint, newDataPoint)) {
+        if (isNullVector(oldDataPoint, newDataPoint)) {
             return 0;
         }
 
@@ -74,7 +74,7 @@ public class CosineDistance<DATA> extends ExtractionAwareDeltaFunction<DATA, dou
         return result;
     }
 
-    private boolean isNullvector(double[]... vectors) {
+    private boolean isNullVector(double[]... vectors) {
         outer:
         for (double[] v : vectors) {
             for (double field : v) {

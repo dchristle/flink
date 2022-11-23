@@ -61,7 +61,7 @@ public class DataExchangeModeOpenBranchingTest extends CompilerTestBase {
     @Test
     public void testPipelinedForced() {
         // PIPELINED_FORCED should result in pipelining all the way
-        verifyBranchigPlan(
+        verifyBranchingPlan(
                 ExecutionMode.PIPELINED_FORCED,
                 DataExchangeMode.PIPELINED,
                 DataExchangeMode.PIPELINED,
@@ -75,7 +75,7 @@ public class DataExchangeModeOpenBranchingTest extends CompilerTestBase {
     @Test
     public void testPipelined() {
         // PIPELINED should result in pipelining all the way
-        verifyBranchigPlan(
+        verifyBranchingPlan(
                 ExecutionMode.PIPELINED,
                 DataExchangeMode.PIPELINED,
                 DataExchangeMode.PIPELINED,
@@ -89,7 +89,7 @@ public class DataExchangeModeOpenBranchingTest extends CompilerTestBase {
     @Test
     public void testBatch() {
         // BATCH should result in batching the shuffle all the way
-        verifyBranchigPlan(
+        verifyBranchingPlan(
                 ExecutionMode.BATCH,
                 DataExchangeMode.PIPELINED,
                 DataExchangeMode.PIPELINED,
@@ -103,7 +103,7 @@ public class DataExchangeModeOpenBranchingTest extends CompilerTestBase {
     @Test
     public void testBatchForced() {
         // BATCH_FORCED should result in batching all the way
-        verifyBranchigPlan(
+        verifyBranchingPlan(
                 ExecutionMode.BATCH_FORCED,
                 DataExchangeMode.BATCH,
                 DataExchangeMode.BATCH,
@@ -114,7 +114,7 @@ public class DataExchangeModeOpenBranchingTest extends CompilerTestBase {
                 DataExchangeMode.BATCH);
     }
 
-    private void verifyBranchigPlan(
+    private void verifyBranchingPlan(
             ExecutionMode execMode,
             DataExchangeMode toMap,
             DataExchangeMode toFilter,

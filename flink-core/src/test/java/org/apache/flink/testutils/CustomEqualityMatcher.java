@@ -52,7 +52,7 @@ public class CustomEqualityMatcher extends BaseMatcher<Object> {
     }
 
     /**
-     * Performs assertions with this customly configured {@link DeeplyEqualsChecker}. It might have
+     * Performs assertions with this custom-configured {@link DeeplyEqualsChecker}. It might have
      * some additional rules applied.
      */
     public CustomEqualityMatcher withChecker(DeeplyEqualsChecker checker) {

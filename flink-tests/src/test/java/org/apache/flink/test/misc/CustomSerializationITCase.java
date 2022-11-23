@@ -50,7 +50,7 @@ import static org.junit.Assert.fail;
 @SuppressWarnings("serial")
 public class CustomSerializationITCase extends TestLogger {
 
-    private static final int PARLLELISM = 5;
+    private static final int PARALLELISM = 5;
 
     @ClassRule
     public static final MiniClusterWithClientResource MINI_CLUSTER_RESOURCE =
@@ -58,7 +58,7 @@ public class CustomSerializationITCase extends TestLogger {
                     new MiniClusterResourceConfiguration.Builder()
                             .setConfiguration(getConfiguration())
                             .setNumberTaskManagers(1)
-                            .setNumberSlotsPerTaskManager(PARLLELISM)
+                            .setNumberSlotsPerTaskManager(PARALLELISM)
                             .build());
 
     public static Configuration getConfiguration() {
@@ -71,9 +71,9 @@ public class CustomSerializationITCase extends TestLogger {
     public void testIncorrectSerializer1() {
         try {
             ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-            env.setParallelism(PARLLELISM);
+            env.setParallelism(PARALLELISM);
 
-            env.generateSequence(1, 10 * PARLLELISM)
+            env.generateSequence(1, 10 * PARALLELISM)
                     .map(
                             new MapFunction<Long, ConsumesTooMuch>() {
                                 @Override
@@ -99,9 +99,9 @@ public class CustomSerializationITCase extends TestLogger {
     public void testIncorrectSerializer2() {
         try {
             ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-            env.setParallelism(PARLLELISM);
+            env.setParallelism(PARALLELISM);
 
-            env.generateSequence(1, 10 * PARLLELISM)
+            env.generateSequence(1, 10 * PARALLELISM)
                     .map(
                             new MapFunction<Long, ConsumesTooMuchSpanning>() {
                                 @Override
@@ -127,9 +127,9 @@ public class CustomSerializationITCase extends TestLogger {
     public void testIncorrectSerializer3() {
         try {
             ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-            env.setParallelism(PARLLELISM);
+            env.setParallelism(PARALLELISM);
 
-            env.generateSequence(1, 10 * PARLLELISM)
+            env.generateSequence(1, 10 * PARALLELISM)
                     .map(
                             new MapFunction<Long, ConsumesTooLittle>() {
                                 @Override
@@ -155,9 +155,9 @@ public class CustomSerializationITCase extends TestLogger {
     public void testIncorrectSerializer4() {
         try {
             ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
-            env.setParallelism(PARLLELISM);
+            env.setParallelism(PARALLELISM);
 
-            env.generateSequence(1, 10 * PARLLELISM)
+            env.generateSequence(1, 10 * PARALLELISM)
                     .map(
                             new MapFunction<Long, ConsumesTooLittleSpanning>() {
                                 @Override

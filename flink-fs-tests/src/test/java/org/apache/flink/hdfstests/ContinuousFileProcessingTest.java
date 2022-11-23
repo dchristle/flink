@@ -1090,9 +1090,9 @@ public class ContinuousFileProcessingTest {
     /////////				Auxiliary Methods				/////////////
 
     private static int getLineNo(String line) {
-        String[] tkns = line.split("\\s");
-        Assert.assertEquals(6, tkns.length);
-        return Integer.parseInt(tkns[tkns.length - 1]);
+        String[] tokns = line.split("\\s");
+        Assert.assertEquals(6, tokns.length);
+        return Integer.parseInt(tokns[tokns.length - 1]);
     }
 
     /**

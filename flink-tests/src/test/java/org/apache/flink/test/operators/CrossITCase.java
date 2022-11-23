@@ -50,7 +50,7 @@ public class CrossITCase extends MultipleProgramsTestBase {
     }
 
     @Test
-    public void testCorretnessOfCrossOnTwoTupleInputs() throws Exception {
+    public void testCorrectnessOfCrossOnTwoTupleInputs() throws Exception {
         /*
          * check correctness of cross on two tuple inputs
          */

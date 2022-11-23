@@ -100,13 +100,13 @@ object CorrelateUtil {
       originalType: RelDataType,
       rexBuilder: RexBuilder,
       selects: Seq[Int]): RexProgram = {
-    val rexProgBuilder = new RexProgramBuilder(originalType, rexBuilder)
+    val rexProgramBuilder = new RexProgramBuilder(originalType, rexBuilder)
     val fieldNames = originalType.getFieldNames
     selects.zipWithIndex.map {
       case (ordinal, newIdx) =>
-        rexProgBuilder.addProject(newIdx, ordinal, fieldNames.get(ordinal))
+        rexProgramBuilder.addProject(newIdx, ordinal, fieldNames.get(ordinal))
     }
-    rexProgBuilder.getProgram
+    rexProgramBuilder.getProgram
   }
 
   def shiftProjectsAndCondition(
