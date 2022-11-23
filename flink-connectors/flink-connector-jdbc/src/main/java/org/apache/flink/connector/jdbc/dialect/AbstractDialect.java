@@ -70,7 +70,7 @@ public abstract class AbstractDialect implements JdbcDialect {
                                                 new IllegalStateException(
                                                         String.format(
                                                                 "JdbcDialect %s supports DECIMAL type but no precision range has been set. "
-                                                                        + "Ensure AbstractDialect#decimalPrecisionRange() is overriden to return a valid Range",
+                                                                        + "Ensure AbstractDialect#decimalPrecisionRange() is overridden to return a valid Range",
                                                                 dialectName())));
                 int precision = ((DecimalType) field.getType()).getPrecision();
                 if (precision > range.max || precision < range.min) {
@@ -90,7 +90,7 @@ public abstract class AbstractDialect implements JdbcDialect {
                                                 new IllegalStateException(
                                                         String.format(
                                                                 "JdbcDialect %s supports TIMESTAMP type but no precision range has been set."
-                                                                        + "Ensure AbstractDialect#timestampPrecisionRange() is overriden to return a valid Range",
+                                                                        + "Ensure AbstractDialect#timestampPrecisionRange() is overridden to return a valid Range",
                                                                 dialectName())));
                 int precision = ((TimestampType) field.getType()).getPrecision();
                 if (precision > range.max || precision < range.min) {
