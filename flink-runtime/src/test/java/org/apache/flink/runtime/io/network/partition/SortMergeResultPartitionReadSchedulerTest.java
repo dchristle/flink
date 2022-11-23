@@ -125,7 +125,7 @@ class SortMergeResultPartitionReadSchedulerTest {
 
         SortMergeSubpartitionReader subpartitionReader =
                 readScheduler.createSubpartitionReader(
-                        new NoOpBufferAvailablityListener(), 0, partitionedFile);
+                        new NoOpBufferAvailabilityListener(), 0, partitionedFile);
 
         assertThat(readScheduler.isRunning()).isTrue();
         assertThat(readScheduler.getDataFileChannel().isOpen()).isTrue();
@@ -153,7 +153,7 @@ class SortMergeResultPartitionReadSchedulerTest {
     void testOnSubpartitionReaderError() throws Exception {
         SortMergeSubpartitionReader subpartitionReader =
                 readScheduler.createSubpartitionReader(
-                        new NoOpBufferAvailablityListener(), 0, partitionedFile);
+                        new NoOpBufferAvailabilityListener(), 0, partitionedFile);
 
         subpartitionReader.releaseAllResources();
         waitUntilReadFinish();
@@ -164,7 +164,7 @@ class SortMergeResultPartitionReadSchedulerTest {
     void testReleaseWhileReading() throws Exception {
         SortMergeSubpartitionReader subpartitionReader =
                 readScheduler.createSubpartitionReader(
-                        new NoOpBufferAvailablityListener(), 0, partitionedFile);
+                        new NoOpBufferAvailabilityListener(), 0, partitionedFile);
 
         Thread.sleep(1000);
         readScheduler.release();
@@ -185,7 +185,7 @@ class SortMergeResultPartitionReadSchedulerTest {
         assertThatThrownBy(
                         () ->
                                 readScheduler.createSubpartitionReader(
-                                        new NoOpBufferAvailablityListener(), 0, partitionedFile))
+                                        new NoOpBufferAvailabilityListener(), 0, partitionedFile))
                 .isInstanceOf(IllegalStateException.class);
         assertAllResourcesReleased();
     }
@@ -194,7 +194,7 @@ class SortMergeResultPartitionReadSchedulerTest {
     void testOnDataReadError() throws Exception {
         SortMergeSubpartitionReader subpartitionReader =
                 readScheduler.createSubpartitionReader(
-                        new NoOpBufferAvailablityListener(), 0, partitionedFile);
+                        new NoOpBufferAvailabilityListener(), 0, partitionedFile);
 
         // close file channel to trigger data read exception
         readScheduler.getDataFileChannel().close();
@@ -217,7 +217,7 @@ class SortMergeResultPartitionReadSchedulerTest {
     void testOnReadBufferRequestError() throws Exception {
         SortMergeSubpartitionReader subpartitionReader =
                 readScheduler.createSubpartitionReader(
-                        new NoOpBufferAvailablityListener(), 0, partitionedFile);
+                        new NoOpBufferAvailabilityListener(), 0, partitionedFile);
 
         bufferPool.destroy();
         waitUntilReadFinish();
@@ -233,7 +233,7 @@ class SortMergeResultPartitionReadSchedulerTest {
     void testNoDeadlockWhenReadAndReleaseBuffers() throws Exception {
         bufferPool.initialize();
         SortMergeSubpartitionReader subpartitionReader =
-                new SortMergeSubpartitionReader(new NoOpBufferAvailablityListener(), fileReader);
+                new SortMergeSubpartitionReader(new NoOpBufferAvailabilityListener(), fileReader);
         Thread readAndReleaseThread =
                 new Thread(
                         () -> {
@@ -283,7 +283,7 @@ class SortMergeResultPartitionReadSchedulerTest {
                 new SortMergeResultPartitionReadScheduler(
                         bufferPool, executor, this, bufferRequestTimeout);
         SortMergeSubpartitionReader subpartitionReader =
-                new SortMergeSubpartitionReader(new NoOpBufferAvailablityListener(), fileReader);
+                new SortMergeSubpartitionReader(new NoOpBufferAvailabilityListener(), fileReader);
 
         long startTimestamp = System.nanoTime();
         Queue<MemorySegment> allocatedBuffers = readScheduler.allocateBuffers();

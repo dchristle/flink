@@ -71,8 +71,8 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         DataSet<Tuple3<Integer, Long, String>> ds = CollectionDataSets.get3TupleDataSet(env);
-        DataSet<Long> uniqLongs = ds.partitionByHash(1).mapPartition(new UniqueTupleLongMapper());
-        List<Long> result = uniqLongs.collect();
+        DataSet<Long> uniqueLongs = ds.partitionByHash(1).mapPartition(new UniqueTupleLongMapper());
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -88,8 +88,8 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         DataSet<Tuple3<Integer, Long, String>> ds = CollectionDataSets.get3TupleDataSet(env);
-        DataSet<Long> uniqLongs = ds.partitionByRange(1).mapPartition(new UniqueTupleLongMapper());
-        List<Long> result = uniqLongs.collect();
+        DataSet<Long> uniqueLongs = ds.partitionByRange(1).mapPartition(new UniqueTupleLongMapper());
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -158,13 +158,13 @@ public class PartitionITCase extends MultipleProgramsTestBase {
 
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 env.generateSequence(1, 6)
                         .union(env.generateSequence(1, 6))
                         .rebalance()
                         .partitionByHash("*")
                         .mapPartition(new UniqueLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -179,13 +179,13 @@ public class PartitionITCase extends MultipleProgramsTestBase {
 
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 env.generateSequence(1, 6)
                         .union(env.generateSequence(1, 6))
                         .rebalance()
                         .partitionByRange("*")
                         .mapPartition(new UniqueLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -201,9 +201,9 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         DataSet<Tuple3<Integer, Long, String>> ds = CollectionDataSets.get3TupleDataSet(env);
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 ds.partitionByHash(new KeySelector1()).mapPartition(new UniqueTupleLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -231,9 +231,9 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
         DataSet<Tuple3<Integer, Long, String>> ds = CollectionDataSets.get3TupleDataSet(env);
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 ds.partitionByRange(new KeySelector1()).mapPartition(new UniqueTupleLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -259,7 +259,7 @@ public class PartitionITCase extends MultipleProgramsTestBase {
 
         // generate some number in parallel
         DataSet<Long> ds = env.generateSequence(1, 3000);
-        DataSet<Tuple2<Integer, Integer>> uniqLongs =
+        DataSet<Tuple2<Integer, Integer>> uniqueLongs =
                 ds
                         // introduce some partition skew by filtering
                         .filter(new Filter1())
@@ -273,7 +273,7 @@ public class PartitionITCase extends MultipleProgramsTestBase {
                         // assignment)
                         .map(new Mapper1());
 
-        List<Tuple2<Integer, Integer>> result = uniqLongs.collect();
+        List<Tuple2<Integer, Integer>> result = uniqueLongs.collect();
 
         StringBuilder expected = new StringBuilder();
         int numPerPartition = 2220 / env.getParallelism() / 10;
@@ -324,9 +324,9 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         env.setParallelism(3);
 
         DataSet<Tuple3<Integer, Long, String>> ds = CollectionDataSets.get3TupleDataSet(env);
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 ds.partitionByHash(1).setParallelism(4).mapPartition(new UniqueTupleLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -343,9 +343,9 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         env.setParallelism(3);
 
         DataSet<Tuple3<Integer, Long, String>> ds = CollectionDataSets.get3TupleDataSet(env);
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 ds.partitionByRange(1).setParallelism(4).mapPartition(new UniqueTupleLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "1\n" + "2\n" + "3\n" + "4\n" + "5\n" + "6\n";
 
@@ -362,11 +362,11 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         env.setParallelism(3);
 
         DataSet<POJO> ds = CollectionDataSets.getDuplicatePojoDataSet(env);
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 ds.partitionByHash("nestedPojo.longNumber")
                         .setParallelism(4)
                         .mapPartition(new UniqueNestedPojoLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "10000\n" + "20000\n" + "30000\n";
 
@@ -383,11 +383,11 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         env.setParallelism(3);
 
         DataSet<POJO> ds = CollectionDataSets.getDuplicatePojoDataSet(env);
-        DataSet<Long> uniqLongs =
+        DataSet<Long> uniqueLongs =
                 ds.partitionByRange("nestedPojo.longNumber")
                         .setParallelism(4)
                         .mapPartition(new UniqueNestedPojoLongMapper());
-        List<Long> result = uniqLongs.collect();
+        List<Long> result = uniqueLongs.collect();
 
         String expected = "10000\n" + "20000\n" + "30000\n";
 
@@ -402,11 +402,11 @@ public class PartitionITCase extends MultipleProgramsTestBase {
         public void mapPartition(
                 Iterable<Tuple3<Integer, Long, String>> records, Collector<Long> out)
                 throws Exception {
-            HashSet<Long> uniq = new HashSet<>();
+            HashSet<Long> uniqueLongSet = new HashSet<>();
             for (Tuple3<Integer, Long, String> t : records) {
-                uniq.add(t.f1);
+                uniqueLongSet.add(t.f1);
             }
-            for (Long l : uniq) {
+            for (Long l : uniqueLongSet) {
                 out.collect(l);
             }
         }
@@ -417,11 +417,11 @@ public class PartitionITCase extends MultipleProgramsTestBase {
 
         @Override
         public void mapPartition(Iterable<Long> longs, Collector<Long> out) throws Exception {
-            HashSet<Long> uniq = new HashSet<>();
+            HashSet<Long> uniqueLongSet = new HashSet<>();
             for (Long l : longs) {
-                uniq.add(l);
+                uniqueLongSet.add(l);
             }
-            for (Long l : uniq) {
+            for (Long l : uniqueLongSet) {
                 out.collect(l);
             }
         }
@@ -432,11 +432,11 @@ public class PartitionITCase extends MultipleProgramsTestBase {
 
         @Override
         public void mapPartition(Iterable<POJO> records, Collector<Long> out) throws Exception {
-            HashSet<Long> uniq = new HashSet<>();
+            HashSet<Long> uniqueLongSet = new HashSet<>();
             for (POJO t : records) {
-                uniq.add(t.nestedPojo.longNumber);
+                uniqueLongSet.add(t.nestedPojo.longNumber);
             }
-            for (Long l : uniq) {
+            for (Long l : uniqueLongSet) {
                 out.collect(l);
             }
         }
@@ -557,7 +557,7 @@ public class PartitionITCase extends MultipleProgramsTestBase {
                 if (previousMax.f0.equals(tuple2.f0.f0)) {
                     // check that ordering on the second key is correct
                     assertEquals(
-                            "Ordering on the second field should be continous.",
+                            "Ordering on the second field should be continuous.",
                             previousMax.f1 - 1,
                             tuple2.f0.f1.longValue());
                 }
@@ -619,7 +619,7 @@ public class PartitionITCase extends MultipleProgramsTestBase {
                         tuple2Comparator.compare(previousMax, tuple2.f0) < 0);
                 if (previousMax.f0.equals(tuple2.f0.f0)) {
                     assertEquals(
-                            "Ordering on the second field should be continous.",
+                            "Ordering on the second field should be continuous.",
                             previousMax.f1 + 1,
                             tuple2.f0.f1.longValue());
                 }
@@ -683,7 +683,7 @@ public class PartitionITCase extends MultipleProgramsTestBase {
                         previousMax.compareTo(element.f0) < 0);
                 if (previousMax.first.equals(element.f0.first)) {
                     assertEquals(
-                            "Ordering on the second field should be continous.",
+                            "Ordering on the second field should be continuous.",
                             previousMax.second - 1,
                             element.f0.second.longValue());
                 }

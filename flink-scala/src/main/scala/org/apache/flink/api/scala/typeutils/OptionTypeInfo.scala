@@ -48,10 +48,10 @@ class OptionTypeInfo[A, T <: Option[A]](private val elemTypeInfo: TypeInformatio
   @PublicEvolving
   override def createComparator(ascending: Boolean, executionConfig: ExecutionConfig) = {
     if (isKeyType) {
-      val elemCompartor = elemTypeInfo
+      val elemComparator = elemTypeInfo
         .asInstanceOf[AtomicType[A]]
         .createComparator(ascending, executionConfig)
-      new OptionTypeComparator[A](ascending, elemCompartor).asInstanceOf[TypeComparator[T]]
+      new OptionTypeComparator[A](ascending, elemComparator).asInstanceOf[TypeComparator[T]]
     } else {
       throw new UnsupportedOperationException("Element type that doesn't support ")
     }

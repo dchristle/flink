@@ -580,14 +580,14 @@ public class PendingCheckpointTest {
 
     private PendingCheckpoint createPendingCheckpointWithAcknowledgedCoordinators(
             ByteStreamStateHandle... handles) throws IOException {
-        final OperatorInfo[] coords = new OperatorInfo[handles.length];
+        final OperatorInfo[] coordinators = new OperatorInfo[handles.length];
         for (int i = 0; i < handles.length; i++) {
-            coords[i] = new TestingOperatorInfo();
+            coordinators[i] = new TestingOperatorInfo();
         }
 
-        final PendingCheckpoint checkpoint = createPendingCheckpointWithCoordinators(coords);
+        final PendingCheckpoint checkpoint = createPendingCheckpointWithCoordinators(coordinators);
         for (int i = 0; i < handles.length; i++) {
-            checkpoint.acknowledgeCoordinatorState(coords[i], handles[i]);
+            checkpoint.acknowledgeCoordinatorState(coordinators[i], handles[i]);
         }
 
         return checkpoint;

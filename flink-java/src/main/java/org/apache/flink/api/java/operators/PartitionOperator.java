@@ -155,7 +155,7 @@ public class PartitionOperator<T> extends SingleInputOperator<T, T, PartitionOpe
      * PartitionMethod#RANGE}.
      *
      * @param orders array of orders for each specified partition key
-     * @return The partitioneOperator with properly set orders for given keys
+     * @return The PartitionOperator with properly set orders for given keys
      */
     @PublicEvolving
     public PartitionOperator<T> withOrders(Order... orders) {

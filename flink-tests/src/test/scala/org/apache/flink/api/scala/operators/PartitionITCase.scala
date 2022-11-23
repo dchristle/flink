@@ -342,12 +342,12 @@ class PartitionITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(
     val env = ExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(3)
     val ds = CollectionDataSets.getDuplicatePojoDataSet(env)
-    val uniqLongs = ds
+    val uniqueLongs = ds
       .partitionByHash("nestedPojo.longNumber")
       .setParallelism(4)
       .mapPartition(_.map(_.nestedPojo.longNumber).toSet)
 
-    uniqLongs.writeAsText(resultPath, WriteMode.OVERWRITE)
+    uniqueLongs.writeAsText(resultPath, WriteMode.OVERWRITE)
     env.execute()
     expected = "10000\n" + "20000\n" + "30000\n"
   }
@@ -357,12 +357,12 @@ class PartitionITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(
     val env = ExecutionEnvironment.getExecutionEnvironment
     env.setParallelism(3)
     val ds = CollectionDataSets.getDuplicatePojoDataSet(env)
-    val uniqLongs = ds
+    val uniqueLongs = ds
       .partitionByRange("nestedPojo.longNumber")
       .setParallelism(4)
       .mapPartition(_.map(_.nestedPojo.longNumber).toSet)
 
-    uniqLongs.writeAsText(resultPath, WriteMode.OVERWRITE)
+    uniqueLongs.writeAsText(resultPath, WriteMode.OVERWRITE)
     env.execute()
     expected = "10000\n" + "20000\n" + "30000\n"
   }

@@ -101,7 +101,7 @@ public class BoundedBlockingSubpartitionTest extends SubpartitionTestBase {
         final ResultSubpartition partition = createSubpartition();
 
         try {
-            partition.createReadView(new NoOpBufferAvailablityListener());
+            partition.createReadView(new NoOpBufferAvailabilityListener());
             fail("expected exception");
         } catch (IllegalStateException ignored) {
         }
@@ -118,7 +118,7 @@ public class BoundedBlockingSubpartitionTest extends SubpartitionTestBase {
                         (BoundedBlockingSubpartition) createSubpartition(),
                         data,
                         10,
-                        new NoOpBufferAvailablityListener());
+                        new NoOpBufferAvailabilityListener());
 
         bbspr.releaseAllResources();
 
@@ -141,7 +141,7 @@ public class BoundedBlockingSubpartitionTest extends SubpartitionTestBase {
         try {
             try {
                 subpartition.add(consumer);
-                subpartition.createReadView(new NoOpBufferAvailablityListener());
+                subpartition.createReadView(new NoOpBufferAvailabilityListener());
                 fail("should fail with an exception");
             } catch (Exception ignored) {
                 // expected

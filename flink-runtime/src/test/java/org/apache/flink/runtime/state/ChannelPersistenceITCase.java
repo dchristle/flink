@@ -33,7 +33,7 @@ import org.apache.flink.runtime.io.network.buffer.FreeingBufferRecycler;
 import org.apache.flink.runtime.io.network.buffer.NetworkBuffer;
 import org.apache.flink.runtime.io.network.buffer.NetworkBufferPool;
 import org.apache.flink.runtime.io.network.partition.BufferWritingResultPartition;
-import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailablityListener;
+import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailabilityListener;
 import org.apache.flink.runtime.io.network.partition.ResultPartition;
 import org.apache.flink.runtime.io.network.partition.ResultPartitionBuilder;
 import org.apache.flink.runtime.io.network.partition.ResultPartitionType;
@@ -123,14 +123,14 @@ public class ChannelPersistenceITCase {
                             subpartitions);
             reader.readOutputData(new BufferWritingResultPartition[] {resultPartition}, false);
             ResultSubpartitionView view =
-                    resultPartition.createSubpartitionView(0, new NoOpBufferAvailablityListener());
+                    resultPartition.createSubpartitionView(0, new NoOpBufferAvailabilityListener());
             assertArrayEquals(
                     resultSubpartitionInfoData,
                     collectBytes(
                             () -> Optional.ofNullable(view.getNextBuffer()),
                             BufferAndBacklog::buffer));
             ResultSubpartitionView futureView =
-                    resultPartition.createSubpartitionView(1, new NoOpBufferAvailablityListener());
+                    resultPartition.createSubpartitionView(1, new NoOpBufferAvailabilityListener());
             assertArrayEquals(
                     resultSubpartitionInfoFutureData,
                     collectBytes(
@@ -151,7 +151,7 @@ public class ChannelPersistenceITCase {
                     .readOutputData(new BufferWritingResultPartition[] {resultPartition}, true);
             resultPartition.emitRecord(ByteBuffer.wrap(dataAfterRecovery), 0);
             ResultSubpartitionView view =
-                    resultPartition.createSubpartitionView(0, new NoOpBufferAvailablityListener());
+                    resultPartition.createSubpartitionView(0, new NoOpBufferAvailabilityListener());
             if (type != ResultPartitionType.PIPELINED_APPROXIMATE) {
                 assertEquals(RECOVERY_COMPLETION, view.getNextBuffer().buffer().getDataType());
                 assertNull(view.getNextBuffer());

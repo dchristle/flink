@@ -114,7 +114,7 @@ public enum PartitionTestUtils {
         assertThatThrownBy(
                         () ->
                                 partitionManager.createSubpartitionView(
-                                        partitionId, 0, new NoOpBufferAvailablityListener()))
+                                        partitionId, 0, new NoOpBufferAvailabilityListener()))
                 .as("Should throw a PartitionNotFoundException.")
                 .isInstanceOf(PartitionNotFoundException.class)
                 .satisfies(

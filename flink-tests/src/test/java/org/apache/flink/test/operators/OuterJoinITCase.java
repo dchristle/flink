@@ -273,7 +273,7 @@ public class OuterJoinITCase extends MultipleProgramsTestBase {
         DataSet<CustomType> ds1 = CollectionDataSets.getSmallCustomTypeDataSet(env);
         DataSet<Tuple3<Integer, Long, String>> ds2 = CollectionDataSets.getSmall3TupleDataSet(env);
         DataSet<Tuple2<String, String>> joinDs =
-                ds1.fullOuterJoin(ds2).where(new KeySelector1()).equalTo(0).with(new CustT3Join());
+                ds1.fullOuterJoin(ds2).where(new KeySelector1()).equalTo(0).with(new CustomT3Join());
 
         List<Tuple2<String, String>> result = joinDs.collect();
 
@@ -301,7 +301,7 @@ public class OuterJoinITCase extends MultipleProgramsTestBase {
         DataSet<Tuple3<Integer, Long, String>> ds1 = CollectionDataSets.getSmall3TupleDataSet(env);
         DataSet<CustomType> ds2 = CollectionDataSets.getSmallCustomTypeDataSet(env);
         DataSet<Tuple2<String, String>> joinDs =
-                ds1.fullOuterJoin(ds2).where(1).equalTo(new KeySelector2()).with(new T3CustJoin());
+                ds1.fullOuterJoin(ds2).where(1).equalTo(new KeySelector2()).with(new T3CustomJoin());
 
         List<Tuple2<String, String>> result = joinDs.collect();
 
@@ -776,7 +776,7 @@ public class OuterJoinITCase extends MultipleProgramsTestBase {
         }
     }
 
-    private static class T3CustJoin
+    private static class T3CustomJoin
             implements JoinFunction<
                     Tuple3<Integer, Long, String>, CustomType, Tuple2<String, String>> {
 
@@ -788,7 +788,7 @@ public class OuterJoinITCase extends MultipleProgramsTestBase {
         }
     }
 
-    private static class CustT3Join
+    private static class CustomT3Join
             implements JoinFunction<
                     CustomType, Tuple3<Integer, Long, String>, Tuple2<String, String>> {
 

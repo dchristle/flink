@@ -103,7 +103,7 @@ public abstract class SubpartitionTestBase extends TestLogger {
         partition.finish();
 
         final ResultSubpartitionView reader =
-                partition.createReadView(new NoOpBufferAvailablityListener());
+                partition.createReadView(new NoOpBufferAvailabilityListener());
 
         assertFalse(partition.isReleased());
         assertFalse(reader.isReleased());
@@ -134,7 +134,7 @@ public abstract class SubpartitionTestBase extends TestLogger {
         partition.finish();
 
         final ResultSubpartitionView reader =
-                partition.createReadView(new NoOpBufferAvailablityListener());
+                partition.createReadView(new NoOpBufferAvailabilityListener());
         reader.releaseAllResources();
 
         // the reader must not throw an exception

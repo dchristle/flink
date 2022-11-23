@@ -21,7 +21,7 @@ package org.apache.flink.runtime.dispatcher;
 import org.apache.flink.api.common.JobID;
 import org.apache.flink.runtime.jobmanager.JobGraphStore;
 
-/** No operation {@link JobGraphStore.JobGraphListener} implemetation for testing purposes. */
+/** No operation {@link JobGraphStore.JobGraphListener} implementation for testing purposes. */
 public enum NoOpJobGraphListener implements JobGraphStore.JobGraphListener {
     INSTANCE;
 

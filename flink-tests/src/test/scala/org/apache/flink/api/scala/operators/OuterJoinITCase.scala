@@ -167,7 +167,7 @@ class OuterJoinITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(
     val env: ExecutionEnvironment = ExecutionEnvironment.getExecutionEnvironment
     val ds1 = CollectionDataSets.getSmallCustomTypeDataSet(env)
     val ds2 = CollectionDataSets.getSmall3TupleDataSet(env)
-    val joinDs = ds1.fullOuterJoin(ds2).where(t => t.myInt).equalTo(0).apply(CustT3Join)
+    val joinDs = ds1.fullOuterJoin(ds2).where(t => t.myInt).equalTo(0).apply(CustomT3Join)
     writeAsCsv(joinDs.map(mapToString))
     env.execute()
     expected = "Hi,Hi\n" + "Hello,Hello\n" + "Hello world,Hello\n" + "null,Hello world\n"
@@ -179,7 +179,7 @@ class OuterJoinITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(
     val env: ExecutionEnvironment = ExecutionEnvironment.getExecutionEnvironment
     val ds1 = CollectionDataSets.getSmall3TupleDataSet(env)
     val ds2 = CollectionDataSets.getSmallCustomTypeDataSet(env)
-    val joinDs = ds1.fullOuterJoin(ds2).where(1).equalTo(t => t.myLong).apply(T3CustJoin)
+    val joinDs = ds1.fullOuterJoin(ds2).where(1).equalTo(t => t.myLong).apply(T3CustomJoin)
     writeAsCsv(joinDs.map(mapToString))
     env.execute()
     expected = "null,Hi\n" + "Hi,Hello\n" + "Hello,Hello world\n" + "Hello world,Hello world\n"
@@ -208,14 +208,14 @@ class OuterJoinITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(
       }
   }
 
-  def CustT3Join: (CustomType, (Int, Long, String)) => (String, String) = {
+  def CustomT3Join: (CustomType, (Int, Long, String)) => (String, String) = {
     (first, second) =>
       {
         (if (first == null) null else first.myString, if (second == null) null else second._3)
       }
   }
 
-  def T3CustJoin: ((Int, Long, String), CustomType) => (String, String) = {
+  def T3CustomJoin: ((Int, Long, String), CustomType) => (String, String) = {
     (first, second) =>
       {
         (if (first == null) null else first._3, if (second == null) null else second.myString)

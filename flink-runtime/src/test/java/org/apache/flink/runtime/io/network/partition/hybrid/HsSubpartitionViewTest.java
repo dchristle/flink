@@ -24,7 +24,7 @@ import org.apache.flink.runtime.io.network.buffer.Buffer.DataType;
 import org.apache.flink.runtime.io.network.buffer.BufferPool;
 import org.apache.flink.runtime.io.network.buffer.NetworkBufferPool;
 import org.apache.flink.runtime.io.network.partition.BufferAvailabilityListener;
-import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailablityListener;
+import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailabilityListener;
 import org.apache.flink.runtime.io.network.partition.ResultSubpartition.BufferAndBacklog;
 import org.apache.flink.runtime.io.network.partition.ResultSubpartitionView.AvailabilityWithBacklog;
 
@@ -420,7 +420,7 @@ class HsSubpartitionViewTest {
     }
 
     private static HsSubpartitionConsumer createSubpartitionView() {
-        return new HsSubpartitionConsumer(new NoOpBufferAvailablityListener());
+        return new HsSubpartitionConsumer(new NoOpBufferAvailabilityListener());
     }
 
     private static HsSubpartitionConsumer createSubpartitionView(

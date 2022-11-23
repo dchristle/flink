@@ -654,9 +654,9 @@ public class OperatorCoordinatorHolderTest extends TestLogger {
             subtaskGateways[1].sendEvent(new TestOperatorEvent(num++));
             subtaskGateways[2].sendEvent(new TestOperatorEvent(num++));
 
-            final CompletableFuture<byte[]> chkpnt = this.checkpoint;
-            if (chkpnt != null) {
-                chkpnt.complete(intToBytes(num));
+            final CompletableFuture<byte[]> checkpoint = this.checkpoint;
+            if (checkpoint != null) {
+                checkpoint.complete(intToBytes(num));
                 checkpointCompleted.trigger();
                 this.checkpoint = null;
             }

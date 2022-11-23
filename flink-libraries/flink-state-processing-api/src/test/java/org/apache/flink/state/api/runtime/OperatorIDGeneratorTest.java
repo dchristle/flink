@@ -31,7 +31,7 @@ import org.junit.Test;
 import java.util.stream.StreamSupport;
 
 /**
- * Test that {@code OperatorIDGenerator} creates ids from uids exactly the same as the job graph
+ * Test that {@code OperatorIDGenerator} creates ids from UIDs exactly the same as the job graph
  * generator.
  */
 public class OperatorIDGeneratorTest {

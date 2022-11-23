@@ -349,7 +349,7 @@ public class NotifyCheckpointAbortedITCase extends TestLogger {
     }
 
     /**
-     * The operator statebackend to create {@link DeclineSinkFailingSnapshotStrategy} at {@link
+     * The operator state backend to create {@link DeclineSinkFailingSnapshotStrategy} at {@link
      * DeclineSink}.
      */
     private static class DeclineSinkFailingOperatorStateBackend

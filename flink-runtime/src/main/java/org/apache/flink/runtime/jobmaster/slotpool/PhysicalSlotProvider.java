@@ -29,7 +29,7 @@ public interface PhysicalSlotProvider {
      * Submit a request to allocate a physical slot.
      *
      * <p>The physical slot can be either allocated from the slots, which are already available for
-     * the job, or a new one can be requeted from the resource manager.
+     * the job, or a new one can be requested from the resource manager.
      *
      * @param physicalSlotRequest slot requirements
      * @return a future of the allocated slot

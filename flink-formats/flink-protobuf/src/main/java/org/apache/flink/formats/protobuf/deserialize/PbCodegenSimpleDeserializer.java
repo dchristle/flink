@@ -74,7 +74,7 @@ public class PbCodegenSimpleDeserializer implements PbCodegenDeserializer {
                     appender.appendLine(resultVar + " = " + pbObjectCode + ".getNumber()");
                 } else {
                     throw new PbCodegenException(
-                            "Illegal type for protobuf enum, only char/vachar/int/bigint is supported");
+                            "Illegal type for protobuf enum, only char/varchar/int/bigint is supported");
                 }
                 break;
             default:

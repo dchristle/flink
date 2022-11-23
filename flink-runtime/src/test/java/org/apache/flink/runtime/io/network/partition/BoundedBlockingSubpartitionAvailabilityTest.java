@@ -106,7 +106,7 @@ public class BoundedBlockingSubpartitionAvailabilityTest {
         // setup
         final ResultSubpartition subpartition = createPartitionWithData(100_000);
         final ResultSubpartitionView reader =
-                subpartition.createReadView(new NoOpBufferAvailablityListener());
+                subpartition.createReadView(new NoOpBufferAvailabilityListener());
 
         // test
         drainAllData(reader);

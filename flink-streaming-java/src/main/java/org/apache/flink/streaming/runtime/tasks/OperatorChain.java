@@ -477,7 +477,7 @@ public abstract class OperatorChain<OUT, OP extends StreamOperator<OUT>>
         return isClosed;
     }
 
-    /** Wrapper class to access the chained sources and their's outputs. */
+    /** Wrapper class to access the chained sources and their outputs. */
     public static class ChainedSource {
         private final WatermarkGaugeExposingOutput<StreamRecord<?>> chainedSourceOutput;
         private final StreamTaskSourceInput<?> sourceTaskInput;

@@ -26,7 +26,7 @@ import org.apache.flink.runtime.io.network.NettyShuffleEnvironmentBuilder;
 import org.apache.flink.runtime.io.network.NetworkSequenceViewReader;
 import org.apache.flink.runtime.io.network.buffer.Buffer;
 import org.apache.flink.runtime.io.network.partition.BufferAvailabilityListener;
-import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailablityListener;
+import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailabilityListener;
 import org.apache.flink.runtime.io.network.partition.NoOpResultSubpartitionView;
 import org.apache.flink.runtime.io.network.partition.PipelinedSubpartition;
 import org.apache.flink.runtime.io.network.partition.PipelinedSubpartitionTest;
@@ -373,7 +373,7 @@ public class PartitionRequestQueueTest {
         subpartition.add(createEventBufferConsumer(4096, dataType1));
         subpartition.add(createEventBufferConsumer(4096, dataType2));
 
-        BufferAvailabilityListener bufferAvailabilityListener = new NoOpBufferAvailablityListener();
+        BufferAvailabilityListener bufferAvailabilityListener = new NoOpBufferAvailabilityListener();
         PipelinedSubpartitionView view = subpartition.createReadView(bufferAvailabilityListener);
         ResultPartitionProvider partitionProvider =
                 (partitionId, index, availabilityListener) -> view;
@@ -412,7 +412,7 @@ public class PartitionRequestQueueTest {
         subpartition.add(createEventBufferConsumer(4096, Buffer.DataType.DATA_BUFFER));
 
         PipelinedSubpartitionView view =
-                subpartition.createReadView(new NoOpBufferAvailablityListener());
+                subpartition.createReadView(new NoOpBufferAvailabilityListener());
         ResultPartitionProvider partitionProvider =
                 (partitionId, index, availabilityListener) -> view;
 
@@ -492,7 +492,7 @@ public class PartitionRequestQueueTest {
         // given: Result partition and the reader for subpartition 0.
         ResultPartition parent = createResultPartition();
 
-        BufferAvailabilityListener bufferAvailabilityListener = new NoOpBufferAvailablityListener();
+        BufferAvailabilityListener bufferAvailabilityListener = new NoOpBufferAvailabilityListener();
         ResultSubpartitionView view = parent.createSubpartitionView(0, bufferAvailabilityListener);
         ResultPartitionProvider partitionProvider =
                 (partitionId, index, availabilityListener) -> view;

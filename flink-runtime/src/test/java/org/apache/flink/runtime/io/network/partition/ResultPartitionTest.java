@@ -371,7 +371,7 @@ class ResultPartitionTest {
 
         resultPartition.emitRecord(ByteBuffer.allocate(bufferSize), 0);
         ResultSubpartitionView readView =
-                resultPartition.createSubpartitionView(0, new NoOpBufferAvailablityListener());
+                resultPartition.createSubpartitionView(0, new NoOpBufferAvailabilityListener());
         Buffer buffer = readView.getNextBuffer().buffer();
         assertThat(buffer).isNotNull();
 
@@ -433,7 +433,7 @@ class ResultPartitionTest {
         record.rewind();
 
         ResultSubpartitionView readView1 =
-                partition.createSubpartitionView(0, new NoOpBufferAvailablityListener());
+                partition.createSubpartitionView(0, new NoOpBufferAvailabilityListener());
         for (int i = 0; i < 4; ++i) {
             assertThat(readView1.getNextBuffer().buffer().getNioBufferReadable()).isEqualTo(record);
         }
@@ -441,7 +441,7 @@ class ResultPartitionTest {
         assertThat(readView1.getNextBuffer()).isNull();
 
         ResultSubpartitionView readView2 =
-                partition.createSubpartitionView(1, new NoOpBufferAvailablityListener());
+                partition.createSubpartitionView(1, new NoOpBufferAvailabilityListener());
         for (int i = 0; i < 2; ++i) {
             assertThat(readView2.getNextBuffer().buffer().getNioBufferReadable()).isEqualTo(record);
         }

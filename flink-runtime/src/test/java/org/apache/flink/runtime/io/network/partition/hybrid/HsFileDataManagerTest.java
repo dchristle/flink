@@ -25,7 +25,7 @@ import org.apache.flink.runtime.io.disk.BatchShuffleReadBufferPool;
 import org.apache.flink.runtime.io.network.buffer.Buffer;
 import org.apache.flink.runtime.io.network.buffer.BufferRecycler;
 import org.apache.flink.runtime.io.network.partition.BufferReaderWriterUtil;
-import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailablityListener;
+import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailabilityListener;
 import org.apache.flink.runtime.io.network.partition.ResultSubpartition;
 import org.apache.flink.util.TestLoggerExtension;
 import org.apache.flink.util.function.BiConsumerWithException;
@@ -355,7 +355,7 @@ class HsFileDataManagerTest {
         CompletableFuture<Void> consumerStart = new CompletableFuture<>();
         CompletableFuture<Void> readerFail = new CompletableFuture<>();
         HsSubpartitionConsumer subpartitionView =
-                new HsSubpartitionConsumer(new NoOpBufferAvailablityListener());
+                new HsSubpartitionConsumer(new NoOpBufferAvailabilityListener());
 
         HsSubpartitionFileReaderImpl subpartitionFileReader =
                 new HsSubpartitionFileReaderImpl(

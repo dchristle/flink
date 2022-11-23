@@ -34,7 +34,7 @@ import org.apache.flink.runtime.io.network.buffer.BufferPool;
 import org.apache.flink.runtime.io.network.buffer.NetworkBuffer;
 import org.apache.flink.runtime.io.network.buffer.NetworkBufferPool;
 import org.apache.flink.runtime.io.network.partition.BufferAvailabilityListener;
-import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailablityListener;
+import org.apache.flink.runtime.io.network.partition.NoOpBufferAvailabilityListener;
 import org.apache.flink.runtime.io.network.partition.PartitionNotFoundException;
 import org.apache.flink.runtime.io.network.partition.ResultPartitionID;
 import org.apache.flink.runtime.io.network.partition.ResultPartitionManager;
@@ -386,7 +386,7 @@ class HsResultPartitionTest {
         assertThatThrownBy(
                         () ->
                                 resultPartition.createSubpartitionView(
-                                        0, new NoOpBufferAvailablityListener()))
+                                        0, new NoOpBufferAvailabilityListener()))
                 .isInstanceOf(IllegalStateException.class);
     }
 
@@ -399,7 +399,7 @@ class HsResultPartitionTest {
         assertThatThrownBy(
                         () ->
                                 resultPartition.createSubpartitionView(
-                                        0, new NoOpBufferAvailablityListener()))
+                                        0, new NoOpBufferAvailabilityListener()))
                 .isInstanceOf(PartitionNotFoundException.class);
     }
 
@@ -458,11 +458,11 @@ class HsResultPartitionTest {
                                 .setSpillingStrategyType(
                                         HybridShuffleConfiguration.SpillingStrategyType.SELECTIVE)
                                 .build())) {
-            partition.createSubpartitionView(0, new NoOpBufferAvailablityListener());
+            partition.createSubpartitionView(0, new NoOpBufferAvailabilityListener());
             assertThatThrownBy(
                             () ->
                                     partition.createSubpartitionView(
-                                            0, new NoOpBufferAvailablityListener()))
+                                            0, new NoOpBufferAvailabilityListener()))
                     .isInstanceOf(IllegalStateException.class)
                     .hasMessageContaining("Multiple consumer is not allowed");
         }
@@ -481,12 +481,12 @@ class HsResultPartitionTest {
                                 .setSpillingStrategyType(
                                         HybridShuffleConfiguration.SpillingStrategyType.FULL)
                                 .build())) {
-            partition.createSubpartitionView(0, new NoOpBufferAvailablityListener());
+            partition.createSubpartitionView(0, new NoOpBufferAvailabilityListener());
             assertThatNoException()
                     .isThrownBy(
                             () ->
                                     partition.createSubpartitionView(
-                                            0, new NoOpBufferAvailablityListener()));
+                                            0, new NoOpBufferAvailabilityListener()));
         }
     }
 

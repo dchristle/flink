@@ -114,12 +114,12 @@ public class PassThroughPythonAggregateFunctionRunner extends BeamTablePythonFun
                     bais.setBuffer(data, 0, data.length);
                     if (isBatchOverWindow) {
                         int windowSize = windowBoundarySerializer.deserialize(baisWrapper);
-                        List<Integer> lowerBoundarys = new ArrayList<>();
+                        List<Integer> lowerBoundaries = new ArrayList<>();
                         for (int i = 0; i < windowSize; i++) {
                             int windowLength = windowBoundarySerializer.deserialize(baisWrapper);
                             for (int j = 0; j < windowLength; j++) {
                                 if (j % 2 == 0) {
-                                    lowerBoundarys.add(
+                                    lowerBoundaries.add(
                                             windowBoundarySerializer.deserialize(baisWrapper));
                                 } else {
                                     windowBoundarySerializer.deserialize(baisWrapper);
@@ -127,7 +127,7 @@ public class PassThroughPythonAggregateFunctionRunner extends BeamTablePythonFun
                             }
                         }
                         arrowSerializer.load();
-                        for (Integer lowerBoundary : lowerBoundarys) {
+                        for (Integer lowerBoundary : lowerBoundaries) {
                             RowData firstData = arrowSerializer.read(lowerBoundary);
                             arrowSerializer.write(firstData);
                         }
