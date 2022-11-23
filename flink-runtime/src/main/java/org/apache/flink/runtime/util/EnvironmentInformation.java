@@ -258,25 +258,25 @@ public class EnvironmentInformation {
     }
 
     /**
-     * Gets an estimate of the size of the free heap memory.
+     * Gets an estimate of the size of the free heap memory immediately after triggering a run of
+     * the garbage collector.
      *
-     * <p>NOTE: This method is heavy-weight. It triggers a garbage collection to reduce
-     * fragmentation and get a better estimate at the size of free memory. It is typically more
-     * accurate than the plain version {@link #getSizeOfFreeHeapMemory()}.
+     * <p>NOTE: This method is heavyweight. It triggers a garbage collection to remove unreachable
+     * objects and reduce fragmentation before querying the JVM's measure of free memory. This
+     * improves the accuracy of the estimate versus the plain version
+     * {@link #getSizeOfFreeHeapMemory()}.
      *
      * @return An estimate of the size of the free heap memory, in bytes.
      */
-    public static long getSizeOfFreeHeapMemoryWithDefrag() {
-        // trigger a garbage collection, to reduce fragmentation
+    public static long getSizeOfFreeHeapMemoryAfterGarbageCollection() {
         System.gc();
-
         return getSizeOfFreeHeapMemory();
     }
 
     /**
      * Gets an estimate of the size of the free heap memory. The estimate may vary, depending on the
      * current level of memory fragmentation and the number of dead objects. For a better (but more
-     * heavy-weight) estimate, use {@link #getSizeOfFreeHeapMemoryWithDefrag()}.
+     * heavyweight) estimate, use {@link #getSizeOfFreeHeapMemoryAfterGarbageCollection()}.
      *
      * @return An estimate of the size of the free heap memory, in bytes.
      */

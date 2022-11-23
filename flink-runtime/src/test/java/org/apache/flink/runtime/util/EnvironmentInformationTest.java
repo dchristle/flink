@@ -34,7 +34,7 @@ public class EnvironmentInformationTest extends TestLogger {
     public void testJavaMemory() {
         try {
             long fullHeap = EnvironmentInformation.getMaxJvmHeapMemory();
-            long freeWithGC = EnvironmentInformation.getSizeOfFreeHeapMemoryWithDefrag();
+            long freeWithGC = EnvironmentInformation.getSizeOfFreeHeapMemoryAfterGarbageCollection();
 
             assertTrue(fullHeap > 0);
             assertTrue(freeWithGC >= 0);
