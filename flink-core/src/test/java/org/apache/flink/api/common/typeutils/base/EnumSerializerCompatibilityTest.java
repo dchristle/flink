@@ -48,7 +48,7 @@ public class EnumSerializerCompatibilityTest extends TestLogger {
 
     /** Check that identical enums don't require migration */
     @Test
-    public void checkIndenticalEnums() throws Exception {
+    public void checkIdenticalEnums() throws Exception {
         Assert.assertTrue(checkCompatibility(ENUM_A, ENUM_A).isCompatibleAsIs());
     }
 

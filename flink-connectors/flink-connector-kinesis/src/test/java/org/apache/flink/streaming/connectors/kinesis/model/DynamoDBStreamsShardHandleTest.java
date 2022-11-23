@@ -19,7 +19,7 @@ package org.apache.flink.streaming.connectors.kinesis.model;
 
 import org.junit.Test;
 
-import static org.apache.flink.streaming.connectors.kinesis.model.DynamoDBStreamsShardHandle.SHARDID_PREFIX;
+import static org.apache.flink.streaming.connectors.kinesis.model.DynamoDBStreamsShardHandle.SHARD_ID_PREFIX;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -84,11 +84,11 @@ public class DynamoDBStreamsShardHandleTest {
             String nowStr = String.valueOf(System.currentTimeMillis());
             if (nowStr.length() < shardIdDigitLen) {
                 shardIds[i] =
-                        SHARDID_PREFIX
+                        SHARD_ID_PREFIX
                                 + zeros.substring(0, shardIdDigitLen - nowStr.length())
                                 + nowStr;
             } else {
-                shardIds[i] = SHARDID_PREFIX + nowStr.substring(0, shardIdDigitLen);
+                shardIds[i] = SHARD_ID_PREFIX + nowStr.substring(0, shardIdDigitLen);
             }
             try {
                 Thread.sleep(100);

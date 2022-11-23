@@ -30,7 +30,7 @@ import java.util.stream.Stream;
 
 /**
  * End-to-end test program for verifying that files are distributed via BlobServer and later
- * accessible through DistribitutedCache. We verify that via uploading file and later on accessing
+ * accessible through DistributedCache. We verify that via uploading file and later on accessing
  * it in map function. To be sure we read version read from cache, we delete the initial file.
  */
 public class DistributedCacheViaBlobTestProgram {

@@ -50,7 +50,7 @@ public class EnumerateNestedFilesTest {
     }
 
     @After
-    public void setdown() throws Exception {
+    public void teardown() throws Exception {
         if (this.format != null) {
             this.format.close();
         }
@@ -160,19 +160,19 @@ public class EnumerateNestedFilesTest {
         }
     }
 
-    /** Tests if the recursion is invoked correctly in nested directories. */
+    /** Tests if the recursion is invoked correctly in double-nested directories. */
     @Test
-    public void testOnlyLevel2NestedDirectories() {
+    public void testDoubleNestedDirectories() {
         try {
             String rootDir = TestFileUtils.randomFileName();
             String nestedDir = TestFileUtils.randomFileName();
-            String firstNestedNestedDir = TestFileUtils.randomFileName();
-            String secondNestedNestedDir = TestFileUtils.randomFileName();
+            String firstDoubleNestedDir = TestFileUtils.randomFileName();
+            String secondDoubleNestedDir = TestFileUtils.randomFileName();
 
             File testDir = tempFolder.newFolder(rootDir);
             tempFolder.newFolder(rootDir, nestedDir);
-            File nestedNestedDir1 = tempFolder.newFolder(rootDir, nestedDir, firstNestedNestedDir);
-            File nestedNestedDir2 = tempFolder.newFolder(rootDir, nestedDir, secondNestedNestedDir);
+            File nestedNestedDir1 = tempFolder.newFolder(rootDir, nestedDir, firstDoubleNestedDir);
+            File nestedNestedDir2 = tempFolder.newFolder(rootDir, nestedDir, secondDoubleNestedDir);
 
             // create files in second level
             TestFileUtils.createTempFileInDirectory(nestedNestedDir1.getAbsolutePath(), "paella");

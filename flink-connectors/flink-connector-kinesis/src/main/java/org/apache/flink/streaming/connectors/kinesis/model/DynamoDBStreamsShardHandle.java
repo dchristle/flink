@@ -21,8 +21,8 @@ import com.amazonaws.services.kinesis.model.Shard;
 
 /** DynamoDB streams shard handle format and utilities. */
 public class DynamoDBStreamsShardHandle extends StreamShardHandle {
-    public static final String SHARDID_PREFIX = "shardId-";
-    public static final int SHARDID_PREFIX_LEN = SHARDID_PREFIX.length();
+    public static final String SHARD_ID_PREFIX = "shardId-";
+    public static final int SHARD_ID_PREFIX_LEN = SHARD_ID_PREFIX.length();
 
     public DynamoDBStreamsShardHandle(String streamName, Shard shard) {
         super(streamName, shard);
@@ -38,8 +38,8 @@ public class DynamoDBStreamsShardHandle extends StreamShardHandle {
         }
 
         return firstShardId
-                .substring(SHARDID_PREFIX_LEN)
-                .compareTo(secondShardId.substring(SHARDID_PREFIX_LEN));
+                .substring(SHARD_ID_PREFIX_LEN)
+                .compareTo(secondShardId.substring(SHARD_ID_PREFIX_LEN));
     }
 
     /**
