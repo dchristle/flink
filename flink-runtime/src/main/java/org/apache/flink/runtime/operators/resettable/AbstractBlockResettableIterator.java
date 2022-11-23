@@ -44,8 +44,6 @@ abstract class AbstractBlockResettableIterator<T> implements MemoryBlockIterator
     protected static final Logger LOG =
             LoggerFactory.getLogger(AbstractBlockResettableIterator.class);
 
-    // ------------------------------------------------------------------------
-
     protected final RandomAccessInputView readView;
 
     protected final SimpleCollectingOutputView collectingView;
@@ -64,8 +62,6 @@ abstract class AbstractBlockResettableIterator<T> implements MemoryBlockIterator
 
     protected volatile boolean
             closed; // volatile since it may be asynchronously set to abort after current block
-
-    // ------------------------------------------------------------------------
 
     protected AbstractBlockResettableIterator(
             TypeSerializer<T> serializer,
@@ -96,8 +92,6 @@ abstract class AbstractBlockResettableIterator<T> implements MemoryBlockIterator
             LOG.debug("Iterator initialized using " + numPages + " memory buffers.");
         }
     }
-
-    // --------------------------------------------------------------------------------------------
 
     public void open() {
         if (LOG.isDebugEnabled()) {
@@ -158,8 +152,6 @@ abstract class AbstractBlockResettableIterator<T> implements MemoryBlockIterator
             LOG.debug("Block Resettable Iterator closed.");
         }
     }
-
-    // --------------------------------------------------------------------------------------------
 
     protected boolean writeNextRecord(T record) throws IOException {
         try {
