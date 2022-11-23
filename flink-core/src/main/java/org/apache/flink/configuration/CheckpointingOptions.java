@@ -182,7 +182,7 @@ public class CheckpointingOptions {
                                     .build());
 
     // ------------------------------------------------------------------------
-    //  Options specific to the file-system-based state backends
+    //  Options specific to the filesystem-based state backends
     // ------------------------------------------------------------------------
 
     /**

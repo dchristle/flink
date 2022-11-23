@@ -153,7 +153,7 @@ public abstract class AbstractQueryableStateTestBase extends TestLogger {
      * is in fixed in range 0...numKeys). The records are keyed and a reducing queryable state
      * instance is created, which sums up the records.
      *
-     * <p>After submitting the job in detached mode, the QueryableStateCLient is used to query the
+     * <p>After submitting the job in detached mode, the QueryableStateClient is used to query the
      * counts of each key in rounds until all keys have non-zero counts.
      */
     @Test

@@ -181,7 +181,7 @@ public abstract class AbstractStreamingJoinOperator extends AbstractStreamOperat
         }
     }
 
-    /** A lazy Iterable which transform {@code List<OuterReocord>} to {@code Iterable<RowData>}. */
+    /** A lazy Iterable which transform {@code List<OuterRecord>} to {@code Iterable<RowData>}. */
     private static final class RecordsIterable implements IterableIterator<RowData> {
         private final List<OuterRecord> records;
         private int index = 0;

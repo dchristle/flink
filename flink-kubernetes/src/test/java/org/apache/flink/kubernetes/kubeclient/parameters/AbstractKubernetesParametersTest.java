@@ -157,7 +157,7 @@ public class AbstractKubernetesParametersTest {
         CommonTestUtils.setEnv(map, false);
     }
 
-    /** KubernetesParameters for testing usecase. */
+    /** KubernetesParameters for testing use case. */
     public static class TestingKubernetesParameters extends AbstractKubernetesParameters {
 
         public TestingKubernetesParameters(Configuration flinkConfig) {

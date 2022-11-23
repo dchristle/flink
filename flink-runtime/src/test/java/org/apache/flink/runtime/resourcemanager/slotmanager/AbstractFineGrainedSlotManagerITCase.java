@@ -538,7 +538,7 @@ abstract class AbstractFineGrainedSlotManagerITCase extends FineGrainedSlotManag
                         });
                 runTest(
                         () -> {
-                            // the first requirements should be fulfillable with the pending task
+                            // the first requirements should be fulfilled with the pending task
                             // managers of the first allocation
                             runInMainThread(
                                     () ->
