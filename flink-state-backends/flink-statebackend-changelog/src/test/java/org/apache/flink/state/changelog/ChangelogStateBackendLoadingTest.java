@@ -167,13 +167,14 @@ public class ChangelogStateBackendLoadingTest {
                 appBackend, TernaryBoolean.UNDEFINED, config("rocksdb", true), cl, null);
     }
 
-    // ----------------------------------------------------------
-    // The following tests are testing different combinations of
-    // state backend and checkpointStorage after FLINK-19463
-    // disentangles Checkpointing from state backends.
-    // After "jobmanager" and "filesystem" state backends are removed,
-    // These tests can be simplified.
-    //
+    /**
+     * The following tests test different combinations of state backend and checkpointStorage after
+     * FLINK-19463 disentangles Checkpointing from state backends.
+     *
+     * Once "jobmanager" and "filesystem" state backends are removed, these tests can be simplified.
+     */
+
+
     @Test
     public void testLoadingMemoryStateBackendFromConfig() throws Exception {
         testLoadingStateBackend(
@@ -234,7 +235,7 @@ public class ChangelogStateBackendLoadingTest {
         assertStateBackendAndChangelogInEnvironmentAndStreamGraphAndJobGraph(
                 env, TernaryBoolean.UNDEFINED, null);
 
-        // set back and force
+        // Change backend setting back and forth: MemoryStateBackend, then ChangelogStateBackend.
         env.setStateBackend(new MemoryStateBackend());
         assertTrue(env.getStateBackend() instanceof MemoryStateBackend);
         assertStateBackendAndChangelogInEnvironmentAndStreamGraphAndJobGraph(
@@ -246,7 +247,7 @@ public class ChangelogStateBackendLoadingTest {
         assertStateBackendAndChangelogInEnvironmentAndStreamGraphAndJobGraph(
                 env, TernaryBoolean.FALSE, MemoryStateBackend.class);
 
-        // enable changelog before set statebackend
+        // ChangelogStateBackend, then MemoryStateBackend.
         env = getEnvironment();
         env.enableChangelogStateBackend(true);
         assertStateBackendAndChangelogInEnvironmentAndStreamGraphAndJobGraph(
