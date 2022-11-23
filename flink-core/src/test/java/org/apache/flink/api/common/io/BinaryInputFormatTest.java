@@ -92,7 +92,7 @@ public class BinaryInputFormatTest {
     }
 
     @Test
-    public void testCreateInputSplitsWithMulitpleFiles() throws IOException {
+    public void testCreateInputSplitsWithMultipleFiles() throws IOException {
         final int blockInfoSize = new BlockInfo().getInfoSize();
         final int blockSize = blockInfoSize + 8;
         final int numBlocks1 = 3;
