@@ -98,10 +98,10 @@ public class AsynchronousBufferFileWriterTest {
         } finally {
             if (!buffer.isRecycled()) {
                 buffer.recycleBuffer();
-                Assert.fail("buffer not recycled");
+                Assert.fail("Buffer not recycled.");
             }
             assertEquals(
-                    "Shouln't increment number of outstanding requests.",
+                    "Shouldn't increment number of outstanding requests.",
                     0,
                     writer.getNumberOfOutstandingRequests());
         }
@@ -190,7 +190,7 @@ public class AsynchronousBufferFileWriterTest {
                 };
 
         try {
-            // Repeat this to provoke races
+            // Repeat this to provoke races.
             for (int i = 0; i < 50000; i++) {
                 listener.reset();
 
