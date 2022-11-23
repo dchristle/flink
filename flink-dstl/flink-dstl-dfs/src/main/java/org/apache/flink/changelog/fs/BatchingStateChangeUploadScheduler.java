@@ -158,11 +158,11 @@ class BatchingStateChangeUploadScheduler implements StateChangeUploadScheduler {
     public void upload(UploadTask uploadTask) throws IOException {
         Throwable error = getErrorSafe();
         if (error != null) {
-            LOG.debug("don't persist {} changesets, already failed", uploadTask.changeSets.size());
+            LOG.debug("Don't persist {} changesets, as error is already thrown.", uploadTask.changeSets.size());
             uploadTask.fail(error);
             return;
         }
-        LOG.debug("persist {} changeSets", uploadTask.changeSets.size());
+        LOG.debug("Persist {} changeSets.", uploadTask.changeSets.size());
         try {
             long size = uploadTask.getSize();
             synchronized (lock) {
@@ -234,7 +234,7 @@ class BatchingStateChangeUploadScheduler implements StateChangeUploadScheduler {
         } catch (Throwable t) {
             tasks.forEach(task -> task.fail(t));
             if (findThrowable(t, IOException.class).isPresent()) {
-                LOG.warn("Caught IO exception while uploading", t);
+                LOG.warn("Caught IO exception while uploading.", t);
             } else {
                 setErrorSafe(t);
                 throw t;
@@ -247,7 +247,7 @@ class BatchingStateChangeUploadScheduler implements StateChangeUploadScheduler {
         LOG.debug("close");
         scheduler.shutdownNow();
         if (!scheduler.awaitTermination(5, SECONDS)) {
-            LOG.warn("Unable to cleanly shutdown scheduler in 5s");
+            LOG.warn("Unable to cleanly shutdown scheduler in 5s.");
         }
         ArrayList<UploadTask> drained;
         synchronized (lock) {
