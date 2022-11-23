@@ -105,8 +105,8 @@ public class ExactlyOnceValidatingConsumerThread {
                                     .setParallelism(1);
 
                             LOG.info("Starting consuming topology");
-                            tryExecute(see, "Consuming topo");
-                            LOG.info("Consuming topo finished");
+                            tryExecute(see, "Consuming topology");
+                            LOG.info("Consuming topology finished");
                         } catch (Exception e) {
                             LOG.warn("Error while running consuming topology", e);
                             errorHandler.set(e);

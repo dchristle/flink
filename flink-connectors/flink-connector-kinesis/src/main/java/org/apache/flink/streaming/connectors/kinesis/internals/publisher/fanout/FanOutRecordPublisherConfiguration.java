@@ -47,7 +47,7 @@ public class FanOutRecordPublisherConfiguration {
     @Nullable private String consumerName;
 
     /** A map of stream to stream consumer ARN for EFO subscriptions. */
-    private final Map<String, String> streamConsumerArns = new HashMap<>();
+    private final Map<String, String> streamConsumerARNs = new HashMap<>();
 
     /** Base backoff millis for the deregister stream operation. */
     private final int subscribeToShardMaxRetries;
@@ -149,7 +149,7 @@ public class FanOutRecordPublisherConfiguration {
         for (String stream : streams) {
             String key = efoConsumerArn(stream);
             if (configProps.containsKey(key)) {
-                streamConsumerArns.put(stream, configProps.getProperty(key));
+                streamConsumerARNs.put(stream, configProps.getProperty(key));
             }
         }
 
@@ -470,6 +470,6 @@ public class FanOutRecordPublisherConfiguration {
      * or 'EAGER'.
      */
     public Optional<String> getStreamConsumerArn(String stream) {
-        return Optional.ofNullable(streamConsumerArns.get(stream));
+        return Optional.ofNullable(streamConsumerARNs.get(stream));
     }
 }

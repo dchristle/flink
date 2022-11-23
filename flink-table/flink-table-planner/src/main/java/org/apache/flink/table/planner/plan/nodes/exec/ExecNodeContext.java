@@ -86,12 +86,12 @@ public final class ExecNodeContext {
     /**
      * @param id The unique id of the {@link ExecNode}. See {@link ExecNode#getId()}. It can be null
      *     initially and then later set by using {@link #withId(int)} which creates a new instance
-     *     of {@link ExecNodeContext} since it's immutable. This way we can satisfy both the {@link
+     *     of {@link ExecNodeContext} since it's immutable. This way, we can satisfy both the {@link
      *     ExecNodeBase#ExecNodeBase(int, ExecNodeContext, ReadableConfig, List, LogicalType,
-     *     String)} ctor, which is used for the {@link JsonCreator} ctors, where the {@code id} and
-     *     the {@code context} are read separately, and the {@link
-     *     ExecNodeBase#getContextFromAnnotation()} which creates a new context with a new id
-     *     provided by: {@link #newNodeId()}.
+     *     String)} constructor, which is used for the {@link JsonCreator} constructors, where the
+     *     {@code id} and the {@code context} are read separately, and the
+     *     {@link ExecNodeBase#getContextFromAnnotation()} which creates a new context with a new id
+     *     provided by {@link #newNodeId()}.
      * @param name The name of the {@link ExecNode}. See {@link ExecNodeMetadata#name()}.
      * @param version The version of the {@link ExecNode}. See {@link ExecNodeMetadata#version()}.
      */

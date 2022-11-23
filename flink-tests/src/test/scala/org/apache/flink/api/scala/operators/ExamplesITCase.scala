@@ -77,7 +77,7 @@ class ExamplesITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(m
   }
 
   @Test
-  def testNestesdTuplesWithIntOffset(): Unit = {
+  def testNestedTuplesWithIntOffset(): Unit = {
     /*
      * Test nested tuples with int offset
      */
@@ -107,7 +107,7 @@ class ExamplesITCase(mode: TestExecutionMode) extends MultipleProgramsTestBase(m
   @Test
   def testNestedPojos(): Unit = {
     /*
-     * Test nested pojos
+     * Test nested POJOs
      */
     val env = ExecutionEnvironment.getExecutionEnvironment
     val ds = env.fromElements(

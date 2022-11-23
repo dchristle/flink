@@ -49,7 +49,8 @@ import java.util.concurrent.TimeUnit;
  * A more concise implementation for {@link AppendOnlyTopNFunction} and {@link
  * UpdatableTopNFunction} when only Top-1 is desired. This function can handle updating stream
  * because the RankProcessStrategy is inferred as UpdateFastStrategy, i.e., 1) the upsert key of
- * input steam contains partition key; 2) the sort field is updated monotonely under the upsert key.
+ * input steam contains partition key; 2) the sort field is updated monotonically under the upsert
+ * key.
  */
 public class FastTop1Function extends AbstractTopNFunction implements CheckpointedFunction {
 

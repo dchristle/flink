@@ -156,7 +156,7 @@ public class FieldAccessorFactory implements Serializable {
                                 + " (both of which mean selecting the entire basic type).");
             }
 
-            // In case of Pojos
+            // In case of POJOs
         } else if (typeInfo instanceof PojoTypeInfo) {
             FieldExpression decomp = decomposeFieldExpression(field);
             PojoTypeInfo<?> pojoTypeInfo = (PojoTypeInfo) typeInfo;

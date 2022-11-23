@@ -47,7 +47,7 @@ public class EvictingWindowOperatorContractTest extends WindowOperatorContractTe
             KeyedOneInputStreamOperatorTestHarness<Integer, Integer, OUT> createWindowOperator(
                     WindowAssigner<Integer, W> assigner,
                     Trigger<Integer, W> trigger,
-                    long allowedLatenss,
+                    long allowedLateness,
                     InternalWindowFunction<Iterable<Integer>, OUT, Integer, W> windowFunction,
                     OutputTag<Integer> lateOutputTag)
                     throws Exception {
@@ -79,7 +79,7 @@ public class EvictingWindowOperatorContractTest extends WindowOperatorContractTe
                         windowFunction,
                         trigger,
                         CountEvictor.<W>of(100),
-                        allowedLatenss,
+                        allowedLateness,
                         lateOutputTag);
 
         return new KeyedOneInputStreamOperatorTestHarness<>(
@@ -90,11 +90,11 @@ public class EvictingWindowOperatorContractTest extends WindowOperatorContractTe
             KeyedOneInputStreamOperatorTestHarness<Integer, Integer, OUT> createWindowOperator(
                     WindowAssigner<Integer, W> assigner,
                     Trigger<Integer, W> trigger,
-                    long allowedLatenss,
+                    long allowedLateness,
                     InternalWindowFunction<Iterable<Integer>, OUT, Integer, W> windowFunction)
                     throws Exception {
 
         return createWindowOperator(
-                assigner, trigger, allowedLatenss, windowFunction, null /* late output tag */);
+                assigner, trigger, allowedLateness, windowFunction, null /* late output tag */);
     }
 }

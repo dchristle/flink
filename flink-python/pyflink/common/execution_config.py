@@ -368,7 +368,7 @@ class ExecutionConfig(object):
 
     def enable_force_kryo(self) -> 'ExecutionConfig':
         """
-        Force TypeExtractor to use Kryo serializer for POJOS even though we could analyze as POJO.
+        Force TypeExtractor to use Kryo serializer for POJOs even though we could analyze as POJO.
         In some cases this might be preferable. For example, when using interfaces
         with subclasses that cannot be analyzed as POJO.
         """

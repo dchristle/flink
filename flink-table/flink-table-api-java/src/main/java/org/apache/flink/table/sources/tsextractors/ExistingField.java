@@ -100,7 +100,7 @@ public final class ExistingField extends TimestampExtractor {
                         Arrays.asList(fieldReferenceExpr, typeLiteral(outputType)),
                         outputType);
             default:
-                throw new RuntimeException("Unsupport type: " + type);
+                throw new RuntimeException("Unsupported type: " + type);
         }
     }
 

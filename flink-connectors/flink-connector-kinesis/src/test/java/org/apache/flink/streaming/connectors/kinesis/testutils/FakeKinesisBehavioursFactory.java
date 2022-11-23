@@ -252,10 +252,10 @@ public class FakeKinesisBehavioursFactory {
         public SingleShardEmittingFixNumOfRecordsKinesis(
                 final int numOfRecords,
                 final int numOfGetRecordsCalls,
-                final long millistBehindLatest) {
+                final long millisBehindLatest) {
             this.totalNumOfRecords = numOfRecords;
             this.totalNumOfGetRecordsCalls = numOfGetRecordsCalls;
-            this.millisBehindLatest = millistBehindLatest;
+            this.millisBehindLatest = millisBehindLatest;
 
             // initialize the record batches that we will be fetched
             this.shardItrToRecordBatch = new HashMap<>();

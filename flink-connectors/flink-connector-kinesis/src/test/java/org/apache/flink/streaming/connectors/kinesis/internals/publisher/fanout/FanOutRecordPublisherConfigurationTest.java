@@ -96,9 +96,9 @@ public class FanOutRecordPublisherConfigurationTest extends TestLogger {
                 stream -> testConfig.setProperty(EFO_CONSUMER_ARN_PREFIX + "." + stream, stream));
         FanOutRecordPublisherConfiguration fanOutRecordPublisherConfiguration =
                 new FanOutRecordPublisherConfiguration(testConfig, streams);
-        Map<String, String> expectedStreamArns = new HashMap<>();
-        expectedStreamArns.put("fakedstream1", "fakedstream1");
-        expectedStreamArns.put("fakedstream2", "fakedstream2");
+        Map<String, String> expectedStreamARNs = new HashMap<>();
+        expectedStreamARNs.put("fakedstream1", "fakedstream1");
+        expectedStreamARNs.put("fakedstream2", "fakedstream2");
 
         assertThat(Optional.of("fakedstream1"))
                 .isEqualTo(fanOutRecordPublisherConfiguration.getStreamConsumerArn("fakedstream1"));
@@ -109,7 +109,7 @@ public class FanOutRecordPublisherConfigurationTest extends TestLogger {
         List<String> streams = Arrays.asList("fakedstream1", "fakedstream2");
 
         String msg =
-                "Invalid efo consumer arn settings for not providing consumer arns: flink.stream.efo.consumerarn.fakedstream1, flink.stream.efo.consumerarn.fakedstream2";
+                "Invalid efo consumer arn settings for not providing consumer ARNs: flink.stream.efo.consumerarn.fakedstream1, flink.stream.efo.consumerarn.fakedstream2";
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(msg);
 
@@ -125,7 +125,7 @@ public class FanOutRecordPublisherConfigurationTest extends TestLogger {
         List<String> streams = Arrays.asList("fakedstream1", "fakedstream2");
 
         String msg =
-                "Invalid efo consumer arn settings for not providing consumer arns: flink.stream.efo.consumerarn.fakedstream2";
+                "Invalid efo consumer arn settings for not providing consumer ARNs: flink.stream.efo.consumerarn.fakedstream2";
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(msg);
 
