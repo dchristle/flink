@@ -3,7 +3,7 @@ title: "Checkpointing under backpressure"
 weight: 9
 type: docs
 aliases:
-- /ops/state/unalgined_checkpoints.html
+- /ops/state/unaligned_checkpoints.html
 - /ops/state/checkpointing_under_backpressure.html
 ---
 <!--

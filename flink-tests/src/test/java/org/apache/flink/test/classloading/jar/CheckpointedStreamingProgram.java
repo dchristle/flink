@@ -37,12 +37,12 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class CheckpointedStreamingProgram {
 
-    private static final int CHECKPOINT_INTERVALL = 100;
+    private static final int CHECKPOINT_INTERVAL = 100;
 
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        env.enableCheckpointing(CHECKPOINT_INTERVALL);
+        env.enableCheckpointing(CHECKPOINT_INTERVAL);
         env.setRestartStrategy(RestartStrategies.fixedDelayRestart(1, 100L));
         env.disableOperatorChaining();
 
@@ -110,7 +110,7 @@ public class CheckpointedStreamingProgram {
         public String map(String value) throws Exception {
             if (!atLeastOneSnapshotComplete) {
                 // throttle consumption by the checkpoint interval until we have one snapshot.
-                Thread.sleep(CHECKPOINT_INTERVALL);
+                Thread.sleep(CHECKPOINT_INTERVAL);
             }
             if (atLeastOneSnapshotComplete && !restored) {
                 throw new RuntimeException("Intended failure, to trigger restore");

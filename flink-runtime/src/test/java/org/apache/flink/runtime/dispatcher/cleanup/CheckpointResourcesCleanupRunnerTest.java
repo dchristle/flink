@@ -420,7 +420,7 @@ public class CheckpointResourcesCleanupRunnerTest {
     }
 
     @Test
-    public void testRequestJob_ExceptionHistory() {
+    public void testRequestJobExceptionHistory() {
         testRequestJob(
                 createDummySuccessJobResult(),
                 System.currentTimeMillis(),
@@ -429,7 +429,7 @@ public class CheckpointResourcesCleanupRunnerTest {
     }
 
     @Test
-    public void testRequestJob_JobName() {
+    public void testRequestJobJobName() {
         testRequestJobExecutionGraph(
                 createDummySuccessJobResult(),
                 System.currentTimeMillis(),
@@ -437,7 +437,7 @@ public class CheckpointResourcesCleanupRunnerTest {
     }
 
     @Test
-    public void testRequestJob_JobId() {
+    public void testRequestJobJobId() {
         final JobResult jobResult = createDummySuccessJobResult();
         testRequestJobExecutionGraph(
                 jobResult,
@@ -447,7 +447,7 @@ public class CheckpointResourcesCleanupRunnerTest {
     }
 
     @Test
-    public void testRequestJob_JobState() {
+    public void testRequestJobJobState() {
         final JobResult jobResult = createDummySuccessJobResult();
         testRequestJobExecutionGraph(
                 jobResult,
@@ -459,7 +459,7 @@ public class CheckpointResourcesCleanupRunnerTest {
     }
 
     @Test
-    public void testRequestJob_InitiatizationTimestamp() {
+    public void testRequestJobInitializationTimestamp() {
         final long initializationTimestamp = System.currentTimeMillis();
         testRequestJobExecutionGraph(
                 createDummySuccessJobResult(),
