@@ -158,7 +158,7 @@ public class CheckpointCoordinatorTest extends TestLogger {
             TestingUtils.defaultExecutorResource();
 
     @Test
-    public void testSharedStateNotDiscaredOnAbort() throws Exception {
+    public void testSharedStateNotDiscardedOnAbort() throws Exception {
         JobVertexID v1 = new JobVertexID(), v2 = new JobVertexID();
 
         ExecutionGraph graph =
@@ -302,18 +302,18 @@ public class CheckpointCoordinatorTest extends TestLogger {
     private void assertStatsEqual(
             long checkpointId,
             JobVertexID jobVertexID,
-            int subtasIdx,
+            int subtaskIdx,
             CheckpointMetrics expected,
             AbstractCheckpointStats actual) {
         assertEquals(checkpointId, actual.getCheckpointId());
         assertEquals(CheckpointStatsStatus.FAILED, actual.getStatus());
         assertEquals(0, actual.getNumberOfAcknowledgedSubtasks());
-        assertStatsMetrics(jobVertexID, subtasIdx, expected, actual);
+        assertStatsMetrics(jobVertexID, subtaskIdx, expected, actual);
     }
 
     public static void assertStatsMetrics(
             JobVertexID jobVertexID,
-            int subtasIdx,
+            int subtaskIdx,
             CheckpointMetrics expected,
             AbstractCheckpointStats actual) {
         assertEquals(expected.getTotalBytesPersisted(), actual.getStateSize());
@@ -322,7 +322,7 @@ public class CheckpointCoordinatorTest extends TestLogger {
                         .filter(s -> s.getJobVertexId().equals(jobVertexID))
                         .findAny()
                         .get()
-                        .getSubtaskStats()[subtasIdx];
+                        .getSubtaskStats()[subtaskIdx];
         assertEquals(
                 expected.getAlignmentDurationNanos() / 1_000_000, taskStats.getAlignmentDuration());
         assertEquals(expected.getUnalignedCheckpoint(), taskStats.getUnalignedCheckpoint());

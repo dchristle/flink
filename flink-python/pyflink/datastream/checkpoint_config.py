@@ -437,7 +437,7 @@ class CheckpointConfig(object):
         for local testing and development.
 
         The `FileSystemCheckpointStorage` stores checkpoints in a filesystem. For systems like
-        HDFS, NFS Drivs, S3, and GCS, this storage policy supports large state size, in the
+        HDFS, NFS drives, S3, and GCS, this storage policy supports large state size, in the
         magnitude of many terabytes while providing a highly available foundation for stateful
         applications. This checkpoint storage policy is recommended for most production deployments.
         """

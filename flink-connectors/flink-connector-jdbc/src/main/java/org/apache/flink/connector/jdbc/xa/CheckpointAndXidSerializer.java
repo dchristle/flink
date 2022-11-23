@@ -110,7 +110,7 @@ public final class CheckpointAndXidSerializer extends TypeSerializer<CheckpointA
         return SNAPSHOT;
     }
 
-    /** SImple {@link TypeSerializerSnapshot} for {@link CheckpointAndXidSerializer}. */
+    /** Simple {@link TypeSerializerSnapshot} for {@link CheckpointAndXidSerializer}. */
     public static class CheckpointAndXidSimpleTypeSerializerSnapshot
             extends SimpleTypeSerializerSnapshot<CheckpointAndXid> {
         private static final int VERSION = 1;
