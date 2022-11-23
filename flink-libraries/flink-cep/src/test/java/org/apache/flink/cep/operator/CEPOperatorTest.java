@@ -1256,13 +1256,7 @@ public class CEPOperatorTest extends TestLogger {
 
     private OneInputStreamOperatorTestHarness<Event, Map<String, List<Event>>> getCepTestHarness(
             boolean isProcessingTime) throws Exception {
-        return CepOperatorTestUtilities.getCepTestHarness(getKeyedCepOpearator(isProcessingTime));
-    }
-
-    private CepOperator<Event, Integer, Map<String, List<Event>>> getKeyedCepOpearator(
-            boolean isProcessingTime) {
-        return CepOperatorTestUtilities.getKeyedCepOperator(
-                isProcessingTime, new CEPOperatorTest.NFAFactory());
+        return CepOperatorTestUtilities.getCepTestHarness(getKeyedCepOperator(isProcessingTime));
     }
 
     private static class NFAFactory implements NFACompiler.NFAFactory<Event> {
