@@ -26,7 +26,7 @@ import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Tests for serializing and deserialzing {@link KafkaWriterState} with {@link
+ * Tests for serializing and deserializing {@link KafkaWriterState} with {@link
  * KafkaWriterStateSerializer}.
  */
 public class KafkaWriterStateSerializerTest extends TestLogger {

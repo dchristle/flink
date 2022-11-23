@@ -123,12 +123,12 @@ public class KubernetesTestBase {
     }
 
     protected void generateHadoopConfFileItems() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some data", hadoopConfDir, "core-site.xml");
-        KubernetesTestUtils.createTemporyFile("some data", hadoopConfDir, "hdfs-site.xml");
+        KubernetesTestUtils.createTemporaryFile("some data", hadoopConfDir, "core-site.xml");
+        KubernetesTestUtils.createTemporaryFile("some data", hadoopConfDir, "hdfs-site.xml");
     }
 
     protected void generateKerberosFileItems() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some keytab", kerberosDir, KEYTAB_FILE);
-        KubernetesTestUtils.createTemporyFile("some conf", kerberosDir, KRB5_CONF_FILE);
+        KubernetesTestUtils.createTemporaryFile("some keytab", kerberosDir, KEYTAB_FILE);
+        KubernetesTestUtils.createTemporaryFile("some conf", kerberosDir, KRB5_CONF_FILE);
     }
 }

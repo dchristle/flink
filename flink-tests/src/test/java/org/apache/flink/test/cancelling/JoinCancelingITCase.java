@@ -168,7 +168,7 @@ public class JoinCancelingITCase extends CancelingTestBase {
     // ---------------------------------
 
     @Test
-    public void testCancelSortMatchWithHighparallelism() throws Exception {
+    public void testCancelSortMatchWithHighParallelism() throws Exception {
         executeTask(new SimpleMatcher<Integer>(), false, 64);
     }
 

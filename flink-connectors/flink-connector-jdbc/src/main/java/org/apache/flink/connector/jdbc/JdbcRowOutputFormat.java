@@ -75,7 +75,7 @@ public class JdbcRowOutputFormat
     public static class JdbcOutputFormatBuilder {
         private String username;
         private String password;
-        private String drivername;
+        private String driverName;
         private String dbURL;
         private String query;
         private int batchSize = JdbcExecutionOptions.DEFAULT_SIZE;
@@ -93,8 +93,8 @@ public class JdbcRowOutputFormat
             return this;
         }
 
-        public JdbcOutputFormatBuilder setDrivername(String drivername) {
-            this.drivername = drivername;
+        public JdbcOutputFormatBuilder setDriverName(String driverName) {
+            this.driverName = driverName;
             return this;
         }
 
@@ -141,7 +141,7 @@ public class JdbcRowOutputFormat
 
             return new JdbcConnectionOptions.JdbcConnectionOptionsBuilder()
                     .withUrl(dbURL)
-                    .withDriverName(drivername)
+                    .withDriverName(driverName)
                     .withUsername(username)
                     .withPassword(password)
                     .build();

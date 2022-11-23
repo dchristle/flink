@@ -29,7 +29,7 @@ import java.util.LinkedHashMap;
 /**
  * Partition commit policy to update metastore.
  *
- * <p>If this is for file system table, the metastore is a empty implemantation. If this is for hive
+ * <p>If this is for file system table, the metastore is a empty implementation. If this is for hive
  * table, the metastore is for connecting to hive metastore.
  */
 @Internal

@@ -201,7 +201,7 @@ public class IterateITCase extends AbstractTestBase {
     }
 
     @Test
-    public void testmultipleHeadsTailsSimple() {
+    public void testMultipleHeadsTailsSimple() {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         DataStream<Integer> source1 =
@@ -310,7 +310,7 @@ public class IterateITCase extends AbstractTestBase {
     }
 
     @Test
-    public void testmultipleHeadsTailsWithTailPartitioning() {
+    public void testMultipleHeadsTailsWithTailPartitioning() {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         DataStream<Integer> source1 = env.fromElements(1, 2, 3, 4, 5).shuffle().map(noOpIntMap);

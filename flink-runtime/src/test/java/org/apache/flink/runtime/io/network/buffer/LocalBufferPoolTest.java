@@ -448,7 +448,7 @@ public class LocalBufferPoolTest extends TestLogger {
 
         assertTrue(localBufferPool.getAvailableFuture().isDone());
 
-        // request one segment from subpartitin-0 and subpartition-1 respectively
+        // request one segment from subpartition-0 and subpartition-1 respectively
         final BufferBuilder bufferBuilder01 = localBufferPool.requestBufferBuilderBlocking(0);
         final BufferBuilder bufferBuilder11 = localBufferPool.requestBufferBuilderBlocking(1);
         assertTrue(localBufferPool.getAvailableFuture().isDone());

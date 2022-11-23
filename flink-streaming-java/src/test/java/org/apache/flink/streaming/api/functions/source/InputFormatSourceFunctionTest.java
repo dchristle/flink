@@ -53,7 +53,7 @@ public class InputFormatSourceFunctionTest {
     }
 
     @Test
-    public void testCancelation() throws Exception {
+    public void testCancellation() throws Exception {
         testFormatLifecycle(true);
     }
 

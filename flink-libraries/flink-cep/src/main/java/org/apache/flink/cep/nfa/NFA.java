@@ -371,7 +371,7 @@ public class NFA<T> {
             for (final ComputationState newComputationState : newComputationStates) {
 
                 if (isStartState(computationState) && newComputationState.getStartTimestamp() > 0) {
-                    nfaState.setNewStartPartiailMatch();
+                    nfaState.setNewStartPartialMatch();
                 }
 
                 if (isFinalState(newComputationState)) {

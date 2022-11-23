@@ -396,7 +396,7 @@ public class KinesisConfigUtil {
                                 .map(Object::toString)
                                 .collect(Collectors.joining(", "));
                 throw new IllegalArgumentException(
-                        "Invalid efo consumer arn settings for not providing consumer arns: "
+                        "Invalid efo consumer arn settings for not providing consumer ARNs: "
                                 + errorMessage);
             }
         } else {

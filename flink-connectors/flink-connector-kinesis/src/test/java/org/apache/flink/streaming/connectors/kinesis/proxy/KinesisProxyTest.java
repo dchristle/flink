@@ -137,7 +137,7 @@ public class KinesisProxyTest {
 
         final GetRecordsResult expectedResult = new GetRecordsResult();
         MutableInt retries = new MutableInt();
-        final Throwable[] retriableExceptions =
+        final Throwable[] retryableExceptions =
                 new Throwable[] {
                     new AmazonKinesisException("mock"),
                 };
@@ -149,9 +149,9 @@ public class KinesisProxyTest {
                             @Override
                             public GetRecordsResult answer(InvocationOnMock invocation)
                                     throws Throwable {
-                                if (retries.intValue() < retriableExceptions.length) {
+                                if (retries.intValue() < retryableExceptions.length) {
                                     retries.increment();
-                                    throw retriableExceptions[retries.intValue() - 1];
+                                    throw retryableExceptions[retries.intValue() - 1];
                                 }
                                 return expectedResult;
                             }
@@ -161,7 +161,7 @@ public class KinesisProxyTest {
         Whitebox.getField(KinesisProxy.class, "kinesisClient").set(kinesisProxy, mockClient);
 
         GetRecordsResult result = kinesisProxy.getRecords("fakeShardIterator", 1);
-        assertThat(retries.intValue()).isEqualTo(retriableExceptions.length);
+        assertThat(retries.intValue()).isEqualTo(retryableExceptions.length);
         assertThat(result).isEqualTo(expectedResult);
     }
 
@@ -354,7 +354,7 @@ public class KinesisProxyTest {
         expectedResult.withShards(shard);
 
         MutableInt exceptionCount = new MutableInt();
-        final Throwable[] retriableExceptions =
+        final Throwable[] retryableExceptions =
                 new Throwable[] {
                     new AmazonKinesisException("attempt1"), new AmazonKinesisException("attempt2"),
                 };
@@ -367,9 +367,9 @@ public class KinesisProxyTest {
                             @Override
                             public ListShardsResult answer(InvocationOnMock invocation)
                                     throws Throwable {
-                                if (exceptionCount.intValue() < retriableExceptions.length) {
+                                if (exceptionCount.intValue() < retryableExceptions.length) {
                                     exceptionCount.increment();
-                                    throw retriableExceptions[exceptionCount.intValue() - 1];
+                                    throw retryableExceptions[exceptionCount.intValue() - 1];
                                 }
                                 return expectedResult;
                             }
@@ -381,7 +381,7 @@ public class KinesisProxyTest {
         HashMap<String, String> streamNames = new HashMap();
         streamNames.put("fake-stream", null);
         GetShardListResult result = kinesisProxy.getShardList(streamNames);
-        assertThat(exceptionCount.intValue()).isEqualTo(retriableExceptions.length);
+        assertThat(exceptionCount.intValue()).isEqualTo(retryableExceptions.length);
         assertThat(result.hasRetrievedShards()).isTrue();
         assertThat(result.getLastSeenShardOfStream("fake-stream").getShard().getShardId())
                 .isEqualTo(shard.getShardId());
@@ -396,7 +396,7 @@ public class KinesisProxyTest {
         KinesisProxy finalKinesisProxy = kinesisProxy;
         assertThatThrownBy(() -> finalKinesisProxy.getShardList(streamNames))
                 .isInstanceOf(SdkClientException.class)
-                .isEqualTo(retriableExceptions[maxRetries]);
+                .isEqualTo(retryableExceptions[maxRetries]);
         assertThat(exceptionCount.intValue()).isEqualTo(maxRetries + 1);
     }
 

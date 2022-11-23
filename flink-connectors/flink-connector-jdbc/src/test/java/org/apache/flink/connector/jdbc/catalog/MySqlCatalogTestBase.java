@@ -101,7 +101,7 @@ public class MySqlCatalogTestBase {
                     .column("col_timestamp", DataTypes.TIMESTAMP(0))
                     .column("col_tinytext", DataTypes.VARCHAR(85))
                     .column("col_tinyint", DataTypes.TINYINT())
-                    .column("col_tinyint_unsinged", DataTypes.SMALLINT())
+                    .column("col_tinyint_unsigned", DataTypes.SMALLINT())
                     .column("col_tinyblob", DataTypes.BYTES())
                     .column("col_varchar", DataTypes.VARCHAR(255))
                     .column("col_datetime_p3", DataTypes.TIMESTAMP(3).notNull())

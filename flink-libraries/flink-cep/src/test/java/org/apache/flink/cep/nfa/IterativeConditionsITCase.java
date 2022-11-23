@@ -104,7 +104,7 @@ public class IterativeConditionsITCase extends TestLogger {
                                 .where(SimpleCondition.of(value -> value.getName().equals("start")))
                                 .followedBy("middle")
                                 .subtype(SubEvent.class)
-                                .where(new MySubeventIterCondition())
+                                .where(new MySubEventIterCondition())
                                 .oneOrMore()
                                 .followedBy("end")
                                 .where(SimpleCondition.of(value -> value.getName().equals("end")))
@@ -112,7 +112,7 @@ public class IterativeConditionsITCase extends TestLogger {
                                 .where(SimpleCondition.of(value -> value.getName().equals("start")))
                                 .followedBy("middle")
                                 .subtype(SubEvent.class)
-                                .where(new MySubeventIterCondition())
+                                .where(new MySubEventIterCondition())
                                 .oneOrMore()
                                 .allowCombinations()
                                 .followedBy("end")
@@ -123,7 +123,7 @@ public class IterativeConditionsITCase extends TestLogger {
         return feedNFA(inputEvents, nfa);
     }
 
-    private static class MySubeventIterCondition extends IterativeCondition<SubEvent> {
+    private static class MySubEventIterCondition extends IterativeCondition<SubEvent> {
 
         private static final long serialVersionUID = 6215754202506583964L;
 

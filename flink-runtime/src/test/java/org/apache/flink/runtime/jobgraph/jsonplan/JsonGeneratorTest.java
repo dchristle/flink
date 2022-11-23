@@ -43,7 +43,7 @@ import static org.junit.Assert.fail;
 public class JsonGeneratorTest {
 
     @Test
-    public void testGeneratorWithoutAnyAttachements() {
+    public void testGeneratorWithoutAnyAttachments() {
         try {
             JobVertex source1 = new JobVertex("source 1");
 

@@ -52,9 +52,9 @@ public class JobMasterPartitionTrackerImpl
 
     // Besides below fields, JobMasterPartitionTrackerImpl inherits 'partitionTable' and
     // 'partitionInfos' from parent and tracks partitions from different dimensions:
-    // 'partitionTable' tracks partitions which occupie local resource on TM;
-    // 'partitionInfos' tracks all available partitions no matter they are accommodated
-    // externally on remote or internally on TM;
+    // 'partitionTable' tracks partitions which occupy local resources on TM
+    // 'partitionInfos' tracks all available partitions no matter whether they are accommodated
+    // externally on remote or internally on TM
 
     private final JobID jobId;
 

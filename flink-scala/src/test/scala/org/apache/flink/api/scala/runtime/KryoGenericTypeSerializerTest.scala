@@ -104,7 +104,7 @@ class KryoGenericTypeSerializerTest {
   }
 
   @Test
-  def testScalaMutablelistSerialization(): Unit = {
+  def testScalaMutableListSerialization(): Unit = {
     val a = scala.collection.mutable.ListBuffer(42, 1, 49, 1337)
 
     runTests(Seq(a))
@@ -135,7 +135,7 @@ class KryoGenericTypeSerializerTest {
   }
 
   @Test
-  def testHeterogenousScalaList(): Unit = {
+  def testHeterogeneousScalaList(): Unit = {
     val a = new DerivedType("foo", "bar")
     val b = new BaseType("foobar")
     val c = new DerivedType2("bar", "foo")

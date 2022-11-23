@@ -86,7 +86,7 @@ public class KinesisEventsGeneratorProducerThread {
 
                             LOG.info("Starting producing topology");
                             see.execute("Producing topology");
-                            LOG.info("Producing topo finished");
+                            LOG.info("Producing topology finished");
                         } catch (Exception e) {
                             LOG.warn("Error while running producing topology", e);
                             errorHandler.set(e);

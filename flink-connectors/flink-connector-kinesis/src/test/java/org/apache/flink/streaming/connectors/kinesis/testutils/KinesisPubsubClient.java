@@ -120,7 +120,7 @@ public class KinesisPubsubClient {
         return readAllMessages(streamName, String::new);
     }
 
-    public <T> List<T> readAllMessages(String streamName, Function<byte[], T> deserialiser)
+    public <T> List<T> readAllMessages(String streamName, Function<byte[], T> deserializer)
             throws Exception {
         KinesisProxyInterface kinesisProxy = KinesisProxy.create(properties);
         Map<String, String> streamNamesWithLastSeenShardIds = new HashMap<>();
@@ -138,7 +138,7 @@ public class KinesisPubsubClient {
                     kinesisProxy.getRecords(shardIterator, maxRecordsToFetch);
             List<Record> aggregatedRecords = getRecordsResult.getRecords();
             for (Record record : aggregatedRecords) {
-                messages.add(deserialiser.apply(record.getData().array()));
+                messages.add(deserializer.apply(record.getData().array()));
             }
         }
         return messages;

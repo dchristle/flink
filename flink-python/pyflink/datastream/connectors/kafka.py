@@ -87,7 +87,7 @@ class FlinkKafkaConsumerBase(SourceFunction, ABC):
 
     def set_start_from_latest(self) -> 'FlinkKafkaConsumerBase':
         """
-        Specifies the consuer to start reading from the latest offset for all partitions. This lets
+        Specifies the consumer to start reading from the latest offset for all partitions. This lets
         the consumer ignore any committed group offsets in Zookeeper / Kafka brokers.
 
         This method does not affect where partitions are read from when the consumer is restored
@@ -256,8 +256,8 @@ class FlinkKafkaProducerBase(SinkFunction, ABC):
     Flink Sink to produce data into a Kafka topic.
 
     Please note that this producer provides at-least-once reliability guarantees when checkpoints
-    are enabled and set_flush_on_checkpoint(True) is set. Otherwise, the producer doesn;t provid any
-    reliability guarantees.
+    are enabled and set_flush_on_checkpoint(True) is set. Otherwise, the producer doesn't provide
+    any reliability guarantees.
     """
 
     def __init__(self, j_flink_kafka_producer):

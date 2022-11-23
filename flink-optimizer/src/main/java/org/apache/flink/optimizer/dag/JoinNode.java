@@ -77,11 +77,11 @@ public class JoinNode extends TwoInputNode {
         return this.dataProperties;
     }
 
-    public void makeJoinWithSolutionSet(int solutionsetInputIndex) {
+    public void makeJoinWithSolutionSet(int solutionSetInputIndex) {
         OperatorDescriptorDual op;
-        if (solutionsetInputIndex == 0) {
+        if (solutionSetInputIndex == 0) {
             op = new HashJoinBuildFirstProperties(this.keys1, this.keys2);
-        } else if (solutionsetInputIndex == 1) {
+        } else if (solutionSetInputIndex == 1) {
             op = new HashJoinBuildSecondProperties(this.keys1, this.keys2);
         } else {
             throw new IllegalArgumentException();

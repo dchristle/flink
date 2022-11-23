@@ -72,7 +72,7 @@ If there's one side does not match the row, it will append `NULL` value. `FULL J
 
 ### LEFT SEMI JOIN
 
-`LEFT SMEI JOIN` returns the rows from the left join side that have matching in right join side. It won't concat the values from the right side.
+`LEFT SEMI JOIN` returns the rows from the left join side that have matching in right join side. It won't concat the values from the right side.
 
 ### CROSS JOIN
 

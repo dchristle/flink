@@ -72,7 +72,7 @@ class PodTemplateMountDecoratorTest extends KubernetesJobManagerTestBase {
 
     @Test
     void testBuildAccompanyingKubernetesResourcesAddsPodTemplateAsConfigMap() throws IOException {
-        KubernetesTestUtils.createTemporyFile(
+        KubernetesTestUtils.createTemporaryFile(
                 POD_TEMPLATE_DATA, flinkConfDir, POD_TEMPLATE_FILE_NAME);
 
         final List<HasMetadata> additionalResources =
@@ -100,7 +100,7 @@ class PodTemplateMountDecoratorTest extends KubernetesJobManagerTestBase {
 
     @Test
     void testDecoratedFlinkPodWithTaskManagerPodTemplate() throws Exception {
-        KubernetesTestUtils.createTemporyFile(
+        KubernetesTestUtils.createTemporaryFile(
                 POD_TEMPLATE_DATA, flinkConfDir, POD_TEMPLATE_FILE_NAME);
 
         final FlinkPod resultFlinkPod = podTemplateMountDecorator.decorateFlinkPod(baseFlinkPod);

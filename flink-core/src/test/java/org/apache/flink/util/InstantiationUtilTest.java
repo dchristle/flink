@@ -165,7 +165,7 @@ public class InstantiationUtilTest extends TestLogger {
 
             try {
                 InstantiationUtil.writeObjectToConfig(
-                        new TestClassWriteFails(), config, "irgnored");
+                        new TestClassWriteFails(), config, "ignored");
                 fail("should throw an exception");
             } catch (TestException e) {
                 // expected

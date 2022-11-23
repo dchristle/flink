@@ -67,7 +67,7 @@ public class HiveGenericUDFInternalInterval extends GenericUDF {
         }
         Integer operationMode = getConstantIntValue(arguments, 0);
         if (operationMode == null) {
-            throw new UDFArgumentTypeException(0, "must supply operationmode");
+            throw new UDFArgumentTypeException(0, "must supply operationMode");
         }
 
         processor = getProcessorMap().get(operationMode);

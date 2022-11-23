@@ -55,7 +55,7 @@ public class InputOutputFormatVertex extends JobVertex {
     @Override
     public void initializeOnMaster(InitializeOnMasterContext context) throws Exception {
         ClassLoader loader = context.getClassLoader();
-        final InputOutputFormatContainer formatContainer = initInputOutputformatContainer(loader);
+        final InputOutputFormatContainer formatContainer = initInputOutputFormatContainer(loader);
 
         final ClassLoader original = Thread.currentThread().getContextClassLoader();
         try {
@@ -121,7 +121,7 @@ public class InputOutputFormatVertex extends JobVertex {
     @Override
     public void finalizeOnMaster(InitializeOnMasterContext context) throws Exception {
         final ClassLoader loader = context.getClassLoader();
-        final InputOutputFormatContainer formatContainer = initInputOutputformatContainer(loader);
+        final InputOutputFormatContainer formatContainer = initInputOutputFormatContainer(loader);
 
         final ClassLoader original = Thread.currentThread().getContextClassLoader();
         try {
@@ -166,7 +166,7 @@ public class InputOutputFormatVertex extends JobVertex {
         formatDescriptions.put(checkNotNull(operatorID), formatDescription);
     }
 
-    private InputOutputFormatContainer initInputOutputformatContainer(ClassLoader classLoader)
+    private InputOutputFormatContainer initInputOutputFormatContainer(ClassLoader classLoader)
             throws Exception {
         try {
             return new InputOutputFormatContainer(new TaskConfig(getConfiguration()), classLoader);

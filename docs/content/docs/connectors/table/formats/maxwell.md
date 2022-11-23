@@ -39,7 +39,7 @@ Flink supports to interpret Maxwell JSON messages as INSERT/UPDATE/DELETE messag
  - temporal join changing history of a database table and so on.
 
 Flink also supports to encode the INSERT/UPDATE/DELETE messages in Flink SQL as Maxwell JSON messages, and emit to external systems like Kafka.
-However, currently Flink can't combine UPDATE_BEFORE and UPDATE_AFTER into a single UPDATE message. Therefore, Flink encodes UPDATE_BEFORE and UDPATE_AFTER as DELETE and INSERT Maxwell messages.
+However, currently Flink can't combine UPDATE_BEFORE and UPDATE_AFTER into a single UPDATE message. Therefore, Flink encodes UPDATE_BEFORE and UPDATE_AFTER as DELETE and INSERT Maxwell messages.
 
 Dependencies
 ------------

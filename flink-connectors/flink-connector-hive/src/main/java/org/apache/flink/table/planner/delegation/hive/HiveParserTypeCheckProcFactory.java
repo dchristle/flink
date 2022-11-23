@@ -135,7 +135,7 @@ public class HiveParserTypeCheckProcFactory {
     }
 
     /**
-     * Function to do groupby subexpression elimination. This is called by all the processors
+     * Function to do groupBy subexpression elimination. This is called by all the processors
      * initially. As an example, consider the query select a+b, count(1) from T group by a+b; Then
      * a+b is already precomputed in the group by operators key, so we substitute a+b in the select
      * list with the internal column name of the a+b expression that appears in the in input row

@@ -200,7 +200,7 @@ final class KryoSerializerSnapshotData<T> {
     private static LinkedOptionalMap<Class<?>, SerializableSerializer<?>>
             readDefaultKryoSerializers(DataInputView in, ClassLoader cl) throws IOException {
         return readOptionalMap(
-                in, new ClassResolverByName(cl), new SerializeableSerializerResolver(cl));
+                in, new ClassResolverByName(cl), new SerializableSerializerResolver(cl));
     }
 
     @SuppressWarnings("unchecked")
@@ -383,13 +383,13 @@ final class KryoSerializerSnapshotData<T> {
         }
     }
 
-    private static final class SerializeableSerializerResolver
+    private static final class SerializableSerializerResolver
             implements BiFunctionWithException<
                     DataInputView, String, SerializableSerializer<?>, IOException> {
 
         private final ClassLoader classLoader;
 
-        private SerializeableSerializerResolver(ClassLoader classLoader) {
+        private SerializableSerializerResolver(ClassLoader classLoader) {
             this.classLoader = classLoader;
         }
 

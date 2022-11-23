@@ -118,11 +118,12 @@ public class KerberosLoginProvider {
             return ugi;
         } else if (!HadoopUserUtils.isProxyUser(currentUser)) {
             LOG.info("Attempting to load user's ticket cache");
-            final String ccache = System.getenv("KRB5CCNAME");
+            final String cCache = System.getenv("KRB5CCNAME");
             final String user =
                     Optional.ofNullable(System.getenv("KRB5PRINCIPAL"))
                             .orElse(currentUser.getUserName());
-            UserGroupInformation ugi = UserGroupInformation.getUGIFromTicketCache(ccache, user);
+            UserGroupInformation ugi = UserGroupInformation.
+                    getUGIFromTicketCache(cCache, user);
             LOG.info("Loaded user's ticket cache successfully");
             return ugi;
         } else {

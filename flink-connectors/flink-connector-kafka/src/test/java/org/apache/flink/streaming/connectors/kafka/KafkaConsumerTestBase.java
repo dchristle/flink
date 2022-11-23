@@ -1136,10 +1136,10 @@ public abstract class KafkaConsumerTestBase extends KafkaTestBaseWithFlink {
         // wait a bit before canceling
         Thread.sleep(2000);
 
-        Throwable failueCause = jobError.get();
-        if (failueCause != null) {
-            failueCause.printStackTrace();
-            fail("Test failed prematurely with: " + failueCause.getMessage());
+        Throwable failureCause = jobError.get();
+        if (failureCause != null) {
+            failureCause.printStackTrace();
+            fail("Test failed prematurely with: " + failureCause.getMessage());
         }
 
         // cancel
@@ -1205,10 +1205,10 @@ public abstract class KafkaConsumerTestBase extends KafkaTestBaseWithFlink {
         // wait a bit before canceling
         Thread.sleep(2000);
 
-        Throwable failueCause = error.get();
-        if (failueCause != null) {
-            failueCause.printStackTrace();
-            fail("Test failed prematurely with: " + failueCause.getMessage());
+        Throwable failureCause = error.get();
+        if (failureCause != null) {
+            failureCause.printStackTrace();
+            fail("Test failed prematurely with: " + failureCause.getMessage());
         }
         // cancel
         client.cancel(jobId).get();

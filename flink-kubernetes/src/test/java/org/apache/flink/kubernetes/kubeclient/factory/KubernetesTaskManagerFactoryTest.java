@@ -54,8 +54,8 @@ class KubernetesTaskManagerFactoryTest extends KubernetesTaskManagerTestBase {
     protected void onSetup() throws Exception {
         super.onSetup();
 
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
 
         setHadoopConfDirEnv();
         generateHadoopConfFileItems();

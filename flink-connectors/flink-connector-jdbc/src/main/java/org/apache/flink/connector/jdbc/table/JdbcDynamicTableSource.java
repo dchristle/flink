@@ -122,7 +122,7 @@ public class JdbcDynamicTableSource
     public ScanRuntimeProvider getScanRuntimeProvider(ScanContext runtimeProviderContext) {
         final JdbcRowDataInputFormat.Builder builder =
                 JdbcRowDataInputFormat.builder()
-                        .setDrivername(options.getDriverName())
+                        .setDriverName(options.getDriverName())
                         .setDBUrl(options.getDbURL())
                         .setUsername(options.getUsername().orElse(null))
                         .setPassword(options.getPassword().orElse(null))

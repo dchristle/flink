@@ -241,13 +241,13 @@ public class HiveCatalog extends AbstractCatalog {
         } else {
             hadoopConf = getHadoopConfiguration(hadoopConfDir);
             if (hadoopConf == null) {
-                String possiableUsedConfFiles =
+                String possibleUsedConfFiles =
                         "core-site.xml | hdfs-site.xml | yarn-site.xml | mapred-site.xml";
                 throw new CatalogException(
                         "Failed to load the hadoop conf from specified path:" + hadoopConfDir,
                         new FileNotFoundException(
                                 "Please check the path none of the conf files ("
-                                        + possiableUsedConfFiles
+                                        + possibleUsedConfFiles
                                         + ") exist in the folder."));
             }
         }

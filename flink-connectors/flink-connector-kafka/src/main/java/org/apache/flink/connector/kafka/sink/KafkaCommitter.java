@@ -75,7 +75,7 @@ class KafkaCommitter implements Committer<KafkaCommittable>, Closeable {
                 recyclable.ifPresent(Recyclable::close);
             } catch (RetriableException e) {
                 LOG.warn(
-                        "Encountered retriable exception while committing {}.", transactionalId, e);
+                        "Encountered retryable exception while committing {}.", transactionalId, e);
                 request.retryLater();
             } catch (ProducerFencedException e) {
                 // initTransaction has been called on this transaction before

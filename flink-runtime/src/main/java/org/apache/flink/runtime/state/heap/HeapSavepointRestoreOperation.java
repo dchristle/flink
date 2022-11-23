@@ -191,13 +191,13 @@ public class HeapSavepointRestoreOperation<K> implements RestoreOperation<Void> 
         RegisteredKeyValueStateBackendMetaInfo<?, ?> metaInfo = stateTable.getMetaInfo();
         TypeSerializer<?> namespaceSerializer = metaInfo.getPreviousNamespaceSerializer();
         TypeSerializer<?> stateSerializer = metaInfo.getPreviousStateSerializer();
-        boolean isAmbigousKey =
+        boolean isAmbiguousKey =
                 keySerializer.getLength() < 0 && namespaceSerializer.getLength() < 0;
         entryKeyDeserializer.setBuffer(groupEntry.getKey());
         entryValueDeserializer.setBuffer(groupEntry.getValue());
         int keyGroup = readKeyGroup(keyGroupPrefixBytes, entryKeyDeserializer);
-        K key = readKey(keySerializer, entryKeyDeserializer, isAmbigousKey);
-        Object namespace = readNamespace(namespaceSerializer, entryKeyDeserializer, isAmbigousKey);
+        K key = readKey(keySerializer, entryKeyDeserializer, isAmbiguousKey);
+        Object namespace = readNamespace(namespaceSerializer, entryKeyDeserializer, isAmbiguousKey);
         switch (metaInfo.getStateType()) {
             case LIST:
                 stateTable.put(

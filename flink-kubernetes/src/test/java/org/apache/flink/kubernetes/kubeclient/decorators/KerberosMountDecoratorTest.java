@@ -60,8 +60,8 @@ class KerberosMountDecoratorTest extends KubernetesPodTestBase {
 
     @Override
     protected void generateKerberosFileItems() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some keytab", kerberosDir, KEYTAB_FILE);
-        KubernetesTestUtils.createTemporyFile("some conf", kerberosDir, CUSTOM_KRB5_CONF_FILE);
+        KubernetesTestUtils.createTemporaryFile("some keytab", kerberosDir, KEYTAB_FILE);
+        KubernetesTestUtils.createTemporaryFile("some conf", kerberosDir, CUSTOM_KRB5_CONF_FILE);
     }
 
     @Override

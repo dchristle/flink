@@ -162,7 +162,7 @@ public final class IOUtils {
         while (len > 0) {
             final long ret = in.skip(len);
             if (ret < 0) {
-                throw new IOException("Premeture EOF from inputStream");
+                throw new IOException("Premature EOF from inputStream");
             }
             len -= ret;
         }

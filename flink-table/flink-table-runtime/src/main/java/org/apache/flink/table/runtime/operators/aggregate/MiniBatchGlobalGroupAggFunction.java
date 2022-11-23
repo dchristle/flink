@@ -41,7 +41,7 @@ import java.util.Map;
 
 import static org.apache.flink.table.runtime.util.StateConfigUtil.createTtlConfig;
 
-/** Aggregate Function used for the global groupby (without window) aggregate in miniBatch mode. */
+/** Aggregate Function used for the global groupBy (without window) aggregate in miniBatch mode. */
 public class MiniBatchGlobalGroupAggFunction
         extends MapBundleFunction<RowData, RowData, RowData, RowData> {
 

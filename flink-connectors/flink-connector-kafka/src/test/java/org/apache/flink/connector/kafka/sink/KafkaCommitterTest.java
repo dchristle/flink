@@ -44,7 +44,7 @@ public class KafkaCommitterTest {
 
     /** Causes a network error by inactive broker and tests that a retry will happen. */
     @Test
-    public void testRetryCommittableOnRetriableError() throws IOException, InterruptedException {
+    public void testRetryCommittableOnRetryableError() throws IOException, InterruptedException {
         Properties properties = getProperties();
         try (final KafkaCommitter committer = new KafkaCommitter(properties);
                 FlinkKafkaInternalProducer<Object, Object> producer =

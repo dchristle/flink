@@ -80,8 +80,8 @@ class FlinkConfMountDecoratorTest extends KubernetesJobManagerTestBase {
 
     @Test
     void testConfigMap() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
 
         final List<HasMetadata> additionalResources =
                 flinkConfMountDecorator.buildAccompanyingKubernetesResources();
@@ -143,7 +143,7 @@ class FlinkConfMountDecoratorTest extends KubernetesJobManagerTestBase {
 
     @Test
     void testDecoratedFlinkPodWithLog4j() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
 
         final FlinkPod resultFlinkPod = flinkConfMountDecorator.decorateFlinkPod(baseFlinkPod);
 
@@ -172,7 +172,7 @@ class FlinkConfMountDecoratorTest extends KubernetesJobManagerTestBase {
 
     @Test
     void testDecoratedFlinkPodWithLogback() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
 
         final FlinkPod resultFlinkPod = flinkConfMountDecorator.decorateFlinkPod(baseFlinkPod);
 
@@ -201,8 +201,8 @@ class FlinkConfMountDecoratorTest extends KubernetesJobManagerTestBase {
 
     @Test
     void testDecoratedFlinkPodWithLog4jAndLogback() throws IOException {
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
-        KubernetesTestUtils.createTemporyFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOG4J_NAME);
+        KubernetesTestUtils.createTemporaryFile("some data", flinkConfDir, CONFIG_FILE_LOGBACK_NAME);
 
         final FlinkPod resultFlinkPod = flinkConfMountDecorator.decorateFlinkPod(baseFlinkPod);
 

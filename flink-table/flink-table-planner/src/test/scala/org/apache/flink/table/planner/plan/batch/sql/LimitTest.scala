@@ -22,7 +22,7 @@ import org.apache.flink.table.api._
 import org.apache.flink.table.connector.source.abilities.SupportsProjectionPushDown
 
 /**
- * The plan of following unit test in LimitTest.xml is a bit diffirent from LegacyLimitTest.xml.
+ * The plan of following unit test in LimitTest.xml is a bit different from LegacyLimitTest.xml.
  * Because the TestValuesTableSource has implemented [[SupportsProjectionPushDown]] while the
  * TestLegacyLimitableTableSource doesn't. So the Calc has been pushed down to the scan.
  * 1.testFetchWithOffsetAndLimitSource 2.testOrderByWithLimitSource 3.testLimitWithLimitSource

@@ -152,11 +152,11 @@ public class LocalStandaloneHBaseResource implements HBaseResource {
                 break;
             } else {
                 if (i == MAX_RETRIES) {
-                    LOG.error("Execute {} failed, retry times {}", command, i);
+                    LOG.error("Execute {} failed after retrying {} times", command, i);
                     throw new IllegalArgumentException(
-                            String.format("Execute %s failed aftert retry %s times", command, i));
+                            String.format("Execute %s failed after retrying %s times", command, i));
                 } else {
-                    LOG.warn("Execute {} failed, retry times {}", command, i);
+                    LOG.warn("Execute {} failed after retrying {} times", command, i);
                 }
             }
         }

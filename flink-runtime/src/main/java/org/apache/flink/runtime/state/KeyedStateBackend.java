@@ -78,7 +78,7 @@ public interface KeyedStateBackend<K>
     /**
      * @return A stream of all keys for the given state and namespace. Modifications to the state
      *     during iterating over it keys are not supported. Implementations go not make any ordering
-     *     guarantees about the returned tupes. Two records with the same key or namespace may not
+     *     guarantees about the returned tuples. Two records with the same key or namespace may not
      *     be returned near each other in the stream.
      * @param state State variable for which existing keys will be returned.
      */

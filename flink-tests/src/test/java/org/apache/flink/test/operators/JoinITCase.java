@@ -85,7 +85,7 @@ public class JoinITCase extends MultipleProgramsTestBase {
     }
 
     @Test
-    public void testeUDFJoinOnTuplesWithMultipleKeyFieldPositions() throws Exception {
+    public void testUDFJoinOnTuplesWithMultipleKeyFieldPositions() throws Exception {
         /*
          * UDF Join on tuples with multiple key field positions
          */

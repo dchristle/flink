@@ -43,7 +43,7 @@ public class MemoryManagerConcurrentModReleaseTest {
                             .setPageSize(segmentSize)
                             .build();
 
-            ArrayList<MemorySegment> segs = new ListWithConcModExceptionOnFirstAccess<>();
+            ArrayList<MemorySegment> segs = new ListWithConcurrentModificationExceptionOnFirstAccess<>();
             memMan.allocatePages(this, segs, numSegments);
 
             memMan.release(segs);
@@ -116,7 +116,7 @@ public class MemoryManagerConcurrentModReleaseTest {
         }
     }
 
-    private class ListWithConcModExceptionOnFirstAccess<E> extends ArrayList<E> {
+    private class ListWithConcurrentModificationExceptionOnFirstAccess<E> extends ArrayList<E> {
 
         private static final long serialVersionUID = -1623249699823349781L;
 
@@ -128,12 +128,12 @@ public class MemoryManagerConcurrentModReleaseTest {
                 return super.iterator();
             } else {
                 returnedIterator = true;
-                return new ConcFailingIterator<>();
+                return new ConcurrentFailingIterator<>();
             }
         }
     }
 
-    private class ConcFailingIterator<E> implements Iterator<E> {
+    private class ConcurrentFailingIterator<E> implements Iterator<E> {
 
         @Override
         public boolean hasNext() {

@@ -337,8 +337,7 @@ public class MailboxProcessor implements Closeable {
      */
     private boolean processMail(TaskMailbox mailbox, boolean singleStep) throws Exception {
         // Doing this check is an optimization to only have a volatile read in the expected hot
-        // path, locks are only
-        // acquired after this point.
+        // path, locks are only acquired after this point.
         boolean isBatchAvailable = mailbox.createBatch();
 
         // Take mails in a non-blockingly and execute them.

@@ -177,8 +177,8 @@ public class KafkaShortRetentionTestBase implements Serializable {
 
         // ----------- add consumer dataflow ----------
 
-        NonContinousOffsetsDeserializationSchema deserSchema =
-                new NonContinousOffsetsDeserializationSchema();
+        NonContinuousOffsetsDeserializationSchema deserSchema =
+                new NonContinuousOffsetsDeserializationSchema();
         FlinkKafkaConsumerBase<String> source = kafkaServer.getConsumer(topic, deserSchema, props);
 
         DataStreamSource<String> consuming = env.addSource(source);
@@ -189,7 +189,7 @@ public class KafkaShortRetentionTestBase implements Serializable {
         kafkaServer.deleteTestTopic(topic);
     }
 
-    private class NonContinousOffsetsDeserializationSchema
+    private class NonContinuousOffsetsDeserializationSchema
             implements KafkaDeserializationSchema<String> {
         private int numJumps;
         long nextExpected = 0;

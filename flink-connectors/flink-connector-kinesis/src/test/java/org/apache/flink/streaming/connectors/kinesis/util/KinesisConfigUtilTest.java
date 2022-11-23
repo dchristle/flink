@@ -254,7 +254,7 @@ public class KinesisConfigUtilTest {
                         .map(Enum::name)
                         .collect(Collectors.joining(", "));
         String msg =
-                "Invalid efo registration type in stream set in config. Valid values are: "
+                "Invalid EFO registration type in stream set in config. Valid values are: "
                         + errorMessage;
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(msg);
@@ -263,7 +263,7 @@ public class KinesisConfigUtilTest {
                 ConsumerConfigConstants.RECORD_PUBLISHER_TYPE,
                 ConsumerConfigConstants.RecordPublisherType.EFO.toString());
         testConfig.setProperty(
-                ConsumerConfigConstants.EFO_REGISTRATION_TYPE, "unrecogonizeEforegistrationtype");
+                ConsumerConfigConstants.EFO_REGISTRATION_TYPE, "unrecognizedEFOregistrationtype");
 
         KinesisConfigUtil.validateEfoConfiguration(testConfig, new ArrayList<>());
     }
@@ -319,7 +319,7 @@ public class KinesisConfigUtilTest {
     @Test
     public void testNoneTypeEfoRegistrationTypeWithNotEnoughMatchedStreamInConfig() {
         String msg =
-                "Invalid efo consumer arn settings for not providing consumer arns: "
+                "Invalid EFO consumer ARN settings for not providing consumer ARNs: "
                         + ConsumerConfigConstants.EFO_CONSUMER_ARN_PREFIX
                         + ".stream2";
         exception.expect(IllegalArgumentException.class);
@@ -449,7 +449,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDateforInitialTimestampInConfig() {
+    public void testUnparsableDateForInitialTimestampInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for initial timestamp for AT_TIMESTAMP initial position in stream.");
@@ -463,7 +463,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testIllegalValuEforInitialTimestampInConfig() {
+    public void testIllegalValueForInitialTimestampInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for initial timestamp for AT_TIMESTAMP initial position in stream.");
@@ -519,7 +519,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDatEforUserDefinedDatEformatForInitialTimestampInConfig() {
+    public void testUnparsableDateForUserDefinedDateFormatForInitialTimestampInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for initial timestamp for AT_TIMESTAMP initial position in stream.");
@@ -534,7 +534,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testDateStringForUserDefinedDatEformatForValidateOptionDateProperty() {
+    public void testDateStringForUserDefinedDateFormatForValidateOptionDateProperty() {
         String unixTimestamp = "2016-04-04";
         String pattern = "yyyy-MM-dd";
 
@@ -572,7 +572,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforListShardsBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForListShardsBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for list shards operation backoff exponential constant");
@@ -636,7 +636,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforGetRecordsBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForGetRecordsBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for get records operation backoff exponential constant");
@@ -701,7 +701,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforGetShardIteratorBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForGetShardIteratorBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for get shard iterator operation backoff exponential constant");
@@ -736,10 +736,10 @@ public class KinesisConfigUtilTest {
         Properties consumerProperties = new Properties();
         consumerProperties.setProperty(STREAM_INITIAL_TIMESTAMP, timestamp);
 
-        Date actualimestamp =
+        Date actualTimestamp =
                 KinesisConfigUtil.parseStreamTimestampStartingPosition(consumerProperties);
 
-        assertThat(actualimestamp).isEqualTo(expectedTimestamp);
+        assertThat(actualTimestamp).isEqualTo(expectedTimestamp);
     }
 
     @Test
@@ -752,10 +752,10 @@ public class KinesisConfigUtilTest {
         consumerProperties.setProperty(STREAM_INITIAL_TIMESTAMP, timestamp);
         consumerProperties.setProperty(STREAM_TIMESTAMP_DATE_FORMAT, format);
 
-        Date actualimestamp =
+        Date actualTimestamp =
                 KinesisConfigUtil.parseStreamTimestampStartingPosition(consumerProperties);
 
-        assertThat(actualimestamp).isEqualTo(expectedTimestamp);
+        assertThat(actualTimestamp).isEqualTo(expectedTimestamp);
     }
 
     @Test
@@ -828,7 +828,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforRegisterStreamBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForRegisterStreamBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for register stream operation backoff exponential constant");
@@ -893,7 +893,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforDeRegisterStreamBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForDeRegisterStreamBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for deregister stream operation backoff exponential constant");
@@ -946,7 +946,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforDescribeStreamConsumerBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForDescribeStreamConsumerBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for describe stream consumer operation backoff exponential constant");
@@ -998,7 +998,7 @@ public class KinesisConfigUtilTest {
     }
 
     @Test
-    public void testUnparsableDoublEforSubscribeToShardBackoffExponentialConstantInConfig() {
+    public void testUnparsableDoubleForSubscribeToShardBackoffExponentialConstantInConfig() {
         exception.expect(IllegalArgumentException.class);
         exception.expectMessage(
                 "Invalid value given for subscribe to shard operation backoff exponential constant");

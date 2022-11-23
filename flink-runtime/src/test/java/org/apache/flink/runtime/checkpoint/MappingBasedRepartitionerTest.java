@@ -240,10 +240,10 @@ public class MappingBasedRepartitionerTest {
     private List<List<String>> repartition(
             List<List<String>> oldStates,
             SubtaskStateMapper mapper,
-            int oldParalellism,
+            int oldParallelism,
             int newParallelism) {
         return new MappingBasedRepartitioner<String>(
-                        mapper.getNewToOldSubtasksMapping(oldParalellism, newParallelism))
-                .repartitionState(oldStates, oldParalellism, newParallelism);
+                        mapper.getNewToOldSubtasksMapping(oldParallelism, newParallelism))
+                .repartitionState(oldStates, oldParallelism, newParallelism);
     }
 }

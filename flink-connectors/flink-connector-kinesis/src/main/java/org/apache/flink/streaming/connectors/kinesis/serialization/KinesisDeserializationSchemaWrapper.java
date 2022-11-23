@@ -38,15 +38,15 @@ public class KinesisDeserializationSchemaWrapper<T> implements KinesisDeserializ
 
     public KinesisDeserializationSchemaWrapper(DeserializationSchema<T> deserializationSchema) {
         try {
-            Class<? extends DeserializationSchema> deserilizationClass =
+            Class<? extends DeserializationSchema> deserializationClass =
                     deserializationSchema.getClass();
-            if (!deserilizationClass
+            if (!deserializationClass
                     .getMethod("deserialize", byte[].class, Collector.class)
                     .isDefault()) {
                 throw new IllegalArgumentException(
                         "Kinesis consumer does not support DeserializationSchema that implements "
                                 + "deserialization with a Collector. Unsupported DeserializationSchema: "
-                                + deserilizationClass.getName());
+                                + deserializationClass.getName());
             }
         } catch (NoSuchMethodException e) {
             // swallow the exception

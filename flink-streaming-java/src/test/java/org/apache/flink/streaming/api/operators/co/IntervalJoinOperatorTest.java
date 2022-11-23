@@ -149,7 +149,7 @@ public class IntervalJoinOperatorTest {
     }
 
     @Test
-    public void testNegativeExclusiveAndNegativeExlusive() throws Exception {
+    public void testNegativeExclusiveAndNegativeExclusive() throws Exception {
 
         setupHarness(-3, false, -1, false)
                 .processElementsAndWatermarks(1, 4)
@@ -159,7 +159,7 @@ public class IntervalJoinOperatorTest {
     }
 
     @Test
-    public void testNegativeExclusiveAndPositiveExlusive() throws Exception {
+    public void testNegativeExclusiveAndPositiveExclusive() throws Exception {
 
         setupHarness(-1, false, 1, false)
                 .processElementsAndWatermarks(1, 4)
@@ -173,7 +173,7 @@ public class IntervalJoinOperatorTest {
     }
 
     @Test
-    public void testPositiveExclusiveAndPositiveExlusive() throws Exception {
+    public void testPositiveExclusiveAndPositiveExclusive() throws Exception {
 
         setupHarness(1, false, 3, false)
                 .processElementsAndWatermarks(1, 4)
@@ -213,7 +213,7 @@ public class IntervalJoinOperatorTest {
     }
 
     @Test
-    public void testStateCleanupNegativePositiveNegativeExlusive() throws Exception {
+    public void testStateCleanupNegativePositiveNegativeExclusive() throws Exception {
         setupHarness(-2, false, 1, false)
                 .processElement1(1)
                 .processElement1(2)
@@ -271,7 +271,7 @@ public class IntervalJoinOperatorTest {
     }
 
     @Test
-    public void testStateCleanupPositiveExlusivePositiveExclusive() throws Exception {
+    public void testStateCleanupPositiveExclusivePositiveExclusive() throws Exception {
         setupHarness(-1, false, 2, false)
                 .processElement1(1)
                 .processElement1(2)
@@ -359,7 +359,7 @@ public class IntervalJoinOperatorTest {
         try (TestHarness newTestHarness =
                 createTestHarness(
                         lowerBound, lowerBoundInclusive, upperBound, upperBoundInclusive)) {
-            // create new test harness from snapshpt
+            // create new test harness from snapshot
 
             newTestHarness.setup();
             newTestHarness.initializeState(handles);

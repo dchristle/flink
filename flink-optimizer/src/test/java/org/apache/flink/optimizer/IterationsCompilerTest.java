@@ -95,7 +95,7 @@ public class IterationsCompilerTest extends CompilerTestBase {
     }
 
     @Test
-    public void testTwoIterationsWithMapperInbetween() throws Exception {
+    public void testTwoIterationsWithMapperInBetween() throws Exception {
         try {
             ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
             env.setParallelism(8);

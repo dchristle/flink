@@ -114,7 +114,7 @@ public class JdbcFullTest extends JdbcDataTestBase {
         ExecutionEnvironment environment = ExecutionEnvironment.getExecutionEnvironment();
         JdbcInputFormat.JdbcInputFormatBuilder inputBuilder =
                 JdbcInputFormat.buildJdbcInputFormat()
-                        .setDrivername(getDbMetadata().getDriverClass())
+                        .setDriverName(getDbMetadata().getDriverClass())
                         .setDBUrl(getDbMetadata().getUrl())
                         .setQuery(SELECT_ALL_BOOKS)
                         .setRowTypeInfo(ROW_TYPE_INFO);

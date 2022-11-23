@@ -576,7 +576,7 @@ public class MutableHashTable<BT, PT> implements MemorySegmentSource {
         int buffersAvailable = 0;
         for (int i = 0; i < this.partitionsBeingBuilt.size(); i++) {
             final HashPartition<BT, PT> p = this.partitionsBeingBuilt.get(i);
-            p.setFurtherPatitioning(this.furtherPartitioning);
+            p.setFurtherPartitioning(this.furtherPartitioning);
             buffersAvailable +=
                     p.finalizeProbePhase(
                             this.availableMemory, this.partitionsPending, this.buildSideOuterJoin);
@@ -815,7 +815,7 @@ public class MutableHashTable<BT, PT> implements MemorySegmentSource {
         final int partitionFanOut = getPartitioningFanOutNoEstimates(this.availableMemory.size());
         if (partitionFanOut > MAX_NUM_PARTITIONS) {
             throw new RuntimeException(
-                    "Hash join partitions estimate exeeds maximum number of partitions.");
+                    "Hash join partitions estimate exceeds maximum number of partitions.");
         }
         createPartitions(partitionFanOut, 0);
 

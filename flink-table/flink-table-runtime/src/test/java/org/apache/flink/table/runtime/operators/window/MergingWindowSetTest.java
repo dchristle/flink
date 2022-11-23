@@ -212,7 +212,7 @@ public class MergingWindowSetTest {
 
         TestingMergeFunction mergeFunction = new TestingMergeFunction();
 
-        // add several non-overlapping initial windoww
+        // add several non-overlapping initial windows
 
         mergeFunction.reset();
         assertThat(windowSet.addWindow(new TimeWindow(0, 3), mergeFunction))
@@ -355,7 +355,7 @@ public class MergingWindowSetTest {
 
         TestingMergeFunction mergeFunction = new TestingMergeFunction();
 
-        // add several non-overlapping initial windoww
+        // add several non-overlapping initial windows
 
         mergeFunction.reset();
         assertThat(windowSet.addWindow(new TimeWindow(1, 3), mergeFunction))

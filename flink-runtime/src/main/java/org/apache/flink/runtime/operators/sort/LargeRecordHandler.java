@@ -96,7 +96,7 @@ public class LargeRecordHandler<T> {
 
     private int numKeyFields;
 
-    private final int maxFilehandles;
+    private final int maxFileHandles;
 
     private volatile boolean closed;
 
@@ -119,7 +119,7 @@ public class LargeRecordHandler<T> {
         this.memManager = checkNotNull(memManager);
         this.memory = checkNotNull(memory);
         this.memoryOwner = checkNotNull(memoryOwner);
-        this.maxFilehandles = maxFilehandles;
+        this.maxFileHandles = maxFilehandles;
         this.executionConfig = checkNotNull(executionConfig);
 
         checkArgument(maxFilehandles >= 2);
@@ -282,7 +282,7 @@ public class LargeRecordHandler<T> {
                                     keySerializer,
                                     keyComparator,
                                     executionConfig)
-                            .maxNumFileHandles(maxFilehandles)
+                            .maxNumFileHandles(maxFileHandles)
                             .sortBuffers(1)
                             .enableSpilling(ioManager, 1.0f)
                             .memory(memory)

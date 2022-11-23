@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
 /** Tests for multiple invocations of a plan. */
-class MultipleInvokationsTest {
+class MultipleInvocationsTest {
 
     @Test
     void testMultipleInvocationsGetPlan() {

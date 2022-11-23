@@ -153,7 +153,7 @@ public class JoinGlobalPropertiesCompatibilityTest {
     }
 
     @Test
-    public void checkInompatiblePartitionings() {
+    public void checkIncompatiblePartitionings() {
         try {
             final FieldList keysLeft = new FieldList(1);
             final FieldList keysRight = new FieldList(3);

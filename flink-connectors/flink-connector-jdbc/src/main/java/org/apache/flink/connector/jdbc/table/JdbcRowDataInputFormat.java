@@ -312,8 +312,8 @@ public class JdbcRowDataInputFormat extends RichInputFormat<RowData, InputSplit>
             this.connOptionsBuilder = new JdbcConnectionOptions.JdbcConnectionOptionsBuilder();
         }
 
-        public Builder setDrivername(String drivername) {
-            this.connOptionsBuilder.withDriverName(drivername);
+        public Builder setDriverName(String driverName) {
+            this.connOptionsBuilder.withDriverName(driverName);
             return this;
         }
 

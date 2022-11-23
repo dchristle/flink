@@ -212,7 +212,7 @@ public class KinesisStreamsTableApiIT {
         }
     }
 
-    private <T> List<T> readMessagesFromStream(Function<byte[], T> deserialiser) throws Exception {
+    private <T> List<T> readMessagesFromStream(Function<byte[], T> deserializer) throws Exception {
         String shardIterator =
                 kinesisClient
                         .getShardIterator(
@@ -229,7 +229,7 @@ public class KinesisStreamsTableApiIT {
                                 GetRecordsRequest.builder().shardIterator(shardIterator).build())
                         .records();
         List<T> messages = new ArrayList<>();
-        records.forEach(record -> messages.add(deserialiser.apply(record.data().asByteArray())));
+        records.forEach(record -> messages.add(deserializer.apply(record.data().asByteArray())));
         return messages;
     }
 

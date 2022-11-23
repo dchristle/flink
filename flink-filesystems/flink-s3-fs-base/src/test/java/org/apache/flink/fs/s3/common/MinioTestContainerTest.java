@@ -111,7 +111,7 @@ public class MinioTestContainerTest {
     }
 
     @Test
-    public void testS3EndpointNeedsToBeSpecifiedBeforeInitializingFileSyste() {
+    public void testS3EndpointNeedsToBeSpecifiedBeforeInitializingFileSystem() {
         assertThatThrownBy(() -> getTestContainer().initializeFileSystem(new Configuration()))
                 .isInstanceOf(IllegalArgumentException.class);
     }

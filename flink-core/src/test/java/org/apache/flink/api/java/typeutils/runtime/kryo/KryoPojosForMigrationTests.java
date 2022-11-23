@@ -26,7 +26,7 @@ import com.esotericsoftware.kryo.io.Output;
 import java.io.Serializable;
 import java.util.Objects;
 
-/** POJOS needed for {@link KryoPojosForMigrationTests}. */
+/** POJOs needed for {@link KryoPojosForMigrationTests}. */
 @SuppressWarnings("WeakerAccess")
 public class KryoPojosForMigrationTests {
 

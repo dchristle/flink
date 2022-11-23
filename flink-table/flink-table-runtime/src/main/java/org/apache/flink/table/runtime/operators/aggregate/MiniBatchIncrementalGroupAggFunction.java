@@ -37,7 +37,7 @@ import java.util.Map;
 import static org.apache.flink.table.runtime.util.StateConfigUtil.createTtlConfig;
 
 /**
- * Aggregate Function used for the incremental groupby (without window) aggregate in miniBatch mode.
+ * Aggregate Function used for the incremental groupBy (without window) aggregate in miniBatch mode.
  */
 public class MiniBatchIncrementalGroupAggFunction
         extends MapBundleFunction<RowData, RowData, RowData, RowData> {

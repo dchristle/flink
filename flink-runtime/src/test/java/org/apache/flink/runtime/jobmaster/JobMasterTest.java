@@ -244,7 +244,7 @@ class JobMasterTest {
     }
 
     @Test
-    void testTaskManagerRegistrationTriggersHeartbeating() throws Exception {
+    void testTaskManagerRegistrationTriggersHeartbeat() throws Exception {
         final CompletableFuture<ResourceID> heartbeatResourceIdFuture = new CompletableFuture<>();
         final UnresolvedTaskManagerLocation unresolvedTaskManagerLocation =
                 new LocalUnresolvedTaskManagerLocation();

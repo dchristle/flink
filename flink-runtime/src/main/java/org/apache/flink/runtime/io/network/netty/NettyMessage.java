@@ -365,13 +365,13 @@ public abstract class NettyMessage {
 
                 headerBuf = fillHeader(allocator);
 
-                CompositeByteBuf composityBuf = allocator.compositeDirectBuffer();
-                composityBuf.addComponent(headerBuf);
-                composityBuf.addComponent(buffer.asByteBuf());
+                CompositeByteBuf compositeBuf = allocator.compositeDirectBuffer();
+                compositeBuf.addComponent(headerBuf);
+                compositeBuf.addComponent(buffer.asByteBuf());
                 // update writer index since we have data written to the components:
-                composityBuf.writerIndex(
+                compositeBuf.writerIndex(
                         headerBuf.writerIndex() + buffer.asByteBuf().writerIndex());
-                return composityBuf;
+                return compositeBuf;
             } catch (Throwable t) {
                 handleException(headerBuf, buffer, t);
                 return null; // silence the compiler

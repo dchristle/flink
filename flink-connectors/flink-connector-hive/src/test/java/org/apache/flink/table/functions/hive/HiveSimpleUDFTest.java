@@ -138,7 +138,7 @@ public class HiveSimpleUDFTest {
                                     pattern.length() - 1) // shorter than pattern's length by 1
                         });
 
-        // Cannot find path "$.owne"
+        // Cannot find path "$.owner"
         assertThat(udf.eval(json, pattern)).isNull();
     }
 

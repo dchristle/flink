@@ -60,12 +60,12 @@ public class JobRecoveryITCase extends TestLogger {
 
     @Test
     public void testTaskFailureRecovery() throws Exception {
-        runTaskFailureRecoveryTest(createjobGraph(false));
+        runTaskFailureRecoveryTest(createJobGraph(false));
     }
 
     @Test
     public void testTaskFailureWithSlotSharingRecovery() throws Exception {
-        runTaskFailureRecoveryTest(createjobGraph(true));
+        runTaskFailureRecoveryTest(createJobGraph(true));
     }
 
     private void runTaskFailureRecoveryTest(final JobGraph jobGraph) throws Exception {
@@ -79,7 +79,7 @@ public class JobRecoveryITCase extends TestLogger {
         assertThat(jobResultFuture.get().isSuccess(), is(true));
     }
 
-    private JobGraph createjobGraph(boolean slotSharingEnabled) throws IOException {
+    private JobGraph createJobGraph(boolean slotSharingEnabled) throws IOException {
         final JobVertex sender = new JobVertex("Sender");
         sender.setParallelism(PARALLELISM);
         sender.setInvokableClass(TestingAbstractInvokables.Sender.class);

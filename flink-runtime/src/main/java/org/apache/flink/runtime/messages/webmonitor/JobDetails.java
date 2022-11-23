@@ -86,7 +86,7 @@ public class JobDetails implements Serializable {
     /**
      * The map holds the attempt number of the current execution attempt in the Execution, which is
      * considered as the representing execution for the subtask of the vertex. The keys and values
-     * are JobVertexID -> SubtaskIndex -> CurrenAttempts info.
+     * are JobVertexID -> SubtaskIndex -> CurrentAttempts info.
      *
      * <p>The field is excluded from the json. Any usage from the web UI and the history server is
      * not allowed.

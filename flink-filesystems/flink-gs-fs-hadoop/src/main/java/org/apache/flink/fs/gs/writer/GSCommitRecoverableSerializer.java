@@ -65,7 +65,7 @@ class GSCommitRecoverableSerializer implements SimpleVersionedSerializer<GSCommi
      *
      * @param recoverable The commit recoverable
      * @param dataOutputStream The data output stream
-     * @throws IOException On underlyilng failure
+     * @throws IOException On underlying failure
      */
     static void serializeCommitRecoverable(
             GSCommitRecoverable recoverable, DataOutputStream dataOutputStream) throws IOException {

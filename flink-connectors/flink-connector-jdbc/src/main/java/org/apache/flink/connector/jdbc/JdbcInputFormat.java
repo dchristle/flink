@@ -166,7 +166,7 @@ public class JdbcInputFormat extends RichInputFormat<Row, InputSplit>
                 statement.close();
             }
         } catch (SQLException se) {
-            LOG.info("Inputformat Statement couldn't be closed - " + se.getMessage());
+            LOG.info("InputFormat Statement couldn't be closed - " + se.getMessage());
         } finally {
             statement = null;
         }
@@ -257,7 +257,7 @@ public class JdbcInputFormat extends RichInputFormat<Row, InputSplit>
         try {
             resultSet.close();
         } catch (SQLException se) {
-            LOG.info("Inputformat ResultSet couldn't be closed - " + se.getMessage());
+            LOG.info("InputFormat ResultSet couldn't be closed - " + se.getMessage());
         }
     }
 
@@ -362,8 +362,8 @@ public class JdbcInputFormat extends RichInputFormat<Row, InputSplit>
             return this;
         }
 
-        public JdbcInputFormatBuilder setDrivername(String drivername) {
-            connOptionsBuilder.withDriverName(drivername);
+        public JdbcInputFormatBuilder setDriverName(String driverName) {
+            connOptionsBuilder.withDriverName(driverName);
             return this;
         }
 

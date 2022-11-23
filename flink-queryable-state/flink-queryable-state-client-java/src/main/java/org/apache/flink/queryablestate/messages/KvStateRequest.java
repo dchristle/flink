@@ -118,14 +118,14 @@ public class KvStateRequest extends MessageBody {
         public KvStateRequest deserializeMessage(ByteBuf buf) {
             JobID jobId = new JobID(buf.readLong(), buf.readLong());
 
-            int statenameLength = buf.readInt();
+            int stateNameLength = buf.readInt();
             Preconditions.checkArgument(
-                    statenameLength >= 0,
+                    stateNameLength >= 0,
                     "Negative length for state name. " + "This indicates a serialization error.");
 
             String stateName = "";
-            if (statenameLength > 0) {
-                byte[] name = new byte[statenameLength];
+            if (stateNameLength > 0) {
+                byte[] name = new byte[stateNameLength];
                 buf.readBytes(name);
                 stateName = new String(name, ConfigConstants.DEFAULT_CHARSET);
             }

@@ -39,7 +39,7 @@ public class InputChannelRecoveredStateHandlerTest extends RecoveredChannelState
     private static final int preAllocatedSegments = 3;
     private NetworkBufferPool networkBufferPool;
     private SingleInputGate inputGate;
-    private InputChannelRecoveredStateHandler icsHander;
+    private InputChannelRecoveredStateHandler icsHandler;
     private InputChannelInfo channelInfo;
 
     @Before
@@ -54,7 +54,7 @@ public class InputChannelRecoveredStateHandlerTest extends RecoveredChannelState
                         .setSegmentProvider(networkBufferPool)
                         .build();
 
-        icsHander = buildInputChannelStateHandler(inputGate);
+        icsHandler = buildInputChannelStateHandler(inputGate);
 
         channelInfo = new InputChannelInfo(0, 0);
     }
@@ -81,7 +81,7 @@ public class InputChannelRecoveredStateHandlerTest extends RecoveredChannelState
     public void testRecycleBufferBeforeRecoverWasCalled() throws Exception {
         // when: Request the buffer.
         RecoveredChannelStateHandler.BufferWithContext<Buffer> bufferWithContext =
-                icsHander.getBuffer(channelInfo);
+                icsHandler.getBuffer(channelInfo);
 
         // and: Recycle buffer outside.
         bufferWithContext.buffer.close();
@@ -97,10 +97,10 @@ public class InputChannelRecoveredStateHandlerTest extends RecoveredChannelState
     public void testRecycleBufferAfterRecoverWasCalled() throws Exception {
         // when: Request the buffer.
         RecoveredChannelStateHandler.BufferWithContext<Buffer> bufferWithContext =
-                icsHander.getBuffer(channelInfo);
+                icsHandler.getBuffer(channelInfo);
 
         // and: Recycle buffer outside.
-        icsHander.recover(channelInfo, 0, bufferWithContext);
+        icsHandler.recover(channelInfo, 0, bufferWithContext);
 
         // Close the gate for flushing the cached recycled buffers to the segment provider.
         inputGate.close();

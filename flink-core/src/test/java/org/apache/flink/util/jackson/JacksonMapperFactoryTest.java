@@ -91,7 +91,7 @@ class JacksonMapperFactoryTest {
     }
 
     @Test
-    void testObjectMappeDateTimeSupportedEnabled() throws Exception {
+    void testObjectMapperDateTimeSupportedEnabled() throws Exception {
         final ObjectMapper mapper = JacksonMapperFactory.createObjectMapper();
 
         final String instantString = "2022-08-07T12:00:33.107787800Z";

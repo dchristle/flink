@@ -470,7 +470,7 @@ public class HiveParserDMLHelper {
             throws SemanticException {
         if (isSubQuery) {
             // if it's subquery, we will skip create project in the case that the subquery and the
-            // project is identity. so when it's needed to do type conversion in subquey, we add a
+            // project is identity. so when it's needed to do type conversion in subquery, we add a
             // project to it directly instead of finding project in parent for we may well find not
             // project
             if (isTypeConversionNeeded(queryRelNode, targetCalcTypes)) {
