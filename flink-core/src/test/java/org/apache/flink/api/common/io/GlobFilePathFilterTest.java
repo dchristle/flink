@@ -153,7 +153,7 @@ public class GlobFilePathFilterTest {
     }
 
     @Test
-    public void testIncluePatternIsNull() {
+    public void testIncludePatternIsNull() {
         Assertions.assertThatThrownBy(
                         () -> new GlobFilePathFilter(null, Collections.<String>emptyList()))
                 .isInstanceOf(NullPointerException.class);

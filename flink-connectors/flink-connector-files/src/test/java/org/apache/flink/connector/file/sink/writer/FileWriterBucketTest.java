@@ -100,7 +100,7 @@ class FileWriterBucketTest {
                 createBucket(
                         recoverableWriter,
                         path,
-                        ON_CHECKPOING_ROLLING_POLICY,
+                        ON_CHECKPOINT_ROLLING_POLICY,
                         OutputFileConfig.builder().build());
         bucket.write("test-element", 0);
         List<FileSinkCommittable> fileSinkCommittables = bucket.prepareCommit(false);
@@ -494,12 +494,12 @@ class FileWriterBucketTest {
 
     private static final Encoder<String> ENCODER = new SimpleStringEncoder<>();
 
-    private static final Encoder<RowData> rowDataENCODER = new SimpleStringEncoder<>();
+    private static final Encoder<RowData> ROW_DATA_ENCODER = new SimpleStringEncoder<>();
 
     private static final RollingPolicy<String, String> DEFAULT_ROLLING_POLICY =
             DefaultRollingPolicy.builder().build();
 
-    private static final RollingPolicy<String, String> ON_CHECKPOING_ROLLING_POLICY =
+    private static final RollingPolicy<String, String> ON_CHECKPOINT_ROLLING_POLICY =
             OnCheckpointRollingPolicy.build();
 
     private static final EachElementRollingPolicy EACH_ELEMENT_ROLLING_POLICY =
@@ -528,7 +528,7 @@ class FileWriterBucketTest {
         return FileWriterBucket.getNew(
                 BUCKET_ID,
                 bucketPath,
-                new RowWiseBucketWriter(writer, rowDataENCODER),
+                new RowWiseBucketWriter(writer, ROW_DATA_ENCODER),
                 rollingPolicy,
                 outputFileConfig);
     }

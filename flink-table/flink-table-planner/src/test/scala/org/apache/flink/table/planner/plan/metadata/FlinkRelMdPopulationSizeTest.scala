@@ -394,12 +394,12 @@ class FlinkRelMdPopulationSizeTest extends FlinkRelMdHandlerTestBase {
   @Test
   def testGetPopulationSizeOnUnion(): Unit = {
     Array(logicalUnion, logicalUnionAll).foreach {
-      unoin =>
-        assertEquals(2.0, mq.getPopulationSize(unoin, ImmutableBitSet.of()))
-        assertEquals(4.0e7, mq.getPopulationSize(unoin, ImmutableBitSet.of(0)))
-        assertEquals(8.00002556e8, mq.getPopulationSize(unoin, ImmutableBitSet.of(1)))
-        assertEquals(2263.0, mq.getPopulationSize(unoin, ImmutableBitSet.of(2)))
-        assertEquals(8.2e8, mq.getPopulationSize(unoin, ImmutableBitSet.of(0, 2)))
+      union =>
+        assertEquals(2.0, mq.getPopulationSize(union, ImmutableBitSet.of()))
+        assertEquals(4.0e7, mq.getPopulationSize(union, ImmutableBitSet.of(0)))
+        assertEquals(8.00002556e8, mq.getPopulationSize(union, ImmutableBitSet.of(1)))
+        assertEquals(2263.0, mq.getPopulationSize(union, ImmutableBitSet.of(2)))
+        assertEquals(8.2e8, mq.getPopulationSize(union, ImmutableBitSet.of(0, 2)))
     }
   }
 

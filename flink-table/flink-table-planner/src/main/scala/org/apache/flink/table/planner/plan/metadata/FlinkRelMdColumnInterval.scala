@@ -871,7 +871,7 @@ class FlinkRelMdColumnInterval private extends MetadataHandler[ColumnInterval] {
     } else {
       fmq.getColumnInterval(join.getRight, index - nLeftColumns)
     }
-    // TODO if column at index position is EuqiJoinKey in a Inner Join, its interval is
+    // TODO if column at index position is EquiJoinKey in a Inner Join, its interval is
     // origin interval intersect interval in the pair joinJoinKey.
     // for example, if join is a InnerJoin with condition l.A = r.A
     // the valueInterval of l.A is the intersect of l.A with r.A

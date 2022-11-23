@@ -404,7 +404,7 @@ public class FutureUtilsTest extends TestLogger {
         assertThat(composeLatch.isTriggered(), is(true));
         assertThat(composeFuture.isDone(), is(true));
 
-        // check that tthis future is not exceptionally completed
+        // check that this future is not exceptionally completed
         composeFuture.get();
     }
 

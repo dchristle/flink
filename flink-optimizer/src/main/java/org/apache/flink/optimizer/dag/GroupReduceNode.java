@@ -81,7 +81,7 @@ public class GroupReduceNode extends SingleInputNode {
             if (Optimizer.HINT_LOCAL_STRATEGY_SORT.equals(localStrategy)) {
                 useCombiner = false;
             } else if (Optimizer.HINT_LOCAL_STRATEGY_COMBINING_SORT.equals(localStrategy)) {
-                if (!isCombineable()) {
+                if (!isCombinable()) {
                     Optimizer.LOG.warn(
                             "Strategy hint for GroupReduce '"
                                     + getOperator().getName()
@@ -93,7 +93,7 @@ public class GroupReduceNode extends SingleInputNode {
                         "Invalid local strategy hint for match contract: " + localStrategy);
             }
         } else {
-            useCombiner = isCombineable();
+            useCombiner = isCombinable();
         }
 
         // check if we can work with a grouping (simple reducer), or if we need ordering because of
@@ -138,7 +138,7 @@ public class GroupReduceNode extends SingleInputNode {
      *
      * @return True, if a combiner has been given, false otherwise.
      */
-    public boolean isCombineable() {
+    public boolean isCombinable() {
         return getOperator().isCombinable();
     }
 

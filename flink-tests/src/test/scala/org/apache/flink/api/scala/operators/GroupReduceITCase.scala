@@ -185,7 +185,7 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** check correctness of all-groupreduce for custom types */
+  /** check correctness of all-group-reduce for custom types */
   @Test
   def testCorrectnessOfAllGroupReduceForCustomTypes(): Unit = {
     val env = ExecutionEnvironment.getExecutionEnvironment
@@ -329,7 +329,7 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** check correctness of all-groupreduce for tuples with combine */
+  /** check correctness of all-group-reduce for tuples with combine */
   @Test
   def testCorrectnessOfAllGroupReduceForTuplesWithCombine(): Unit = {
 
@@ -451,9 +451,9 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** Test Pojo containing a Writable and Tuples */
+  /** Test POJO containing a Writable and Tuples */
   @Test
-  def testPojoContainigAWritableAndTuples(): Unit = {
+  def testPojoContainingAWritableAndTuples(): Unit = {
     val env = ExecutionEnvironment.getExecutionEnvironment
     val ds = CollectionDataSets.getPojoContainingTupleAndWritable(env)
 
@@ -473,7 +473,7 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** Test Tuple containing pojos and regular fields */
+  /** Test Tuple containing POJOs and regular fields */
   @Test
   def testTupleContainingPojosAndRegularFields(): Unit = {
     val env = ExecutionEnvironment.getExecutionEnvironment
@@ -587,7 +587,7 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** Test string-based definition on group sort, for two grouping keys with Pojos */
+  /** Test string-based definition on group sort, for two grouping keys with POJOs */
   @Test
   def testStringBasedDefinitionOnGroupSortForTwoGroupingKeysWithPojos(): Unit = {
     val env = ExecutionEnvironment.getExecutionEnvironment
@@ -712,7 +712,7 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** check correctness of sorted groupReduceon with Tuple2 keyselector sorting */
+  /** check correctness of sorted group-reduce with Tuple2 keyselector sorting */
   @Test
   def testTupleKeySelectorSortCombineOnTuple(): Unit = {
     val env = ExecutionEnvironment.getExecutionEnvironment
@@ -749,7 +749,7 @@ class GroupReduceITCase(mode: TestExecutionMode) extends MultipleProgramsTestBas
     assertEquals(expected, result)
   }
 
-  /** Test grouping with pojo containing multiple pojos (was a bug) */
+  /** Test grouping with POJO containing multiple POJOs (was a bug) */
   @Test
   def testGroupingWithPojoContainingMultiplePojos(): Unit = {
     val env = ExecutionEnvironment.getExecutionEnvironment

@@ -63,7 +63,7 @@ public class GlobalAggregateITCase extends AbstractTestBase {
     /**
      * Source Function that uses updateGlobalAggregate() functionality exposed via
      * StreamingRuntimeContext to validate communication with JobMaster and test both failure and
-     * sucess scenarios.
+     * success scenarios.
      */
     private static class TestSourceFunction extends RichSourceFunction<Integer> {
 
@@ -90,9 +90,9 @@ public class GlobalAggregateITCase extends AbstractTestBase {
             Integer expectedAccumulator = 0;
             int exceptionCount = 0;
             for (int i = 0; i < 5; i++) {
-                Integer actualAccumlator = 0;
+                Integer actualAccumulator = 0;
                 try {
-                    actualAccumlator =
+                    actualAccumulator =
                             aggregateManager.updateGlobalAggregate("testAgg", i, aggregateFunction);
                     expectedAccumulator += i;
                 } catch (IOException e) {
@@ -102,7 +102,7 @@ public class GlobalAggregateITCase extends AbstractTestBase {
                 if (expectFailures) {
                     assertEquals(i + 1, exceptionCount);
                 } else {
-                    assertEquals(expectedAccumulator, actualAccumlator);
+                    assertEquals(expectedAccumulator, actualAccumulator);
                 }
             }
         }

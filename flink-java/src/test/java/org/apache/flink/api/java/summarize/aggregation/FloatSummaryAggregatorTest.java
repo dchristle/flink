@@ -36,7 +36,7 @@ class FloatSummaryAggregatorTest {
      * <p>https://en.wikipedia.org/wiki/Anscombe%27s_quartet
      */
     @Test
-    void testAnscomesQuartetXValues() {
+    void testAnscombesQuartetXValues() {
 
         final Float[] q1x = {10.0f, 8.0f, 13.0f, 9.0f, 11.0f, 14.0f, 6.0f, 4.0f, 12.0f, 7.0f, 5.0f};
         final Float[] q4x = {8.0f, 8.0f, 8.0f, 8.0f, 8.0f, 8.0f, 8.0f, 19.0f, 8.0f, 8.0f, 8.0f};
@@ -63,7 +63,7 @@ class FloatSummaryAggregatorTest {
      * <p>https://en.wikipedia.org/wiki/Anscombe%27s_quartet
      */
     @Test
-    void testAnscomesQuartetYValues() {
+    void testAnscombesQuartetYValues() {
         final Float[] q1y = {
             8.04f, 6.95f, 7.58f, 8.81f, 8.33f, 9.96f, 7.24f, 4.26f, 10.84f, 4.82f, 5.68f
         };

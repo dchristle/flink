@@ -353,7 +353,7 @@ public class FlinkKinesisProducerTest extends TestLogger {
         moreElementsThread.trySync(deadline.timeLeftIfAny().toMillis());
 
         assertThat(moreElementsThread.isAlive())
-                .as("Prodcuer still blocks although the queue is flushed")
+                .as("Producer still blocks although the queue is flushed")
                 .isFalse();
 
         producer.getPendingRecordFutures().get(3).set(result);

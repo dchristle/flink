@@ -84,7 +84,7 @@ public class GlobalPropertiesPushdownTest {
     }
 
     @Test
-    public void testForcedReblancingNotPushedDown() {
+    public void testForcedRebalancingNotPushedDown() {
         try {
             RequestedGlobalProperties req = new RequestedGlobalProperties();
             req.setForceRebalancing();
@@ -97,8 +97,6 @@ public class GlobalPropertiesPushdownTest {
             fail(e.getMessage());
         }
     }
-
-    // --------------------------------------------------------------------------------------------
 
     private static SemanticProperties getAllPreservingSemProps() {
         return new SingleInputSemanticProperties.AllFieldsForwardedProperties();

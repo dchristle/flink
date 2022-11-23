@@ -122,7 +122,7 @@ public class FileWriterBucketStateSerializer
 
     private FileWriterBucketState deserializeV1(DataInputView in) throws IOException {
         final SimpleVersionedSerializer<RecoverableWriter.CommitRecoverable> commitableSerializer =
-                getCommitableSerializer();
+                getCommittableSerializer();
         final SimpleVersionedSerializer<RecoverableWriter.ResumeRecoverable> resumableSerializer =
                 getResumableSerializer();
 
@@ -227,7 +227,7 @@ public class FileWriterBucketStateSerializer
     }
 
     private SimpleVersionedSerializer<RecoverableWriter.CommitRecoverable>
-            getCommitableSerializer() {
+    getCommittableSerializer() {
         final OutputStreamBasedPartFileWriter.OutputStreamBasedPendingFileRecoverableSerializer
                 outputStreamBasedPendingFileRecoverableSerializer =
                         (OutputStreamBasedPartFileWriter

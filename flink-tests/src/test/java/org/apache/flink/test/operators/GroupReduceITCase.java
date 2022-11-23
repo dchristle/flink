@@ -72,7 +72,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
 
     @Test
     public void
-            testCorrectnessofGroupReduceOnTupleContainingPrimitiveByteArrayWithKeyFieldSelectors()
+    testCorrectnessOfGroupReduceOnTupleContainingPrimitiveByteArrayWithKeyFieldSelectors()
                     throws Exception {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
@@ -243,7 +243,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testCorrectnessOfAllGroupReduceForTuples() throws Exception {
         /*
-         * check correctness of all-groupreduce for tuples
+         * check correctness of all-group-reduce for tuples
          */
 
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
@@ -262,7 +262,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testCorrectnessOfAllGroupReduceForCustomTypes() throws Exception {
         /*
-         * check correctness of all-groupreduce for custom types
+         * check correctness of all-group-reduce for custom types
          */
 
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
@@ -393,7 +393,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testCorrectnessOfAllGroupReduceForTuplesWithCombine() throws Exception {
         /*
-         * check correctness of all-groupreduce for tuples with combine
+         * check correctness of all-group-reduce for tuples with combine
          */
         org.junit.Assume.assumeTrue(mode != TestExecutionMode.COLLECTION);
 
@@ -419,7 +419,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     }
 
     @Test
-    public void testCorrectnessOfGroupreduceWithDescendingGroupSort() throws Exception {
+    public void testCorrectnessOfGroupReduceWithDescendingGroupSort() throws Exception {
         /*
          * check correctness of groupReduce with descending group sort
          */
@@ -580,7 +580,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     }
 
     @Test
-    public void testPojoContainigWritableAndTuples() throws Exception {
+    public void testPojoContainingWritableAndTuples() throws Exception {
         /*
          * Test Pojo containing a Writable and Tuples
          */
@@ -612,7 +612,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testTupleContainingPojosAndRegularFields() throws Exception {
         /*
-         * Test Tuple containing pojos and regular fields
+         * Test Tuple containing POJOs and regular fields
          */
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
@@ -761,7 +761,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testStringBasedDefinitionOnGroupSortForTwoGroupingKeysWithPojos() throws Exception {
         /*
-         * Test string-based definition on group sort, for two grouping keys with Pojos
+         * Test string-based definition on group sort, for two grouping keys with POJOs
          */
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
@@ -951,7 +951,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testTupleKeySelectorSortCombineOnTuple() throws Exception {
         /*
-         * check correctness of sorted groupReduceon with Tuple2 keyselector sorting
+         * check correctness of sorted groupReduce with Tuple2 keyselector sorting
          */
 
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
@@ -1000,7 +1000,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testGroupingWithPojoContainingMultiplePojos() throws Exception {
         /*
-         * Test grouping with pojo containing multiple pojos (was a bug)
+         * Test grouping with pojo containing multiple POJOs (was a bug)
          */
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
@@ -1034,7 +1034,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
     @Test
     public void testJavaCollectionsWithinPojos() throws Exception {
         /*
-         * Test Java collections within pojos ( == test kryo)
+         * Test Java collections within POJOs ( == test kryo)
          */
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(1);
@@ -1205,7 +1205,7 @@ public class GroupReduceITCase extends MultipleProgramsTestBase {
      * @throws Exception
      */
     @Test
-    public void testJodatimeDateTimeWithKryo() throws Exception {
+    public void testJodaTimeDateTimeWithKryo() throws Exception {
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         DataSet<Tuple2<Integer, DateTime>> ds = env.fromElements(new Tuple2<>(1, DateTime.now()));
         DataSet<Tuple2<Integer, DateTime>> reduceDs = ds.groupBy("f1").sum(0).project(0);

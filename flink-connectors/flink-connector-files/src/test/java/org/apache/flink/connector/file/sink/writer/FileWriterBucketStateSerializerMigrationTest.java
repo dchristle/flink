@@ -202,7 +202,7 @@ class FileWriterBucketStateSerializerMigrationTest {
                             .map(file -> file.getFileName().toString())
                             .collect(Collectors.toSet());
 
-            // before retsoring all file has "inprogress"
+            // before restoring all file has "inprogress"
             for (int i = 0; i < noOfPendingCheckpoints; i++) {
                 final String part = ".part-0-" + i + ".inprogress";
                 assertThat(beforeRestorePaths).anyMatch(s -> s.startsWith(part));

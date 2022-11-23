@@ -63,7 +63,7 @@ public class GenericCsvInputFormatTest {
     }
 
     @After
-    public void setdown() throws Exception {
+    public void teardown() throws Exception {
         if (this.format != null) {
             this.format.close();
         }

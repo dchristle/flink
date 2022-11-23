@@ -82,7 +82,7 @@ class FlinkRewriteSubQueryRule(
   private def isScalarQuery(n: RexNode): Boolean = n.isA(SqlKind.SCALAR_QUERY)
 
   private def getSupportedScalarQuery(call: RexCall): Option[RexSubQuery] = {
-    // check the RexNode is a RexLiteral which's value is between 0 and 1
+    // check the RexNode is a RexLiteral valued between 0 and 1
     def isBetween0And1(n: RexNode, include0: Boolean, include1: Boolean): Boolean = {
       n match {
         case l: RexLiteral =>

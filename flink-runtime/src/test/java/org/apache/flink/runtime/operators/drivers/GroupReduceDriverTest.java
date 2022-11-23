@@ -238,7 +238,7 @@ public class GroupReduceDriverTest {
             try {
                 DriverTestData.compareTupleArrays(expected, res);
                 Assert.fail(
-                        "Accumulationg mutable objects is expected to result in incorrect values.");
+                        "Accumulating mutable objects is expected to result in incorrect values.");
             } catch (AssertionError e) {
                 // expected
             }
