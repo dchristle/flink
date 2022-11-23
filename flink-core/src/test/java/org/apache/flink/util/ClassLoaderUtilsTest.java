@@ -63,8 +63,8 @@ public class ClassLoaderUtilsTest {
 
             // file with some random contents
             invalidJar = File.createTempFile("flink-url-test", ".tmp");
-            try (FileOutputStream invalidout = new FileOutputStream(invalidJar)) {
-                invalidout.write(
+            try (FileOutputStream invalidJarOutputStream = new FileOutputStream(invalidJar)) {
+                invalidJarOutputStream.write(
                         new byte[] {
                             -1, 1, -2, 3, -3, 4,
                         });

@@ -164,7 +164,7 @@ public class ClientTest extends TestLogger {
 
                 assertEquals(MessageType.REQUEST, MessageSerializer.deserializeHeader(buf));
                 long requestId = MessageSerializer.getRequestId(buf);
-                KvStateInternalRequest deserRequest = serializer.deserializeRequest(buf);
+                KvStateInternalRequest deserializeRequest = serializer.deserializeRequest(buf);
 
                 buf.release();
 

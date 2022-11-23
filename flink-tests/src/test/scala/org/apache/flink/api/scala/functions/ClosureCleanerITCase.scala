@@ -66,7 +66,7 @@ class ClosureCleanerITCase(mode: TestExecutionMode) extends MultipleProgramsTest
   }
 
   @Test
-  def testClassWithoutDefaulConstructor(): Unit = {
+  def testClassWithoutDefaultConstructor(): Unit = {
     val obj = new TestClassWithoutDefaultConstructor(5)
     obj.run(resultPath)
     result = "30"
