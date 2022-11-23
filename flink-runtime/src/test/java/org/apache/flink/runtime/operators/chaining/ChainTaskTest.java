@@ -229,7 +229,7 @@ public class ChainTaskTest extends TaskTestBase {
         final int keyCnt = 100;
         final int valCnt = 10;
         final File tempTestFile = new File(tempFolder.getRoot(), UUID.randomUUID().toString());
-        DataSourceTaskTest.InputFilePreparator.prepareInputFile(
+        DataSourceTaskTest.InputFilePreparer.prepareInputFile(
                 new UniformRecordGenerator(keyCnt, valCnt, false), tempTestFile, true);
         initEnvironment(MEMORY_MANAGER_SIZE, NETWORK_BUFFER_SIZE);
         addOutput(outList);

@@ -550,7 +550,7 @@ class DataStreamTest extends AbstractTestBase {
     assert(mapFunction == getFunctionForDataStream(map))
     assert(getFunctionForDataStream(map.map(x => 0)).isInstanceOf[MapFunction[_, _]])
 
-    val statefulMap2 = src
+    val statefulMap1 = src
       .keyBy(x => x)
       .mapWithState((in, state: Option[Long]) => (in, None.asInstanceOf[Option[Long]]))
 
@@ -566,7 +566,7 @@ class DataStreamTest extends AbstractTestBase {
           .flatMap((x: Int, out: Collector[Int]) => {}))
         .isInstanceOf[FlatMapFunction[_, _]])
 
-    val statefulfMap2 = src
+    val statefulMap2 = src
       .keyBy(x => x)
       .flatMapWithState((in, state: Option[Long]) => (List(in), None.asInstanceOf[Option[Long]]))
 

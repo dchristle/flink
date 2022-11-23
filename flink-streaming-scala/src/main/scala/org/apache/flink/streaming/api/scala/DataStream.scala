@@ -95,7 +95,7 @@ class DataStream[T](stream: JavaStream[T]) {
   private[flink] def getId = stream.getId()
 
   // --------------------------------------------------------------------------
-  //  Scalaesk accessors
+  //  Scala-style accessors
   // --------------------------------------------------------------------------
 
   /** Gets the underlying java DataStream object. */
@@ -130,8 +130,7 @@ class DataStream[T](stream: JavaStream[T]) {
       case ds: SingleOutputStreamOperator[T] => ds.setMaxParallelism(maxParallelism)
       case _ =>
         throw new UnsupportedOperationException(
-          "Operator " + stream + " cannot set the maximum" +
-            "paralllelism")
+          "Operator " + stream + " cannot set the maximum parallelism.")
     }
 
     this

@@ -61,7 +61,7 @@ public class DataSourceTaskTest extends TaskTestBase {
 
         this.outList = new ArrayList<Record>();
         File tempTestFile = new File(tempFolder.getRoot(), UUID.randomUUID().toString());
-        InputFilePreparator.prepareInputFile(
+        InputFilePreparer.prepareInputFile(
                 new UniformRecordGenerator(keyCnt, valCnt, false), tempTestFile, true);
 
         super.initEnvironment(MEMORY_MANAGER_SIZE, NETWORK_BUFFER_SIZE);
@@ -142,7 +142,7 @@ public class DataSourceTaskTest extends TaskTestBase {
 
         this.outList = new NirvanaOutputList();
         File tempTestFile = new File(tempFolder.getRoot(), UUID.randomUUID().toString());
-        InputFilePreparator.prepareInputFile(
+        InputFilePreparer.prepareInputFile(
                 new UniformRecordGenerator(keyCnt, valCnt, false), tempTestFile, false);
 
         super.initEnvironment(MEMORY_MANAGER_SIZE, NETWORK_BUFFER_SIZE);
@@ -174,7 +174,7 @@ public class DataSourceTaskTest extends TaskTestBase {
         super.initEnvironment(MEMORY_MANAGER_SIZE, NETWORK_BUFFER_SIZE);
         super.addOutput(new NirvanaOutputList());
         File tempTestFile = new File(tempFolder.getRoot(), UUID.randomUUID().toString());
-        InputFilePreparator.prepareInputFile(
+        InputFilePreparer.prepareInputFile(
                 new UniformRecordGenerator(keyCnt, valCnt, false), tempTestFile, false);
 
         final DataSourceTask<Record> testTask = new DataSourceTask<>(this.mockEnv);
@@ -210,7 +210,7 @@ public class DataSourceTaskTest extends TaskTestBase {
         Assert.assertTrue("Temp output file does not exist", tempTestFile.exists());
     }
 
-    public static class InputFilePreparator {
+    public static class InputFilePreparer {
         public static void prepareInputFile(
                 MutableObjectIterator<Record> inIt, File inputFile, boolean insertInvalidData)
                 throws IOException {
@@ -324,7 +324,7 @@ public class DataSourceTaskTest extends TaskTestBase {
         public Record readRecord(Record target, byte[] record, int offset, int numBytes) {
 
             if (this.cnt == 10) {
-                throw new RuntimeException("Excpected Test Exception.");
+                throw new RuntimeException("Expected test Exception.");
             }
 
             this.cnt++;

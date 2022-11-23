@@ -116,7 +116,7 @@ public class DataStreamCsvITCase {
                 "Beijing,39.905,116.3914,China,CN,Beijing,primary,19433000"
             };
 
-    static final CityPojo[] POJOS =
+    static final CityPojo[] pojos =
             new CityPojo[] {
                 new CityPojo(
                         "Berlin",
@@ -157,7 +157,7 @@ public class DataStreamCsvITCase {
         final CsvReaderFormat<CityPojo> csvFormat = CsvReaderFormat.forPojo(CityPojo.class);
         final List<CityPojo> result = initializeSourceAndReadData(outDir, csvFormat);
 
-        assertThat(Arrays.asList(POJOS)).isEqualTo(result);
+        assertThat(Arrays.asList(pojos)).isEqualTo(result);
     }
 
     @Test
@@ -174,7 +174,7 @@ public class DataStreamCsvITCase {
                         TypeInformation.of(CityPojo.class));
         final List<CityPojo> result = initializeSourceAndReadData(outDir, csvFormat);
 
-        assertThat(Arrays.asList(POJOS)).isEqualTo(result);
+        assertThat(Arrays.asList(pojos)).isEqualTo(result);
     }
 
     @Test
@@ -186,8 +186,8 @@ public class DataStreamCsvITCase {
         final List<CityPojo> result = initializeSourceAndReadData(outDir, csvFormat);
 
         List<CityPojo> expected = new ArrayList<>();
-        expected.add(POJOS[0]);
-        expected.add(POJOS[2]);
+        expected.add(pojos[0]);
+        expected.add(pojos[2]);
 
         assertThat(expected).isEqualTo(result);
     }
@@ -199,9 +199,9 @@ public class DataStreamCsvITCase {
         env.setParallelism(PARALLELISM);
 
         // fromCollection is not bounded, using fromSequence instead
-        final List<CityPojo> pojosList = Arrays.asList(POJOS); // needs to be Serializable
+        final List<CityPojo> pojosList = Arrays.asList(pojos); // needs to be Serializable
         final DataStream<Integer> sequence =
-                env.fromSequence(0, POJOS.length - 1).map(Long::intValue);
+                env.fromSequence(0, pojos.length - 1).map(Long::intValue);
         final DataStream<CityPojo> stream = sequence.map(pojosList::get).returns(CityPojo.class);
 
         FileSink<CityPojo> sink =
