@@ -18,7 +18,7 @@
 package org.apache.flink.changelog.fs;
 
 import org.apache.flink.api.common.time.Deadline;
-import org.apache.flink.changelog.fs.RetryingExecutor.RetriableAction;
+import org.apache.flink.changelog.fs.RetryingExecutor.RetryableAction;
 import org.apache.flink.core.testutils.CompletedScheduledFuture;
 import org.apache.flink.runtime.testutils.DirectScheduledExecutorService;
 import org.apache.flink.util.function.RunnableWithException;
@@ -83,7 +83,7 @@ class RetryingExecutorTest {
                         metrics.getTotalAttemptsPerUpload())) {
             executor.execute(
                     RetryPolicy.fixed(numAttempts, timeoutMs, 0),
-                    new RetriableAction<Integer>() {
+                    new RetryableAction<Integer>() {
                         private final AtomicInteger attemptsCounter = new AtomicInteger(0);
 
                         @Override
@@ -251,8 +251,8 @@ class RetryingExecutorTest {
         assertThat(attemptsMade.get()).isEqualTo(expectedAttempts);
     }
 
-    private static RetriableAction<?> runnableToAction(RunnableWithException action) {
-        return new RetriableAction<Object>() {
+    private static RetryableAction<?> runnableToAction(RunnableWithException action) {
+        return new RetryableAction<Object>() {
             @Override
             public Object tryExecute() throws Exception {
                 action.run();

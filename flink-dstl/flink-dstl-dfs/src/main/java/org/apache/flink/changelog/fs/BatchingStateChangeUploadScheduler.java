@@ -230,7 +230,7 @@ class BatchingStateChangeUploadScheduler implements StateChangeUploadScheduler {
                 return;
             }
             uploadBatchSizes.update(tasks.size());
-            retryingExecutor.execute(retryPolicy, asRetriableAction(tasks));
+            retryingExecutor.execute(retryPolicy, asRetryableAction(tasks));
         } catch (Throwable t) {
             tasks.forEach(task -> task.fail(t));
             if (findThrowable(t, IOException.class).isPresent()) {
@@ -298,9 +298,9 @@ class BatchingStateChangeUploadScheduler implements StateChangeUploadScheduler {
         return availabilityHelper;
     }
 
-    private RetryingExecutor.RetriableAction<UploadTasksResult> asRetriableAction(
+    private RetryingExecutor.RetryableAction<UploadTasksResult> asRetryableAction(
             Collection<UploadTask> tasks) {
-        return new RetryingExecutor.RetriableAction<UploadTasksResult>() {
+        return new RetryingExecutor.RetryableAction<UploadTasksResult>() {
             @Override
             public UploadTasksResult tryExecute() throws Exception {
                 return delegate.upload(tasks);

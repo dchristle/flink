@@ -35,7 +35,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.apache.flink.util.ExceptionUtils.firstOrSuppressed;
 
 /**
- * A {@link RetriableAction} executor that schedules a next attempt upon timeout based on {@link
+ * A {@link RetryableAction} executor that schedules a next attempt upon timeout based on {@link
  * RetryPolicy}. Aimed to curb tail latencies
  */
 class RetryingExecutor implements AutoCloseable {
@@ -82,10 +82,10 @@ class RetryingExecutor implements AutoCloseable {
      * <p>NOTE: the action must be idempotent because multiple instances of it can be executed
      * concurrently (if the policy allows retries).
      */
-    <T> void execute(RetryPolicy retryPolicy, RetriableAction<T> action) {
+    <T> void execute(RetryPolicy retryPolicy, RetryableAction<T> action) {
         LOG.debug("execute with retryPolicy: {}", retryPolicy);
-        RetriableActionAttempt<T> task =
-                RetriableActionAttempt.initialize(
+        RetryableActionAttempt<T> task =
+                RetryableActionAttempt.initialize(
                         action,
                         retryPolicy,
                         blockingExecutor,
@@ -126,7 +126,7 @@ class RetryingExecutor implements AutoCloseable {
      *
      * <p>NOTE: the action must be idempotent because of potential concurrent attempts.
      */
-    interface RetriableAction<Result> {
+    interface RetryableAction<Result> {
         /**
          * Make an attempt to execute this action.
          *
@@ -158,8 +158,8 @@ class RetryingExecutor implements AutoCloseable {
         void handleFailure(Throwable throwable);
     }
 
-    private static final class RetriableActionAttempt<Result> implements Runnable {
-        private final RetriableAction<Result> action;
+    private static final class RetryableActionAttempt<Result> implements Runnable {
+        private final RetryableAction<Result> action;
         private final ScheduledExecutorService blockingExecutor;
         private final ScheduledExecutorService timer;
         private final int attemptNumber;
@@ -190,10 +190,10 @@ class RetryingExecutor implements AutoCloseable {
 
         private final Histogram totalAttemptsPerTaskHistogram;
 
-        private RetriableActionAttempt(
+        private RetryableActionAttempt(
                 int attemptNumber,
                 AtomicBoolean actionCompleted,
-                RetriableAction<Result> action,
+                RetryableAction<Result> action,
                 RetryPolicy retryPolicy,
                 ScheduledExecutorService blockingExecutor,
                 ScheduledExecutorService timer,
@@ -263,7 +263,7 @@ class RetryingExecutor implements AutoCloseable {
             }
         }
 
-        private void scheduleNext(long nextAttemptDelay, RetriableActionAttempt<Result> next) {
+        private void scheduleNext(long nextAttemptDelay, RetryableActionAttempt<Result> next) {
             if (nextAttemptDelay == 0L) {
                 blockingExecutor.submit(next);
             } else if (nextAttemptDelay > 0L) {
@@ -271,14 +271,14 @@ class RetryingExecutor implements AutoCloseable {
             }
         }
 
-        private static <T> RetriableActionAttempt<T> initialize(
-                RetriableAction<T> runnable,
+        private static <T> RetryableActionAttempt<T> initialize(
+                RetryableAction<T> runnable,
                 RetryPolicy retryPolicy,
                 ScheduledExecutorService blockingExecutor,
                 Histogram attemptsPerTaskHistogram,
                 Histogram totalAttemptsPerTaskHistogram,
                 ScheduledExecutorService timer) {
-            return new RetriableActionAttempt(
+            return new RetryableActionAttempt(
                     1,
                     new AtomicBoolean(false),
                     runnable,
@@ -291,8 +291,8 @@ class RetryingExecutor implements AutoCloseable {
                     totalAttemptsPerTaskHistogram);
         }
 
-        private RetriableActionAttempt<Result> next() {
-            return new RetriableActionAttempt<>(
+        private RetryableActionAttempt<Result> next() {
+            return new RetryableActionAttempt<>(
                     attemptNumber + 1,
                     actionCompleted,
                     action,
