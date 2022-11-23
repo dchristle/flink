@@ -65,7 +65,7 @@ public class CoGroupRawDriver<IT1, IT2, OT> implements Driver<CoGroupFunction<IT
         final TaskConfig config = this.taskContext.getTaskConfig();
         if (config.getDriverStrategy() != DriverStrategy.CO_GROUP_RAW) {
             throw new Exception(
-                    "Unrecognized driver strategy for CoGoup Python driver: "
+                    "Unrecognized driver strategy for CoGroup Python driver: "
                             + config.getDriverStrategy().name());
         }
 

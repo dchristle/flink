@@ -96,7 +96,7 @@ public class ConnectedComponents {
 
         // read vertex and edge data
         DataSet<Long> vertices = getVertexDataSet(env, params);
-        DataSet<Tuple2<Long, Long>> edges = getEdgeDataSet(env, params).flatMap(new UndirectEdge());
+        DataSet<Tuple2<Long, Long>> edges = getEdgeDataSet(env, params).flatMap(new UndirectedEdge());
 
         // assign the initial components (equal to the vertex id)
         DataSet<Tuple2<Long, Long>> verticesWithInitialId =
@@ -154,7 +154,7 @@ public class ConnectedComponents {
      * Undirected edges by emitting for each input edge the input edges itself and an inverted
      * version.
      */
-    public static final class UndirectEdge
+    public static final class UndirectedEdge
             implements FlatMapFunction<Tuple2<Long, Long>, Tuple2<Long, Long>> {
         Tuple2<Long, Long> invertedEdge = new Tuple2<Long, Long>();
 

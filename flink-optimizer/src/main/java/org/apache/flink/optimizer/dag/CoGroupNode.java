@@ -66,11 +66,11 @@ public class CoGroupNode extends TwoInputNode {
         return this.dataProperties;
     }
 
-    public void makeCoGroupWithSolutionSet(int solutionsetInputIndex) {
+    public void makeCoGroupWithSolutionSet(int solutionSetInputIndex) {
         OperatorDescriptorDual op;
-        if (solutionsetInputIndex == 0) {
+        if (solutionSetInputIndex == 0) {
             op = new CoGroupWithSolutionSetFirstDescriptor(keys1, keys2);
-        } else if (solutionsetInputIndex == 1) {
+        } else if (solutionSetInputIndex == 1) {
             op = new CoGroupWithSolutionSetSecondDescriptor(keys1, keys2);
         } else {
             throw new IllegalArgumentException();

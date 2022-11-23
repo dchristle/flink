@@ -153,7 +153,7 @@ public abstract class CompilerTestBase extends TestLogger implements java.io.Ser
                                 shouldAdd = false;
                             }
                         } else {
-                            throw new RuntimeException("Unrecodnized case in test.");
+                            throw new RuntimeException("Unrecognized case in test.");
                         }
                     }
                 }

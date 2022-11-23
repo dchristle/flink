@@ -100,18 +100,18 @@ public class CompositeKeySerializationUtilsTest {
             CompositeKeySerializationUtils.writeNameSpace(
                     orgNamespace, IntSerializer.INSTANCE, outputView, false);
             inputView.setBuffer(outputView.getCopyOfBuffer());
-            int deserializedNamepsace =
+            int deserializedNamespace =
                     CompositeKeySerializationUtils.readNamespace(
                             IntSerializer.INSTANCE, inputView, false);
-            Assert.assertEquals(orgNamespace, deserializedNamepsace);
+            Assert.assertEquals(orgNamespace, deserializedNamespace);
 
             CompositeKeySerializationUtils.writeNameSpace(
                     orgNamespace, IntSerializer.INSTANCE, outputView, true);
             inputView.setBuffer(outputView.getCopyOfBuffer());
-            deserializedNamepsace =
+            deserializedNamespace =
                     CompositeKeySerializationUtils.readNamespace(
                             IntSerializer.INSTANCE, inputView, true);
-            Assert.assertEquals(orgNamespace, deserializedNamepsace);
+            Assert.assertEquals(orgNamespace, deserializedNamespace);
         }
     }
 }

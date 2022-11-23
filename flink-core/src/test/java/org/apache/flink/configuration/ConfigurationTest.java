@@ -139,7 +139,6 @@ public class ConfigurationTest extends TestLogger {
         assertEquals("11", cfg.getValue(presentIntOption));
 
         // test getting default when no value is present
-
         ConfigOption<String> stringOption =
                 ConfigOptions.key("test").stringType().defaultValue("my-beautiful-default");
         ConfigOption<Integer> intOption = ConfigOptions.key("test2").intType().defaultValue(87);
@@ -304,15 +303,15 @@ public class ConfigurationTest extends TestLogger {
         ConfigOption<Integer> deprecatedOption =
                 ConfigOptions.key("c").intType().defaultValue(-1).withDeprecatedKeys("d", "b");
 
-        ConfigOption<Integer> unexistedOption =
+        ConfigOption<Integer> nonExistentOption =
                 ConfigOptions.key("e").intType().defaultValue(-1).withDeprecatedKeys("f", "g", "j");
 
-        assertEquals("Wrong expectation about size", cfg.keySet().size(), 2);
+        assertEquals("Incorrect expected size", cfg.keySet().size(), 2);
         assertTrue("Expected 'validOption' is removed", cfg.removeConfig(validOption));
-        assertEquals("Wrong expectation about size", cfg.keySet().size(), 1);
+        assertEquals("Incorrect expected size", cfg.keySet().size(), 1);
         assertTrue("Expected 'existedOption' is removed", cfg.removeConfig(deprecatedOption));
-        assertEquals("Wrong expectation about size", cfg.keySet().size(), 0);
-        assertFalse("Expected 'unexistedOption' is not removed", cfg.removeConfig(unexistedOption));
+        assertEquals("Incorrect expected size", cfg.keySet().size(), 0);
+        assertFalse("Expected 'nonExistentOption' is not removed", cfg.removeConfig(nonExistentOption));
     }
 
     @Test
@@ -326,7 +325,7 @@ public class ConfigurationTest extends TestLogger {
         cfg.setInteger(key2 + ".f2", 44);
         cfg.setInteger("e.f", 1337);
 
-        assertFalse(cfg.removeKey("not-existing-key"));
+        assertFalse(cfg.removeKey("non-existent-key"));
         assertTrue(cfg.removeKey(key1));
         assertFalse(cfg.containsKey(key1));
 

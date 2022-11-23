@@ -101,7 +101,7 @@ public class CombineTaskExternalITCase extends DriverTestBase<RichGroupReduceFun
         }
 
         Assert.assertTrue(
-                "Resultset size was " + aggMap.size() + ". Expected was " + keyCnt,
+                "Result set size was " + aggMap.size() + ". Expected was " + keyCnt,
                 aggMap.size() == keyCnt);
 
         for (IntValue integer : aggMap.values()) {
@@ -139,8 +139,8 @@ public class CombineTaskExternalITCase extends DriverTestBase<RichGroupReduceFun
             expSum += i;
         }
 
-        // wee need to do the final aggregation manually in the test, because the
-        // combiner is not guaranteed to do that
+        // We need to do the final aggregation manually in the test, because the combiner is not
+        // guaranteed to do that.
         final HashMap<IntValue, IntValue> aggMap = new HashMap<>();
         for (Record record : this.outList) {
             IntValue key = new IntValue();
@@ -156,7 +156,7 @@ public class CombineTaskExternalITCase extends DriverTestBase<RichGroupReduceFun
         }
 
         Assert.assertTrue(
-                "Resultset size was " + aggMap.size() + ". Expected was " + keyCnt,
+                "Result set size was " + aggMap.size() + ". Expected was " + keyCnt,
                 aggMap.size() == keyCnt);
 
         for (IntValue integer : aggMap.values()) {

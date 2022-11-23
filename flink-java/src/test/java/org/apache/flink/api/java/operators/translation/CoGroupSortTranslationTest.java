@@ -95,7 +95,7 @@ class CoGroupSortTranslationTest implements java.io.Serializable {
             ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
             DataSet<Tuple2<Long, Long>> input1 = env.fromElements(new Tuple2<Long, Long>(0L, 0L));
-            DataSet<TestPoJo> input2 = env.fromElements(new TestPoJo());
+            DataSet<TestPojo> input2 = env.fromElements(new TestPojo());
 
             input1.coGroup(input2)
                     .where(1)
@@ -104,11 +104,11 @@ class CoGroupSortTranslationTest implements java.io.Serializable {
                     .sortSecondGroup("c", Order.ASCENDING)
                     .sortSecondGroup("a", Order.DESCENDING)
                     .with(
-                            new CoGroupFunction<Tuple2<Long, Long>, TestPoJo, Long>() {
+                            new CoGroupFunction<Tuple2<Long, Long>, TestPojo, Long>() {
                                 @Override
                                 public void coGroup(
                                         Iterable<Tuple2<Long, Long>> first,
-                                        Iterable<TestPoJo> second,
+                                        Iterable<TestPojo> second,
                                         Collector<Long> out)
                                         throws Exception {}
                             })
@@ -140,7 +140,7 @@ class CoGroupSortTranslationTest implements java.io.Serializable {
     }
 
     /** Sample test pojo. */
-    public static class TestPoJo {
+    public static class TestPojo {
         public long a;
         public long b;
         public long c;

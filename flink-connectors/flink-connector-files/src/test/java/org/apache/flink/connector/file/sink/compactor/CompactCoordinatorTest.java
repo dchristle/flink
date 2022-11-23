@@ -205,7 +205,7 @@ class CompactCoordinatorTest extends AbstractCompactTestBase {
             harness.setup();
             harness.open();
 
-            FileSinkCommittable cleanupToPassthrough = cleanupInprogress("0", ".0", 1);
+            FileSinkCommittable cleanupToPassthrough = cleanupInProgress("0", ".0", 1);
             FileSinkCommittable sizeUnavailableToPassthrough = committable("0", ".1", -1);
             FileSinkCommittable pathNotHidToPassThrough = committable("0", "2", -1);
             FileSinkCommittable normalCommittable = committable("0", ".3", 10);
@@ -345,7 +345,7 @@ class CompactCoordinatorTest extends AbstractCompactTestBase {
         // without . prefix
         FileSinkCommittable committable2 = committable("0", "2", 6);
 
-        FileSinkCommittable cleanup3 = cleanupInprogress("0", "3", 7);
+        FileSinkCommittable cleanup3 = cleanupInProgress("0", "3", 7);
 
         OperatorSubtaskState state;
         try (OneInputStreamOperatorTestHarness<
@@ -434,7 +434,7 @@ class CompactCoordinatorTest extends AbstractCompactTestBase {
                         newFile(name + "_" + bucketId, size <= 0 ? 1 : size), size));
     }
 
-    private FileSinkCommittable cleanupInprogress(String bucketId, String name, int size)
+    private FileSinkCommittable cleanupInProgress(String bucketId, String name, int size)
             throws IOException {
         Path toCleanup = newFile(name + "_" + bucketId, size);
         return new FileSinkCommittable(

@@ -90,7 +90,7 @@ public class CoGroupDriver<IT1, IT2, OT> implements Driver<CoGroupFunction<IT1, 
         final TaskConfig config = this.taskContext.getTaskConfig();
         if (config.getDriverStrategy() != DriverStrategy.CO_GROUP) {
             throw new Exception(
-                    "Unrecognized driver strategy for CoGoup driver: "
+                    "Unrecognized driver strategy for CoGroup driver: "
                             + config.getDriverStrategy().name());
         }
 

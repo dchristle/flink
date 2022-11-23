@@ -78,7 +78,7 @@ class ConfigOptionsDocsCompletenessITCase {
                             final List<ExistingOption> existingOptions = entry.getValue();
                             final List<ExistingOption> consolidated;
 
-                            Optional<ExistingOption> deduped =
+                            Optional<ExistingOption> deduplicated =
                                     existingOptions.stream()
                                             .reduce(
                                                     (option1, option2) -> {
@@ -125,7 +125,7 @@ class ConfigOptionsDocsCompletenessITCase {
                                                             }
                                                         }
                                                     });
-                            consolidated = Collections.singletonList(deduped.get());
+                            consolidated = Collections.singletonList(deduplicated.get());
 
                             return new Tuple2<>(entry.getKey(), consolidated);
                         })

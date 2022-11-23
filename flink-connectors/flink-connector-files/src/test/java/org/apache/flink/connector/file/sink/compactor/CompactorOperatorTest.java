@@ -118,11 +118,11 @@ class CompactorOperatorTest extends AbstractCompactTestBase {
             harness.setup();
             harness.open();
 
-            FileSinkCommittable cleanupInprogressRequest = cleanupInprogress("0", "0", 1);
+            FileSinkCommittable cleanupInProgressRequest = cleanupInProgress("0", "0", 1);
             FileSinkCommittable cleanupPathRequest = cleanupPath("0", "1");
 
             harness.processElement(
-                    request("0", null, Collections.singletonList(cleanupInprogressRequest)));
+                    request("0", null, Collections.singletonList(cleanupInProgressRequest)));
             harness.processElement(
                     request("0", null, Collections.singletonList(cleanupPathRequest)));
 
@@ -143,7 +143,7 @@ class CompactorOperatorTest extends AbstractCompactTestBase {
             SinkV2Assertions.assertThat((CommittableSummary<?>) results.get(0))
                     .hasPendingCommittables(2);
             SinkV2Assertions.assertThat((CommittableWithLineage<?>) results.get(1))
-                    .hasCommittable(cleanupInprogressRequest);
+                    .hasCommittable(cleanupInProgressRequest);
             SinkV2Assertions.assertThat((CommittableWithLineage<?>) results.get(2))
                     .hasCommittable(cleanupPathRequest);
         }
@@ -475,7 +475,7 @@ class CompactorOperatorTest extends AbstractCompactTestBase {
                         newFile(name + "_" + bucketId, size <= 0 ? 1 : size), size));
     }
 
-    private FileSinkCommittable cleanupInprogress(String bucketId, String name, int size)
+    private FileSinkCommittable cleanupInProgress(String bucketId, String name, int size)
             throws IOException {
         Path toCleanup = newFile(name + "_" + bucketId, size);
         return new FileSinkCommittable(

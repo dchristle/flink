@@ -49,7 +49,7 @@ public class ConfigOptionTest extends TestLogger {
 
         assertTrue(optionWithDeprecatedKeys.hasFallbackKeys());
         for (final FallbackKey fallbackKey : optionWithDeprecatedKeys.fallbackKeys()) {
-            assertTrue("deprecated key not flagged as deprecated", fallbackKey.isDeprecated());
+            assertTrue("Deprecated key not flagged as deprecated.", fallbackKey.isDeprecated());
         }
     }
 
@@ -63,7 +63,7 @@ public class ConfigOptionTest extends TestLogger {
 
         assertTrue(optionWithFallbackKeys.hasFallbackKeys());
         for (final FallbackKey fallbackKey : optionWithFallbackKeys.fallbackKeys()) {
-            assertFalse("falback key flagged as deprecated", fallbackKey.isDeprecated());
+            assertFalse("Fallback key flagged as deprecated.", fallbackKey.isDeprecated());
         }
     }
 

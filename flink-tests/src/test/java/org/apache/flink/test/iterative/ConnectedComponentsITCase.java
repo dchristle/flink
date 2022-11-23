@@ -72,7 +72,7 @@ public class ConnectedComponentsITCase extends JavaProgramTestBase {
                 env.readCsvFile(edgesPath)
                         .fieldDelimiter(" ")
                         .types(Long.class, Long.class)
-                        .flatMap(new ConnectedComponents.UndirectEdge());
+                        .flatMap(new ConnectedComponents.UndirectedEdge());
 
         // assign the initial components (equal to the vertex id)
         DataSet<Tuple2<Long, Long>> verticesWithInitialId =

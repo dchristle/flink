@@ -81,7 +81,7 @@ public interface Committer<CommT> extends AutoCloseable {
         void signalFailedWithUnknownReason(Throwable t);
 
         /**
-         * The commit failed for a retriable reason. If the sink supports a retry maximum, this may
+         * The commit failed for a retryable reason. If the sink supports a retry maximum, this may
          * permanently fail after reaching that maximum. Else the committable will be retried as
          * long as this method is invoked after each attempt.
          */

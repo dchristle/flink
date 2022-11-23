@@ -26,7 +26,7 @@ import org.apache.flink.api.java.tuple.Tuple1;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.examples.java.graph.ConnectedComponents.ComponentIdFilter;
 import org.apache.flink.examples.java.graph.ConnectedComponents.NeighborWithComponentIDJoin;
-import org.apache.flink.examples.java.graph.ConnectedComponents.UndirectEdge;
+import org.apache.flink.examples.java.graph.ConnectedComponents.UndirectedEdge;
 import org.apache.flink.test.testdata.ConnectedComponentsData;
 import org.apache.flink.test.util.JavaProgramTestBase;
 
@@ -81,7 +81,7 @@ public class ConnectedComponentsWithObjectMapITCase extends JavaProgramTestBase 
                 env.readCsvFile(edgesPath)
                         .fieldDelimiter(" ")
                         .types(Long.class, Long.class)
-                        .flatMap(new UndirectEdge());
+                        .flatMap(new UndirectedEdge());
 
         // assign the initial components (equal to the vertex id)
         DataSet<Tuple2<Long, Long>> verticesWithInitialId =

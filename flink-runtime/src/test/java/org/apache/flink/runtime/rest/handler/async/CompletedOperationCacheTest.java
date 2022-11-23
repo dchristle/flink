@@ -163,7 +163,7 @@ public class CompletedOperationCacheTest extends TestLogger {
     }
 
     @Test
-    public void containsChecksOnoingOperations() {
+    public void containsChecksOngoingOperations() {
         completedOperationCache.registerOngoingOperation(
                 TEST_OPERATION_KEY, new CompletableFuture<>());
         assertThat(completedOperationCache.containsOperation(TEST_OPERATION_KEY), is(true));
