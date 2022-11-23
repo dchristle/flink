@@ -163,7 +163,7 @@ class DeploymentStateTimeMetricsTest {
     }
 
     @Test
-    void testGetCurrentTimeResetOndDeployentEnd() {
+    void testGetCurrentTimeResetOnDeploymentEnd() {
         final ManualClock clock = new ManualClock(Duration.ofMillis(5).toNanos());
 
         final DeploymentStateTimeMetrics metrics =

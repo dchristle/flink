@@ -39,7 +39,7 @@ Flink supports to interpret Debezium JSON and Avro messages as INSERT/UPDATE/DEL
  - temporal join changing history of a database table and so on.
 
 Flink also supports to encode the INSERT/UPDATE/DELETE messages in Flink SQL as Debezium JSON or Avro messages, and emit to external systems like Kafka.
-However, currently Flink can't combine UPDATE_BEFORE and UPDATE_AFTER into a single UPDATE message. Therefore, Flink encodes UPDATE_BEFORE and UDPATE_AFTER as DELETE and INSERT Debezium messages.
+However, currently Flink can't combine UPDATE_BEFORE and UPDATE_AFTER into a single UPDATE message. Therefore, Flink encodes UPDATE_BEFORE and UDPDATE_AFTER as DELETE and INSERT Debezium messages.
 
 Dependencies
 ------------

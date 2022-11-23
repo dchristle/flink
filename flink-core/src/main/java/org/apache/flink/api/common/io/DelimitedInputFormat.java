@@ -369,9 +369,8 @@ public abstract class DelimitedInputFormat<OT> extends FileInputFormat<OT>
                 return null;
             }
 
-            // check whether the width per record is already known or the total size is unknown as
-            // well
-            // in both cases, we return the stats as they are
+            // check whether the width per record is already known or the total size is unknown.
+            // in both cases, we return the stats as they are.
             if (stats.getAverageRecordWidth() != FileBaseStatistics.AVG_RECORD_BYTES_UNKNOWN
                     || stats.getTotalInputSize() == FileBaseStatistics.SIZE_UNKNOWN) {
                 return stats;

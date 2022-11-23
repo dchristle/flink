@@ -111,20 +111,20 @@ public class DefaultLogicalVertexTest extends TestLogger {
             final Iterable<JobVertex> jobVertices,
             final Iterable<DefaultLogicalVertex> logicalVertices) {
 
-        final Map<JobVertexID, DefaultLogicalVertex> logicalVertextMap =
+        final Map<JobVertexID, DefaultLogicalVertex> logicalVertexMap =
                 IterableUtils.toStream(logicalVertices)
                         .collect(
                                 Collectors.toMap(DefaultLogicalVertex::getId, Function.identity()));
 
         for (JobVertex jobVertex : jobVertices) {
-            final DefaultLogicalVertex logicalVertex = logicalVertextMap.remove(jobVertex.getID());
+            final DefaultLogicalVertex logicalVertex = logicalVertexMap.remove(jobVertex.getID());
 
             assertNotNull(logicalVertex);
             assertVertexInfoEquals(jobVertex, logicalVertex);
         }
 
         // this ensures the two collections exactly matches
-        assertEquals(0, logicalVertextMap.size());
+        assertEquals(0, logicalVertexMap.size());
     }
 
     static void assertVertexInfoEquals(

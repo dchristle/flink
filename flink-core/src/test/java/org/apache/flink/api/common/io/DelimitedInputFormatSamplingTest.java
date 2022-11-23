@@ -317,10 +317,10 @@ public class DelimitedInputFormatSamplingTest {
             TestFileSystem.resetStreamOpenCounter();
             BaseStatistics stats2 = format2.getStatistics(stats);
             Assert.assertTrue(
-                    "Using cached statistics should cicumvent sampling.",
+                    "Using cached statistics should circumvent sampling.",
                     0 == TestFileSystem.getNumtimeStreamOpened());
             Assert.assertTrue(
-                    "Using cached statistics should cicumvent sampling.", stats == stats2);
+                    "Using cached statistics should circumvent sampling.", stats == stats2);
 
         } catch (Exception e) {
             e.printStackTrace();

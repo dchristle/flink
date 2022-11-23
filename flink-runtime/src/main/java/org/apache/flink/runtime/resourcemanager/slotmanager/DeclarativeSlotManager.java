@@ -559,7 +559,7 @@ public class DeclarativeSlotManager implements SlotManager {
      * the resource manager is informed to allocate more resources.
      *
      * @param jobId job to allocate slots for
-     * @param targetAddress address of the jobmaster
+     * @param targetAddress address of the jobmanager
      * @param resourceRequirement required slots
      * @return the number of missing slots
      */

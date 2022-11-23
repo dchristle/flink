@@ -67,7 +67,7 @@ public class DefaultExecutionGraphRescalingTest extends TestLogger {
         for (JobVertex jv : jobVertices) {
             assertThat(jv.getParallelism(), is(initialParallelism));
         }
-        verifyGeneratedExecutionGraphOfSimpleBitartiteJobGraph(eg, jobVertices);
+        verifyGeneratedExecutionGraphOfSimpleBipartiteJobGraph(eg, jobVertices);
 
         // --- verify scaling down works correctly ---
 
@@ -85,7 +85,7 @@ public class DefaultExecutionGraphRescalingTest extends TestLogger {
         for (JobVertex jv : jobVertices) {
             assertThat(jv.getParallelism(), is(1));
         }
-        verifyGeneratedExecutionGraphOfSimpleBitartiteJobGraph(eg, jobVertices);
+        verifyGeneratedExecutionGraphOfSimpleBipartiteJobGraph(eg, jobVertices);
 
         // --- verify scaling up works correctly ---
 
@@ -103,7 +103,7 @@ public class DefaultExecutionGraphRescalingTest extends TestLogger {
         for (JobVertex jv : jobVertices) {
             assertThat(jv.getParallelism(), is(scaleUpParallelism));
         }
-        verifyGeneratedExecutionGraphOfSimpleBitartiteJobGraph(eg, jobVertices);
+        verifyGeneratedExecutionGraphOfSimpleBipartiteJobGraph(eg, jobVertices);
     }
 
     /**
@@ -169,7 +169,7 @@ public class DefaultExecutionGraphRescalingTest extends TestLogger {
         return jobVertices;
     }
 
-    private static void verifyGeneratedExecutionGraphOfSimpleBitartiteJobGraph(
+    private static void verifyGeneratedExecutionGraphOfSimpleBipartiteJobGraph(
             ExecutionGraph generatedExecutionGraph, JobVertex[] jobVertices) {
 
         ExecutionGraphTestUtils.verifyGeneratedExecutionJobVertex(

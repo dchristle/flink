@@ -110,7 +110,7 @@ $ python -c "import pyflink;import os;print(os.path.dirname(os.path.abspath(pyfl
     pydevd_pycharm.settrace('localhost', port=6789, stdoutToServer=True, stderrToServer=True)
     ```
 
-4. 启动刚刚创建的Python Remote Dubug Server
+4. 启动刚刚创建的Python Remote Debug Server
 
 5. 运行你的Python代码
 
