@@ -99,8 +99,8 @@ public class BoundedInputStream extends InputStream {
         position = mark;
     }
 
-    public synchronized void mark(int readlimit) {
-        delegate.mark(readlimit);
+    public synchronized void mark(int readLimit) {
+        delegate.mark(readLimit);
         mark = position;
     }
 

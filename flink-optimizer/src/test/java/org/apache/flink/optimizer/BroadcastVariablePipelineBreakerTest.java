@@ -35,7 +35,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 @SuppressWarnings("serial")
-public class BroadcastVariablePipelinebreakerTest extends CompilerTestBase {
+public class BroadcastVariablePipelineBreakerTest extends CompilerTestBase {
 
     @Test
     public void testNoBreakerForIndependentVariable() {

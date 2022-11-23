@@ -38,7 +38,7 @@ public interface BlockChannelWriter<T> extends BlockChannelWriterWithCallback<T>
      * the {@link #writeBlock} method has not been invoked accordingly), the method may block
      * forever.
      *
-     * @return The next memory segment from the writers's return queue.
+     * @return The next memory segment from the writer's return queue.
      * @throws IOException Thrown, if an I/O error occurs in the writer while waiting for the
      *     request to return.
      */

@@ -39,7 +39,7 @@ import static org.junit.Assert.assertThat;
 public class CancelingTest extends TestLogger {
 
     @Test
-    public void testExecutionGraphCancelationOnEnter() throws Exception {
+    public void testExecutionGraphCancellationOnEnter() throws Exception {
         try (MockStateWithExecutionGraphContext ctx = new MockStateWithExecutionGraphContext()) {
             StateTrackingMockExecutionGraph stateTrackingMockExecutionGraph =
                     new StateTrackingMockExecutionGraph();

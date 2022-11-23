@@ -187,7 +187,7 @@ final class BlobInputStream extends InputStream {
         // operations.
     }
 
-    public void mark(final int readlimit) {
+    public void mark(final int readLimit) {
         // Do not do anything here
     }
 

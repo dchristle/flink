@@ -230,7 +230,7 @@ public class BlobClientTest extends TestLogger {
     }
 
     @Test
-    public void testContentAddressableBufferPermantBlob() throws IOException, InterruptedException {
+    public void testContentAddressableBufferPermanentBlob() throws IOException, InterruptedException {
         testContentAddressableBuffer(PERMANENT_BLOB);
     }
 

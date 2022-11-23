@@ -38,8 +38,8 @@ class CalcSnapshotTransposeRule
   override def onMatch(call: RelOptRuleCall): Unit = {
     val calc = call.rel[FlinkLogicalCalc](0)
     val snapshot = call.rel[FlinkLogicalSnapshot](1)
-    val newClac = calc.copy(calc.getTraitSet, snapshot.getInputs)
-    val newSnapshot = snapshot.copy(snapshot.getTraitSet, newClac, snapshot.getPeriod)
+    val newCalc = calc.copy(calc.getTraitSet, snapshot.getInputs)
+    val newSnapshot = snapshot.copy(snapshot.getTraitSet, newCalc, snapshot.getPeriod)
     call.transformTo(newSnapshot)
   }
 }

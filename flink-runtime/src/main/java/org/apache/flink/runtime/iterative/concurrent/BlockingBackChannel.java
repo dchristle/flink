@@ -27,7 +27,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 /**
- * A concurrent datastructure that establishes a backchannel buffer between an iteration head and an
+ * A concurrent data structure that establishes a backchannel buffer between an iteration head and an
  * iteration tail.
  */
 public class BlockingBackChannel {

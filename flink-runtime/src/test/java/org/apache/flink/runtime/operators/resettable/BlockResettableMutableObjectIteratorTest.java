@@ -47,7 +47,7 @@ public class BlockResettableMutableObjectIteratorTest {
 
     private final AbstractInvokable memOwner = new DummyInvokable();
 
-    private MemoryManager memman;
+    private MemoryManager memMan;
 
     private MutableObjectIterator<Record> reader;
 
@@ -56,7 +56,7 @@ public class BlockResettableMutableObjectIteratorTest {
     @Before
     public void startup() {
         // set up IO and memory manager
-        this.memman = MemoryManagerBuilder.newBuilder().setMemorySize(MEMORY_CAPACITY).build();
+        this.memMan = MemoryManagerBuilder.newBuilder().setMemorySize(MEMORY_CAPACITY).build();
 
         // create test objects
         this.objects = new ArrayList<Record>(20000);
@@ -73,13 +73,13 @@ public class BlockResettableMutableObjectIteratorTest {
         this.objects = null;
 
         // check that the memory manager got all segments back
-        if (!this.memman.verifyEmpty()) {
+        if (!this.memMan.verifyEmpty()) {
             Assert.fail(
                     "A memory leak has occurred: Not all memory was properly returned to the memory manager.");
         }
 
-        this.memman.shutdown();
-        this.memman = null;
+        this.memMan.shutdown();
+        this.memMan = null;
     }
 
     @Test
@@ -88,7 +88,7 @@ public class BlockResettableMutableObjectIteratorTest {
             // create the resettable Iterator
             final BlockResettableMutableObjectIterator<Record> iterator =
                     new BlockResettableMutableObjectIterator<Record>(
-                            this.memman, this.reader, this.serializer, 1, memOwner);
+                            this.memMan, this.reader, this.serializer, 1, memOwner);
             // open the iterator
             iterator.open();
 
@@ -130,7 +130,7 @@ public class BlockResettableMutableObjectIteratorTest {
             // create the resettable Iterator
             final BlockResettableMutableObjectIterator<Record> iterator =
                     new BlockResettableMutableObjectIterator<Record>(
-                            this.memman, this.reader, this.serializer, 2, memOwner);
+                            this.memMan, this.reader, this.serializer, 2, memOwner);
             // open the iterator
             iterator.open();
 
@@ -173,7 +173,7 @@ public class BlockResettableMutableObjectIteratorTest {
             // create the resettable Iterator
             final BlockResettableMutableObjectIterator<Record> iterator =
                     new BlockResettableMutableObjectIterator<Record>(
-                            this.memman, this.reader, this.serializer, 12, memOwner);
+                            this.memMan, this.reader, this.serializer, 12, memOwner);
             // open the iterator
             iterator.open();
 

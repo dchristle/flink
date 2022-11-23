@@ -124,7 +124,7 @@ public class ByteStreamStateHandleTest {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test
-    public void testBulkReadINdexOutOfBounds() throws IOException {
+    public void testBulkReadIndexOutOfBounds() throws IOException {
         final ByteStreamStateHandle handle = new ByteStreamStateHandle("name", new byte[10]);
 
         // check negative offset

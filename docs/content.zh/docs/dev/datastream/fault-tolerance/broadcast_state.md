@@ -173,7 +173,7 @@ class BroadcastProcessFunction(BaseBroadcastProcessFunction, Generic[IN1, IN2, O
 ```
 
 ```python
-class KeyedBroadcastProcessFunction(BaseBrodcastProcessFunction, Generic[KEY, IN1, IN2, OUT]):
+class KeyedBroadcastProcessFunction(BaseBroadcastProcessFunction, Generic[KEY, IN1, IN2, OUT]):
 
     @abstractmethod
     def process_element(value: IN1, ctx: ReadOnlyContext):
