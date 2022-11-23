@@ -40,7 +40,7 @@ With Hive dialect, the following ALTER statements are supported for now:
 -- alter database's properties
 ALTER (DATABASE|SCHEMA) database_name SET DBPROPERTIES (property_name=property_value, ...);
 
--- alter database's localtion
+-- alter database's location
 ALTER (DATABASE|SCHEMA) database_name SET LOCATION hdfs_path;
 ```
 

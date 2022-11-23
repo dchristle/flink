@@ -28,8 +28,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Use reflection to determine whether the {@link AMRMClientAsync} supports the updateBlacklist
- * method. If not, we will try to call updateBlacklist of {@link AMRMClientAsync#client}. If both
+ * Use reflection to determine whether the {@link AMRMClientAsync} supports the updateBlocklist
+ * method. If not, we will try to call updateBlocklist of {@link AMRMClientAsync#client}. If both
  * fail, do nothing.
  */
 class AMRMClientAsyncReflector {
@@ -38,7 +38,7 @@ class AMRMClientAsyncReflector {
 
     static final AMRMClientAsyncReflector INSTANCE = new AMRMClientAsyncReflector();
 
-    private static final String UPDATE_BLOCKLIST_METHOD = "updateBlacklist";
+    private static final String UPDATE_BLOCKLIST_METHOD = "updateBlocklist";
 
     private static final String SYNC_CLIENT = "client";
 
