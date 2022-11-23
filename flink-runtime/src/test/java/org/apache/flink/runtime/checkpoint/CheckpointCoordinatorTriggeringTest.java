@@ -172,13 +172,13 @@ public class CheckpointCoordinatorTriggeringTest extends TestLogger {
 
         for (CheckpointCoordinatorTestingUtils.TriggeredCheckpoint checkpoint : checkpoints) {
             assertTrue(
-                    "Trigger checkpoint id should be in increase order",
+                    "Triggered checkpointId should be in increasing order.",
                     checkpoint.checkpointId > lastId);
             assertTrue(
-                    "Trigger checkpoint timestamp should be in increase order",
+                    "Triggered checkpoint timestamp should be in increasing order.",
                     checkpoint.timestamp >= lastTs);
             assertTrue(
-                    "Trigger checkpoint timestamp should be larger than the start time",
+                    "Triggered checkpoint timestamp should be larger than the start time.",
                     checkpoint.timestamp >= start);
 
             lastId = checkpoint.checkpointId;
@@ -187,7 +187,7 @@ public class CheckpointCoordinatorTriggeringTest extends TestLogger {
     }
 
     @Test
-    public void testTriggeringFullSnapshotAfterJobmasterFailover() throws Exception {
+    public void testTriggeringFullSnapshotAfterJobManagerFailover() throws Exception {
         CheckpointCoordinatorTestingUtils.CheckpointRecorderTaskManagerGateway gateway =
                 new CheckpointCoordinatorTestingUtils.CheckpointRecorderTaskManagerGateway();
 
