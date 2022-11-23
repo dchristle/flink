@@ -39,7 +39,7 @@ public class PipelinedApproximateSubpartitionWithReadViewTest
     public void before() throws IOException {
         setup(ResultPartitionType.PIPELINED_APPROXIMATE);
         subpartition = new PipelinedApproximateSubpartition(0, 2, resultPartition);
-        availablityListener = new AwaitableBufferAvailablityListener();
+        availablityListener = new AwaitableBufferAvailabilityListener();
         readView = subpartition.createReadView(availablityListener);
     }
 

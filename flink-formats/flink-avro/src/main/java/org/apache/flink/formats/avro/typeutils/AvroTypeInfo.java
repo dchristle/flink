@@ -37,12 +37,12 @@ import java.util.List;
  * Special type information to generate a special AvroTypeInfo for Avro POJOs (implementing
  * SpecificRecordBase, the typed Avro POJOs)
  *
- * <p>Proceeding: It uses a regular pojo type analysis and replaces all {@code
+ * <p>Proceeding: It uses a regular POJO type analysis and replaces all {@code
  * GenericType<CharSequence>} with a {@code GenericType<avro.Utf8>}. All other types used by Avro
  * are standard Java types. Only strings are represented as CharSequence fields and represented as
  * Utf8 classes at runtime. CharSequence is not comparable. To make them nicely usable with field
- * expressions, we replace them here by generic type infos containing Utf8 classes (which are
- * comparable),
+ * expressions, we replace them here by generic TypeInfos containing Utf8 classes (which are
+ * comparable).
  *
  * <p>This class is checked by the AvroPojoTest.
  */
@@ -77,10 +77,10 @@ public class AvroTypeInfo<T extends SpecificRecordBase> extends PojoTypeInfo<T> 
         for (int i = 0; i < pti.getArity(); i++) {
             PojoField f = pti.getPojoFieldAt(i);
             TypeInformation<?> newType = f.getTypeInformation();
-            // check if type is a CharSequence
+            // Check if type is a CharSequence.
             if (newType instanceof GenericTypeInfo) {
                 if ((newType).getTypeClass().equals(CharSequence.class)) {
-                    // replace the type by a org.apache.avro.util.Utf8
+                    // Replace the type by a org.apache.avro.util.Utf8.
                     newType = new GenericTypeInfo<>(org.apache.avro.util.Utf8.class);
                 }
             }

@@ -57,7 +57,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
-/** Tests for the {@link AvroInputFormat} reading Pojos. */
+/** Tests for the {@link AvroInputFormat} reading POJOs. */
 class AvroTypeExtractionTest {
 
     private static final int PARALLELISM = 4;

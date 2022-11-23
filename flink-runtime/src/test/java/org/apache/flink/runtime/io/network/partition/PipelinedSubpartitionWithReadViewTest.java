@@ -73,7 +73,7 @@ public class PipelinedSubpartitionWithReadViewTest {
 
     ResultPartition resultPartition;
     PipelinedSubpartition subpartition;
-    AwaitableBufferAvailablityListener availablityListener;
+    AwaitableBufferAvailabilityListener availablityListener;
     PipelinedSubpartitionView readView;
 
     @Parameterized.Parameter public boolean compressionEnabled;
@@ -87,7 +87,7 @@ public class PipelinedSubpartitionWithReadViewTest {
     public void before() throws IOException {
         setup(ResultPartitionType.PIPELINED);
         subpartition = new PipelinedSubpartition(0, 2, resultPartition);
-        availablityListener = new AwaitableBufferAvailablityListener();
+        availablityListener = new AwaitableBufferAvailabilityListener();
         readView = subpartition.createReadView(availablityListener);
     }
 

@@ -21,7 +21,7 @@ package org.apache.flink.runtime.io.network.partition;
 import java.util.concurrent.atomic.AtomicLong;
 
 /** Test implementation of {@link BufferAvailabilityListener}. */
-class AwaitableBufferAvailablityListener implements BufferAvailabilityListener {
+class AwaitableBufferAvailabilityListener implements BufferAvailabilityListener {
 
     private final AtomicLong numNotifications = new AtomicLong();
 
