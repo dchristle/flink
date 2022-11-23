@@ -234,16 +234,16 @@ class AkkaRpcActorTest {
                         AkkaRpcServiceConfiguration.defaultConfiguration());
 
         try {
-            final DeserializatonFailingEndpoint rpcEndpoint =
-                    new DeserializatonFailingEndpoint(serverAkkaRpcService);
+            final DeserializationFailingEndpoint rpcEndpoint =
+                    new DeserializationFailingEndpoint(serverAkkaRpcService);
             rpcEndpoint.start();
 
-            final DeserializatonFailingGateway rpcGateway =
-                    rpcEndpoint.getSelfGateway(DeserializatonFailingGateway.class);
+            final DeserializationFailingGateway rpcGateway =
+                    rpcEndpoint.getSelfGateway(DeserializationFailingGateway.class);
 
-            final DeserializatonFailingGateway connect =
+            final DeserializationFailingGateway connect =
                     clientAkkaRpcService
-                            .connect(rpcGateway.getAddress(), DeserializatonFailingGateway.class)
+                            .connect(rpcGateway.getAddress(), DeserializationFailingGateway.class)
                             .get();
 
             assertThat(connect.doStuff())
@@ -753,14 +753,14 @@ class AkkaRpcActorTest {
 
     // ------------------------------------------------------------------------
 
-    private interface DeserializatonFailingGateway extends RpcGateway {
+    private interface DeserializationFailingGateway extends RpcGateway {
         CompletableFuture<DeserializationFailingObject> doStuff();
     }
 
-    private static class DeserializatonFailingEndpoint extends RpcEndpoint
-            implements DeserializatonFailingGateway {
+    private static class DeserializationFailingEndpoint extends RpcEndpoint
+            implements DeserializationFailingGateway {
 
-        protected DeserializatonFailingEndpoint(RpcService rpcService) {
+        protected DeserializationFailingEndpoint(RpcService rpcService) {
             super(rpcService);
         }
 

@@ -316,9 +316,9 @@ public class AggregationFunctionTest {
 
     @Test
     public void pojoMinMaxByTest() throws Exception {
-        // Pojos are grouped on field 0, aggregated on field 1
+        // POJOs are grouped on field 0, aggregated on field 1.
 
-        // preparing expected outputs
+        // Preparing expected outputs.
         List<MyPojo3> maxByFirstExpected =
                 ImmutableList.of(
                         new MyPojo3(0, 0),
