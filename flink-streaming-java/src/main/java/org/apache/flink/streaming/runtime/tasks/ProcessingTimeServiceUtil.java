@@ -42,7 +42,7 @@ public class ProcessingTimeServiceUtil {
         //   won't see elements in the future with a timestamp smaller or equal to T. Without this
         //   1ms delay, if we had fired the timer for T at the timestamp T, it would be possible
         //   that we would process another record for timestamp == T in the same millisecond, but
-        //   after the timer for the timsetamp T has already been fired.
+        //   after the timer for the timestamp T has already been fired.
         // (2) past timers(processingTimestamp < currentTimestamp): do not need to delay the firing
         //   because currentTimestamp is larger than processingTimestamp pluses the 1ms offset.
         // TODO. The processing timers' performance can be further improved.

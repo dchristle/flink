@@ -134,7 +134,7 @@ public class PushProjectIntoTableSourceScanRuleTest
                         + "  'connector' = 'values',"
                         + "  'nested-projection-supported' = 'true',"
                         + "  'bounded' = 'false',\n"
-                        + "  'changelod-mode' = 'I,UB,D',"
+                        + "  'changelog-mode' = 'I,UB,D',"
                         + " 'readable-metadata' = 'metadata_1:INT, metadata_2:STRING, metadata_3:BIGINT'"
                         + ")";
         util().tableEnv().executeSql(ddl5);

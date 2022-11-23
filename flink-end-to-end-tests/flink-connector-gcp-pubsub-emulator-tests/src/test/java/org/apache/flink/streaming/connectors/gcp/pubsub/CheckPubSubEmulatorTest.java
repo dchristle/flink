@@ -18,7 +18,7 @@
 package org.apache.flink.streaming.connectors.gcp.pubsub;
 
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.GCloudUnitTestBase;
-import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubsubHelper;
+import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubSubHelper;
 
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.cloud.pubsub.v1.Subscriber;
@@ -47,7 +47,7 @@ public class CheckPubSubEmulatorTest extends GCloudUnitTestBase {
     private static final String TOPIC_NAME = "Topic";
     private static final String SUBSCRIPTION_NAME = "Subscription";
 
-    private static PubsubHelper pubsubHelper;
+    private static PubSubHelper pubsubHelper;
 
     @BeforeClass
     public static void setUp() throws Exception {

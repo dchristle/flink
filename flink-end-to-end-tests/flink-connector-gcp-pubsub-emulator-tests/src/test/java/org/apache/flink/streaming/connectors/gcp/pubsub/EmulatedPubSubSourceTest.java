@@ -24,7 +24,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.EmulatorCredentials;
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.GCloudUnitTestBase;
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubSubSubscriberFactoryForEmulator;
-import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubsubHelper;
+import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubSubHelper;
 
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
@@ -50,7 +50,7 @@ public class EmulatedPubSubSourceTest extends GCloudUnitTestBase {
     private static final String TOPIC_NAME = "FLTopic";
     private static final String SUBSCRIPTION_NAME = "FLSubscription";
 
-    private static PubsubHelper pubsubHelper;
+    private static PubSubHelper pubsubHelper;
 
     @BeforeClass
     public static void setUp() throws Exception {

@@ -453,7 +453,7 @@ public class PojoSerializerUpgradeTestSpecifications {
             }
         }
 
-        @ClassRelocator.RelocateClass("SublassPojo")
+        @ClassRelocator.RelocateClass("SubclassPojo")
         public static class SubclassPojoBeforeSchemaUpgrade extends BasePojo {
             public boolean subclassFieldC;
             public double subclassFieldD;
@@ -505,7 +505,7 @@ public class PojoSerializerUpgradeTestSpecifications {
             }
         }
 
-        @ClassRelocator.RelocateClass("SublassPojo")
+        @ClassRelocator.RelocateClass("SubclassPojo")
         public static class SubclassPojoAfterSchemaUpgrade extends BasePojo {
             public boolean subclassFieldC;
             public long subclassFieldE;

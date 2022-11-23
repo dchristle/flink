@@ -68,7 +68,7 @@ public class PhysicalSlotProviderImplWithSpreadOutStrategyTest extends TestLogge
     }
 
     @Test
-    public void testSlotAllocationFulfilledWithPreferredInputOverwrittingSpreadOut()
+    public void testSlotAllocationFulfilledWithPreferredInputOverwritingSpreadOut()
             throws ExecutionException, InterruptedException {
         physicalSlotProviderResource.registerSlotOffersFromNewTaskExecutor(
                 ResourceProfile.ANY, ResourceProfile.ANY);

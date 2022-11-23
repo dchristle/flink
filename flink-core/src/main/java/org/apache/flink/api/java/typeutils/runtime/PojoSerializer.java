@@ -331,7 +331,7 @@ public final class PojoSerializer<T> extends TypeSerializer<T> {
 
         target.writeByte(flags);
 
-        // if its a registered subclass, write the class tag id, otherwise write the full classname
+        // if its a registered subclass, write the class tag id, otherwise write the full class name
         if ((flags & IS_SUBCLASS) != 0) {
             target.writeUTF(actualClass.getName());
         } else if ((flags & IS_TAGGED_SUBCLASS) != 0) {

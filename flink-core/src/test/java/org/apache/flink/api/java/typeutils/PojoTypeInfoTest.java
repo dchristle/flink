@@ -37,16 +37,16 @@ class PojoTypeInfoTest extends TypeInformationTestBase<PojoTypeInfo<?>> {
 
         public int someInt;
 
-        private String aString;
+        private String someString;
 
-        public Double[] doubleArray;
+        public Double[] someDoubleArray;
 
-        public void setaString(String aString) {
-            this.aString = aString;
+        public void setSomeString(String someString) {
+            this.someString = someString;
         }
 
-        public String getaString() {
-            return aString;
+        public String getSomeString() {
+            return someString;
         }
     }
 
@@ -54,16 +54,16 @@ class PojoTypeInfoTest extends TypeInformationTestBase<PojoTypeInfo<?>> {
 
         public int someInt;
 
-        private String aString;
+        private String someString;
 
-        public Double[] doubleArray;
+        public Double[] someDoubleArray;
 
-        public void setaString(String aString) {
-            this.aString = aString;
+        public void setSomeString(String aString) {
+            this.someString = aString;
         }
 
-        public String getaString() {
-            return aString;
+        public String getSomeString() {
+            return someString;
         }
     }
 
@@ -82,14 +82,14 @@ class PojoTypeInfoTest extends TypeInformationTestBase<PojoTypeInfo<?>> {
 
     public static final class UnderscorePojo {
 
-        private int some_int;
+        private int someInt;
 
-        public void setSomeInt(int some_int) {
-            this.some_int = some_int;
+        public void setSomeInt(int someInt) {
+            this.someInt = someInt;
         }
 
         public Integer getSomeInt() {
-            return this.some_int;
+            return this.someInt;
         }
     }
 }

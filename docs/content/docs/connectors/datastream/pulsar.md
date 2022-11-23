@@ -1100,7 +1100,7 @@ The first 6 metrics are standard Pulsar Sink metrics as described in
 {{< hint info >}}
 - `numBytesOut`, `numRecordsOut`, `numRecordsOutErrors` are retrieved from Pulsar client metrics.
 
-- `currentSendTime` tracks the time from when the producer calls `sendAync()` to
+- `currentSendTime` tracks the time from when the producer calls `sendAsync()` to
   the time when the message is acknowledged by the broker. This metric is not available in `NONE` delivery guarantee.
 {{< /hint >}}
 

@@ -150,8 +150,8 @@ public class ProjectOperator<IN, OUT extends Tuple>
             }
 
             int maxFieldIndex = ds.getType().getArity();
-            for (int fieldIndexe : fieldIndexes) {
-                Preconditions.checkElementIndex(fieldIndexe, maxFieldIndex);
+            for (int fieldIndex : fieldIndexes) {
+                Preconditions.checkElementIndex(fieldIndex, maxFieldIndex);
             }
 
             this.ds = ds;

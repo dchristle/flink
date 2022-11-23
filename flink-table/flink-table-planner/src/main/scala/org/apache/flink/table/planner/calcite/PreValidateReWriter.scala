@@ -363,7 +363,7 @@ object PreValidateReWriter {
    * @param table
    *   Target table for INSERT/UPDATE
    * @return
-   *   Rowtype
+   *   RowType
    */
   private def createTargetRowType(
       typeFactory: RelDataTypeFactory,

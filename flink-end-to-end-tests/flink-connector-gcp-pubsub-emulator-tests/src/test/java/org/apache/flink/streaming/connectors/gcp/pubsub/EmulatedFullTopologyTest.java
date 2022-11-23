@@ -24,7 +24,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.EmulatorCredentials;
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.GCloudUnitTestBase;
 import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubSubSubscriberFactoryForEmulator;
-import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubsubHelper;
+import org.apache.flink.streaming.connectors.gcp.pubsub.emulator.PubSubHelper;
 
 import com.google.cloud.pubsub.v1.Publisher;
 import com.google.protobuf.ByteString;
@@ -61,7 +61,7 @@ public class EmulatedFullTopologyTest extends GCloudUnitTestBase {
     private static final String OUTPUT_TOPIC_NAME = "OutputTopic";
     private static final String OUTPUT_SUBSCRIPTION_NAME = "OutputSubscription";
 
-    private static PubsubHelper pubsubHelper;
+    private static PubSubHelper pubsubHelper;
 
     // ======================================================================================================
 

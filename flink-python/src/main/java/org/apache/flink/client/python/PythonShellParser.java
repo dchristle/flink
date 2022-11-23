@@ -236,7 +236,7 @@ public class PythonShellParser {
      * run` to submit flink job.
      *
      * @param args Python shell yarn options.
-     * @return Yarn options usrd in `flink run`.
+     * @return Yarn options used in `flink run`.
      */
     static List<String> parseYarn(String[] args) {
         String[] params = new String[args.length - 1];

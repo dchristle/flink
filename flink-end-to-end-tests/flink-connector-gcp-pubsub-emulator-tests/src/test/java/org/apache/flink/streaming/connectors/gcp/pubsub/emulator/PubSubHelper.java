@@ -44,16 +44,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /** A helper class to make managing the testing topics a bit easier. */
-public class PubsubHelper {
+public class PubSubHelper {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PubsubHelper.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PubSubHelper.class);
 
     private TransportChannelProvider channelProvider;
 
     private TopicAdminClient topicClient;
     private SubscriptionAdminClient subscriptionAdminClient;
 
-    public PubsubHelper(TransportChannelProvider channelProvider) {
+    public PubSubHelper(TransportChannelProvider channelProvider) {
         this.channelProvider = channelProvider;
     }
 

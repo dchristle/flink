@@ -58,14 +58,14 @@ public class GCloudUnitTestBase extends TestLogger {
     private static ManagedChannel channel = null;
     private static TransportChannelProvider channelProvider = null;
 
-    public static PubsubHelper getPubsubHelper() {
+    public static PubSubHelper getPubsubHelper() {
         if (channel == null) {
             //noinspection deprecation
             channel = ManagedChannelBuilder.forTarget(getPubSubHostPort()).usePlaintext().build();
             channelProvider =
                     FixedTransportChannelProvider.create(GrpcTransportChannel.create(channel));
         }
-        return new PubsubHelper(channelProvider);
+        return new PubSubHelper(channelProvider);
     }
 
     public static String getPubSubHostPort() {
