@@ -40,7 +40,7 @@ import java.util.Map;
  * <p>All methods in this class are thread-safe.
  *
  * @param <C> Type of the closeable this registers
- * @param <T> Type for potential meta data associated with the registering closeables
+ * @param <T> Type for potential metadata associated with the closeable this registers
  */
 @Internal
 public abstract class AbstractAutoCloseableRegistry<
