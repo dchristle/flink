@@ -56,7 +56,7 @@ public class AbstractStreamOperatorTestHarnessTest extends TestLogger {
     @Rule public ExpectedException expectedException = ExpectedException.none();
 
     @Test
-    public void testInitializeAfterOpenning() throws Throwable {
+    public void testInitializeAfterOpening() throws Throwable {
         expectedException.expect(IllegalStateException.class);
         expectedException.expectMessage(
                 containsString("TestHarness has already been initialized."));

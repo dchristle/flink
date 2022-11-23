@@ -109,8 +109,7 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
         try (final StandaloneSessionClusterEntrypoint clusterEntrypoint =
                 new StandaloneSessionClusterEntrypoint(config)) {
 
-            // check that we run this test only if the java command
-            // is available on this machine
+            // Check that we run this test only if the java command is available on this machine.
             String javaCommand = getJavaCommandPath();
             if (javaCommand == null) {
                 System.out.println(
@@ -120,7 +119,7 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
 
             clusterEntrypoint.startCluster();
 
-            // coordination between the processes goes through a directory
+            // Coordination between the processes goes through a directory.
             coordinateTempDir = temporaryFolder.newFolder();
 
             TestProcessBuilder taskManagerProcessBuilder =
@@ -128,20 +127,18 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
 
             taskManagerProcessBuilder.addConfigAsMainClassArgs(config);
 
-            // start the first two TaskManager processes
+            // Start the first two TaskManager processes.
             taskManagerProcess1 = taskManagerProcessBuilder.start();
             taskManagerProcess2 = taskManagerProcessBuilder.start();
 
-            // the program will set a marker file in each of its parallel tasks once they are ready,
-            // so that
-            // this coordinating code is aware of this.
-            // the program will very slowly consume elements until the marker file (later created by
-            // the
-            // test driver code) is present
+            // The program will set a marker file in each of its parallel tasks once they are ready,
+            // so that this coordinating code is aware of this. The program will very slowly
+            // consume elements until the marker file (later created by the test driver code) is
+            // present.
             final File coordinateDirClosure = coordinateTempDir;
             final AtomicReference<Throwable> errorRef = new AtomicReference<>();
 
-            // we trigger program execution in a separate thread
+            // Trigger program execution in a separate thread.
             Thread programTrigger =
                     new Thread("Program Trigger") {
                         @Override
@@ -155,14 +152,12 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
                         }
                     };
 
-            // start the test program
             programTrigger.start();
 
-            // wait until all marker files are in place, indicating that all tasks have started
-            // max 20 seconds
+            // Wait until all marker files are in place, indicating that all tasks have started.
+            int timeout = 120000;
             if (!waitForMarkerFiles(
-                    coordinateTempDir, READY_MARKER_FILE_PREFIX, PARALLELISM, 120000)) {
-                // check if the program failed for some reason
+                    coordinateTempDir, READY_MARKER_FILE_PREFIX, PARALLELISM, timeout)) {
                 if (errorRef.get() != null) {
                     Throwable error = errorRef.get();
                     error.printStackTrace();
@@ -172,29 +167,28 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
                                     + " : "
                                     + error.getMessage());
                 } else {
-                    // no error occurred, simply a timeout
-                    fail("The tasks were not started within time (" + 120000 + "msecs)");
+                    fail("The tasks were not started within time (" + timeout + "msecs)");
                 }
             }
 
-            // start the third TaskManager
+            // Start the third TaskManager.
             taskManagerProcess3 = taskManagerProcessBuilder.start();
 
-            // kill one of the previous TaskManagers, triggering a failure and recovery
+            // Kill one of the previous TaskManagers, triggering a failure and recovery.
             taskManagerProcess1.destroy();
             waitForShutdown("TaskManager 1", taskManagerProcess1);
 
-            // we create the marker file which signals the program functions tasks that they can
-            // complete
+            // Create the marker file to signal to the program functions tasks that they can
+            // complete.
             touchFile(new File(coordinateTempDir, PROCEED_MARKER_FILE));
 
-            // wait for at most 5 minutes for the program to complete
+            // Wait for at most 5 minutes for the program to complete.
             programTrigger.join(300000);
 
-            // check that the program really finished
+            // Check that the program really finished.
             assertFalse("The program did not finish in time", programTrigger.isAlive());
 
-            // check whether the program encountered an error
+            // Check whether the program encountered an error.
             if (errorRef.get() != null) {
                 Throwable error = errorRef.get();
                 error.printStackTrace();
@@ -204,8 +198,6 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
                                 + " : "
                                 + error.getMessage());
             }
-
-            // all seems well :-)
         } catch (Exception e) {
             e.printStackTrace();
             printProcessLog("TaskManager 1", taskManagerProcess1);
@@ -316,7 +308,5 @@ public abstract class AbstractTaskManagerProcessFailureRecoveryTest extends Test
 
         return false;
     }
-
-    // --------------------------------------------------------------------------------------------
 
 }

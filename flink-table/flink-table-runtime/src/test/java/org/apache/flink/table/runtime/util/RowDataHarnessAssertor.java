@@ -60,7 +60,7 @@ public class RowDataHarnessAssertor {
 
     /**
      * Compare the two queues containing operator/task output by converting them to an array first,
-     * sort array by comparator. Assertes two sorted converted array should be same.
+     * sort array by comparator. Asserts two sorted converted array should be same.
      */
     public void assertOutputEqualsSorted(
             String message, Collection<Object> expected, Collection<Object> actual) {
@@ -77,7 +77,7 @@ public class RowDataHarnessAssertor {
         }
         assertThat(actual).hasSize(expected.size());
 
-        // first, compare only watermarks, their position should be deterministic
+        // First, compare only watermarks. Their position should be deterministic.
         Iterator<Object> exIt = expected.iterator();
         Iterator<Object> actIt = actual.iterator();
         while (exIt.hasNext()) {

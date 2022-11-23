@@ -97,9 +97,9 @@ public class ActiveResourceManager<WorkerType extends ResourceIDRetrievable>
     private final Duration workerRegistrationTimeout;
 
     /**
-     * Incompletion of this future indicates that the max failure rate of start worker is reached
-     * and the resource manager should not retry starting new worker until the future become
-     * completed again. It's guaranteed to be modified in main thread.
+     * If this future isn't completed, it indicates that we have reached the start worker's max
+     * failure rate, and that the resource manager should not retry starting new worker until the
+     * future is completed again. It's guaranteed to be modified in main thread.
      */
     private CompletableFuture<Void> startWorkerCoolDown;
 

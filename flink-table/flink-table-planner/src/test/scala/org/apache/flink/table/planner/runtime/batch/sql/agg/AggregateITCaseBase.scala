@@ -107,8 +107,8 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
     )
 
     // for hash agg mode it wont fallback
-    val singleGrouplargeData5 = for (i <- 0 until 100000) yield row(999, 1L, 10, "Hallo", 1L)
-    registerCollection("SingleGroupLargeTable5", singleGrouplargeData5, type5, "d, e, f, g, h")
+    val singleGroupLargeData5 = for (i <- 0 until 100000) yield row(999, 1L, 10, "Hallo", 1L)
+    registerCollection("SingleGroupLargeTable5", singleGroupLargeData5, type5, "d, e, f, g, h")
     checkResult(
       "SELECT d, g, sum(e), avg(f), min(h) FROM SingleGroupLargeTable5 GROUP BY d, g",
       Seq(row(999, "Hallo", 100000L, 10, 1L))
@@ -186,7 +186,7 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
   }
 
   @Test
-  def testAggregationWithoutGroupby(): Unit = {
+  def testAggregationWithoutGroupBy(): Unit = {
     checkResult(
       "SELECT sum(d), avg(d), count(g), min(e) FROM Table5",
       Seq(
@@ -196,7 +196,7 @@ abstract class AggregateITCaseBase(testName: String) extends BatchTestBase {
   }
 
   @Test
-  def testEmptyInputAggregationWithoutGroupby(): Unit = {
+  def testEmptyInputAggregationWithoutGroupBy(): Unit = {
     checkResult(
       "SELECT sum(d), avg(d), count(g), min(e) FROM EmptyTable5",
       Seq(
