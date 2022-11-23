@@ -63,9 +63,9 @@ public class ChangelogKeyGroupedPriorityQueue<T>
     @Override
     public T poll() {
         T polled = delegatedPriorityQueue.poll();
-        // Record poll as remove to avoid non-deterministic replay:
-        // elements with equal priority can be polled in different order before and after recovrey,
-        // resulting in e.g. timers being removed or not fired
+        // Record poll as removed to avoid non-deterministic replay: Elements with equal priority
+        // can be polled in different order before and after recovery, resulting in, for example,
+        // timers being removed or not fired.
         logRemoval(polled);
         return polled;
     }
