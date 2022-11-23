@@ -100,7 +100,7 @@ public final class RequestedGlobalProperties implements Cloneable {
     }
 
     /**
-     * Sets these properties to request some partitioning on the given fields. This will allow both
+     * Sets these properties to request partitioning on the given fields. This will allow both
      * hash partitioning and range partitioning to match.
      *
      * <p>If the fields are provided as {@link FieldSet}, then any permutation of the fields is a

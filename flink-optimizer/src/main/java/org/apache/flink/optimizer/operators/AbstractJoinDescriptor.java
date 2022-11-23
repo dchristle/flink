@@ -63,31 +63,31 @@ public abstract class AbstractJoinDescriptor extends OperatorDescriptorDual {
         ArrayList<GlobalPropertiesPair> pairs = new ArrayList<GlobalPropertiesPair>();
 
         if (repartitionAllowed) {
-            // partition both (hash or custom)
+            // Partition both (hash or custom).
             if (this.customPartitioner == null) {
 
-                // we accept compatible partitionings of any type
-                RequestedGlobalProperties partitioned_left_any = new RequestedGlobalProperties();
-                RequestedGlobalProperties partitioned_right_any = new RequestedGlobalProperties();
-                partitioned_left_any.setAnyPartitioning(this.keys1);
-                partitioned_right_any.setAnyPartitioning(this.keys2);
-                pairs.add(new GlobalPropertiesPair(partitioned_left_any, partitioned_right_any));
+                // We accept compatible partitioners of any type.
+                RequestedGlobalProperties partitionedLeftAny = new RequestedGlobalProperties();
+                RequestedGlobalProperties partitionedRightAny = new RequestedGlobalProperties();
+                partitionedLeftAny.setAnyPartitioning(this.keys1);
+                partitionedRightAny.setAnyPartitioning(this.keys2);
+                pairs.add(new GlobalPropertiesPair(partitionedLeftAny, partitionedRightAny));
 
-                // add strict hash partitioning of both inputs on their full key sets
-                RequestedGlobalProperties partitioned_left_hash = new RequestedGlobalProperties();
-                RequestedGlobalProperties partitioned_right_hash = new RequestedGlobalProperties();
-                partitioned_left_hash.setHashPartitioned(this.keys1);
-                partitioned_right_hash.setHashPartitioned(this.keys2);
-                pairs.add(new GlobalPropertiesPair(partitioned_left_hash, partitioned_right_hash));
+                // Add strict hash partitioning of both inputs on their full key sets.
+                RequestedGlobalProperties partitionedLeftHash = new RequestedGlobalProperties();
+                RequestedGlobalProperties partitionedRightHash = new RequestedGlobalProperties();
+                partitionedLeftHash.setHashPartitioned(this.keys1);
+                partitionedRightHash.setHashPartitioned(this.keys2);
+                pairs.add(new GlobalPropertiesPair(partitionedLeftHash, partitionedRightHash));
             } else {
-                RequestedGlobalProperties partitioned_left = new RequestedGlobalProperties();
-                partitioned_left.setCustomPartitioned(this.keys1, this.customPartitioner);
+                RequestedGlobalProperties partitionedLeft = new RequestedGlobalProperties();
+                partitionedLeft.setCustomPartitioned(this.keys1, this.customPartitioner);
 
-                RequestedGlobalProperties partitioned_right = new RequestedGlobalProperties();
-                partitioned_right.setCustomPartitioned(this.keys2, this.customPartitioner);
+                RequestedGlobalProperties partitionedRight = new RequestedGlobalProperties();
+                partitionedRight.setCustomPartitioned(this.keys2, this.customPartitioner);
 
                 return Collections.singletonList(
-                        new GlobalPropertiesPair(partitioned_left, partitioned_right));
+                        new GlobalPropertiesPair(partitionedLeft, partitionedRight));
             }
 
             RequestedGlobalProperties partitioned1 = new RequestedGlobalProperties();
@@ -108,7 +108,7 @@ public abstract class AbstractJoinDescriptor extends OperatorDescriptorDual {
         }
 
         if (broadcastSecondAllowed) {
-            // replicate second
+            // Replicate second.
             RequestedGlobalProperties any1 = new RequestedGlobalProperties();
             RequestedGlobalProperties replicated2 = new RequestedGlobalProperties();
             replicated2.setFullyReplicated();
@@ -116,7 +116,7 @@ public abstract class AbstractJoinDescriptor extends OperatorDescriptorDual {
         }
 
         if (broadcastFirstAllowed) {
-            // replicate first
+            // Replicate first.
             RequestedGlobalProperties replicated1 = new RequestedGlobalProperties();
             replicated1.setFullyReplicated();
             RequestedGlobalProperties any2 = new RequestedGlobalProperties();
@@ -137,7 +137,7 @@ public abstract class AbstractJoinDescriptor extends OperatorDescriptorDual {
             if (produced1.getPartitioning() == PartitioningProperty.HASH_PARTITIONED
                     && produced2.getPartitioning() == PartitioningProperty.HASH_PARTITIONED) {
 
-                // both are hash partitioned, check that partitioning fields are equivalently chosen
+                // Both are hash partitioned. Check that partition fields are equivalently chosen.
                 return checkEquivalentFieldPositionsInKeyFields(
                         produced1.getPartitioningFields(), produced2.getPartitioningFields());
 
@@ -155,8 +155,8 @@ public abstract class AbstractJoinDescriptor extends OperatorDescriptorDual {
             } else if (produced1.getPartitioning() == PartitioningProperty.CUSTOM_PARTITIONING
                     && produced2.getPartitioning() == PartitioningProperty.CUSTOM_PARTITIONING) {
 
-                // both use a custom partitioner. Check that both keys are exactly as specified and
-                // that both the same partitioner
+                // Both use a custom partitioning. Check that both keys are exactly as specified and
+                // that both the same partitioning.
                 return produced1.getPartitioningFields().isExactMatch(this.keys1)
                         && produced2.getPartitioningFields().isExactMatch(this.keys2)
                         && produced1.getCustomPartitioner() != null
@@ -167,9 +167,9 @@ public abstract class AbstractJoinDescriptor extends OperatorDescriptorDual {
 
             } else {
 
-                // no other partitioning valid, incl. ANY_PARTITIONING.
-                //   For joins we must ensure that both sides are exactly identically partitioned,
-                // ANY is not good enough.
+                // For joins, we must ensure that both sides are partitioned in an identical way.
+                // No other combination of partitioning choices, including ANY_PARTITIONING, is
+                // valid.
                 return false;
             }
 

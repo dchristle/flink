@@ -92,7 +92,7 @@ public abstract class OperatorDescriptorDual implements AbstractOperatorDescript
     protected boolean checkEquivalentFieldPositionsInKeyFields(
             FieldList fields1, FieldList fields2) {
 
-        // check number of produced partitioning fields
+        // Check number of produced partitioning fields.
         if (fields1.size() != fields2.size()) {
             return false;
         } else {
@@ -103,14 +103,14 @@ public abstract class OperatorDescriptorDual implements AbstractOperatorDescript
     protected boolean checkEquivalentFieldPositionsInKeyFields(
             FieldList fields1, FieldList fields2, int numRelevantFields) {
 
-        // check number of produced partitioning fields
+        // Check number of produced partitioning fields.
         if (fields1.size() < numRelevantFields || fields2.size() < numRelevantFields) {
             return false;
         } else {
             for (int i = 0; i < numRelevantFields; i++) {
                 int pField1 = fields1.get(i);
                 int pField2 = fields2.get(i);
-                // check if position of both produced fields is the same in both requested fields
+                // Check if position of both produced fields is the same in both requested fields.
                 int j;
                 for (j = 0; j < this.keys1.size(); j++) {
                     if (this.keys1.get(j) == pField1 && this.keys2.get(j) == pField2) {
@@ -139,13 +139,13 @@ public abstract class OperatorDescriptorDual implements AbstractOperatorDescript
                     "The given properties do not meet this operators requirements.");
         }
 
-        // check that order of fields is equivalent
+        // Check that order of fields is equivalent.
         if (!checkEquivalentFieldPositionsInKeyFields(
                 prod1.getInvolvedIndexes(), prod2.getInvolvedIndexes(), numRelevantFields)) {
             return false;
         }
 
-        // check that both inputs have the same directions of order
+        // Check that both inputs have the same directions of order.
         for (int i = 0; i < numRelevantFields; i++) {
             if (prod1.getOrder(i) != prod2.getOrder(i)) {
                 return false;
@@ -164,13 +164,13 @@ public abstract class OperatorDescriptorDual implements AbstractOperatorDescript
                     "The given properties do not meet this operators requirements.");
         }
 
-        // check that order of fields is equivalent
+        // Check that order of fields is equivalent.
         if (!checkEquivalentFieldPositionsInKeyFields(
                 prod1.getInvolvedIndexes(), prod2.getInvolvedIndexes(), numRelevantFields)) {
             return false;
         }
 
-        // check that both inputs have the same directions of order
+        // Check that both inputs have the same directions of order.
         for (int i = 0; i < numRelevantFields; i++) {
             if (prod1.getOrder(i) != prod2.getOrder(i)) {
                 return false;
