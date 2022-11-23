@@ -111,7 +111,7 @@ public class CEPOperatorTest extends TestLogger {
     }
 
     @Test
-    public void testProcessingTimestampisPassedToNFA() throws Exception {
+    public void testProcessingTimestampIsPassedToNFA() throws Exception {
 
         final NFA<Event> nfa =
                 NFACompiler.compileFactory(Pattern.<Event>begin("begin"), true).createNFA();
