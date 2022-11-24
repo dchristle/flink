@@ -45,7 +45,7 @@ public class WatermarkStrategyTest {
     public void testDefaultTimeStampAssigner() {
         WatermarkStrategy<Object> wmStrategy = WatermarkStrategy.forMonotonousTimestamps();
 
-        // ensure that the closure can be cleaned through the WatermarkStategies
+        // ensure that the closure can be cleaned through the WatermarkStrategy
         ClosureCleaner.clean(wmStrategy, ExecutionConfig.ClosureCleanerLevel.RECURSIVE, true);
 
         assertThat(
@@ -59,7 +59,7 @@ public class WatermarkStrategyTest {
                 WatermarkStrategy.forMonotonousTimestamps()
                         .withTimestampAssigner((event, timestamp) -> 42L);
 
-        // ensure that the closure can be cleaned through the WatermarkStategies
+        // ensure that the closure can be cleaned through the WatermarkStrategy
         ClosureCleaner.clean(wmStrategy, ExecutionConfig.ClosureCleanerLevel.RECURSIVE, true);
 
         TimestampAssigner<Object> timestampAssigner =
@@ -74,7 +74,7 @@ public class WatermarkStrategyTest {
                 WatermarkStrategy.forMonotonousTimestamps()
                         .withTimestampAssigner(
                                 TimestampAssignerSupplier.of((event, timestamp) -> 42L));
-        // ensure that the closure can be cleaned through the WatermarkStategies
+        // ensure that the closure can be cleaned through the WatermarkStrategy
         ClosureCleaner.clean(wmStrategy, ExecutionConfig.ClosureCleanerLevel.RECURSIVE, true);
 
         TimestampAssigner<Object> timestampAssigner =
@@ -95,7 +95,7 @@ public class WatermarkStrategyTest {
                                         return 42;
                                     }
                                 });
-        // ensure that the closure can be cleaned through the WatermarkStategies
+        // ensure that the closure can be cleaned through the WatermarkStrategy
         ClosureCleaner.clean(wmStrategy, ExecutionConfig.ClosureCleanerLevel.RECURSIVE, true);
 
         TimestampAssigner<Object> timestampAssigner =
@@ -109,7 +109,7 @@ public class WatermarkStrategyTest {
         WatermarkStrategy<Object> wmStrategy =
                 WatermarkStrategy.forMonotonousTimestamps()
                         .withTimestampAssigner((ctx) -> new TestTimestampAssigner());
-        // ensure that the closure can be cleaned through the WatermarkStategies
+        // ensure that the closure can be cleaned through the WatermarkStrategy
         ClosureCleaner.clean(wmStrategy, ExecutionConfig.ClosureCleanerLevel.RECURSIVE, true);
 
         TimestampAssigner<Object> timestampAssigner =
@@ -123,7 +123,7 @@ public class WatermarkStrategyTest {
         WatermarkStrategy<Object> wmStrategy =
                 WatermarkStrategy.forMonotonousTimestamps()
                         .withTimestampAssigner((context) -> new TestTimestampAssigner());
-        // ensure that the closure can be cleaned through the WatermarkStategies
+        // ensure that the closure can be cleaned through the WatermarkStrategy
         ClosureCleaner.clean(wmStrategy, ExecutionConfig.ClosureCleanerLevel.RECURSIVE, true);
 
         TimestampAssigner<Object> timestampAssigner =

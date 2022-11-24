@@ -269,16 +269,16 @@ public class WatermarkAssignerChangelogNormalizeTransposeRule
             StreamPhysicalExchange exchange,
             Mappings.TargetMapping calcMapping,
             RexBuilder rexBuilder) {
-        Mappings.TargetMapping inversedMapping = calcMapping.inverse();
+        Mappings.TargetMapping inverseMapping = calcMapping.inverse();
         final int newRowTimeFieldIndex =
-                inversedMapping.getTargetOpt(watermark.rowtimeFieldIndex());
+                inverseMapping.getTargetOpt(watermark.rowtimeFieldIndex());
         // Updates watermark properties after push down before Calc
         // 1. rewrites watermark expression
         // 2. clears distribution
         // 3. updates row time field index
         RexNode newWatermarkExpr = watermark.watermarkExpr();
         if (watermark.watermarkExpr() != null) {
-            newWatermarkExpr = RexUtil.apply(inversedMapping, watermark.watermarkExpr());
+            newWatermarkExpr = RexUtil.apply(inverseMapping, watermark.watermarkExpr());
         }
         final RelNode newWatermark =
                 watermark.copy(
