@@ -721,7 +721,7 @@ class RestClusterClientTest {
 
     /** Tests that the send operation is being retried. */
     @Test
-    void testRetriableSendOperationIfConnectionErrorOrServiceUnavailable() throws Exception {
+    void testRetryableSendOperationIfConnectionErrorOrServiceUnavailable() throws Exception {
         final PingRestHandler pingRestHandler =
                 new PingRestHandler(
                         FutureUtils.completedExceptionally(
@@ -995,7 +995,7 @@ class RestClusterClientTest {
      * Tests that the send operation is not being retried when receiving a NOT_FOUND return code.
      */
     @Test
-    void testSendIsNotRetriableIfHttpNotFound() throws Exception {
+    void testSendIsNotRetryableIfHttpNotFound() throws Exception {
         final String exceptionMessage = "test exception";
         final PingRestHandler pingRestHandler =
                 new PingRestHandler(
@@ -1010,7 +1010,7 @@ class RestClusterClientTest {
 
             try {
                 restClusterClient.sendRequest(PingRestHandlerHeaders.INSTANCE).get();
-                fail("The rest request should have failed.");
+                fail("The REST request should have failed.");
             } catch (Exception e) {
                 assertThat(ExceptionUtils.findThrowableWithMessage(e, exceptionMessage))
                         .isPresent();

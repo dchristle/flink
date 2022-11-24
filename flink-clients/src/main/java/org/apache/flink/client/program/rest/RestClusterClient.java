@@ -402,7 +402,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                                     "Submitting job '{}' ({}).",
                                     jobGraph.getName(),
                                     jobGraph.getJobID());
-                            return sendRetriableRequest(
+                            return sendRetryableRequest(
                                     JobSubmitHeaders.getInstance(),
                                     EmptyMessageParameters.getInstance(),
                                     requestAndFileUploads.f0,
@@ -881,7 +881,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                     R extends RequestBody,
                     P extends ResponseBody>
             CompletableFuture<P> sendRequest(M messageHeaders, U messageParameters, R request) {
-        return sendRetriableRequest(
+        return sendRetryableRequest(
                 messageHeaders,
                 messageParameters,
                 request,
@@ -893,12 +893,12 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                     U extends MessageParameters,
                     R extends RequestBody,
                     P extends ResponseBody>
-            CompletableFuture<P> sendRetriableRequest(
+            CompletableFuture<P> sendRetryableRequest(
                     M messageHeaders,
                     U messageParameters,
                     R request,
                     Predicate<Throwable> retryPredicate) {
-        return sendRetriableRequest(
+        return sendRetryableRequest(
                 messageHeaders,
                 messageParameters,
                 request,
@@ -914,7 +914,7 @@ public class RestClusterClient<T> implements ClusterClient<T> {
                     U extends MessageParameters,
                     R extends RequestBody,
                     P extends ResponseBody>
-            CompletableFuture<P> sendRetriableRequest(
+            CompletableFuture<P> sendRetryableRequest(
                     M messageHeaders,
                     U messageParameters,
                     R request,

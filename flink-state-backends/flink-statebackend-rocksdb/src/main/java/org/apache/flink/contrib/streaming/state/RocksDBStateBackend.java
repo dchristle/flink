@@ -424,7 +424,7 @@ public class RocksDBStateBackend extends AbstractManagedMemoryStateBackend
      * Gets the configured local DB storage paths, or null, if none were configured.
      *
      * <p>Under these directories on the TaskManager, RocksDB stores its SST files and metadata
-     * files. These directories do not need to be persistent, they can be ephermeral, meaning that
+     * files. These directories do not need to be persistent, they can be ephemeral, meaning that
      * they are lost on a machine failure, because state in RocksDB is persisted in checkpoints.
      *
      * <p>If nothing is configured, these directories default to the TaskManager's local temporary
@@ -544,14 +544,14 @@ public class RocksDBStateBackend extends AbstractManagedMemoryStateBackend
 
     /** @deprecated Typo in method name. Use {@link #getNumberOfTransferThreads} instead. */
     @Deprecated
-    public int getNumberOfTransferingThreads() {
+    public int getNumberOfTransferringThreads() {
         return getNumberOfTransferThreads();
     }
 
     /** @deprecated Typo in method name. Use {@link #setNumberOfTransferThreads(int)} instead. */
     @Deprecated
-    public void setNumberOfTransferingThreads(int numberOfTransferingThreads) {
-        setNumberOfTransferThreads(numberOfTransferingThreads);
+    public void setNumberOfTransferringThreads(int numberOfTransferringThreads) {
+        setNumberOfTransferThreads(numberOfTransferringThreads);
     }
 
     /** Gets the max batch size will be used in {@link RocksDBWriteBatchWrapper}. */

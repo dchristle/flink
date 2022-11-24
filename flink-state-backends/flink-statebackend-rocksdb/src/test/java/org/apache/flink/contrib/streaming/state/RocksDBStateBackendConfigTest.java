@@ -397,7 +397,7 @@ public class RocksDBStateBackendConfigTest {
                 hasFailure = true;
             }
             assertTrue(
-                    "We must see a failure because no storaged directory is feasible.", hasFailure);
+                    "We must see a failure because no storage directory is feasible.", hasFailure);
         } finally {
             //noinspection ResultOfMethodCallIgnored
             targetDir.setWritable(true, false);
