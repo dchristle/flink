@@ -135,7 +135,7 @@ public final class TestingCompletedCheckpointStore implements CompletedCheckpoin
         private Supplier<Integer> getNumberOfRetainedCheckpointsSuppler =
                 () -> {
                     throw new UnsupportedOperationException(
-                            "getNumberOfRetainedCheckpointsis not implemented.");
+                            "getNumberOfRetainedCheckpoints is not implemented.");
                 };
         private Supplier<Integer> getMaxNumberOfRetainedCheckpointsSupplier =
                 () -> {

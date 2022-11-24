@@ -562,7 +562,7 @@ public class UnalignedCheckpointsTest {
     }
 
     @Test
-    public void testNotifyAbortCheckpointBeforeCanellingAsyncCheckpoint() throws Exception {
+    public void testNotifyAbortCheckpointBeforeCancellingAsyncCheckpoint() throws Exception {
         ValidateAsyncFutureNotCompleted handler = new ValidateAsyncFutureNotCompleted(1);
         inputGate = createInputGate(2, handler);
         handler.setInputGate(inputGate);

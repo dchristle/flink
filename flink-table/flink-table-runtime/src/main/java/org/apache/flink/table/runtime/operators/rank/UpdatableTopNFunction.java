@@ -350,11 +350,11 @@ public class UpdatableTopNFunction extends AbstractTopNFunction implements Check
             }
         }
         LOG.error(
-                "Failed to find the sortKey: {}, rowkey: {} in the buffer. This should never happen",
+                "Failed to find the sortKey: {}, rowKey: {} in the buffer. This should never happen.",
                 sortKey,
                 rowKey);
         throw new RuntimeException(
-                "Failed to find the sortKey, rowkey in the buffer. This should never happen");
+                "Failed to find the sortKey, rowKey in the buffer. This should never happen.");
     }
 
     private void emitRecordsWithRowNumberIgnoreStateError(

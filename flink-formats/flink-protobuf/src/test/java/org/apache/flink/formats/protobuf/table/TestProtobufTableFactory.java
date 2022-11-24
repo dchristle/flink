@@ -36,7 +36,7 @@ import org.apache.flink.table.types.DataType;
 import java.util.HashSet;
 import java.util.Set;
 
-/** Test protobuf table factory. Only used in flink ptotobuf test module. */
+/** Test protobuf table factory. Only used in flink protobuf test module. */
 public class TestProtobufTableFactory
         implements DynamicTableSourceFactory, DynamicTableSinkFactory {
 

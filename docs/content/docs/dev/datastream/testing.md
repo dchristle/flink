@@ -88,7 +88,7 @@ class IncrementMapFunctionTest extends FlatSpec with Matchers {
         val incrementer: IncrementMapFunction = new IncrementMapFunction()
 
         // call the methods that you have implemented
-        incremeter.map(2) should be (3)
+        incrementer.map(2) should be (3)
     }
 }
 ```

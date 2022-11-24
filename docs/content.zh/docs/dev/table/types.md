@@ -1046,7 +1046,7 @@ The type can be declared using the above combinations where `p1` is the number o
 and `9` (both inclusive). If no `p1` is specified, it is equal to `2` by default. If no `p2` is
 specified, it is equal to `6` by default.
 
-### Constructured Data Types
+### Constructed Data Types
 
 #### `ARRAY`
 

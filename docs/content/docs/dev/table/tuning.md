@@ -167,7 +167,7 @@ configuration.set("table.optimizer.agg-phase-strategy", "TWO_PHASE") # enable tw
 
 Local-Global optimization is effective to eliminate data skew for general aggregation, such as SUM, COUNT, MAX, MIN, AVG. But its performance is not satisfactory when dealing with distinct aggregation.
 
-For example, if we want to analyse how many unique users logined today. We may have the following query:
+For example, if we want to analyse how many unique users logged in today. We may have the following query:
 
 ```sql
 SELECT day, COUNT(DISTINCT user_id)

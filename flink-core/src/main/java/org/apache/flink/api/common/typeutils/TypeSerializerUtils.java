@@ -36,6 +36,6 @@ public final class TypeSerializerUtils {
 
     // ------------------------------------------------------------------------
 
-    /** This class is not meanto to be instantiated. */
+    /** This class is not meant to be instantiated. */
     private TypeSerializerUtils() {}
 }

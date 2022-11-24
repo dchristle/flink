@@ -90,7 +90,7 @@ class IncrementMapFunctionTest extends FlatSpec with Matchers {
         val incrementer: IncrementMapFunction = new IncrementMapFunction()
 
         // call the methods that you have implemented
-        incremeter.map(2) should be (3)
+        incrementer.map(2) should be (3)
     }
 }
 ```
@@ -231,7 +231,7 @@ class StatefulFlatMapFunctionTest extends FlatSpec with Matchers with BeforeAndA
     //trigger event time timers by advancing the event time of the operator with a watermark
     testHarness.processWatermark(100)
 
-    //trigger proccesign time timers by advancing the processing time of the operator directly
+    //trigger proccesing time timers by advancing the processing time of the operator directly
     testHarness.setProcessingTime(100)
 
     //retrieve list of emitted records for assertions

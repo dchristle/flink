@@ -277,7 +277,7 @@ public class UnsortedGrouping<T> extends Grouping<T> {
      * Sorts {@link org.apache.flink.api.java.tuple.Tuple} elements within a group on the specified
      * field in the specified {@link Order}.
      *
-     * <p><b>Note: Only groups of Tuple elements and Pojos can be sorted.</b>
+     * <p><b>Note: Only groups of Tuple elements and POJOs can be sorted.</b>
      *
      * <p>Groups can be sorted by multiple fields by chaining {@link #sortGroup(int, Order)} calls.
      *
@@ -301,7 +301,7 @@ public class UnsortedGrouping<T> extends Grouping<T> {
     /**
      * Sorts Pojos within a group on the specified field in the specified {@link Order}.
      *
-     * <p><b>Note: Only groups of Tuple elements and Pojos can be sorted.</b>
+     * <p><b>Note: Only groups of Tuple elements and POJOs can be sorted.</b>
      *
      * <p>Groups can be sorted by multiple fields by chaining {@link #sortGroup(String, Order)}
      * calls.

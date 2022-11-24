@@ -378,7 +378,7 @@ public class ValuesITCase extends StreamingTestBase {
                 boolean bool,
                 LocalTime time,
                 LocalDate date,
-                //				Period dateTimeInteraval, TODO TIMESTAMP WITH TIMEZONE not supported yet
+                //				Period dateTimeInterval, TODO TIMESTAMP WITH TIMEZONE not supported yet
                 //				Duration timeInterval, TODO TIMESTAMP WITH TIMEZONE not supported yet
                 //				OffsetDateTime zonedDateTime, TODO TIMESTAMP WITH TIMEZONE not supported yet
                 LocalDateTime timestamp,
@@ -426,7 +426,7 @@ public class ValuesITCase extends StreamingTestBase {
             boolean bool,
             LocalTime time,
             LocalDate date,
-            //			Period dateTimeInteraval, // TODO INTERVAL types not supported yet
+            //			Period dateTimeInterval, // TODO INTERVAL types not supported yet
             //			Duration timeInterval, // TODO INTERVAL types not supported yet
             //			OffsetDateTime zonedDateTime, TODO TIMESTAMP WITH TIMEZONE not supported yet
             LocalDateTime timestamp,
