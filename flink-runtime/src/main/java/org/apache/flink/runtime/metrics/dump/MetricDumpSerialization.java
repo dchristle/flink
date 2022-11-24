@@ -227,26 +227,26 @@ public class MetricDumpSerialization {
             case INFO_CATEGORY_JM:
                 break;
             case INFO_CATEGORY_TM:
-                String tmID = ((QueryScopeInfo.TaskManagerQueryScopeInfo) info).taskManagerID;
+                String tmID = ((QueryScopeInfo.TaskManagerQueryScopeInfo) info).taskManagerId;
                 out.writeUTF(tmID);
                 break;
             case INFO_CATEGORY_JOB:
                 QueryScopeInfo.JobQueryScopeInfo jobInfo = (QueryScopeInfo.JobQueryScopeInfo) info;
-                out.writeUTF(jobInfo.jobID);
+                out.writeUTF(jobInfo.jobId);
                 break;
             case INFO_CATEGORY_TASK:
                 QueryScopeInfo.TaskQueryScopeInfo taskInfo =
                         (QueryScopeInfo.TaskQueryScopeInfo) info;
-                out.writeUTF(taskInfo.jobID);
-                out.writeUTF(taskInfo.vertexID);
+                out.writeUTF(taskInfo.jobId);
+                out.writeUTF(taskInfo.vertexId);
                 out.writeInt(taskInfo.subtaskIndex);
                 out.writeInt(taskInfo.attemptNumber);
                 break;
             case INFO_CATEGORY_OPERATOR:
                 QueryScopeInfo.OperatorQueryScopeInfo operatorInfo =
                         (QueryScopeInfo.OperatorQueryScopeInfo) info;
-                out.writeUTF(operatorInfo.jobID);
-                out.writeUTF(operatorInfo.vertexID);
+                out.writeUTF(operatorInfo.jobId);
+                out.writeUTF(operatorInfo.vertexId);
                 out.writeInt(operatorInfo.subtaskIndex);
                 out.writeInt(operatorInfo.attemptNumber);
                 out.writeUTF(operatorInfo.operatorName);

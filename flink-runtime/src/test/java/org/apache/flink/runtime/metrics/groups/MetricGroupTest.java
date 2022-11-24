@@ -350,16 +350,16 @@ public class MetricGroupTest extends TestLogger {
                 (QueryScopeInfo.TaskQueryScopeInfo)
                         userGroup1.createQueryServiceMetricInfo(new DummyCharacterFilter());
         assertEquals("hello", info1.scope);
-        assertEquals(jid.toString(), info1.jobID);
-        assertEquals(vid.toString(), info1.vertexID);
+        assertEquals(jid.toString(), info1.jobId);
+        assertEquals(vid.toString(), info1.vertexId);
         assertEquals(4, info1.subtaskIndex);
 
         QueryScopeInfo.TaskQueryScopeInfo info2 =
                 (QueryScopeInfo.TaskQueryScopeInfo)
                         userGroup2.createQueryServiceMetricInfo(new DummyCharacterFilter());
         assertEquals("hello.world", info2.scope);
-        assertEquals(jid.toString(), info2.jobID);
-        assertEquals(vid.toString(), info2.vertexID);
+        assertEquals(jid.toString(), info2.jobId);
+        assertEquals(vid.toString(), info2.vertexId);
         assertEquals(4, info2.subtaskIndex);
     }
 

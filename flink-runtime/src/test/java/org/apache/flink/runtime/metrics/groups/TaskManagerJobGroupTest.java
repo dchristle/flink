@@ -129,6 +129,6 @@ public class TaskManagerJobGroupTest extends TestLogger {
         QueryScopeInfo.JobQueryScopeInfo info =
                 job.createQueryServiceMetricInfo(new DummyCharacterFilter());
         assertEquals("", info.scope);
-        assertEquals(jid.toString(), info.jobID);
+        assertEquals(jid.toString(), info.jobId);
     }
 }

@@ -196,7 +196,7 @@ class MetricDumpSerializerTest {
                                     .isEqualTo(
                                             ((QueryScopeInfo.TaskManagerQueryScopeInfo)
                                                             counterDump.scopeInfo)
-                                                    .taskManagerID);
+                                                    .taskManagerId);
                             counters.remove(c2);
                             break;
                         default:
@@ -213,8 +213,8 @@ class MetricDumpSerializerTest {
                     QueryScopeInfo.TaskQueryScopeInfo taskInfo =
                             (QueryScopeInfo.TaskQueryScopeInfo) gaugeDump.scopeInfo;
                     assertThat(taskInfo.scope).isEqualTo("D");
-                    assertThat(taskInfo.jobID).isEqualTo("jid");
-                    assertThat(taskInfo.vertexID).isEqualTo("vid");
+                    assertThat(taskInfo.jobId).isEqualTo("jid");
+                    assertThat(taskInfo.vertexId).isEqualTo("vid");
                     assertThat(taskInfo.subtaskIndex).isEqualTo(2);
                     gauges.remove(g1);
                     break;
@@ -238,8 +238,8 @@ class MetricDumpSerializerTest {
                     QueryScopeInfo.OperatorQueryScopeInfo opInfo =
                             (QueryScopeInfo.OperatorQueryScopeInfo) histogramDump.scopeInfo;
                     assertThat(opInfo.scope).isEqualTo("E");
-                    assertThat(opInfo.jobID).isEqualTo("jid");
-                    assertThat(opInfo.vertexID).isEqualTo("vid");
+                    assertThat(opInfo.jobId).isEqualTo("jid");
+                    assertThat(opInfo.vertexId).isEqualTo("vid");
                     assertThat(opInfo.subtaskIndex).isEqualTo(2);
                     assertThat(opInfo.operatorName).isEqualTo("opname");
                     histograms.remove(h1);
@@ -252,7 +252,7 @@ class MetricDumpSerializerTest {
                             .isInstanceOf(QueryScopeInfo.JobQueryScopeInfo.class);
                     assertThat(meterDump.scopeInfo.scope).isEqualTo("C");
                     assertThat(meterDump.name).isEqualTo("c3");
-                    assertThat(((QueryScopeInfo.JobQueryScopeInfo) meterDump.scopeInfo).jobID)
+                    assertThat(((QueryScopeInfo.JobQueryScopeInfo) meterDump.scopeInfo).jobId)
                             .isEqualTo("jid");
                     break;
                 default:

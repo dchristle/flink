@@ -197,6 +197,6 @@ public class TaskManagerGroupTest extends TestLogger {
         QueryScopeInfo.TaskManagerQueryScopeInfo info =
                 tm.createQueryServiceMetricInfo(new DummyCharacterFilter());
         assertEquals("", info.scope);
-        assertEquals("id", info.taskManagerID);
+        assertEquals("id", info.taskManagerId);
     }
 }

@@ -50,22 +50,22 @@ class QueryScopeInfoTest {
                 new QueryScopeInfo.TaskManagerQueryScopeInfo("tmid");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TM);
         assertThat(info.scope).isEmpty();
-        assertThat(info.taskManagerID).isEqualTo("tmid");
+        assertThat(info.taskManagerId).isEqualTo("tmid");
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TM);
         assertThat(info.scope).isEqualTo("world");
-        assertThat(info.taskManagerID).isEqualTo("tmid");
+        assertThat(info.taskManagerId).isEqualTo("tmid");
 
         info = new QueryScopeInfo.TaskManagerQueryScopeInfo("tmid", "hello");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TM);
         assertThat(info.scope).isEqualTo("hello");
-        assertThat(info.taskManagerID).isEqualTo("tmid");
+        assertThat(info.taskManagerId).isEqualTo("tmid");
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TM);
         assertThat(info.scope).isEqualTo("hello.world");
-        assertThat(info.taskManagerID).isEqualTo("tmid");
+        assertThat(info.taskManagerId).isEqualTo("tmid");
     }
 
     @Test
@@ -73,22 +73,22 @@ class QueryScopeInfoTest {
         QueryScopeInfo.JobQueryScopeInfo info = new QueryScopeInfo.JobQueryScopeInfo("jobid");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_JOB);
         assertThat(info.scope).isEmpty();
-        assertThat(info.jobID).isEqualTo("jobid");
+        assertThat(info.jobId).isEqualTo("jobid");
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_JOB);
         assertThat(info.scope).isEqualTo("world");
-        assertThat(info.jobID).isEqualTo("jobid");
+        assertThat(info.jobId).isEqualTo("jobid");
 
         info = new QueryScopeInfo.JobQueryScopeInfo("jobid", "hello");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_JOB);
         assertThat(info.scope).isEqualTo("hello");
-        assertThat(info.jobID).isEqualTo("jobid");
+        assertThat(info.jobId).isEqualTo("jobid");
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_JOB);
         assertThat(info.scope).isEqualTo("hello.world");
-        assertThat(info.jobID).isEqualTo("jobid");
+        assertThat(info.jobId).isEqualTo("jobid");
     }
 
     @Test
@@ -97,29 +97,29 @@ class QueryScopeInfoTest {
                 new QueryScopeInfo.TaskQueryScopeInfo("jobid", "taskid", 2, 0);
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TASK);
         assertThat(info.scope).isEmpty();
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.subtaskIndex).isEqualTo(2);
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TASK);
         assertThat(info.scope).isEqualTo("world");
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.subtaskIndex).isEqualTo(2);
 
         info = new QueryScopeInfo.TaskQueryScopeInfo("jobid", "taskid", 2, 0, "hello");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TASK);
         assertThat(info.scope).isEqualTo("hello");
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.subtaskIndex).isEqualTo(2);
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_TASK);
         assertThat(info.scope).isEqualTo("hello.world");
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.subtaskIndex).isEqualTo(2);
     }
 
@@ -129,16 +129,16 @@ class QueryScopeInfoTest {
                 new QueryScopeInfo.OperatorQueryScopeInfo("jobid", "taskid", 2, 0, "opname");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_OPERATOR);
         assertThat(info.scope).isEmpty();
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.operatorName).isEqualTo("opname");
         assertThat(info.subtaskIndex).isEqualTo(2);
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_OPERATOR);
         assertThat(info.scope).isEqualTo("world");
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.operatorName).isEqualTo("opname");
         assertThat(info.subtaskIndex).isEqualTo(2);
 
@@ -147,16 +147,16 @@ class QueryScopeInfoTest {
                         "jobid", "taskid", 2, 0, "opname", "hello");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_OPERATOR);
         assertThat(info.scope).isEqualTo("hello");
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.operatorName).isEqualTo("opname");
         assertThat(info.subtaskIndex).isEqualTo(2);
 
         info = info.copy("world");
         assertThat(info.getCategory()).isEqualTo(QueryScopeInfo.INFO_CATEGORY_OPERATOR);
         assertThat(info.scope).isEqualTo("hello.world");
-        assertThat(info.jobID).isEqualTo("jobid");
-        assertThat(info.vertexID).isEqualTo("taskid");
+        assertThat(info.jobId).isEqualTo("jobid");
+        assertThat(info.vertexId).isEqualTo("taskid");
         assertThat(info.operatorName).isEqualTo("opname");
         assertThat(info.subtaskIndex).isEqualTo(2);
     }

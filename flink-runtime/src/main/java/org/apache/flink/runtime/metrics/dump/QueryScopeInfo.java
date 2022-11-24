@@ -91,7 +91,7 @@ public abstract class QueryScopeInfo {
 
     /** Container for the task manager scope. Stores the ID of the task manager. */
     public static class TaskManagerQueryScopeInfo extends QueryScopeInfo {
-        public final String taskManagerID;
+        public final String taskManagerId;
 
         public TaskManagerQueryScopeInfo(String taskManagerId) {
             this(taskManagerId, "");
@@ -99,12 +99,12 @@ public abstract class QueryScopeInfo {
 
         public TaskManagerQueryScopeInfo(String taskManagerId, String scope) {
             super(scope);
-            this.taskManagerID = taskManagerId;
+            this.taskManagerId = taskManagerId;
         }
 
         @Override
         public TaskManagerQueryScopeInfo copy(String additionalScope) {
-            return new TaskManagerQueryScopeInfo(this.taskManagerID, concatScopes(additionalScope));
+            return new TaskManagerQueryScopeInfo(this.taskManagerId, concatScopes(additionalScope));
         }
 
         @Override
@@ -115,20 +115,20 @@ public abstract class QueryScopeInfo {
 
     /** Container for the job scope. Stores the ID of the job. */
     public static class JobQueryScopeInfo extends QueryScopeInfo {
-        public final String jobID;
+        public final String jobId;
 
-        public JobQueryScopeInfo(String jobID) {
-            this(jobID, "");
+        public JobQueryScopeInfo(String jobId) {
+            this(jobId, "");
         }
 
-        public JobQueryScopeInfo(String jobID, String scope) {
+        public JobQueryScopeInfo(String jobId, String scope) {
             super(scope);
-            this.jobID = jobID;
+            this.jobId = jobId;
         }
 
         @Override
         public JobQueryScopeInfo copy(String additionalScope) {
-            return new JobQueryScopeInfo(this.jobID, concatScopes(additionalScope));
+            return new JobQueryScopeInfo(this.jobId, concatScopes(additionalScope));
         }
 
         @Override
@@ -139,21 +139,21 @@ public abstract class QueryScopeInfo {
 
     /** Container for the task scope. Stores the ID of the job/vertex and subtask index. */
     public static class TaskQueryScopeInfo extends QueryScopeInfo {
-        public final String jobID;
-        public final String vertexID;
+        public final String jobId;
+        public final String vertexId;
         public final int subtaskIndex;
         public final int attemptNumber;
 
         public TaskQueryScopeInfo(
-                String jobID, String vertexid, int subtaskIndex, int attemptNumber) {
-            this(jobID, vertexid, subtaskIndex, attemptNumber, "");
+                String jobId, String vertexId, int subtaskIndex, int attemptNumber) {
+            this(jobId, vertexId, subtaskIndex, attemptNumber, "");
         }
 
         public TaskQueryScopeInfo(
-                String jobID, String vertexid, int subtaskIndex, int attemptNumber, String scope) {
+                String jobId, String vertexId, int subtaskIndex, int attemptNumber, String scope) {
             super(scope);
-            this.jobID = jobID;
-            this.vertexID = vertexid;
+            this.jobId = jobId;
+            this.vertexId = vertexId;
             this.subtaskIndex = subtaskIndex;
             this.attemptNumber = attemptNumber;
         }
@@ -161,8 +161,8 @@ public abstract class QueryScopeInfo {
         @Override
         public TaskQueryScopeInfo copy(String additionalScope) {
             return new TaskQueryScopeInfo(
-                    this.jobID,
-                    this.vertexID,
+                    this.jobId,
+                    this.vertexId,
                     this.subtaskIndex,
                     this.attemptNumber,
                     concatScopes(additionalScope));
@@ -179,31 +179,31 @@ public abstract class QueryScopeInfo {
      * name of the operator.
      */
     public static class OperatorQueryScopeInfo extends QueryScopeInfo {
-        public final String jobID;
-        public final String vertexID;
+        public final String jobId;
+        public final String vertexId;
         public final int subtaskIndex;
         public final int attemptNumber;
         public final String operatorName;
 
         public OperatorQueryScopeInfo(
-                String jobID,
-                String vertexid,
+                String jobId,
+                String vertexId,
                 int subtaskIndex,
                 int attemptNumber,
                 String operatorName) {
-            this(jobID, vertexid, subtaskIndex, attemptNumber, operatorName, "");
+            this(jobId, vertexId, subtaskIndex, attemptNumber, operatorName, "");
         }
 
         public OperatorQueryScopeInfo(
-                String jobID,
-                String vertexid,
+                String jobId,
+                String vertexId,
                 int subtaskIndex,
                 int attemptNumber,
                 String operatorName,
                 String scope) {
             super(scope);
-            this.jobID = jobID;
-            this.vertexID = vertexid;
+            this.jobId = jobId;
+            this.vertexId = vertexId;
             this.subtaskIndex = subtaskIndex;
             this.attemptNumber = attemptNumber;
             this.operatorName = operatorName;
@@ -212,8 +212,8 @@ public abstract class QueryScopeInfo {
         @Override
         public OperatorQueryScopeInfo copy(String additionalScope) {
             return new OperatorQueryScopeInfo(
-                    this.jobID,
-                    this.vertexID,
+                    this.jobId,
+                    this.vertexId,
                     this.subtaskIndex,
                     this.attemptNumber,
                     this.operatorName,

@@ -195,8 +195,8 @@ public class InternalOperatorGroupTest extends TestLogger {
         QueryScopeInfo.OperatorQueryScopeInfo info =
                 operator.createQueryServiceMetricInfo(new DummyCharacterFilter());
         assertEquals("", info.scope);
-        assertEquals(jid.toString(), info.jobID);
-        assertEquals(vid.toString(), info.vertexID);
+        assertEquals(jid.toString(), info.jobId);
+        assertEquals(vid.toString(), info.vertexId);
         assertEquals(4, info.subtaskIndex);
         assertEquals("operator", info.operatorName);
     }

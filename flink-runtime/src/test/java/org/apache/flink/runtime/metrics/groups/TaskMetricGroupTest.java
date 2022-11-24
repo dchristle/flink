@@ -166,8 +166,8 @@ public class TaskMetricGroupTest extends TestLogger {
         QueryScopeInfo.TaskQueryScopeInfo info =
                 task.createQueryServiceMetricInfo(new DummyCharacterFilter());
         assertEquals("", info.scope);
-        assertEquals(jid.toString(), info.jobID);
-        assertEquals(vid.toString(), info.vertexID);
+        assertEquals(jid.toString(), info.jobId);
+        assertEquals(vid.toString(), info.vertexId);
         assertEquals(4, info.subtaskIndex);
     }
 

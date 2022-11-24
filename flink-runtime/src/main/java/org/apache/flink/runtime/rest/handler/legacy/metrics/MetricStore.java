@@ -260,7 +260,7 @@ public class MetricStore {
                     addMetric(jobManager.metrics, name, metric);
                     break;
                 case INFO_CATEGORY_TM:
-                    String tmID = ((QueryScopeInfo.TaskManagerQueryScopeInfo) info).taskManagerID;
+                    String tmID = ((QueryScopeInfo.TaskManagerQueryScopeInfo) info).taskManagerId;
                     tm = taskManagers.computeIfAbsent(tmID, k -> new TaskManagerMetricStore());
                     if (name.contains("GarbageCollector")) {
                         String gcName =
@@ -274,14 +274,14 @@ public class MetricStore {
                 case INFO_CATEGORY_JOB:
                     QueryScopeInfo.JobQueryScopeInfo jobInfo =
                             (QueryScopeInfo.JobQueryScopeInfo) info;
-                    job = jobs.computeIfAbsent(jobInfo.jobID, k -> new JobMetricStore());
+                    job = jobs.computeIfAbsent(jobInfo.jobId, k -> new JobMetricStore());
                     addMetric(job.metrics, name, metric);
                     break;
                 case INFO_CATEGORY_TASK:
                     QueryScopeInfo.TaskQueryScopeInfo taskInfo =
                             (QueryScopeInfo.TaskQueryScopeInfo) info;
-                    job = jobs.computeIfAbsent(taskInfo.jobID, k -> new JobMetricStore());
-                    task = job.tasks.computeIfAbsent(taskInfo.vertexID, k -> new TaskMetricStore());
+                    job = jobs.computeIfAbsent(taskInfo.jobId, k -> new JobMetricStore());
+                    task = job.tasks.computeIfAbsent(taskInfo.vertexId, k -> new TaskMetricStore());
                     subtask =
                             task.subtasks.computeIfAbsent(
                                     taskInfo.subtaskIndex, k -> new SubtaskMetricStore());
@@ -291,8 +291,8 @@ public class MetricStore {
                     // which means there should be only one execution
                     isRepresentativeAttempt =
                             isRepresentativeAttempt(
-                                    taskInfo.jobID,
-                                    taskInfo.vertexID,
+                                    taskInfo.jobId,
+                                    taskInfo.vertexId,
                                     taskInfo.subtaskIndex,
                                     taskInfo.attemptNumber);
                     attempt =
@@ -316,18 +316,18 @@ public class MetricStore {
                 case INFO_CATEGORY_OPERATOR:
                     QueryScopeInfo.OperatorQueryScopeInfo operatorInfo =
                             (QueryScopeInfo.OperatorQueryScopeInfo) info;
-                    job = jobs.computeIfAbsent(operatorInfo.jobID, k -> new JobMetricStore());
+                    job = jobs.computeIfAbsent(operatorInfo.jobId, k -> new JobMetricStore());
                     task =
                             job.tasks.computeIfAbsent(
-                                    operatorInfo.vertexID, k -> new TaskMetricStore());
+                                    operatorInfo.vertexId, k -> new TaskMetricStore());
                     subtask =
                             task.subtasks.computeIfAbsent(
                                     operatorInfo.subtaskIndex, k -> new SubtaskMetricStore());
 
                     isRepresentativeAttempt =
                             isRepresentativeAttempt(
-                                    operatorInfo.jobID,
-                                    operatorInfo.vertexID,
+                                    operatorInfo.jobId,
+                                    operatorInfo.vertexId,
                                     operatorInfo.subtaskIndex,
                                     operatorInfo.attemptNumber);
 
