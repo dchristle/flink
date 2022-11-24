@@ -303,7 +303,7 @@ public class StreamNonDeterministicUpdatePlanVisitor {
                 // required determinism cannot be satisfied even upsert materialize was enabled if:
                 // 1. remaining join condition contains non-deterministic call
                 JavaScalaConversionUtil.toJava(lookupJoin.remainingCondition())
-                        .ifPresent(condi -> checkNonDeterministicCondition(condi, lookupJoin));
+                        .ifPresent(condition -> checkNonDeterministicCondition(condition, lookupJoin));
 
                 // 2. inner calc in lookJoin contains either non-deterministic condition or calls
                 JavaScalaConversionUtil.toJava(lookupJoin.calcOnTemporalTable())

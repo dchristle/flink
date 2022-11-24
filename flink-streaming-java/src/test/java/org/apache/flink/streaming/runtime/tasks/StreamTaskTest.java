@@ -461,7 +461,7 @@ public class StreamTaskTest extends TestLogger {
             verify(taskManagerActions, timeout(2000L)).updateTaskExecutionState(eq(state));
 
             // send a cancel. because the operator takes a long time to deserialize, this should
-            // hit the task before the operator is deserialized
+            // hit the task before the operator is deserialized.
             task.cancelExecution();
 
             task.getExecutingThread().join();
@@ -496,7 +496,7 @@ public class StreamTaskTest extends TestLogger {
             StateBackendTestSource.fail = false;
             task.startTaskThread();
 
-            // wait for clean termination
+            // wait for clean termination.
             task.getExecutingThread().join();
 
             // ensure that the state backends and stream iterables are closed ...
@@ -538,7 +538,7 @@ public class StreamTaskTest extends TestLogger {
             StateBackendTestSource.fail = true;
             task.startTaskThread();
 
-            // wait for clean termination
+            // wait for clean termination.
             task.getExecutingThread().join();
 
             // ensure that the state backends and stream iterables are closed ...
@@ -558,7 +558,7 @@ public class StreamTaskTest extends TestLogger {
     public void testDecliningCheckpointStreamOperator() throws Exception {
         DummyEnvironment dummyEnvironment = new DummyEnvironment();
 
-        // mock the returned snapshots
+        // mock the returned snapshots.
         OperatorSnapshotFutures operatorSnapshotResult1 = mock(OperatorSnapshotFutures.class);
         OperatorSnapshotFutures operatorSnapshotResult2 = mock(OperatorSnapshotFutures.class);
 
@@ -758,20 +758,18 @@ public class StreamTaskTest extends TestLogger {
                             public Object answer(InvocationOnMock invocation) {
                                 acknowledgeCheckpointLatch.trigger();
 
-                                // block here so that we can issue the concurrent cancel call
+                                // block here so that we can issue the concurrent cancel call.
                                 while (true) {
                                     try {
-                                        // wait until we successfully await (no pun intended)
+                                        // wait until we successfully await (no pun intended).
                                         completeAcknowledge.await();
 
-                                        // when await() returns normally, we break out of the loop
+                                        // when await() returns normally, we break out of the loop.
                                         break;
                                     } catch (InterruptedException e) {
                                         // survive interruptions that arise from thread pool
-                                        // shutdown
-                                        // production code cannot actually throw
-                                        // InterruptedException from
-                                        // checkpoint acknowledgement
+                                        // shutdown. production code cannot actually throw
+                                        // InterruptedException from checkpoint acknowledgement.
                                     }
                                 }
 
@@ -838,7 +836,7 @@ public class StreamTaskTest extends TestLogger {
             ArgumentCaptor<TaskStateSnapshot> subtaskStateCaptor =
                     ArgumentCaptor.forClass(TaskStateSnapshot.class);
 
-            // check that the checkpoint has been completed
+            // check that the checkpoint has been completed.
             verify(checkpointResponder)
                     .acknowledgeCheckpoint(
                             any(JobID.class),
@@ -851,14 +849,14 @@ public class StreamTaskTest extends TestLogger {
             OperatorSubtaskState subtaskState =
                     subtaskStates.getSubtaskStateMappings().iterator().next().getValue();
 
-            // check that the subtask state contains the expected state handles
+            // check that the subtask state contains the expected state handles.
             assertEquals(singleton(managedKeyedStateHandle), subtaskState.getManagedKeyedState());
             assertEquals(singleton(rawKeyedStateHandle), subtaskState.getRawKeyedState());
             assertEquals(
                     singleton(managedOperatorStateHandle), subtaskState.getManagedOperatorState());
             assertEquals(singleton(rawOperatorStateHandle), subtaskState.getRawOperatorState());
 
-            // check that the state handles have not been discarded
+            // check that the state handles have not been discarded.
             verify(managedKeyedStateHandle, never()).discardState();
             verify(rawKeyedStateHandle, never()).discardState();
             verify(managedOperatorStateHandle, never()).discardState();
@@ -869,7 +867,7 @@ public class StreamTaskTest extends TestLogger {
             completeAcknowledge.trigger();
 
             // canceling the stream task after it has acknowledged the checkpoint should not discard
-            // the state handles
+            // the state handles.
             verify(managedKeyedStateHandle, never()).discardState();
             verify(rawKeyedStateHandle, never()).discardState();
             verify(managedOperatorStateHandle, never()).discardState();
@@ -934,7 +932,7 @@ public class StreamTaskTest extends TestLogger {
                                 managedOperatorStateHandle.getDiscardFuture(),
                                 rawOperatorStateHandle.getDiscardFuture()));
 
-        // make sure that all state handles have been discarded
+        // make sure that all state handles have been discarded.
         discardFuture.get();
 
         try {
@@ -957,7 +955,7 @@ public class StreamTaskTest extends TestLogger {
     @Test
     public void testEmptySubtaskStateLeadsToStatelessAcknowledgment() throws Exception {
 
-        // latch blocks until the async checkpoint thread acknowledges
+        // latch blocks until the async checkpoint thread acknowledges.
         final OneShotLatch checkpointCompletedLatch = new OneShotLatch();
         final List<SubtaskState> checkpointResult = new ArrayList<>(1);
 
@@ -990,7 +988,7 @@ public class StreamTaskTest extends TestLogger {
                         null,
                         checkpointResponder);
 
-        // mock the operator with empty snapshot result (all state handles are null)
+        // mock the operator with empty snapshot result (all state handles are null).
         OneInputStreamOperator<String, String> statelessOperator =
                 streamOperatorWithSnapshot(new OperatorSnapshotFutures());
 
@@ -1034,7 +1032,7 @@ public class StreamTaskTest extends TestLogger {
                         .addInput(BasicTypeInfo.INT_TYPE_INFO);
         StreamTaskMailboxTestHarness<Integer> harness =
                 builder.setupOutputForSingletonOperatorChain(operator).build();
-        // keeps the mailbox from suspending
+        // keeps the mailbox from suspending.
         harness.setAutoProcess(false);
         harness.processElement(new StreamRecord<>(1));
         harness.streamTask.runMailboxStep();
@@ -1044,7 +1042,7 @@ public class StreamTaskTest extends TestLogger {
         assertEquals(1, ClosingOperator.notified.get());
         assertFalse(ClosingOperator.closed.get());
 
-        // close operators directly, so that task is still fully running
+        // close operators directly, so that task is still fully running.
         harness.streamTask.operatorChain.finishOperators(
                 harness.streamTask.getActionExecutor(), StopMode.DRAIN);
         harness.streamTask.operatorChain.closeAllOperators();
@@ -1082,12 +1080,12 @@ public class StreamTaskTest extends TestLogger {
             harness.streamTask.runMailboxLoop();
             fail();
         } catch (ExpectedTestException expected) {
-            // expected exceptionestProcessWithUnAvailableInput
+            // expected exception testProcessWithUnavailableInput
         }
     }
 
     /**
-     * Tests exeptions is thrown by triggering checkpoint if operators are closed. This was
+     * Tests that exceptions are thrown by triggering checkpoint if operators are closed. This was
      * initially implemented for FLINK-16383. However after FLINK-2491 operators lifecycle has
      * changed and now we: (1) redefined close() to dispose(). After closing operators, there should
      * be no opportunity to invoke anything on the task. close() mentioned in FLINK-16383 is now
@@ -1095,7 +1093,7 @@ public class StreamTaskTest extends TestLogger {
      * finished.
      */
     @Test
-    public void testCheckpointFailueOnClosedOperator() throws Throwable {
+    public void testCheckpointFailureOnClosedOperator() throws Throwable {
         ClosingOperator<Integer> operator = new ClosingOperator<>();
         StreamTaskMailboxTestHarnessBuilder<Integer> builder =
                 new StreamTaskMailboxTestHarnessBuilder<>(
@@ -1258,7 +1256,7 @@ public class StreamTaskTest extends TestLogger {
                 // Make sure that the Task thread actually starts measuring the backpressure before
                 // we start the measured sleep. The WaitingThread is started from within the mailbox
                 // so we should first wait until mailbox loop starts idling before we enter the
-                // measured sleep
+                // measured sleep.
                 while (!sleepOutsideMailTimer.isMeasuring()) {
                     Thread.sleep(1);
                 }
@@ -1279,7 +1277,7 @@ public class StreamTaskTest extends TestLogger {
     }
 
     @Test
-    public void testProcessWithUnAvailableOutput() throws Exception {
+    public void testProcessWithUnavailableOutput() throws Exception {
         final long sleepTimeOutsideMail = 42;
         final long sleepTimeInsideMail = 44;
 
@@ -1335,14 +1333,14 @@ public class StreamTaskTest extends TestLogger {
     }
 
     @Test
-    public void testProcessWithUnAvailableInput() throws Exception {
+    public void testProcessWithUnavailableInput() throws Exception {
         final long sleepTimeOutsideMail = 42;
         final long sleepTimeInsideMail = 44;
 
         @Nullable WaitingThread waitingThread = null;
         try (final MockEnvironment environment = setupEnvironment(true, true)) {
-            final UnAvailableTestInputProcessor inputProcessor =
-                    new UnAvailableTestInputProcessor();
+            final UnavailableTestInputProcessor inputProcessor =
+                    new UnavailableTestInputProcessor();
             final StreamTask task =
                     new MockStreamTaskBuilder(environment)
                             .setStreamInputProcessor(inputProcessor)
@@ -1420,7 +1418,7 @@ public class StreamTaskTest extends TestLogger {
 
     @Test
     public void testRestorePerformedFromInvoke() throws Exception {
-        // given: the operator with empty snapshot result (all state handles are null)
+        // given: the operator with empty snapshot result (all state handles are null).
         OneInputStreamOperator<String, String> statelessOperator =
                 streamOperatorWithSnapshot(new OperatorSnapshotFutures());
         DummyEnvironment dummyEnvironment = new DummyEnvironment();
@@ -1446,7 +1444,7 @@ public class StreamTaskTest extends TestLogger {
         AtomicBoolean submitThroughputFail = new AtomicBoolean();
         MockEnvironment mockEnvironment = new MockEnvironmentBuilder().build();
 
-        final UnAvailableTestInputProcessor inputProcessor = new UnAvailableTestInputProcessor();
+        final UnavailableTestInputProcessor inputProcessor = new UnavailableTestInputProcessor();
         RunningTask<StreamTask<?, ?>> task =
                 runTask(
                         () ->
@@ -1515,7 +1513,7 @@ public class StreamTaskTest extends TestLogger {
                             taskManagerConfig,
                             EXECUTOR_RESOURCE.getExecutor());
 
-            // when: Task starts
+            // when: Task starts.
             task.startTaskThread();
 
             // wait for the task starts doing the work.
@@ -1588,7 +1586,7 @@ public class StreamTaskTest extends TestLogger {
         int expectedThroughput = 13333;
         int inputChannels = 3;
 
-        // debloat period doesn't matter, we will schedule debloating manually
+        // debloat period doesn't matter, we will schedule debloating manually.
         Configuration config =
                 new Configuration()
                         .set(BUFFER_DEBLOAT_PERIOD, Duration.ofHours(10))
@@ -1641,7 +1639,7 @@ public class StreamTaskTest extends TestLogger {
     @Test
     public void testBufferDebloatingMultiGates() throws Exception {
 
-        // debloat period doesn't matter, we will schedule debloating manually
+        // debloat period doesn't matter, we will schedule debloating manually.
         Configuration config =
                 new Configuration()
                         .set(BUFFER_DEBLOAT_PERIOD, Duration.ofHours(10))
@@ -1953,7 +1951,7 @@ public class StreamTaskTest extends TestLogger {
      * A stream input processor implementation with input unavailable for a specified amount of
      * time, after which processor is closing.
      */
-    private static class UnAvailableTestInputProcessor implements StreamInputProcessor {
+    private static class UnavailableTestInputProcessor implements StreamInputProcessor {
         private final AvailabilityHelper availabilityProvider = new AvailabilityHelper();
 
         @Override

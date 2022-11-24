@@ -1219,19 +1219,19 @@ class StreamingJobGraphGeneratorTest {
                 map2.rebalance().map(value -> value).slotSharingGroup("test");
         opMethod.invoke(map3, resourceSpecs.get(3));
 
-        declareManagedMemoryUseCaseForTranformation(
+        declareManagedMemoryUseCaseForTransformation(
                 source.getTransformation(),
                 operatorScopeUseCaseWeights.get(0),
                 slotScopeUseCases.get(0));
-        declareManagedMemoryUseCaseForTranformation(
+        declareManagedMemoryUseCaseForTransformation(
                 map1.getTransformation(),
                 operatorScopeUseCaseWeights.get(1),
                 slotScopeUseCases.get(1));
-        declareManagedMemoryUseCaseForTranformation(
+        declareManagedMemoryUseCaseForTransformation(
                 map2.getTransformation(),
                 operatorScopeUseCaseWeights.get(2),
                 slotScopeUseCases.get(2));
-        declareManagedMemoryUseCaseForTranformation(
+        declareManagedMemoryUseCaseForTransformation(
                 map3.getTransformation(),
                 operatorScopeUseCaseWeights.get(3),
                 slotScopeUseCases.get(3));
@@ -1239,7 +1239,7 @@ class StreamingJobGraphGeneratorTest {
         return StreamingJobGraphGenerator.createJobGraph(env.getStreamGraph());
     }
 
-    private void declareManagedMemoryUseCaseForTranformation(
+    private void declareManagedMemoryUseCaseForTransformation(
             Transformation<?> transformation,
             Map<ManagedMemoryUseCase, Integer> operatorScopeUseCaseWeights,
             Set<ManagedMemoryUseCase> slotScopeUseCases) {

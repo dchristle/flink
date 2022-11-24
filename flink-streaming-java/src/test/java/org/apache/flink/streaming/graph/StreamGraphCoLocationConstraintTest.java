@@ -68,7 +68,7 @@ public class StreamGraphCoLocationConstraintTest {
     }
 
     @Test
-    public void testCoLocateDifferenSharingGroups() throws Exception {
+    public void testCoLocateDifferentSharingGroups() throws Exception {
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         env.setParallelism(7);
 

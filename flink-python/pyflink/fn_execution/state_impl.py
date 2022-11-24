@@ -947,7 +947,7 @@ class RemoteKeyedStateBackend(object):
     A keyed state backend provides methods for managing keyed state.
     """
 
-    MERGE_NAMESAPCES_MARK = "merge_namespaces"
+    MERGE_NAMESPACES_MARK = "merge_namespaces"
 
     def __init__(self,
                  state_handler,
@@ -1169,7 +1169,7 @@ class RemoteKeyedStateBackend(object):
 
         state_key = self.get_bag_state_key(
             state.name, self._encoded_current_key, encoded_target_namespace, ttl_config)
-        state_key.bag_user_state.transform_id = self.MERGE_NAMESAPCES_MARK
+        state_key.bag_user_state.transform_id = self.MERGE_NAMESPACES_MARK
 
         encoded_namespaces_writer = BytesIO()
         encoded_namespaces_writer.write(len(sources).to_bytes(4, 'big'))

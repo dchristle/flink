@@ -89,7 +89,7 @@ public class StreamTaskCancellationTest extends TestLogger {
     }
 
     @Test
-    public void testCanceleablesCanceledOnCancelTaskError() throws Exception {
+    public void testCancellablesCanceledOnCancelTaskError() throws Exception {
         CancelFailingTask.syncLatch = new OneShotLatch();
 
         StreamConfig cfg = new StreamConfig(new Configuration());
@@ -104,14 +104,12 @@ public class StreamTaskCancellationTest extends TestLogger {
                             new Configuration(),
                             EXECUTOR_RESOURCE.getExecutor());
 
-            // start the task and wait until it runs
-            // execution state RUNNING is not enough, we need to wait until the stream task's run()
-            // method
-            // is entered
+            // start the task and wait until it runs -- an execution state RUNNING is not enough.
+            // we need to wait until the stream task's run() method is entered.
             task.startTaskThread();
             CancelFailingTask.syncLatch.await();
 
-            // cancel the execution - this should lead to smooth shutdown
+            // cancel the execution - this should lead to smooth shutdown.
             task.cancelExecution();
             task.getExecutingThread().join();
 
@@ -121,7 +119,7 @@ public class StreamTaskCancellationTest extends TestLogger {
 
     /**
      * A task that locks for ever, fail in {@link #cancelTask()}. It can be only shut down cleanly
-     * if {@link StreamTask#getCancelables()} are closed properly.
+     * if {@link StreamTask#getCancellables()} are closed properly.
      */
     public static class CancelFailingTask
             extends StreamTask<String, AbstractStreamOperator<String>> {
@@ -144,7 +142,7 @@ public class StreamTaskCancellationTest extends TestLogger {
             holder.start();
             try {
                 // cancellation should try and cancel this
-                getCancelables().registerCloseable(holder);
+                getCancellables().registerCloseable(holder);
 
                 // wait till the lock holder has the lock
                 latch.await();

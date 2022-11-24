@@ -269,7 +269,7 @@ public class StreamExecGlobalWindowAggregate extends StreamExecWindowAggregateBa
             ExecNodeConfig config,
             ClassLoader classLoader,
             RelBuilder relBuilder,
-            ZoneId shifTimeZone) {
+            ZoneId shiftTimeZone) {
         final AggsHandlerCodeGenerator generator =
                 new AggsHandlerCodeGenerator(
                                 new CodeGeneratorContext(config, classLoader),
@@ -290,6 +290,6 @@ public class StreamExecGlobalWindowAggregate extends StreamExecWindowAggregateBa
                 aggInfoList,
                 JavaScalaConversionUtil.toScala(windowProperties),
                 sliceAssigner,
-                shifTimeZone);
+                shiftTimeZone);
     }
 }

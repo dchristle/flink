@@ -28,7 +28,7 @@ import org.apache.flink.api.java.operators.IterativeDataSet;
 import org.apache.flink.test.util.JavaProgramTestBase;
 
 /** Test iterations referenced from the static path of other iterations. */
-public class StaticlyNestedIterationsITCase extends JavaProgramTestBase {
+public class StaticallyNestedIterationsITCase extends JavaProgramTestBase {
 
     @Override
     protected void testProgram() throws Exception {

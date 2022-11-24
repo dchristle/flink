@@ -40,10 +40,10 @@ public class StreamTaskNetworkInputFactory {
             IOManager ioManager,
             StatusWatermarkValve statusWatermarkValve,
             int inputIndex,
-            InflightDataRescalingDescriptor rescalingDescriptorinflightDataRescalingDescriptor,
+            InflightDataRescalingDescriptor rescalingDescriptorInflightDataRescalingDescriptor,
             Function<Integer, StreamPartitioner<?>> gatePartitioners,
             TaskInfo taskInfo) {
-        return rescalingDescriptorinflightDataRescalingDescriptor.equals(
+        return rescalingDescriptorInflightDataRescalingDescriptor.equals(
                         InflightDataRescalingDescriptor.NO_RESCALE)
                 ? new StreamTaskNetworkInput<>(
                         checkpointedInputGate,
@@ -57,7 +57,7 @@ public class StreamTaskNetworkInputFactory {
                         ioManager,
                         statusWatermarkValve,
                         inputIndex,
-                        rescalingDescriptorinflightDataRescalingDescriptor,
+                        rescalingDescriptorInflightDataRescalingDescriptor,
                         gatePartitioners,
                         taskInfo);
     }

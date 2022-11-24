@@ -35,7 +35,7 @@ public class StreamingSemiAntiJoinOperator extends AbstractStreamingJoinOperator
 
     private static final long serialVersionUID = -3135772379944924519L;
 
-    // true if it is anti join, otherwise is semi joinp
+    // true if it is anti join, otherwise it is semi join
     private final boolean isAntiJoin;
 
     // left join state

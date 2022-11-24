@@ -140,7 +140,7 @@ public abstract class AbstractStreamOperatorV2<OUT>
         processingTimeService = Preconditions.checkNotNull(parameters.getProcessingTimeService());
         executionConfig = parameters.getContainingTask().getExecutionConfig();
         userCodeClassLoader = parameters.getContainingTask().getUserCodeClassLoader();
-        cancelables = parameters.getContainingTask().getCancelables();
+        cancelables = parameters.getContainingTask().getCancellables();
         this.combinedWatermark = IndexedCombinedWatermarkStatus.forInputsCount(numberOfInputs);
 
         runtimeContext =

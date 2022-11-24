@@ -244,7 +244,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
     protected final TimerService systemTimerService;
 
     /** The currently active background materialization threads. */
-    private final CloseableRegistry cancelables = new CloseableRegistry();
+    private final CloseableRegistry cancellables = new CloseableRegistry();
 
     private final AutoCloseableRegistry resourceCloser;
 
@@ -422,7 +422,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
 
             // Register all asynchronous checkpoint threads.
             resourceCloser.registerCloseable(this::shutdownAsyncThreads);
-            resourceCloser.registerCloseable(cancelables);
+            resourceCloser.registerCloseable(cancellables);
 
             environment.setMainMailboxExecutor(mainMailboxExecutor);
             environment.setAsyncOperationsThreadPool(asyncOperationsThreadPool);
@@ -964,7 +964,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         canceled = true;
 
         FlinkSecurityManager.monitorUserSystemExitForCurrentThread();
-        // the "cancel task" call must come first, but the cancelables must be
+        // the "cancel task" call must come first, but the cancellables must be
         // closed no matter what
         try {
             cancelTask();
@@ -978,7 +978,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
                                 mailboxProcessor.allActionsCompleted();
                                 try {
                                     subtaskCheckpointCoordinator.cancel();
-                                    cancelables.close();
+                                    cancellables.close();
                                 } catch (IOException e) {
                                     throw new CompletionException(e);
                                 }
@@ -1047,7 +1047,7 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
             systemTimerService.shutdownService();
         }
 
-        cancelables.close();
+        cancellables.close();
     }
 
     boolean isSerializingTimestamps() {
@@ -1570,8 +1570,8 @@ public abstract class StreamTask<OUT, OP extends StreamOperator<OUT>>
         }
     }
 
-    public final CloseableRegistry getCancelables() {
-        return cancelables;
+    public final CloseableRegistry getCancellables() {
+        return cancellables;
     }
 
     // ------------------------------------------------------------------------

@@ -34,7 +34,7 @@ import org.junit.rules.ExpectedException;
 /** Integration tests for {@link StreamExecutionEnvironment}. */
 public class StreamExecutionEnvironmentITCase {
 
-    // We use our own miniClusterResource because we wan't to connect to it using a remote executor.
+    // We use our own miniClusterResource because we want to connect to it using a remote executor.
     @ClassRule
     public static MiniClusterWithClientResource miniClusterResource =
             new MiniClusterWithClientResource(

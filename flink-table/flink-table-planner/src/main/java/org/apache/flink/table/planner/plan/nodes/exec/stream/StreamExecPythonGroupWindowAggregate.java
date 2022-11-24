@@ -324,20 +324,20 @@ public class StreamExecPythonGroupWindowAggregate extends StreamExecAggregateBas
     }
 
     private Tuple2<WindowAssigner<?>, Trigger<?>> generateWindowAssignerAndTrigger() {
-        WindowAssigner<?> windowAssiger;
+        WindowAssigner<?> windowAssigner;
         Trigger<?> trigger;
         if (window instanceof TumblingGroupWindow) {
             TumblingGroupWindow tumblingWindow = (TumblingGroupWindow) window;
             FieldReferenceExpression timeField = tumblingWindow.timeField();
             ValueLiteralExpression size = tumblingWindow.size();
             if (isProctimeAttribute(timeField) && hasTimeIntervalType(size)) {
-                windowAssiger = TumblingWindowAssigner.of(toDuration(size)).withProcessingTime();
+                windowAssigner = TumblingWindowAssigner.of(toDuration(size)).withProcessingTime();
                 trigger = ProcessingTimeTriggers.afterEndOfWindow();
             } else if (isRowtimeAttribute(timeField) && hasTimeIntervalType(size)) {
-                windowAssiger = TumblingWindowAssigner.of(toDuration(size)).withEventTime();
+                windowAssigner = TumblingWindowAssigner.of(toDuration(size)).withEventTime();
                 trigger = EventTimeTriggers.afterEndOfWindow();
             } else if (isProctimeAttribute(timeField) && hasRowIntervalType(size)) {
-                windowAssiger = CountTumblingWindowAssigner.of(toLong(size));
+                windowAssigner = CountTumblingWindowAssigner.of(toLong(size));
                 trigger = ElementTriggers.count(toLong(size));
             } else {
                 // TODO: EventTimeTumblingGroupWindow should sort the stream on event time
@@ -352,15 +352,15 @@ public class StreamExecPythonGroupWindowAggregate extends StreamExecAggregateBas
             ValueLiteralExpression size = slidingWindow.size();
             ValueLiteralExpression slide = slidingWindow.slide();
             if (isProctimeAttribute(timeField) && hasTimeIntervalType(size)) {
-                windowAssiger =
+                windowAssigner =
                         SlidingWindowAssigner.of(toDuration(size), toDuration(slide))
                                 .withProcessingTime();
                 trigger = ProcessingTimeTriggers.afterEndOfWindow();
             } else if (isRowtimeAttribute(timeField) && hasTimeIntervalType(size)) {
-                windowAssiger = SlidingWindowAssigner.of(toDuration(size), toDuration(slide));
+                windowAssigner = SlidingWindowAssigner.of(toDuration(size), toDuration(slide));
                 trigger = EventTimeTriggers.afterEndOfWindow();
             } else if (isProctimeAttribute(timeField) && hasRowIntervalType(size)) {
-                windowAssiger = CountSlidingWindowAssigner.of(toLong(size), toLong(slide));
+                windowAssigner = CountSlidingWindowAssigner.of(toLong(size), toLong(slide));
                 trigger = ElementTriggers.count(toLong(size));
             } else {
                 // TODO: EventTimeTumblingGroupWindow should sort the stream on event time
@@ -374,10 +374,10 @@ public class StreamExecPythonGroupWindowAggregate extends StreamExecAggregateBas
             FieldReferenceExpression timeField = sessionWindow.timeField();
             ValueLiteralExpression gap = sessionWindow.gap();
             if (isProctimeAttribute(timeField)) {
-                windowAssiger = SessionWindowAssigner.withGap(toDuration(gap));
+                windowAssigner = SessionWindowAssigner.withGap(toDuration(gap));
                 trigger = ProcessingTimeTriggers.afterEndOfWindow();
             } else if (isRowtimeAttribute(timeField)) {
-                windowAssiger = SessionWindowAssigner.withGap(toDuration(gap));
+                windowAssigner = SessionWindowAssigner.withGap(toDuration(gap));
                 trigger = EventTimeTriggers.afterEndOfWindow();
             } else {
                 throw new UnsupportedOperationException("This should not happen.");
@@ -385,7 +385,7 @@ public class StreamExecPythonGroupWindowAggregate extends StreamExecAggregateBas
         } else {
             throw new TableException("Unsupported window: " + window.toString());
         }
-        return Tuple2.of(windowAssiger, trigger);
+        return Tuple2.of(windowAssigner, trigger);
     }
 
     private OneInputTransformation<RowData, RowData>

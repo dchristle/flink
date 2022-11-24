@@ -47,7 +47,7 @@ public class StateHandleSerializationTest {
                     (Set<Class<?>>) (Set<?>) reflections.getSubTypesOf(StateObject.class);
 
             for (Class<?> clazz : stateHandleImplementations) {
-                validataSerialVersionUID(clazz);
+                validateSerialVersionUID(clazz);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class StateHandleSerializationTest {
         }
     }
 
-    private static void validataSerialVersionUID(Class<?> clazz) {
+    private static void validateSerialVersionUID(Class<?> clazz) {
         // all non-interface types must have a serial version UID
         if (!clazz.isInterface()) {
             assertFalse(

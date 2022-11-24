@@ -259,7 +259,7 @@ public abstract class AbstractStreamOperator<OUT>
 
         final StreamTask<?, ?> containingTask = Preconditions.checkNotNull(getContainingTask());
         final CloseableRegistry streamTaskCloseableRegistry =
-                Preconditions.checkNotNull(containingTask.getCancelables());
+                Preconditions.checkNotNull(containingTask.getCancellables());
 
         final StreamOperatorStateContext context =
                 streamTaskStateManager.streamOperatorStateContext(
