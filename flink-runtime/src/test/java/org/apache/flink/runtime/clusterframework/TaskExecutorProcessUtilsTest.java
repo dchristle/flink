@@ -374,10 +374,10 @@ public class TaskExecutorProcessUtilsTest
                     MemorySize.ofMebiBytes(adjustedTaskHeapMemoryMb));
         }
 
-        final TaskExecutorProcessSpec adjusteedTaskExecutorProcessSpec =
+        final TaskExecutorProcessSpec adjustedTaskExecutorProcessSpec =
                 TaskExecutorProcessUtils.processSpecFromConfig(conf);
         assertThat(
-                adjusteedTaskExecutorProcessSpec.getNetworkMemSize().getMebiBytes(),
+                adjustedTaskExecutorProcessSpec.getNetworkMemSize().getMebiBytes(),
                 is(networkMemorySizeToDeriveMb));
 
         return conf;

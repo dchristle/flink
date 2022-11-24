@@ -92,7 +92,7 @@ Task 在没有中断的情况下执行到结束的阶段如下所示：
 	   	    open-operators
 		    run
 		    finish-operators
-		    wait for the final checkponit completed (if enabled)
+		    wait for the final checkpoint completed (if enabled)
 		    close-operators
 		    task-specific-cleanup
 		    common-cleanup

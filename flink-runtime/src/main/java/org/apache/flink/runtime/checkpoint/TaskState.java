@@ -45,7 +45,7 @@ public class TaskState implements CompositeStateHandle {
 
     private final JobVertexID jobVertexID;
 
-    /** handles to non-partitioned states, subtaskindex -> subtaskstate. */
+    /** handles to non-partitioned states, subtaskIndex -> subtaskState. */
     private final Map<Integer, SubtaskState> subtaskStates;
 
     /** parallelism of the operator when it was checkpointed. */

@@ -120,7 +120,7 @@ public class TaskMetricGroupTest extends TestLogger {
     }
 
     @Test
-    public void testGenerateScopeWilcard() throws Exception {
+    public void testGenerateScopeWildcard() throws Exception {
         Configuration cfg = new Configuration();
         cfg.setString(MetricOptions.SCOPE_NAMING_TASK, "*.<task_attempt_id>.<subtask_index>");
         MetricRegistryImpl registry =

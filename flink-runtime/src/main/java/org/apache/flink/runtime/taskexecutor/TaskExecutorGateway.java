@@ -266,7 +266,7 @@ public interface TaskExecutorGateway
             @RpcTimeout Time timeout);
 
     /**
-     * Checks whether the task executor can be released. It cannot be released if there're
+     * Checks whether the task executor can be released. It cannot be released if there are
      * unconsumed result partitions.
      *
      * @return Future flag indicating whether the task executor can be released.

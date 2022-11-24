@@ -33,7 +33,7 @@ import org.junit.Assert.assertEquals
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
-/** Tests of groupby (without window) table aggregations */
+/** Tests of groupBy (without window) table aggregations */
 @RunWith(classOf[Parameterized])
 class TableAggregateITCase(mode: StateBackendMode) extends StreamingWithStateTestBase(mode) {
 
