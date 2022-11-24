@@ -92,7 +92,7 @@ class SmokeKafkaITCase {
             FlinkContainers.builder()
                     .withFlinkContainersSettings(
                             FlinkContainersSettings.basedOn(getConfiguration()))
-                    .withTestcontainersSettings(TESTCONTAINERS_SETTINGS)
+                    .withTestContainersSettings(TESTCONTAINERS_SETTINGS)
                     .build();
 
     private static AdminClient admin;

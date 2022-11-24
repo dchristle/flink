@@ -94,7 +94,7 @@ public class SqlClientITCase {
                                             ExecutionCheckpointingOptions.CHECKPOINTING_INTERVAL,
                                             Duration.ofMillis(500))
                                     .build())
-                    .withTestcontainersSettings(
+                    .withTestContainersSettings(
                             TestContainersSettings.builder()
                                     .network(NETWORK)
                                     .logger(LOG)

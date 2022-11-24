@@ -83,7 +83,7 @@ public class FlinkContainerTestEnvironment implements TestEnvironment, ClusterCo
 
         flinkContainers =
                 FlinkContainers.builder()
-                        .withTestcontainersSettings(testcontainersSettings)
+                        .withTestContainersSettings(testcontainersSettings)
                         .withFlinkContainersSettings(flinkContainersSettings)
                         .build();
         this.jarPaths.addAll(jarPaths);
@@ -99,7 +99,7 @@ public class FlinkContainerTestEnvironment implements TestEnvironment, ClusterCo
         flinkContainers =
                 FlinkContainers.builder()
                         .withFlinkContainersSettings(settings)
-                        .withTestcontainersSettings(testcontainersSettings)
+                        .withTestContainersSettings(testcontainersSettings)
                         .build();
 
         checkpointPath = settings.getCheckpointPath();

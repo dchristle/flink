@@ -95,7 +95,7 @@ public class KinesisTableApiITCase extends TestLogger {
                     .build();
 
     public static final FlinkContainers FLINK =
-            FlinkContainers.builder().withTestcontainersSettings(TESTCONTAINERS_SETTINGS).build();
+            FlinkContainers.builder().withTestContainersSettings(TESTCONTAINERS_SETTINGS).build();
 
     @BeforeClass
     public static void setupFlink() throws Exception {

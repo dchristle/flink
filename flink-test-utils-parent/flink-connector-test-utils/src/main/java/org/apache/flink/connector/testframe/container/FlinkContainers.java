@@ -173,14 +173,14 @@ public class FlinkContainers implements BeforeAllCallback, AfterAllCallback {
         }
 
         /**
-         * Allows to optionally provide Testcontainers settings. {@link TestContainersSettings}
+         * Allows to optionally provide TestContainers settings. {@link TestContainersSettings}
          * based on defaults will be used otherwise.
          *
-         * @param testcontainersSettings The Testcontainers settings.
+         * @param testContainersSettings The TestContainers settings.
          * @return A reference to this Builder.
          */
-        public Builder withTestcontainersSettings(TestContainersSettings testcontainersSettings) {
-            this.testcontainersSettings = testcontainersSettings;
+        public Builder withTestContainersSettings(TestContainersSettings testContainersSettings) {
+            this.testcontainersSettings = testContainersSettings;
             return this;
         }
 
@@ -191,8 +191,8 @@ public class FlinkContainers implements BeforeAllCallback, AfterAllCallback {
          *     FlinkContainers.Builder}.
          */
         public FlinkContainers build() {
-            FlinkTestcontainersConfigurator configurator =
-                    new FlinkTestcontainersConfigurator(
+            FlinkTestContainersConfigurator configurator =
+                    new FlinkTestContainersConfigurator(
                             flinkContainersSettings, testcontainersSettings);
             return configurator.configure();
         }

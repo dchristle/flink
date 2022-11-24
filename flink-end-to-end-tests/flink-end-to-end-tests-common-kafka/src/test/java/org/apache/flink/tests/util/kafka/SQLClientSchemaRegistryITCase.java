@@ -96,7 +96,7 @@ public class SQLClientSchemaRegistryITCase {
             TestContainersSettings.builder().network(NETWORK).logger(LOG).dependsOn(KAFKA).build();
 
     public final FlinkContainers flink =
-            FlinkContainers.builder().withTestcontainersSettings(testcontainersSettings).build();
+            FlinkContainers.builder().withTestContainersSettings(testcontainersSettings).build();
 
     private KafkaContainerClient kafkaClient;
     private CachedSchemaRegistryClient registryClient;

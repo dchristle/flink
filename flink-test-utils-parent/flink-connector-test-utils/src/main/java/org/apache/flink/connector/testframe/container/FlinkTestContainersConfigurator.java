@@ -35,16 +35,16 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Orchestrates configuration of Flink containers within Testcontainers framework. */
-class FlinkTestcontainersConfigurator {
+/** Orchestrates configuration of Flink containers within TestContainers framework. */
+class FlinkTestContainersConfigurator {
 
-    private final TestContainersSettings testcontainersSettings;
+    private final TestContainersSettings testContainersSettings;
     private final FlinkContainersSettings flinkContainersSettings;
 
-    FlinkTestcontainersConfigurator(
+    FlinkTestContainersConfigurator(
             FlinkContainersSettings flinkContainersSettings,
-            TestContainersSettings testcontainersSettings) {
-        this.testcontainersSettings = testcontainersSettings;
+            TestContainersSettings testContainersSettings) {
+        this.testContainersSettings = testContainersSettings;
         this.flinkContainersSettings = flinkContainersSettings;
     }
 
@@ -115,20 +115,20 @@ class FlinkTestcontainersConfigurator {
     private GenericContainer<?> configureContainer(
             GenericContainer<?> container, String networkAlias, String logPrefix) {
         // Set dependent containers
-        for (GenericContainer<?> dependentContainer : testcontainersSettings.getDependencies()) {
-            dependentContainer.withNetwork(testcontainersSettings.getNetwork());
+        for (GenericContainer<?> dependentContainer : testContainersSettings.getDependencies()) {
+            dependentContainer.withNetwork(testContainersSettings.getNetwork());
             container.dependsOn(dependentContainer);
         }
         // Setup network
-        container.withNetwork(testcontainersSettings.getNetwork());
+        container.withNetwork(testContainersSettings.getNetwork());
         container.withNetworkAliases(networkAlias);
         // Setup logger
-        Logger logger = testcontainersSettings.getLogger();
+        Logger logger = testContainersSettings.getLogger();
         if (logger != null) {
             container.withLogConsumer(new Slf4jLogConsumer(logger).withPrefix(logPrefix));
         }
         // Add environment variables
-        container.withEnv(testcontainersSettings.getEnvVars());
+        container.withEnv(testContainersSettings.getEnvVars());
         container.withWorkingDirectory(flinkContainersSettings.getFlinkHome());
         return container;
     }
