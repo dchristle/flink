@@ -542,17 +542,6 @@ public class RocksDBStateBackend extends AbstractManagedMemoryStateBackend
         rocksDBStateBackend.setNumberOfTransferThreads(numberOfTransferThreads);
     }
 
-    /** @deprecated Typo in method name. Use {@link #getNumberOfTransferThreads} instead. */
-    @Deprecated
-    public int getNumberOfTransferringThreads() {
-        return getNumberOfTransferThreads();
-    }
-
-    /** @deprecated Typo in method name. Use {@link #setNumberOfTransferThreads(int)} instead. */
-    @Deprecated
-    public void setNumberOfTransferringThreads(int numberOfTransferringThreads) {
-        setNumberOfTransferThreads(numberOfTransferringThreads);
-    }
 
     /** Gets the max batch size will be used in {@link RocksDBWriteBatchWrapper}. */
     public long getWriteBatchSize() {

@@ -256,7 +256,7 @@ class EmbeddedRocksDBStateBackend(StateBackend):
         Gets the configured local DB storage paths, or null, if none were configured.
 
         Under these directories on the TaskManager, RocksDB stores its SST files and
-        metadata files. These directories do not need to be persistent, they can be ephermeral,
+        metadata files. These directories do not need to be persistent, they can be ephemeral,
         meaning that they are lost on a machine failure, because state in RocksDB is persisted
         in checkpoints.
 
@@ -356,15 +356,15 @@ class EmbeddedRocksDBStateBackend(StateBackend):
         """
         return self._j_state_backend.getNumberOfTransferThreads()
 
-    def set_number_of_transfer_threads(self, number_of_transfering_threads: int):
+    def set_number_of_transfer_threads(self, number_of_transfer_threads: int):
         """
         Sets the number of threads used to transfer files while snapshotting/restoring.
 
-        :param number_of_transfering_threads: The number of threads used to transfer files while
+        :param number_of_transfer_threads: The number of threads used to transfer files while
                                               snapshotting/restoring.
         """
         self._j_state_backend\
-            .setNumberOfTransferThreads(number_of_transfering_threads)
+            .setNumberOfTransferThreads(number_of_transfer_threads)
 
     def __str__(self):
         return self._j_state_backend.toString()
@@ -838,7 +838,7 @@ class RocksDBStateBackend(StateBackend):
         Gets the configured local DB storage paths, or null, if none were configured.
 
         Under these directories on the TaskManager, RocksDB stores its SST files and
-        metadata files. These directories do not need to be persistent, they can be ephermeral,
+        metadata files. These directories do not need to be persistent, they can be ephemeral,
         meaning that they are lost on a machine failure, because state in RocksDB is persisted
         in checkpoints.
 
@@ -928,22 +928,22 @@ class RocksDBStateBackend(StateBackend):
         else:
             return None
 
-    def get_number_of_transfering_threads(self) -> int:
+    def get_number_of_transfer_threads(self) -> int:
         """
         Gets the number of threads used to transfer files while snapshotting/restoring.
 
         :return: The number of threads used to transfer files while snapshotting/restoring.
         """
-        return self._j_rocks_db_state_backend.getNumberOfTransferingThreads()
+        return self._j_rocks_db_state_backend.getNumberOfTransferThreads()
 
-    def set_number_of_transfering_threads(self, number_of_transfering_threads: int):
+    def set_number_of_transfer_threads(self, number_of_transfer_threads: int):
         """
         Sets the number of threads used to transfer files while snapshotting/restoring.
 
-        :param number_of_transfering_threads: The number of threads used to transfer files while
+        :param number_of_transfer_threads: The number of threads used to transfer files while
                                               snapshotting/restoring.
         """
-        self._j_rocks_db_state_backend.setNumberOfTransferingThreads(number_of_transfering_threads)
+        self._j_rocks_db_state_backend.setNumberOfTransferThreads(number_of_transfer_threads)
 
     def __str__(self):
         return self._j_rocks_db_state_backend.toString()

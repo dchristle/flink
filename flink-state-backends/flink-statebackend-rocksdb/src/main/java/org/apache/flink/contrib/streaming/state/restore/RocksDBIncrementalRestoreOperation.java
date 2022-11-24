@@ -92,7 +92,7 @@ public class RocksDBIncrementalRestoreOperation<K> implements RocksDBRestoreOper
     private final CloseableRegistry cancelStreamRegistry;
     private final KeyGroupRange keyGroupRange;
     private final File instanceBasePath;
-    private final int numberOfTransferringThreads;
+    private final int numberOfTransferThreads;
     private final int keyGroupPrefixBytes;
     private final StateSerializerProvider<K> keySerializerProvider;
     private final ClassLoader userCodeClassLoader;
@@ -107,7 +107,7 @@ public class RocksDBIncrementalRestoreOperation<K> implements RocksDBRestoreOper
             String operatorIdentifier,
             KeyGroupRange keyGroupRange,
             int keyGroupPrefixBytes,
-            int numberOfTransferringThreads,
+            int numberOfTransferThreads,
             CloseableRegistry cancelStreamRegistry,
             ClassLoader userCodeClassLoader,
             Map<String, RocksDbKvStateInfo> kvStateInformation,
@@ -143,7 +143,7 @@ public class RocksDBIncrementalRestoreOperation<K> implements RocksDBRestoreOper
         this.cancelStreamRegistry = cancelStreamRegistry;
         this.keyGroupRange = keyGroupRange;
         this.instanceBasePath = instanceBasePath;
-        this.numberOfTransferringThreads = numberOfTransferringThreads;
+        this.numberOfTransferThreads = numberOfTransferThreads;
         this.keyGroupPrefixBytes = keyGroupPrefixBytes;
         this.keySerializerProvider = keySerializerProvider;
         this.userCodeClassLoader = userCodeClassLoader;
@@ -251,7 +251,7 @@ public class RocksDBIncrementalRestoreOperation<K> implements RocksDBRestoreOper
             throws Exception {
 
         try (RocksDBStateDownloader rocksDBStateDownloader =
-                new RocksDBStateDownloader(numberOfTransferringThreads)) {
+                new RocksDBStateDownloader(numberOfTransferThreads)) {
             rocksDBStateDownloader.transferAllStateDataToDirectory(
                     restoreStateHandle, temporaryRestoreInstancePath, cancelStreamRegistry);
         }
@@ -446,7 +446,7 @@ public class RocksDBIncrementalRestoreOperation<K> implements RocksDBRestoreOper
             throws Exception {
 
         try (RocksDBStateDownloader rocksDBStateDownloader =
-                new RocksDBStateDownloader(numberOfTransferringThreads)) {
+                new RocksDBStateDownloader(numberOfTransferThreads)) {
             rocksDBStateDownloader.transferAllStateDataToDirectory(
                     restoreStateHandle, temporaryRestoreInstancePath, cancelStreamRegistry);
         }

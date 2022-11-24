@@ -263,9 +263,9 @@ class RocksDBStateBackendTests(PyFlinkTestCase):
 
         state_backend = RocksDBStateBackend("file://var/checkpoints/")
 
-        state_backend.set_number_of_transfering_threads(7)
+        state_backend.set_number_of_transfer_threads(7)
 
-        self.assertEqual(state_backend.get_number_of_transfering_threads(), 7)
+        self.assertEqual(state_backend.get_number_of_transfer_threads(), 7)
 
 
 class CustomStateBackendTests(PyFlinkTestCase):

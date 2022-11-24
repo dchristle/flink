@@ -495,7 +495,7 @@ public class EmbeddedRocksDBStateBackend extends AbstractManagedMemoryStateBacke
                                 keyGroupCompressionDecorator,
                                 cancelStreamRegistry)
                         .setEnableIncrementalCheckpointing(isIncrementalCheckpointsEnabled())
-                        .setNumberOfTransferringThreads(getNumberOfTransferThreads())
+                        .setNumberOfTransferThreads(getNumberOfTransferThreads())
                         .setNativeMetricOptions(
                                 resourceContainer.getMemoryWatcherOptions(nativeMetricOptions))
                         .setWriteBatchSize(getWriteBatchSize())

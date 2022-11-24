@@ -117,7 +117,7 @@ public class RocksDBKeyedStateBackendBuilder<K> extends AbstractKeyedStateBacken
     /** RocksDB property-based and statistics-based native metrics options. */
     private RocksDBNativeMetricOptions nativeMetricOptions;
 
-    private int numberOfTransferringThreads;
+    private int numberOfTransferThreads;
     private long writeBatchSize =
             RocksDBConfigurableOptions.WRITE_BATCH_SIZE.defaultValue().getBytes();
 
@@ -170,7 +170,7 @@ public class RocksDBKeyedStateBackendBuilder<K> extends AbstractKeyedStateBacken
         this.metricGroup = metricGroup;
         this.enableIncrementalCheckpointing = false;
         this.nativeMetricOptions = new RocksDBNativeMetricOptions();
-        this.numberOfTransferringThreads =
+        this.numberOfTransferThreads =
                 RocksDBOptions.CHECKPOINT_TRANSFER_THREAD_NUM.defaultValue();
     }
 
@@ -231,12 +231,12 @@ public class RocksDBKeyedStateBackendBuilder<K> extends AbstractKeyedStateBacken
         return this;
     }
 
-    RocksDBKeyedStateBackendBuilder<K> setNumberOfTransferringThreads(
-            int numberOfTransferringThreads) {
+    RocksDBKeyedStateBackendBuilder<K> setNumberOfTransferThreads(
+            int numberOfTransferThreads) {
         Preconditions.checkState(
                 injectRocksDBStateUploader == null,
-                "numberOfTransferringThreads can be set only when injectRocksDBStateUploader is null.");
-        this.numberOfTransferringThreads = numberOfTransferringThreads;
+                "numberOfTransferThreads can be set only when injectRocksDBStateUploader is null.");
+        this.numberOfTransferThreads = numberOfTransferThreads;
         return this;
     }
 
@@ -251,9 +251,9 @@ public class RocksDBKeyedStateBackendBuilder<K> extends AbstractKeyedStateBacken
         Preconditions.checkState(
                 injectRocksDBStateUploader == null, "rocksDBStateUploader can be only set once");
         Preconditions.checkState(
-                numberOfTransferringThreads
+                numberOfTransferThreads
                         == RocksDBOptions.CHECKPOINT_TRANSFER_THREAD_NUM.defaultValue(),
-                "RocksDBStateUploader can only be set if numberOfTransferringThreads has not been manually set.");
+                "RocksDBStateUploader can only be set if numberOfTransferThreads has not been manually set.");
         this.injectRocksDBStateUploader = rocksDBStateUploader;
         return this;
     }
@@ -460,7 +460,7 @@ public class RocksDBKeyedStateBackendBuilder<K> extends AbstractKeyedStateBacken
                     operatorIdentifier,
                     keyGroupRange,
                     keyGroupPrefixBytes,
-                    numberOfTransferringThreads,
+                    numberOfTransferThreads,
                     cancelStreamRegistry,
                     userCodeClassLoader,
                     kvStateInformation,
@@ -526,7 +526,7 @@ public class RocksDBKeyedStateBackendBuilder<K> extends AbstractKeyedStateBacken
         RocksDBSnapshotStrategyBase<K, ?> checkpointSnapshotStrategy;
         RocksDBStateUploader stateUploader =
                 injectRocksDBStateUploader == null
-                        ? new RocksDBStateUploader(numberOfTransferringThreads)
+                        ? new RocksDBStateUploader(numberOfTransferThreads)
                         : injectRocksDBStateUploader;
         if (enableIncrementalCheckpointing) {
             checkpointSnapshotStrategy =
