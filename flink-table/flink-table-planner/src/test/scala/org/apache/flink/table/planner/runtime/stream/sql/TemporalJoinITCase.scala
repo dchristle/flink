@@ -481,7 +481,7 @@ class TemporalJoinITCase(state: StateBackendMode) extends StreamingWithStateTest
   }
 
   @Test
-  def testEventTimeTemporalJoinThatJoinkeyContainsPk(): Unit = {
+  def testEventTimeTemporalJoinThatJoinKeyContainsPk(): Unit = {
     val sql = "INSERT INTO rowtime_default_sink " +
       " SELECT o.order_id, o.currency, o.amount, o.order_time, r.rate, r.currency_time " +
       " FROM orders_rowtime AS o JOIN versioned_currency_with_single_key " +

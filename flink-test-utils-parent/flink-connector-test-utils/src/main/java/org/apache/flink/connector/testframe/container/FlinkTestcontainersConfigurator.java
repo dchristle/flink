@@ -38,12 +38,12 @@ import java.util.List;
 /** Orchestrates configuration of Flink containers within Testcontainers framework. */
 class FlinkTestcontainersConfigurator {
 
-    private final TestcontainersSettings testcontainersSettings;
+    private final TestContainersSettings testcontainersSettings;
     private final FlinkContainersSettings flinkContainersSettings;
 
     FlinkTestcontainersConfigurator(
             FlinkContainersSettings flinkContainersSettings,
-            TestcontainersSettings testcontainersSettings) {
+            TestContainersSettings testcontainersSettings) {
         this.testcontainersSettings = testcontainersSettings;
         this.flinkContainersSettings = flinkContainersSettings;
     }

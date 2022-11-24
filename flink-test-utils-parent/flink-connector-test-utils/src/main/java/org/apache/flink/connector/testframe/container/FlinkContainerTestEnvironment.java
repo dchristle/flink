@@ -69,8 +69,8 @@ public class FlinkContainerTestEnvironment implements TestEnvironment, ClusterCo
             int numSlotsPerTaskManager,
             Collection<String> jarPaths) {
 
-        final TestcontainersSettings testcontainersSettings =
-                TestcontainersSettings.builder().logger(LOG).build();
+        final TestContainersSettings testcontainersSettings =
+                TestContainersSettings.builder().logger(LOG).build();
 
         final FlinkContainersSettings flinkContainersSettings =
                 FlinkContainersSettings.builder()
@@ -94,8 +94,8 @@ public class FlinkContainerTestEnvironment implements TestEnvironment, ClusterCo
     }
 
     public FlinkContainerTestEnvironment(FlinkContainersSettings settings) {
-        TestcontainersSettings testcontainersSettings =
-                TestcontainersSettings.builder().logger(LOG).build();
+        TestContainersSettings testcontainersSettings =
+                TestContainersSettings.builder().logger(LOG).build();
         flinkContainers =
                 FlinkContainers.builder()
                         .withFlinkContainersSettings(settings)

@@ -88,8 +88,8 @@ import static org.apache.flink.util.Preconditions.checkState;
  * ---
  *
  *     // To work together with other containers
- *     static TestcontainersSettings testcontainersSettings =
- *          TestcontainersSettings.builder()
+ *     static TestContainersSettings testcontainersSettings =
+ *          TestContainersSettings.builder()
  *                 .dependsOn(kafkaContainer)
  *                 .build());
  *
@@ -110,8 +110,8 @@ import static org.apache.flink.util.Preconditions.checkState;
  *             .enableZookeeperHA()
  *             .build();
  *
- *     static TestcontainersSettings testcontainersSettings =
- *          TestcontainersSettings.builder()
+ *     static TestContainersSettings testcontainersSettings =
+ *          TestContainersSettings.builder()
  *                 .setLogger(
  *                      LoggerFactory.getLogger(E2ETest.class))
  *                 .build());
@@ -126,7 +126,7 @@ import static org.apache.flink.util.Preconditions.checkState;
  * }
  * }</pre>
  *
- * <p>See {@link FlinkContainersSettings} and {@link TestcontainersSettings} for available options.
+ * <p>See {@link FlinkContainersSettings} and {@link TestContainersSettings} for available options.
  *
  * <h2>Prerequisites</h2>
  *
@@ -154,8 +154,8 @@ public class FlinkContainers implements BeforeAllCallback, AfterAllCallback {
     public static final class Builder {
         private FlinkContainersSettings flinkContainersSettings =
                 FlinkContainersSettings.defaultConfig();
-        private TestcontainersSettings testcontainersSettings =
-                TestcontainersSettings.defaultSettings();
+        private TestContainersSettings testcontainersSettings =
+                TestContainersSettings.defaultSettings();
 
         private Builder() {}
 
@@ -173,13 +173,13 @@ public class FlinkContainers implements BeforeAllCallback, AfterAllCallback {
         }
 
         /**
-         * Allows to optionally provide Testcontainers settings. {@link TestcontainersSettings}
+         * Allows to optionally provide Testcontainers settings. {@link TestContainersSettings}
          * based on defaults will be used otherwise.
          *
          * @param testcontainersSettings The Testcontainers settings.
          * @return A reference to this Builder.
          */
-        public Builder withTestcontainersSettings(TestcontainersSettings testcontainersSettings) {
+        public Builder withTestcontainersSettings(TestContainersSettings testcontainersSettings) {
             this.testcontainersSettings = testcontainersSettings;
             return this;
         }

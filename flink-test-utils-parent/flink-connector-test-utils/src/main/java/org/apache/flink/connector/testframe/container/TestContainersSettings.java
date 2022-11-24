@@ -27,8 +27,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/** The configuration holder for Testcontainers. */
-public class TestcontainersSettings {
+/** The configuration holder for TestContainers. */
+public class TestContainersSettings {
 
     private final Network network;
     private final Logger logger;
@@ -36,7 +36,7 @@ public class TestcontainersSettings {
     private final Map<String, String> envVars;
     private final Collection<GenericContainer<?>> dependencies;
 
-    private TestcontainersSettings(Builder builder) {
+    private TestContainersSettings(Builder builder) {
         network = builder.network;
         baseImage = builder.baseImage;
         logger = builder.logger;
@@ -45,7 +45,7 @@ public class TestcontainersSettings {
     }
 
     /**
-     * A new builder for {@code TestcontainersSettings}.
+     * A new builder for {@code TestContainersSettings}.
      *
      * @return The builder.
      */
@@ -54,11 +54,11 @@ public class TestcontainersSettings {
     }
 
     /**
-     * {@code TestcontainersSettings} based on defaults.
+     * {@code TestContainersSettings} based on defaults.
      *
      * @return The Testcontainers config.
      */
-    public static TestcontainersSettings defaultSettings() {
+    public static TestContainersSettings defaultSettings() {
         return builder().build();
     }
 
@@ -137,8 +137,8 @@ public class TestcontainersSettings {
          * @return A {@code TestContainersSettings} built with parameters of this {@code
          *     TestContainersSettings.Builder}
          */
-        public TestcontainersSettings build() {
-            return new TestcontainersSettings(this);
+        public TestContainersSettings build() {
+            return new TestContainersSettings(this);
         }
     }
 

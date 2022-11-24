@@ -20,7 +20,7 @@ package org.apache.flink.tests.util.kafka;
 
 import org.apache.flink.api.common.time.Deadline;
 import org.apache.flink.connector.testframe.container.FlinkContainers;
-import org.apache.flink.connector.testframe.container.TestcontainersSettings;
+import org.apache.flink.connector.testframe.container.TestContainersSettings;
 import org.apache.flink.test.resources.ResourceTestUtils;
 import org.apache.flink.test.util.SQLJobSubmission;
 import org.apache.flink.tests.util.kafka.containers.SchemaRegistryContainer;
@@ -92,8 +92,8 @@ public class SQLClientSchemaRegistryITCase {
                     .withNetworkAliases(INTER_CONTAINER_REGISTRY_ALIAS)
                     .dependsOn(KAFKA);
 
-    public final TestcontainersSettings testcontainersSettings =
-            TestcontainersSettings.builder().network(NETWORK).logger(LOG).dependsOn(KAFKA).build();
+    public final TestContainersSettings testcontainersSettings =
+            TestContainersSettings.builder().network(NETWORK).logger(LOG).dependsOn(KAFKA).build();
 
     public final FlinkContainers flink =
             FlinkContainers.builder().withTestcontainersSettings(testcontainersSettings).build();

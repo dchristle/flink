@@ -262,19 +262,19 @@ public class TestCollectionTableFactory
 
     static class TemporalTableFetcher extends TableFunction<Row> {
         private final LinkedList<Row> dimData;
-        private final int[] keyes;
+        private final int[] keys;
 
-        public TemporalTableFetcher(LinkedList<Row> dimData, int[] keyes) {
+        public TemporalTableFetcher(LinkedList<Row> dimData, int[] keys) {
             this.dimData = dimData;
-            this.keyes = keyes;
+            this.keys = keys;
         }
 
         public void eval(Object... values) {
             for (Row data : dimData) {
                 boolean matched = true;
                 int idx = 0;
-                while (matched && idx < keyes.length) {
-                    Object dimField = data.getField(keyes[idx]);
+                while (matched && idx < keys.length) {
+                    Object dimField = data.getField(keys[idx]);
                     Object inputField = values[idx];
                     if (dimField != null) {
                         matched = dimField.equals(inputField);

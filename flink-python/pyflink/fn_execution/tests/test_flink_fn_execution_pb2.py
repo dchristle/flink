@@ -24,7 +24,7 @@ from pyflink.testing.test_case_utils import PyFlinkTestCase
 
 class FlinkFnExecutionTests(PyFlinkTestCase):
     """
-    Tests whether flink_fn_exeution_pb2.py is synced with flink-fn-execution.proto.
+    Tests whether flink_fn_execution_pb2.py is synced with flink-fn-execution.proto.
     """
 
     flink_fn_execution_pb2_file_name = "flink_fn_execution_pb2.py"

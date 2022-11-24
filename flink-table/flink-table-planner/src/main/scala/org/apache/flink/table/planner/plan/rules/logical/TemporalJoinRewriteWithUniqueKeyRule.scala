@@ -145,7 +145,7 @@ class TemporalJoinRewriteWithUniqueKeyRule
     if (!primaryKeyContainedInJoinKey) {
       val joinFieldNames = join.getRowType.getFieldNames
       val joinLeftFieldNames = join.getLeft.getRowType.getFieldNames
-      val joinRightFieldNamess = join.getRight.getRowType.getFieldNames
+      val joinRightFieldNames = join.getRight.getRowType.getFieldNames
       val primaryKeyNames = rightPrimaryKeyRefIndices
         .map(i => joinFieldNames.get(i))
         .toList
@@ -153,7 +153,7 @@ class TemporalJoinRewriteWithUniqueKeyRule
       val joinEquiInfo = join.analyzeCondition
         .pairs()
         .map {
-          pair => joinLeftFieldNames.get(pair.source) + "=" + joinRightFieldNamess.get(pair.target)
+          pair => joinLeftFieldNames.get(pair.source) + "=" + joinRightFieldNames.get(pair.target)
         }
         .toList
         .mkString(",")

@@ -18,7 +18,7 @@
 
 import org.apache.flink.connector.testframe.container.FlinkContainers;
 import org.apache.flink.connector.testframe.container.FlinkContainersSettings;
-import org.apache.flink.connector.testframe.container.TestcontainersSettings;
+import org.apache.flink.connector.testframe.container.TestContainersSettings;
 import org.apache.flink.connector.upserttest.sink.UpsertTestFileUtil;
 import org.apache.flink.streaming.api.environment.ExecutionCheckpointingOptions;
 import org.apache.flink.test.resources.ResourceTestUtils;
@@ -95,7 +95,7 @@ public class SqlClientITCase {
                                             Duration.ofMillis(500))
                                     .build())
                     .withTestcontainersSettings(
-                            TestcontainersSettings.builder()
+                            TestContainersSettings.builder()
                                     .network(NETWORK)
                                     .logger(LOG)
                                     .dependsOn(KAFKA)

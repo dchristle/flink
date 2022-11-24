@@ -20,7 +20,7 @@ package org.apache.flink.streaming.kinesis.test;
 
 import org.apache.flink.api.common.time.Deadline;
 import org.apache.flink.connector.testframe.container.FlinkContainers;
-import org.apache.flink.connector.testframe.container.TestcontainersSettings;
+import org.apache.flink.connector.testframe.container.TestContainersSettings;
 import org.apache.flink.connectors.kinesis.testutils.KinesaliteContainer;
 import org.apache.flink.streaming.connectors.kinesis.testutils.KinesisPubsubClient;
 import org.apache.flink.streaming.kinesis.test.model.Order;
@@ -83,8 +83,8 @@ public class KinesisTableApiITCase extends TestLogger {
 
     private KinesisPubsubClient kinesisClient;
 
-    public static final TestcontainersSettings TESTCONTAINERS_SETTINGS =
-            TestcontainersSettings.builder()
+    public static final TestContainersSettings TESTCONTAINERS_SETTINGS =
+            TestContainersSettings.builder()
                     .environmentVariable("AWS_CBOR_DISABLE", "1")
                     .environmentVariable(
                             "FLINK_ENV_JAVA_OPTS",

@@ -21,7 +21,7 @@ package org.apache.flink.connector.firehose.table.test;
 import org.apache.flink.api.common.time.Deadline;
 import org.apache.flink.connector.aws.testutils.LocalstackContainer;
 import org.apache.flink.connector.testframe.container.FlinkContainers;
-import org.apache.flink.connector.testframe.container.TestcontainersSettings;
+import org.apache.flink.connector.testframe.container.TestContainersSettings;
 import org.apache.flink.test.resources.ResourceTestUtils;
 import org.apache.flink.test.util.SQLJobSubmission;
 import org.apache.flink.util.DockerImageVersions;
@@ -102,8 +102,8 @@ public class KinesisFirehoseTableITTest extends TestLogger {
                     .withNetwork(network)
                     .withNetworkAliases("localstack");
 
-    public static final TestcontainersSettings TESTCONTAINERS_SETTINGS =
-            TestcontainersSettings.builder()
+    public static final TestContainersSettings TESTCONTAINERS_SETTINGS =
+            TestContainersSettings.builder()
                     .environmentVariable("AWS_CBOR_DISABLE", "1")
                     .environmentVariable(
                             "FLINK_ENV_JAVA_OPTS",
