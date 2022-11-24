@@ -98,7 +98,7 @@ public class RowTimeMiniBatchDeduplicateFunction
      * @param bufferedRows latest row received by deduplicate function
      * @param out underlying collector
      * @param generateUpdateBefore flag to generate UPDATE_BEFORE message or not
-     * @param generateInsert flag to gennerate INSERT message or not
+     * @param generateInsert flag to generate INSERT message or not
      * @param rowtimeIndex the index of rowtime field
      * @param keepLastRow flag to keep last row or keep first row
      */

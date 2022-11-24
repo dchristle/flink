@@ -107,7 +107,7 @@ public class ScalaCsvOutputFormat<T extends Product> extends FileOutputFormat<T>
     public ScalaCsvOutputFormat(Path outputPath, String recordDelimiter, String fieldDelimiter) {
         super(outputPath);
         if (recordDelimiter == null) {
-            throw new IllegalArgumentException("RecordDelmiter shall not be null.");
+            throw new IllegalArgumentException("RecordDelimiter shall not be null.");
         }
 
         if (fieldDelimiter == null) {

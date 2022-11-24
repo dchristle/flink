@@ -48,7 +48,7 @@ class SideOutputITCase extends AbstractTestBase {
 
     val outputTag = OutputTag[String]("side")
 
-    val passThroughtStream = dataStream
+    val passThroughStream = dataStream
       .process(new ProcessFunction[Int, Int] {
         override def processElement(
             value: Int,
@@ -59,8 +59,8 @@ class SideOutputITCase extends AbstractTestBase {
         }
       })
 
-    passThroughtStream.getSideOutput(outputTag).addSink(sideOutputResultSink)
-    passThroughtStream.addSink(resultSink)
+    passThroughStream.getSideOutput(outputTag).addSink(sideOutputResultSink)
+    passThroughStream.addSink(resultSink)
 
     env.execute()
 
@@ -84,7 +84,7 @@ class SideOutputITCase extends AbstractTestBase {
 
     val outputTag = OutputTag[String]("side")
 
-    val passThroughtStream = dataStream
+    val passThroughStream = dataStream
       .keyBy(x => x)
       .process(new ProcessFunction[Int, Int] {
         override def processElement(
@@ -96,8 +96,8 @@ class SideOutputITCase extends AbstractTestBase {
         }
       })
 
-    passThroughtStream.getSideOutput(outputTag).addSink(sideOutputResultSink)
-    passThroughtStream.addSink(resultSink)
+    passThroughStream.getSideOutput(outputTag).addSink(sideOutputResultSink)
+    passThroughStream.addSink(resultSink)
 
     env.execute()
 
@@ -122,7 +122,7 @@ class SideOutputITCase extends AbstractTestBase {
     val outputTag = OutputTag[String]("side")
     val otherOutputTag = OutputTag[String]("other-side")
 
-    val passThroughtStream = dataStream
+    val passThroughStream = dataStream
       .process(new ProcessFunction[Int, Int] {
         override def processElement(
             value: Int,
@@ -132,7 +132,7 @@ class SideOutputITCase extends AbstractTestBase {
         }
       })
 
-    passThroughtStream.getSideOutput(outputTag).addSink(sideOutputResultSink)
+    passThroughStream.getSideOutput(outputTag).addSink(sideOutputResultSink)
 
     env.execute()
 

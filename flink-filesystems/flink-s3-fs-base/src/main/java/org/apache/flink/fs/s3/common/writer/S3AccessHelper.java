@@ -37,7 +37,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Hadoop S3 and Presto.
  *
  * <p>Multipart uploads are convenient for large object. These will be uploaded in multiple parts
- * and the mutli-part upload is the equivalent of a transaction, where the upload with all its parts
+ * and the multi-part upload is the equivalent of a transaction, where the upload with all its parts
  * will be either committed or discarded.
  */
 @Internal

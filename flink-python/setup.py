@@ -57,7 +57,7 @@ def copy_files(src_paths, output_directory):
 
 
 def has_unsupported_tag(file_element):
-    unsupported_tags = ['includes', 'exclueds']
+    unsupported_tags = ['includes', 'excludes']
     for unsupported_tag in unsupported_tags:
         if file_element.getElementsByTagName(unsupported_tag):
             print('Unsupported <{0}></{1}> tag'.format(unsupported_tag, unsupported_tag))

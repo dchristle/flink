@@ -48,8 +48,8 @@ public class RowTimeDeduplicateFunctionTest extends RowTimeDeduplicateFunctionTe
 
     private final boolean miniBatchEnable;
 
-    public RowTimeDeduplicateFunctionTest(boolean miniBacthEnable) {
-        this.miniBatchEnable = miniBacthEnable;
+    public RowTimeDeduplicateFunctionTest(boolean miniBatchEnable) {
+        this.miniBatchEnable = miniBatchEnable;
     }
 
     @Test

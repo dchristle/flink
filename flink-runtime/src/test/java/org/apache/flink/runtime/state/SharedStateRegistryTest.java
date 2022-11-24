@@ -114,7 +114,7 @@ public class SharedStateRegistryTest {
 
     /** Validate that unregister a nonexistent checkpoint will not throw exception */
     @Test
-    public void testUnregisterWithUnexistedKey() {
+    public void testUnregisterWithNonExistentKey() {
         SharedStateRegistry sharedStateRegistry = new SharedStateRegistryImpl();
         sharedStateRegistry.unregisterUnusedState(-1);
         sharedStateRegistry.unregisterUnusedState(Long.MAX_VALUE);

@@ -293,7 +293,7 @@ public class SessionDispatcherLeaderProcessTest {
 
             assertThat(recoveredJobGraphsFuture)
                     .succeedsWithin(Duration.ofHours(1))
-                    .satisfies(recovedJobGraphs -> assertThat(recovedJobGraphs).isEmpty());
+                    .satisfies(recoveredJobGraphs -> assertThat(recoveredJobGraphs).isEmpty());
             assertThat(recoveredDirtyJobResultsFuture)
                     .succeedsWithin(Duration.ofHours(1))
                     .satisfies(

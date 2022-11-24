@@ -71,7 +71,7 @@ public class SavepointDisposalTriggerHeaders
 
     @Override
     protected String getAsyncOperationDescription() {
-        return "Triggers the desposal of a savepoint.";
+        return "Triggers the disposal of a savepoint.";
     }
 
     @Override

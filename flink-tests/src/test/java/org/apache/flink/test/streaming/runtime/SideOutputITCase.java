@@ -107,7 +107,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                             public void cancel() {}
                         });
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream.process(
                         new ProcessFunction<Integer, Integer>() {
                             private static final long serialVersionUID = 1L;
@@ -137,19 +137,19 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
             }
         }
 
-        passThroughtStream
+        passThroughStream
                 .getSideOutput(sideOutputTag1)
                 .transform(
                         "ReifyWatermarks", BasicTypeInfo.STRING_TYPE_INFO, new WatermarkReifier())
                 .addSink(sideOutputResultSink1);
 
-        passThroughtStream
+        passThroughStream
                 .getSideOutput(sideOutputTag2)
                 .transform(
                         "ReifyWatermarks", BasicTypeInfo.STRING_TYPE_INFO, new WatermarkReifier())
                 .addSink(sideOutputResultSink2);
 
-        passThroughtStream
+        passThroughStream
                 .map(
                         new MapFunction<Integer, String>() {
                             private static final long serialVersionUID = 1L;
@@ -233,7 +233,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
 
         DataStream<Integer> dataStream = env.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream.process(
                         new ProcessFunction<Integer, Integer>() {
                             private static final long serialVersionUID = 1L;
@@ -247,9 +247,9 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                             }
                         });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink1);
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink2);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink2);
+        passThroughStream.addSink(resultSink);
         env.execute();
 
         assertEquals(
@@ -275,7 +275,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
 
         DataStream<Integer> dataStream = env.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream.process(
                         new ProcessFunction<Integer, Integer>() {
                             private static final long serialVersionUID = 1L;
@@ -289,9 +289,9 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                             }
                         });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink1);
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink2);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink2);
+        passThroughStream.addSink(resultSink);
         env.execute();
 
         assertEquals(
@@ -318,7 +318,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
 
         DataStream<Integer> dataStream = env.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream.process(
                         new ProcessFunction<Integer, Integer>() {
                             private static final long serialVersionUID = 1L;
@@ -333,9 +333,9 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                             }
                         });
 
-        passThroughtStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
-        passThroughtStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
+        passThroughStream.addSink(resultSink);
         env.execute();
 
         assertEquals(
@@ -358,7 +358,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
 
         DataStream<Integer> dataStream = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream.process(
                         new ProcessFunction<Integer, Integer>() {
                             private static final long serialVersionUID = 1L;
@@ -373,10 +373,10 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                             }
                         });
 
-        passThroughtStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
 
         expectedException.expect(UnsupportedOperationException.class);
-        passThroughtStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
+        passThroughStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
     }
 
     /** Test ProcessFunction side output. */
@@ -392,7 +392,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
 
         DataStream<Integer> dataStream = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream.process(
                         new ProcessFunction<Integer, Integer>() {
                             private static final long serialVersionUID = 1L;
@@ -406,8 +406,8 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                             }
                         });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -430,7 +430,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
         DataStream<Integer> ds1 = see.fromCollection(elements);
         DataStream<Integer> ds2 = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 ds1.connect(ds2)
                         .process(
                                 new CoProcessFunction<Integer, Integer, Integer>() {
@@ -459,8 +459,8 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -485,7 +485,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
         DataStream<Integer> ds1 = see.fromCollection(elements);
         DataStream<Integer> ds2 = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 ds1.connect(ds2)
                         .process(
                                 new CoProcessFunction<Integer, Integer, Integer>() {
@@ -514,9 +514,9 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
-        passThroughtStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -540,7 +540,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
 
         DataStream<Integer> dataStream = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 dataStream
                         .keyBy(
                                 new KeySelector<Integer, Integer>() {
@@ -565,8 +565,8 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -589,7 +589,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
         DataStream<Integer> ds1 = see.fromCollection(elements);
         DataStream<Integer> ds2 = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 ds1.keyBy(i -> i)
                         .connect(ds2.keyBy(i -> i))
                         .process(
@@ -619,8 +619,8 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -643,7 +643,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
         DataStream<Integer> ds1 = see.fromCollection(elements);
         DataStream<Integer> ds2 = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 ds1.keyBy(i -> i)
                         .connect(ds2.keyBy(i -> i))
                         .process(
@@ -679,8 +679,8 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag).addSink(sideOutputResultSink);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -710,7 +710,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
         DataStream<Integer> ds1 = see.fromCollection(elements);
         DataStream<Integer> ds2 = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 ds1.keyBy(i -> i)
                         .connect(ds2.keyBy(i -> i))
                         .process(
@@ -740,9 +740,9 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
-        passThroughtStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -769,7 +769,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
         DataStream<Integer> ds1 = see.fromCollection(elements);
         DataStream<Integer> ds2 = see.fromCollection(elements);
 
-        SingleOutputStreamOperator<Integer> passThroughtStream =
+        SingleOutputStreamOperator<Integer> passThroughStream =
                 ds1.keyBy(i -> i)
                         .connect(ds2.keyBy(i -> i))
                         .process(
@@ -805,9 +805,9 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
                                     }
                                 });
 
-        passThroughtStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
-        passThroughtStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
-        passThroughtStream.addSink(resultSink);
+        passThroughStream.getSideOutput(sideOutputTag1).addSink(sideOutputResultSink1);
+        passThroughStream.getSideOutput(sideOutputTag2).addSink(sideOutputResultSink2);
+        passThroughStream.addSink(resultSink);
         see.execute();
 
         assertEquals(
@@ -982,7 +982,7 @@ public class SideOutputITCase extends AbstractTestBase implements Serializable {
     }
 
     @Test
-    public void testProcessdWindowFunctionSideOutput() throws Exception {
+    public void testProcessedWindowFunctionSideOutput() throws Exception {
         TestListResultSink<Integer> resultSink = new TestListResultSink<>();
         TestListResultSink<String> sideOutputResultSink = new TestListResultSink<>();
 
