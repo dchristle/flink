@@ -104,7 +104,7 @@ public abstract class SnapshotMigrationTestBase extends TestLogger {
      * A snapshot specification (immutable) for migration tests that consists of {@link
      * FlinkVersion} that the snapshot has been created with, {@link
      * SnapshotMigrationTestBase.SnapshotType}, and state backend type that the snapshot has been
-     * ctreated from.
+     * created from.
      */
     public static class SnapshotSpec implements Serializable {
         private final FlinkVersion flinkVersion;

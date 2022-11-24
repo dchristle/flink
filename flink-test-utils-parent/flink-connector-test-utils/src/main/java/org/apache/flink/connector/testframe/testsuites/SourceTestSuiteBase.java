@@ -380,7 +380,7 @@ public abstract class SourceTestSuiteBase<T> {
              * Use the same iterator as the previous run, because the CollectStreamSink will snapshot
              * its state and recover from it.
              *
-             * The fetcher in CollectResultIterator is responsible for comminicating with
+             * The fetcher in CollectResultIterator is responsible for communicating with
              * the CollectSinkFunction, and deal the result with CheckpointedCollectResultBuffer
              * in EXACTLY_ONCE semantic.
              */

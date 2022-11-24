@@ -87,7 +87,7 @@ public class SlidingWindowCheckMapper
 
         Long lastSequenceNumberSeenSoFar = lastSequenceNumber.value();
         List<Tuple2<Event, Integer>> newWindows =
-                verifyPreviousOccurences(
+                verifyPreviousOccurrences(
                         previousWindowValues, newValues, lastSequenceNumberSeenSoFar, out);
 
         if (lastEventInWindow.isPresent()) {
@@ -121,7 +121,7 @@ public class SlidingWindowCheckMapper
      * Verifies if all values from previous windows appear in the new one. Returns union of all
      * events seen so far that were not seen <b>slideFactor</b> number of times yet.
      */
-    private List<Tuple2<Event, Integer>> verifyPreviousOccurences(
+    private List<Tuple2<Event, Integer>> verifyPreviousOccurrences(
             List<Tuple2<Event, Integer>> previousWindowValues,
             List<Event> newValues,
             Long lastSequenceNumberSeenSoFar,
@@ -168,10 +168,10 @@ public class SlidingWindowCheckMapper
     }
 
     private void preserveOrDiscardIfSeenSlideFactorTimes(
-            List<Tuple2<Event, Integer>> newEvenstSeenSoFar, Tuple2<Event, Integer> windowValue) {
+            List<Tuple2<Event, Integer>> newEventsSeenSoFar, Tuple2<Event, Integer> windowValue) {
         int timesSeen = windowValue.f1 + 1;
         if (timesSeen != slideFactor) {
-            newEvenstSeenSoFar.add(Tuple2.of(windowValue.f0, timesSeen));
+            newEventsSeenSoFar.add(Tuple2.of(windowValue.f0, timesSeen));
         }
     }
 

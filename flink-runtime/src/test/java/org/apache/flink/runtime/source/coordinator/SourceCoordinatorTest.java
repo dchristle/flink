@@ -535,16 +535,16 @@ class SourceCoordinatorTest extends SourceCoordinatorTestBase {
 
     private byte[] createCheckpointDataWithSerdeV0(Set<MockSourceSplit> splits) throws Exception {
 
-        final MockSplitEnumeratorCheckpointSerializer enumChkptSerializer =
+        final MockSplitEnumeratorCheckpointSerializer enumCheckpointSerializer =
                 new MockSplitEnumeratorCheckpointSerializer();
         final DataOutputSerializer serializer = new DataOutputSerializer(32);
 
         serializer.writeInt(SourceCoordinatorSerdeUtils.VERSION_0);
-        serializer.writeInt(enumChkptSerializer.getVersion());
+        serializer.writeInt(enumCheckpointSerializer.getVersion());
 
-        final byte[] serializedEnumChkpt = enumChkptSerializer.serialize(splits);
-        serializer.writeInt(serializedEnumChkpt.length);
-        serializer.write(serializedEnumChkpt);
+        final byte[] serializedEnumCheckpoint = enumCheckpointSerializer.serialize(splits);
+        serializer.writeInt(serializedEnumCheckpoint.length);
+        serializer.write(serializedEnumCheckpoint);
 
         // Version 0 wrote number of reader, see FLINK-21452
         serializer.writeInt(0);

@@ -442,7 +442,7 @@ public abstract class SingleInputNode extends OptimizerNode {
                 Sets.cartesianProduct(broadcastPlanChannels)) {
 
             boolean validCombination = true;
-            boolean requiresPipelinebreaker = false;
+            boolean requiresPipelineBreaker = false;
 
             // check whether the broadcast inputs use the same plan candidate at the branching point
             for (int i = 0; i < broadcastChannelsCombination.size(); i++) {
@@ -469,20 +469,20 @@ public abstract class SingleInputNode extends OptimizerNode {
                 // all common predecessors
                 if (in.isOnDynamicPath() && this.hereJoinedBranches != null) {
                     for (OptimizerNode brancher : this.hereJoinedBranches) {
-                        PlanNode candAtBrancher =
+                        PlanNode candidateAtBranchPoint =
                                 in.getSource().getCandidateAtBranchPoint(brancher);
 
-                        if (candAtBrancher == null) {
+                        if (candidateAtBranchPoint == null) {
                             // closed branch between two broadcast variables
                             continue;
                         }
 
-                        SourceAndDamReport res = in.getSource().hasDamOnPathDownTo(candAtBrancher);
+                        SourceAndDamReport res = in.getSource().hasDamOnPathDownTo(candidateAtBranchPoint);
                         if (res == NOT_FOUND) {
                             throw new CompilerException(
                                     "Bug: Tracing dams for deadlock detection is broken.");
                         } else if (res == FOUND_SOURCE) {
-                            requiresPipelinebreaker = true;
+                            requiresPipelineBreaker = true;
                             break;
                         } else if (res == FOUND_SOURCE_AND_DAM) {
                             // good
@@ -497,7 +497,7 @@ public abstract class SingleInputNode extends OptimizerNode {
                 continue;
             }
 
-            if (requiresPipelinebreaker) {
+            if (requiresPipelineBreaker) {
                 in.setTempMode(in.getTempMode().makePipelineBreaker());
             }
 

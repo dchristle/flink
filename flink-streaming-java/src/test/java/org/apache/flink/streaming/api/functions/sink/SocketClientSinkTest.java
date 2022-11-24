@@ -51,7 +51,7 @@ public class SocketClientSinkTest extends TestLogger {
 
     private static final String TEST_MESSAGE = "testSocketSinkInvoke";
 
-    private static final String EXCEPTION_MESSGAE =
+    private static final String EXCEPTION_MESSAGE =
             "Failed to send message '" + TEST_MESSAGE + "\n'";
 
     private static final String host = "127.0.0.1";
@@ -195,7 +195,7 @@ public class SocketClientSinkTest extends TestLogger {
                 }
             } catch (IOException e) {
                 // check whether throw a exception that reconnect failed.
-                assertTrue("Wrong exception", e.getMessage().contains(EXCEPTION_MESSGAE));
+                assertTrue("Wrong exception", e.getMessage().contains(EXCEPTION_MESSAGE));
             } catch (Exception e) {
                 fail("wrong exception: " + e.getClass().getName() + " - " + e.getMessage());
             }

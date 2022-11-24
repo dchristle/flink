@@ -34,8 +34,8 @@ public class SolutionSetNode extends AbstractPartialSolutionNode {
 
     private final WorksetIterationNode iterationNode;
 
-    public SolutionSetNode(SolutionSetPlaceHolder<?> psph, WorksetIterationNode iterationNode) {
-        super(psph);
+    public SolutionSetNode(SolutionSetPlaceHolder<?> ssph, WorksetIterationNode iterationNode) {
+        super(ssph);
         this.iterationNode = iterationNode;
     }
 

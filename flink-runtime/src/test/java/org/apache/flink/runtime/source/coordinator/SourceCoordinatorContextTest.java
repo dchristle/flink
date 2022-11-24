@@ -125,15 +125,15 @@ class SourceCoordinatorContextTest extends SourceCoordinatorTestBase {
 
     @Test
     void testAssignSplitToUnregisteredReaderFromCoordinatorExecutor() throws Exception {
-        testAssignSplitToUnregisterdReader(true);
+        testAssignSplitToUnregisteredReader(true);
     }
 
     @Test
     void testAssignSplitToUnregisteredReaderFromOtherThread() throws Exception {
-        testAssignSplitToUnregisterdReader(false);
+        testAssignSplitToUnregisteredReader(false);
     }
 
-    private void testAssignSplitToUnregisterdReader(boolean fromCoordinatorExecutor)
+    private void testAssignSplitToUnregisteredReader(boolean fromCoordinatorExecutor)
             throws Exception {
         sourceReady();
 

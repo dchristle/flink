@@ -451,7 +451,7 @@ public class SinkV1Adapter<InputT, CommT, WriterStateT, GlobalCommT> implements 
             List<GlobalCommT> globalCommittables =
                     Collections.singletonList(globalCommitter.combine(rawCommittables));
             List<GlobalCommT> failures = globalCommitter.commit(globalCommittables);
-            // Only committables are retriable so the complete batch of committables is retried
+            // Only committables are retryable so the complete batch of committables is retried
             // because we cannot trace back the committable to which global committable it belongs.
             // This might lead to committing the same global committable twice, but we assume that
             // the GlobalCommitter commit call is idempotent.

@@ -139,7 +139,7 @@ class SourceWatermarkTest extends TableTestBase {
   }
 
   @Test
-  def testWatermarkOnComputedColumnExcluedRowTime1(): Unit = {
+  def testWatermarkOnComputedColumnExcludedRowTime1(): Unit = {
     util.verifyExecPlan("SELECT a, b FROM VirtualTable WHERE b > 10")
   }
 

@@ -224,7 +224,7 @@ class SlotSharingExecutionSlotAllocatorTest {
 
     @Test
     void
-            testCompletedLogicalSlotCancelationDoesNotCancelPhysicalSlotRequestAndDoesNotRemoveSharedSlot()
+    testCompletedLogicalSlotCancellationDoesNotCancelPhysicalSlotRequestAndDoesNotRemoveSharedSlot()
                     throws Exception {
         // physical slot request is completed and completes logical requests
         testLogicalSlotRequestCancellationOrRelease(

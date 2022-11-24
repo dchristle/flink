@@ -50,15 +50,15 @@ public class SpanningWrapperTest {
         byte[] record1 = recordBytes(recordLen);
         byte[] record2 = recordBytes(recordLen * 2);
 
-        File canNotEecutableFile = folder.newFolder();
-        canNotEecutableFile.setExecutable(false);
-        // Always pick 'canNotEecutableFile' first as the Spilling Channel TmpDir. Thus trigger an
+        File canNotExecuteFile = folder.newFolder();
+        canNotExecuteFile.setExecutable(false);
+        // Always pick 'canNotExecuteFile' first as the Spilling Channel TmpDir. Thus trigger an
         // IOException.
         SpanningWrapper spanningWrapper =
                 new SpanningWrapper(
                         new String[] {
                             folder.newFolder().getAbsolutePath(),
-                            canNotEecutableFile.getAbsolutePath() + File.separator + "pathdonotexit"
+                            canNotExecuteFile.getAbsolutePath() + File.separator + "pathdonotexit"
                         },
                         spillingThreshold,
                         recordLen);
@@ -77,7 +77,7 @@ public class SpanningWrapperTest {
                 wrapNonSpanning(recordBytes(recordLen), recordLen),
                 recordLen); // overwrite with new data
 
-        canNotEecutableFile.setExecutable(true);
+        canNotExecuteFile.setExecutable(true);
 
         assertArrayEquals(concat(record1, record2), toByteArray(unconsumedSegment));
     }

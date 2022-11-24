@@ -110,7 +110,7 @@ public class SpillingResettableIteratorTest {
                         iterator.next().getValue());
             }
             Assert.assertEquals(
-                    "Too few elements were deserialzied in initial run!", NUM_TESTRECORDS, count);
+                    "Too few elements were deserialized in initial run!", NUM_TESTRECORDS, count);
             // test resetting the iterator a few times
             for (int j = 0; j < 10; ++j) {
                 count = 0;
@@ -128,7 +128,7 @@ public class SpillingResettableIteratorTest {
                             iterator.next().getValue());
                 }
                 Assert.assertEquals(
-                        "Too few elements were deserialzied after reset nr. " + j + 1 + "!",
+                        "Too few elements were deserialized after reset nr. " + j + 1 + "!",
                         NUM_TESTRECORDS,
                         count);
             }
@@ -168,7 +168,7 @@ public class SpillingResettableIteratorTest {
                         iterator.next().getValue());
             }
             Assert.assertEquals(
-                    "Too few elements were deserialzied in initial run!", NUM_TESTRECORDS, count);
+                    "Too few elements were deserialized in initial run!", NUM_TESTRECORDS, count);
             // test resetting the iterator a few times
             for (int j = 0; j < 10; ++j) {
                 count = 0;
@@ -186,7 +186,7 @@ public class SpillingResettableIteratorTest {
                             iterator.next().getValue());
                 }
                 Assert.assertEquals(
-                        "Too few elements were deserialzied after reset nr. " + j + 1 + "!",
+                        "Too few elements were deserialized after reset nr. " + j + 1 + "!",
                         NUM_TESTRECORDS,
                         count);
             }

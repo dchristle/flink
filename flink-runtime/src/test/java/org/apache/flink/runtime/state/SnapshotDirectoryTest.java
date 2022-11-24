@@ -107,7 +107,7 @@ public class SnapshotDirectoryTest extends TestLogger {
 
     /**
      * Tests that reporting the handle of a completed snapshot works as expected and that the
-     * directory for completed snapshot is not deleted by {@link #deleteIfNotCompeltedSnapshot()}.
+     * directory for completed snapshot is not deleted by {@link #deleteIfNotCompletedSnapshot()}.
      */
     @Test
     public void completeSnapshotAndGetHandle() throws Exception {
@@ -142,7 +142,7 @@ public class SnapshotDirectoryTest extends TestLogger {
      * be deleted, only ongoing snapshots can.
      */
     @Test
-    public void deleteIfNotCompeltedSnapshot() throws Exception {
+    public void deleteIfNotCompletedSnapshot() throws Exception {
         File folderRoot = temporaryFolder.getRoot();
         File folderA = new File(folderRoot, String.valueOf(UUID.randomUUID()));
         File folderB = new File(folderA, String.valueOf(UUID.randomUUID()));

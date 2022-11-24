@@ -501,10 +501,10 @@ public class SourceCoordinator<SplitT extends SourceSplit, EnumChkT>
 
             writeCoordinatorSerdeVersion(out);
             out.writeInt(enumeratorCheckpointSerializer.getVersion());
-            byte[] serialziedEnumChkpt =
+            byte[] serializedEnumCheckpoint =
                     enumeratorCheckpointSerializer.serialize(enumeratorCheckpoint);
-            out.writeInt(serialziedEnumChkpt.length);
-            out.write(serialziedEnumChkpt);
+            out.writeInt(serializedEnumCheckpoint.length);
+            out.write(serializedEnumCheckpoint);
             out.flush();
             return baos.toByteArray();
         }
@@ -521,15 +521,15 @@ public class SourceCoordinator<SplitT extends SourceSplit, EnumChkT>
                 DataInputStream in = new DataInputViewStreamWrapper(bais)) {
             final int coordinatorSerdeVersion = readAndVerifyCoordinatorSerdeVersion(in);
             int enumSerializerVersion = in.readInt();
-            int serializedEnumChkptSize = in.readInt();
-            byte[] serializedEnumChkpt = readBytes(in, serializedEnumChkptSize);
+            int serializedEnumCheckpointSize = in.readInt();
+            byte[] serializedEnumCheckpoint = readBytes(in, serializedEnumCheckpointSize);
 
             if (coordinatorSerdeVersion != SourceCoordinatorSerdeUtils.VERSION_0
                     && bais.available() > 0) {
                 throw new IOException("Unexpected trailing bytes in enumerator checkpoint data");
             }
 
-            return enumCheckpointSerializer.deserialize(enumSerializerVersion, serializedEnumChkpt);
+            return enumCheckpointSerializer.deserialize(enumSerializerVersion, serializedEnumCheckpoint);
         }
     }
 
