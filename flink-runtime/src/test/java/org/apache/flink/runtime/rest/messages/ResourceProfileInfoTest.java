@@ -39,8 +39,8 @@ public class ResourceProfileInfoTest extends RestResponseMarshallingTestBase<Res
 
     private static ResourceProfileInfo createRandomResourceProfileInfo() {
         final Map<String, Double> extendedResources = new HashMap<>();
-        extendedResources.put("randome-key-1", random.nextDouble());
-        extendedResources.put("randome-key-2", random.nextDouble());
+        extendedResources.put("random-key-1", random.nextDouble());
+        extendedResources.put("random-key-2", random.nextDouble());
 
         return new ResourceProfileInfo(
                 random.nextDouble(),

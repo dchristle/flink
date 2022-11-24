@@ -366,7 +366,7 @@ public class RecordTest {
 
                 r.setNumFields(5);
 
-                r.updateBinaryRepresenation();
+                r.updateBinaryRepresentation();
 
                 i1 = new IntValue(3);
                 i2 = new IntValue(4);
@@ -374,7 +374,7 @@ public class RecordTest {
                 r.setField(7, i1);
                 r.setField(8, i2);
 
-                r.updateBinaryRepresenation();
+                r.updateBinaryRepresentation();
 
                 assertTrue(r.getField(1, IntValue.class).getValue() == 1);
                 assertTrue(r.getField(3, IntValue.class).getValue() == 2);
@@ -611,7 +611,7 @@ public class RecordTest {
             final int pos = permutation1[i];
             rec.setField(pos, values[pos]);
         }
-        rec.updateBinaryRepresenation();
+        rec.updateBinaryRepresentation();
         testAllRetrievalMethods(rec, permutation2, values);
 
         // test adding and retrieving with intermediate binary updating
@@ -619,14 +619,14 @@ public class RecordTest {
         int updatePos = rnd.nextInt(values.length + 1);
         for (int i = 0; i < values.length; i++) {
             if (i == updatePos) {
-                rec.updateBinaryRepresenation();
+                rec.updateBinaryRepresentation();
             }
 
             final int pos = permutation1[i];
             rec.setField(pos, values[pos]);
         }
         if (updatePos == values.length) {
-            rec.updateBinaryRepresenation();
+            rec.updateBinaryRepresentation();
         }
         testAllRetrievalMethods(rec, permutation2, values);
 
@@ -862,8 +862,8 @@ public class RecordTest {
         // fully in binary sync
         Record rec1 = createRecord(rec1fields);
         Record rec2 = createRecord(rec2fields);
-        rec1.updateBinaryRepresenation();
-        rec2.updateBinaryRepresenation();
+        rec1.updateBinaryRepresentation();
+        rec2.updateBinaryRepresentation();
         rec1.unionFields(rec2);
         checkUnionedRecord(rec1, rec1fields, rec2fields);
 
@@ -876,14 +876,14 @@ public class RecordTest {
         // one in binary sync
         rec1 = createRecord(rec1fields);
         rec2 = createRecord(rec2fields);
-        rec1.updateBinaryRepresenation();
+        rec1.updateBinaryRepresentation();
         rec1.unionFields(rec2);
         checkUnionedRecord(rec1, rec1fields, rec2fields);
 
         // other in binary sync
         rec1 = createRecord(rec1fields);
         rec2 = createRecord(rec2fields);
-        rec2.updateBinaryRepresenation();
+        rec2.updateBinaryRepresentation();
         rec1.unionFields(rec2);
         checkUnionedRecord(rec1, rec1fields, rec2fields);
 
@@ -896,27 +896,27 @@ public class RecordTest {
         int updatePos = rnd.nextInt(rec1fields.length + 1);
         for (int i = 0; i < rec1fields.length; i++) {
             if (i == updatePos) {
-                rec1.updateBinaryRepresenation();
+                rec1.updateBinaryRepresentation();
             }
 
             final int pos = permutation1[i];
             rec1.setField(pos, rec1fields[pos]);
         }
         if (updatePos == rec1fields.length) {
-            rec1.updateBinaryRepresenation();
+            rec1.updateBinaryRepresentation();
         }
 
         updatePos = rnd.nextInt(rec2fields.length + 1);
         for (int i = 0; i < rec2fields.length; i++) {
             if (i == updatePos) {
-                rec2.updateBinaryRepresenation();
+                rec2.updateBinaryRepresentation();
             }
 
             final int pos = permutation2[i];
             rec2.setField(pos, rec2fields[pos]);
         }
         if (updatePos == rec2fields.length) {
-            rec2.updateBinaryRepresenation();
+            rec2.updateBinaryRepresentation();
         }
 
         rec1.unionFields(rec2);

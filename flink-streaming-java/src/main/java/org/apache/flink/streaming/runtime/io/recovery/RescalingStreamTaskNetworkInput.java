@@ -164,13 +164,13 @@ public final class RescalingStreamTaskNetworkInput<T>
 
     protected DemultiplexingRecordDeserializer<T> getActiveSerializer(
             InputChannelInfo channelInfo) {
-        final DemultiplexingRecordDeserializer<T> deserialier =
+        final DemultiplexingRecordDeserializer<T> deserializer =
                 super.getActiveSerializer(channelInfo);
-        if (!deserialier.hasMappings()) {
+        if (!deserializer.hasMappings()) {
             throw new IllegalStateException(
                     "Channel " + channelInfo + " should not receive data during recovery.");
         }
-        return deserialier;
+        return deserializer;
     }
 
     protected DataInputStatus processEvent(BufferOrEvent bufferOrEvent) {

@@ -41,7 +41,7 @@ import java.nio.ByteOrder;
  * <p>For efficient data exchange, a record that is read from any source holds its data in
  * serialized binary form. Fields are deserialized lazily upon first access. Modified fields are
  * cached and the modifications are incorporated into the binary representation upon the next
- * serialization or any explicit call to the {@link #updateBinaryRepresenation()} method.
+ * serialization or any explicit call to the {@link #updateBinaryRepresentation()} method.
  *
  * <p>IMPORTANT NOTE: Records must be used as mutable objects and be reused across user function
  * calls in order to achieve performance. The record is a heavy-weight object, designed to minimize
@@ -308,7 +308,7 @@ public final class Record implements Value, CopyableValue<Record> {
         } else if (offset == MODIFIED_INDICATOR_OFFSET) {
             // value that has been set is new or modified
             // bring the binary in sync so that the deserialization gives the correct result
-            updateBinaryRepresenation();
+            updateBinaryRepresentation();
             offset = this.offsets[fieldNum];
         }
 
@@ -747,7 +747,7 @@ public final class Record implements Value, CopyableValue<Record> {
 
     /** @param target */
     public void copyTo(Record target) {
-        updateBinaryRepresenation();
+        updateBinaryRepresentation();
 
         if (target.binaryData == null || target.binaryData.length < this.binaryLen) {
             target.binaryData = new byte[this.binaryLen];
@@ -887,7 +887,7 @@ public final class Record implements Value, CopyableValue<Record> {
                 }
             }
 
-            updateBinaryRepresenation();
+            updateBinaryRepresentation();
         }
 
         final byte[] targetBuffer = this.binaryData;
@@ -940,7 +940,7 @@ public final class Record implements Value, CopyableValue<Record> {
      * Otherwise, this function triggers the modified fields to serialize themselves into the
      * records buffer and afterwards updates the offset table.
      */
-    public void updateBinaryRepresenation() {
+    public void updateBinaryRepresentation() {
         // check whether the binary state is in sync
         final int firstModified = this.firstModifiedPos;
         if (firstModified == Integer.MAX_VALUE) {
@@ -1106,7 +1106,7 @@ public final class Record implements Value, CopyableValue<Record> {
     @Override
     public void write(DataOutputView out) throws IOException {
         // make sure everything is in a valid binary representation
-        updateBinaryRepresenation();
+        updateBinaryRepresentation();
 
         // write the length first, variably encoded, then the contents of the binary array
         writeVarLengthInt(out, this.binaryLen);
@@ -1229,7 +1229,7 @@ public final class Record implements Value, CopyableValue<Record> {
      * @throws IOException Thrown, if an error occurred in the view during writing.
      */
     public long serialize(DataOutputView target) throws IOException {
-        updateBinaryRepresenation();
+        updateBinaryRepresentation();
 
         long bytesForLen = 1;
         int len = this.binaryLen;

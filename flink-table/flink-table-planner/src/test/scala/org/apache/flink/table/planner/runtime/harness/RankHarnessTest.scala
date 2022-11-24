@@ -300,7 +300,7 @@ class RankHarnessTest(mode: StateBackendMode) extends HarnessTestBase(mode) {
   }
 
   @Test
-  def testUpdateRankWithRowNumberSortKeyDropsButRankUnchange(): Unit = {
+  def testUpdateRankWithRowNumberSortKeyDropsButRankUnchanged(): Unit = {
     val (testHarness, assertor) = prepareUpdateRankWithRowNumberTester()
     testHarness.open()
 

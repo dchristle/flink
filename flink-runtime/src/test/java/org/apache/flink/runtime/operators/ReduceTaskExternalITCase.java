@@ -77,11 +77,11 @@ public class ReduceTaskExternalITCase
             testDriver(testTask, MockReduceStub.class);
         } catch (Exception e) {
             LOG.info("Exception while running the test task.", e);
-            Assert.fail("Exception in Test: " + e.getMessage());
+            Assert.fail("Exception in test: " + e.getMessage());
         }
 
         Assert.assertTrue(
-                "Resultset size was " + this.outList.size() + ". Expected was " + keyCnt,
+                "Result set size was " + this.outList.size() + ". Expected was " + keyCnt,
                 this.outList.size() == keyCnt);
 
         for (Record record : this.outList) {
@@ -114,11 +114,11 @@ public class ReduceTaskExternalITCase
             testDriver(testTask, MockReduceStub.class);
         } catch (Exception e) {
             LOG.info("Exception while running the test task.", e);
-            Assert.fail("Exception in Test: " + e.getMessage());
+            Assert.fail("Exception in test: " + e.getMessage());
         }
 
         Assert.assertTrue(
-                "Resultset size was " + this.outList.size() + ". Expected was " + keyCnt,
+                "Result set size was " + this.outList.size() + ". Expected was " + keyCnt,
                 this.outList.size() == keyCnt);
 
         for (Record record : this.outList) {
@@ -175,7 +175,7 @@ public class ReduceTaskExternalITCase
         }
 
         Assert.assertTrue(
-                "Resultset size was " + this.outList.size() + ". Expected was " + keyCnt,
+                "Result set size was " + this.outList.size() + ". Expected was " + keyCnt,
                 this.outList.size() == keyCnt);
 
         for (Record record : this.outList) {
@@ -233,7 +233,7 @@ public class ReduceTaskExternalITCase
         }
 
         Assert.assertTrue(
-                "Resultset size was " + this.outList.size() + ". Expected was " + keyCnt,
+                "Result set size was " + this.outList.size() + ". Expected was " + keyCnt,
                 this.outList.size() == keyCnt);
 
         for (Record record : this.outList) {

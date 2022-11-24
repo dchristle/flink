@@ -143,7 +143,7 @@ public class ResourceTest extends TestLogger {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testMutiplyNegative() {
+    public void testMultiplyNegative() {
         final Resource resource = new TestResource(0.3);
         final BigDecimal by = BigDecimal.valueOf(-0.2);
         resource.multiply(by);
@@ -157,7 +157,7 @@ public class ResourceTest extends TestLogger {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testMutiplyNegativeInteger() {
+    public void testMultiplyNegativeInteger() {
         final Resource resource = new TestResource(0.3);
         final int by = -2;
         resource.multiply(by);

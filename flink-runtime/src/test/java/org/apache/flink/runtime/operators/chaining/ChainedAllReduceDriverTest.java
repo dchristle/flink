@@ -120,7 +120,7 @@ public class ChainedAllReduceDriverTest extends TaskTestBase {
             // object reuse is enabled
             v1.setValue(v1.getValue() + v2.getValue());
             value1.setField(0, v1);
-            value1.updateBinaryRepresenation();
+            value1.updateBinaryRepresentation();
             return value1;
         }
     }

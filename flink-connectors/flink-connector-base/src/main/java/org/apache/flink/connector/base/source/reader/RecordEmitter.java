@@ -37,7 +37,7 @@ public interface RecordEmitter<E, T, SplitStateT> {
      * implementation are following:
      *
      * <ul>
-     *   <li>The method maybe interrupted in the middle. In that case, the same set of records will
+     *   <li>The method may be interrupted in the middle. In that case, the same set of records will
      *       be passed to the record emitter again later. The implementation needs to make sure it
      *       reades
      *   <li>

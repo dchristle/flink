@@ -140,7 +140,7 @@ class ReduceTranslationTests implements java.io.Serializable {
     }
 
     @Test
-    void translateGroupedReduceWithkeyExtractor() {
+    void translateGroupedReduceWithKeyExtractor() {
         try {
             final int parallelism = 8;
             ExecutionEnvironment env = ExecutionEnvironment.createLocalEnvironment(parallelism);

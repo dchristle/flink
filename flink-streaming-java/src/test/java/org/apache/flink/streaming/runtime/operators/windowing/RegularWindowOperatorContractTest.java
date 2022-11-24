@@ -165,7 +165,7 @@ public class RegularWindowOperatorContractTest extends WindowOperatorContractTes
             KeyedOneInputStreamOperatorTestHarness<Integer, Integer, OUT> createWindowOperator(
                     WindowAssigner<Integer, W> assigner,
                     Trigger<Integer, W> trigger,
-                    long allowedLatenss,
+                    long allowedLateness,
                     StateDescriptor<? extends AppendingState<Integer, ACC>, ?> stateDescriptor,
                     InternalWindowFunction<ACC, OUT, Integer, W> windowFunction)
                     throws Exception {
@@ -190,7 +190,7 @@ public class RegularWindowOperatorContractTest extends WindowOperatorContractTes
                         stateDescriptor,
                         windowFunction,
                         trigger,
-                        allowedLatenss,
+                        allowedLateness,
                         null /* late output tag */);
 
         return new KeyedOneInputStreamOperatorTestHarness<>(
@@ -202,7 +202,7 @@ public class RegularWindowOperatorContractTest extends WindowOperatorContractTes
             KeyedOneInputStreamOperatorTestHarness<Integer, Integer, OUT> createWindowOperator(
                     WindowAssigner<Integer, W> assigner,
                     Trigger<Integer, W> trigger,
-                    long allowedLatenss,
+                    long allowedLateness,
                     InternalWindowFunction<Iterable<Integer>, OUT, Integer, W> windowFunction,
                     OutputTag<Integer> lateOutputTag)
                     throws Exception {
@@ -230,7 +230,7 @@ public class RegularWindowOperatorContractTest extends WindowOperatorContractTes
                         intListDescriptor,
                         windowFunction,
                         trigger,
-                        allowedLatenss,
+                        allowedLateness,
                         lateOutputTag);
 
         return new KeyedOneInputStreamOperatorTestHarness<>(
@@ -242,11 +242,11 @@ public class RegularWindowOperatorContractTest extends WindowOperatorContractTes
             KeyedOneInputStreamOperatorTestHarness<Integer, Integer, OUT> createWindowOperator(
                     WindowAssigner<Integer, W> assigner,
                     Trigger<Integer, W> trigger,
-                    long allowedLatenss,
+                    long allowedLateness,
                     InternalWindowFunction<Iterable<Integer>, OUT, Integer, W> windowFunction)
                     throws Exception {
 
         return createWindowOperator(
-                assigner, trigger, allowedLatenss, windowFunction, null /* late output tag */);
+                assigner, trigger, allowedLateness, windowFunction, null /* late output tag */);
     }
 }

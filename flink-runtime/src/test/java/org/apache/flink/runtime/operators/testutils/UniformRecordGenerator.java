@@ -78,7 +78,7 @@ public class UniformRecordGenerator implements MutableObjectIterator<Record> {
 
         reuse.setField(0, this.key);
         reuse.setField(1, this.value);
-        reuse.updateBinaryRepresenation();
+        reuse.updateBinaryRepresentation();
         return reuse;
     }
 

@@ -390,7 +390,7 @@ public class ReplicatingDataSourceTest extends CompilerTestBase {
      * Tests compiler fail for join program with replicated data source and changing parallelism.
      */
     @Test(expected = CompilerException.class)
-    public void checkJoinWithReplicatedSourceInputChangingparallelism() {
+    public void checkJoinWithReplicatedSourceInputChangingParallelism() {
 
         ExecutionEnvironment env = ExecutionEnvironment.createLocalEnvironment();
         env.setParallelism(DEFAULT_PARALLELISM);
@@ -423,7 +423,7 @@ public class ReplicatingDataSourceTest extends CompilerTestBase {
      * parallelism.
      */
     @Test(expected = CompilerException.class)
-    public void checkJoinWithReplicatedSourceInputBehindMapChangingparallelism() {
+    public void checkJoinWithReplicatedSourceInputBehindMapChangingParallelism() {
 
         ExecutionEnvironment env = ExecutionEnvironment.createLocalEnvironment();
         env.setParallelism(DEFAULT_PARALLELISM);
