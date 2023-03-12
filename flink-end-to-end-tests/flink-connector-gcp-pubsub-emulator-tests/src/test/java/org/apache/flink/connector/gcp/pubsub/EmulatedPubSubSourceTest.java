@@ -107,14 +107,6 @@ public class EmulatedPubSubSourceTest extends GCloudUnitTestBase {
             env.setRestartStrategy(RestartStrategies.noRestart());
         }
 
-        ManagedChannel managedChannel =
-                NettyChannelBuilder.forTarget(getPubSubHostPort())
-                        .usePlaintext() // This is 'Ok' because this is ONLY used for testing.
-                        .build();
-
-        TransportChannelProvider channelProvider =
-                FixedTransportChannelProvider.create(GrpcTransportChannel.create(managedChannel));
-
         PubSubSource<String> source =
                 PubSubSource.<String>builder()
                         .setDeserializationSchema(new SimpleStringSchema())
@@ -123,11 +115,12 @@ public class EmulatedPubSubSourceTest extends GCloudUnitTestBase {
                         .setCredentials(EmulatorCredentials.getInstance())
                         .setPubSubSubscriberFactory(
                                 new DefaultPubSubSubscriberFactory(
-                                        channelProvider,
+                                        getPubSubHostPort(),
                                         ProjectSubscriptionName.format(PROJECT_NAME, SUBSCRIPTION_NAME),
                                         10,
                                         Duration.ofSeconds(1),
-                                        3))
+                                        3,
+                                        1))
                         .build();
 
         DataStream<String> fromPubSub =
